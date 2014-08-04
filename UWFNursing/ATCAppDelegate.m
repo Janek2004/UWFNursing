@@ -7,12 +7,38 @@
 //
 
 #import "ATCAppDelegate.h"
+#import "JMCBeaconManager.h"
+#import "ATCBeaconNetworkUtilities.h"
 
 @implementation ATCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    
+      _beaconManager = [JMCBeaconManager new];
+        _networkManager= [ATCBeaconNetworkUtilities new];
+
+    NSMutableString * message =[NSMutableString new];
+    
+        if([_beaconManager isSupported:message]){
+            [_beaconManager registerBeaconWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC BEACON" major:-1 andMinor:-1];
+          
+            _beaconManager.beaconFound =^void(int major, int minor, CLProximity proximity){
+                
+            };
+            
+            _beaconManager.regionEvent =^void(int major, int minor, BOOL entered){
+                [_networkManager sendRegionNotification:major minor:minor proximityId:@"" regionEntered:entered user:@"Janek"];
+            };
+          
+            
+            
+        }
+        else {
+            NSLog(@"Message: %@ %s",message,__PRETTY_FUNCTION__);
+        }
+    
+    
     return YES;
 }
 							

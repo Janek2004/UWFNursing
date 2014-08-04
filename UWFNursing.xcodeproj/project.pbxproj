@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F3582DF19902C0200B349D7 /* ATCBeaconNetworkUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3582DE19902C0200B349D7 /* ATCBeaconNetworkUtilities.m */; };
+		4F3582E219902C5900B349D7 /* JMCBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3582E119902C5900B349D7 /* JMCBeaconManager.m */; };
 		4F6528C61988123B00030100 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528C51988123B00030100 /* Foundation.framework */; };
 		4F6528C81988123B00030100 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528C71988123B00030100 /* CoreGraphics.framework */; };
 		4F6528CA1988123B00030100 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528C91988123B00030100 /* UIKit.framework */; };
@@ -21,6 +23,18 @@
 		4F6528E71988123B00030100 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528C91988123B00030100 /* UIKit.framework */; };
 		4F6528EF1988123B00030100 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F6528ED1988123B00030100 /* InfoPlist.strings */; };
 		4F6528F11988123B00030100 /* UWFNursingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6528F01988123B00030100 /* UWFNursingTests.m */; };
+		4F6529031988167F00030100 /* Juniorsimapp1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6528FB1988167F00030100 /* Juniorsimapp1.pdf */; };
+		4F6529041988167F00030100 /* Juniorsimapp2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6528FC1988167F00030100 /* Juniorsimapp2.pdf */; };
+		4F6529051988167F00030100 /* Juniorsimapp3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6528FD1988167F00030100 /* Juniorsimapp3.pdf */; };
+		4F6529061988167F00030100 /* Juniorsimapp4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6528FE1988167F00030100 /* Juniorsimapp4.pdf */; };
+		4F65290D1988171200030100 /* ATCDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65290C1988171200030100 /* ATCDocumentsViewController.m */; };
+		4F6529101988174500030100 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65290F1988174500030100 /* DataSource.m */; };
+		4F6529151988212A00030100 /* OB POSTPARTUM ASSESSMENT.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6529111988212A00030100 /* OB POSTPARTUM ASSESSMENT.pdf */; };
+		4F6529161988212A00030100 /* OB PPD.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6529121988212A00030100 /* OB PPD.pdf */; };
+		4F6529171988212A00030100 /* PEDS ASTHMA.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6529131988212A00030100 /* PEDS ASTHMA.pdf */; };
+		4F6529181988212A00030100 /* PEDS G & D.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6529141988212A00030100 /* PEDS G & D.pdf */; };
+		4F65291C1988219300030100 /* ATCDetailsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65291B1988219300030100 /* ATCDetailsWebViewController.m */; };
+		4F65292019882C6500030100 /* igViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65291F19882C6500030100 /* igViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F3582DD19902C0200B349D7 /* ATCBeaconNetworkUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCBeaconNetworkUtilities.h; path = ../../TrainingStations/ATCTrainingStationsiOS/ATCTrainingStations/ATCBeaconNetworkUtilities.h; sourceTree = "<group>"; };
+		4F3582DE19902C0200B349D7 /* ATCBeaconNetworkUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCBeaconNetworkUtilities.m; path = ../../TrainingStations/ATCTrainingStationsiOS/ATCTrainingStations/ATCBeaconNetworkUtilities.m; sourceTree = "<group>"; };
+		4F3582E019902C5900B349D7 /* JMCBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMCBeaconManager.h; path = ../../../OpenSource/iBeaconTest/iBeaconTest/JMCBeaconManager.h; sourceTree = "<group>"; };
+		4F3582E119902C5900B349D7 /* JMCBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMCBeaconManager.m; path = ../../../OpenSource/iBeaconTest/iBeaconTest/JMCBeaconManager.m; sourceTree = "<group>"; };
 		4F6528C21988123B00030100 /* UWFNursing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UWFNursing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6528C51988123B00030100 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4F6528C71988123B00030100 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +71,22 @@
 		4F6528EC1988123B00030100 /* UWFNursingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UWFNursingTests-Info.plist"; sourceTree = "<group>"; };
 		4F6528EE1988123B00030100 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4F6528F01988123B00030100 /* UWFNursingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UWFNursingTests.m; sourceTree = "<group>"; };
+		4F6528FB1988167F00030100 /* Juniorsimapp1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Juniorsimapp1.pdf; sourceTree = "<group>"; };
+		4F6528FC1988167F00030100 /* Juniorsimapp2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Juniorsimapp2.pdf; sourceTree = "<group>"; };
+		4F6528FD1988167F00030100 /* Juniorsimapp3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Juniorsimapp3.pdf; sourceTree = "<group>"; };
+		4F6528FE1988167F00030100 /* Juniorsimapp4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Juniorsimapp4.pdf; sourceTree = "<group>"; };
+		4F65290B1988171200030100 /* ATCDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCDocumentsViewController.h; path = ViewControllers/ATCDocumentsViewController.h; sourceTree = "<group>"; };
+		4F65290C1988171200030100 /* ATCDocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCDocumentsViewController.m; path = ViewControllers/ATCDocumentsViewController.m; sourceTree = "<group>"; };
+		4F65290E1988174500030100 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		4F65290F1988174500030100 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		4F6529111988212A00030100 /* OB POSTPARTUM ASSESSMENT.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "OB POSTPARTUM ASSESSMENT.pdf"; sourceTree = "<group>"; };
+		4F6529121988212A00030100 /* OB PPD.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "OB PPD.pdf"; sourceTree = "<group>"; };
+		4F6529131988212A00030100 /* PEDS ASTHMA.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "PEDS ASTHMA.pdf"; sourceTree = "<group>"; };
+		4F6529141988212A00030100 /* PEDS G & D.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "PEDS G & D.pdf"; sourceTree = "<group>"; };
+		4F65291A1988219300030100 /* ATCDetailsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCDetailsWebViewController.h; sourceTree = "<group>"; };
+		4F65291B1988219300030100 /* ATCDetailsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCDetailsWebViewController.m; sourceTree = "<group>"; };
+		4F65291E19882C6500030100 /* igViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = igViewController.h; sourceTree = "<group>"; };
+		4F65291F19882C6500030100 /* igViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = igViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +120,7 @@
 				4F6528EA1988123B00030100 /* UWFNursingTests */,
 				4F6528C41988123B00030100 /* Frameworks */,
 				4F6528C31988123B00030100 /* Products */,
+				4F6528FA1988167F00030100 /* Documents Simulation */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,11 +147,12 @@
 		4F6528CB1988123B00030100 /* UWFNursing */ = {
 			isa = PBXGroup;
 			children = (
+				4FB575EC198AB02700B4DE63 /* Helpers */,
 				4F6528D41988123B00030100 /* ATCAppDelegate.h */,
 				4F6528D51988123B00030100 /* ATCAppDelegate.m */,
 				4F6528D71988123B00030100 /* Main.storyboard */,
-				4F6528DA1988123B00030100 /* ATCViewController.h */,
-				4F6528DB1988123B00030100 /* ATCViewController.m */,
+				4F65291D198821FA00030100 /* ViewControllers */,
+				4F6529191988213300030100 /* Model */,
 				4F6528DD1988123B00030100 /* Images.xcassets */,
 				4F6528CC1988123B00030100 /* Supporting Files */,
 			);
@@ -150,6 +186,57 @@
 				4F6528ED1988123B00030100 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4F6528FA1988167F00030100 /* Documents Simulation */ = {
+			isa = PBXGroup;
+			children = (
+				4F6529111988212A00030100 /* OB POSTPARTUM ASSESSMENT.pdf */,
+				4F6529121988212A00030100 /* OB PPD.pdf */,
+				4F6529131988212A00030100 /* PEDS ASTHMA.pdf */,
+				4F6529141988212A00030100 /* PEDS G & D.pdf */,
+				4F6528FB1988167F00030100 /* Juniorsimapp1.pdf */,
+				4F6528FC1988167F00030100 /* Juniorsimapp2.pdf */,
+				4F6528FD1988167F00030100 /* Juniorsimapp3.pdf */,
+				4F6528FE1988167F00030100 /* Juniorsimapp4.pdf */,
+			);
+			name = "Documents Simulation";
+			path = simulation;
+			sourceTree = "<group>";
+		};
+		4F6529191988213300030100 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F65290E1988174500030100 /* DataSource.h */,
+				4F65290F1988174500030100 /* DataSource.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4F65291D198821FA00030100 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4F65290B1988171200030100 /* ATCDocumentsViewController.h */,
+				4F65290C1988171200030100 /* ATCDocumentsViewController.m */,
+				4F65291A1988219300030100 /* ATCDetailsWebViewController.h */,
+				4F65291B1988219300030100 /* ATCDetailsWebViewController.m */,
+				4F6528DA1988123B00030100 /* ATCViewController.h */,
+				4F6528DB1988123B00030100 /* ATCViewController.m */,
+				4F65291E19882C6500030100 /* igViewController.h */,
+				4F65291F19882C6500030100 /* igViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4FB575EC198AB02700B4DE63 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4F3582DD19902C0200B349D7 /* ATCBeaconNetworkUtilities.h */,
+				4F3582DE19902C0200B349D7 /* ATCBeaconNetworkUtilities.m */,
+				4F3582E019902C5900B349D7 /* JMCBeaconManager.h */,
+				4F3582E119902C5900B349D7 /* JMCBeaconManager.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +287,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Janusz Chudzynski";
 				TargetAttributes = {
+					4F6528C11988123B00030100 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					4F6528E21988123B00030100 = {
 						TestTargetID = 4F6528C11988123B00030100;
 					};
@@ -229,9 +323,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F6529061988167F00030100 /* Juniorsimapp4.pdf in Resources */,
 				4F6528DE1988123B00030100 /* Images.xcassets in Resources */,
+				4F6529151988212A00030100 /* OB POSTPARTUM ASSESSMENT.pdf in Resources */,
+				4F6529041988167F00030100 /* Juniorsimapp2.pdf in Resources */,
 				4F6528D01988123B00030100 /* InfoPlist.strings in Resources */,
+				4F6529171988212A00030100 /* PEDS ASTHMA.pdf in Resources */,
+				4F6529181988212A00030100 /* PEDS G & D.pdf in Resources */,
 				4F6528D91988123B00030100 /* Main.storyboard in Resources */,
+				4F6529031988167F00030100 /* Juniorsimapp1.pdf in Resources */,
+				4F6529161988212A00030100 /* OB PPD.pdf in Resources */,
+				4F6529051988167F00030100 /* Juniorsimapp3.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,9 +352,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F65291C1988219300030100 /* ATCDetailsWebViewController.m in Sources */,
+				4F3582DF19902C0200B349D7 /* ATCBeaconNetworkUtilities.m in Sources */,
+				4F65290D1988171200030100 /* ATCDocumentsViewController.m in Sources */,
 				4F6528D21988123B00030100 /* main.m in Sources */,
 				4F6528DC1988123B00030100 /* ATCViewController.m in Sources */,
 				4F6528D61988123B00030100 /* ATCAppDelegate.m in Sources */,
+				4F3582E219902C5900B349D7 /* JMCBeaconManager.m in Sources */,
+				4F6529101988174500030100 /* DataSource.m in Sources */,
+				4F65292019882C6500030100 /* igViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,11 +483,17 @@
 		4F6528F51988123B00030100 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UWFNursing/UWFNursing-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "UWFNursing/UWFNursing-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -388,11 +502,17 @@
 		4F6528F61988123B00030100 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UWFNursing/UWFNursing-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "UWFNursing/UWFNursing-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -457,6 +577,7 @@
 				4F6528F61988123B00030100 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F6528F71988123B00030100 /* Build configuration list for PBXNativeTarget "UWFNursingTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +586,7 @@
 				4F6528F91988123B00030100 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

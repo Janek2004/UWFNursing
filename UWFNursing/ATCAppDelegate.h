@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class JMCBeaconManager;
+@class ATCBeaconNetworkUtilities;
 
 @interface ATCAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+ @property(nonatomic, strong) JMCBeaconManager * beaconManager;
+ @property(nonatomic, strong) ATCBeaconNetworkUtilities * networkManager;
+ @property (strong, nonatomic) UIWindow *window;
 
 @end
