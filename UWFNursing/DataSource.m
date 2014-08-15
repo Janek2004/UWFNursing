@@ -43,6 +43,11 @@
     id item = [self itemForIndexPath:indexPath];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier forIndexPath:indexPath];
+    if(cell==NULL){
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.cellIdentifier];
+    }
+    
+    
     self.configureCellBlock(cell, item, indexPath);
     return cell;
 }
@@ -69,7 +74,12 @@
         return self.headers[section];
     }
     else if([self.items[0] respondsToSelector:@selector(objectAtIndex:)])
-        return [self.items[section][0] valueForKeyPath:self.keyPath];
+       
+        if(self.keyPath){
+               return [self.items[section][0] valueForKeyPath:self.keyPath];
+        }
+        else return nil;
+
     else
         return nil;
 }

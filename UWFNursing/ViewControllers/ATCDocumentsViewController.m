@@ -27,11 +27,12 @@
 
     
     // Do any additional setup after loading the view.
-    _datasource =[[DataSource alloc]initWithItems:@[@"Module 1",@"Module 2",@"Module 3",@"Module 4",@"Module 5",@"Module 6",@"Module 7", @"Module 8"] cellIdentifier:DocumentCellId configureCellBlock:^(UITableViewCell *cell, id item, id indexPath) {
+    _datasource =[[DataSource alloc]initWithItems:@[@[@"Intro to Sim",@"Health Informatics",@"Nursing Process",@"Hypoglycemia"],@[@"Postpartum Assessment",@"PPD",@"PEDS Asthma", @"PEDS Growth & Development"]] cellIdentifier:DocumentCellId configureCellBlock:^(UITableViewCell *cell, id item, id indexPath) {
         cell.textLabel.text = item;
-        
+        cell.detailTextLabel.text =@"Test";
+//        cell.de
     }];
-    
+    _datasource.headers =@[@"Junior Year",@"Senior Year"];
     self.tableView.dataSource = _datasource;
     self.tableView.delegate = self;
 }

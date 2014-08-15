@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4F3582DF19902C0200B349D7 /* ATCBeaconNetworkUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3582DE19902C0200B349D7 /* ATCBeaconNetworkUtilities.m */; };
 		4F3582E219902C5900B349D7 /* JMCBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3582E119902C5900B349D7 /* JMCBeaconManager.m */; };
+		4F5B295719951DC80055E462 /* ATCLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5B295619951DC80055E462 /* ATCLogViewController.m */; };
 		4F6528C61988123B00030100 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528C51988123B00030100 /* Foundation.framework */; };
 		4F6528C81988123B00030100 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528C71988123B00030100 /* CoreGraphics.framework */; };
 		4F6528CA1988123B00030100 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528C91988123B00030100 /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 		4F3582DE19902C0200B349D7 /* ATCBeaconNetworkUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCBeaconNetworkUtilities.m; path = ../../TrainingStations/ATCTrainingStationsiOS/ATCTrainingStations/ATCBeaconNetworkUtilities.m; sourceTree = "<group>"; };
 		4F3582E019902C5900B349D7 /* JMCBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMCBeaconManager.h; path = ../../../OpenSource/iBeaconTest/iBeaconTest/JMCBeaconManager.h; sourceTree = "<group>"; };
 		4F3582E119902C5900B349D7 /* JMCBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMCBeaconManager.m; path = ../../../OpenSource/iBeaconTest/iBeaconTest/JMCBeaconManager.m; sourceTree = "<group>"; };
+		4F5B295519951DC80055E462 /* ATCLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCLogViewController.h; sourceTree = "<group>"; };
+		4F5B295619951DC80055E462 /* ATCLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCLogViewController.m; sourceTree = "<group>"; };
 		4F6528C21988123B00030100 /* UWFNursing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UWFNursing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6528C51988123B00030100 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4F6528C71988123B00030100 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -151,6 +154,8 @@
 				4F6528D41988123B00030100 /* ATCAppDelegate.h */,
 				4F6528D51988123B00030100 /* ATCAppDelegate.m */,
 				4F6528D71988123B00030100 /* Main.storyboard */,
+				4F5B295519951DC80055E462 /* ATCLogViewController.h */,
+				4F5B295619951DC80055E462 /* ATCLogViewController.m */,
 				4F65291D198821FA00030100 /* ViewControllers */,
 				4F6529191988213300030100 /* Model */,
 				4F6528DD1988123B00030100 /* Images.xcassets */,
@@ -288,6 +293,7 @@
 				ORGANIZATIONNAME = "Janusz Chudzynski";
 				TargetAttributes = {
 					4F6528C11988123B00030100 = {
+						DevelopmentTeam = W23JT3HF49;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -360,6 +366,7 @@
 				4F6528D61988123B00030100 /* ATCAppDelegate.m in Sources */,
 				4F3582E219902C5900B349D7 /* JMCBeaconManager.m in Sources */,
 				4F6529101988174500030100 /* DataSource.m in Sources */,
+				4F5B295719951DC80055E462 /* ATCLogViewController.m in Sources */,
 				4F65292019882C6500030100 /* igViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +493,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UWFNursing/UWFNursing-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -505,6 +513,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UWFNursing/UWFNursing-Prefix.pch";
 				HEADER_SEARCH_PATHS = (

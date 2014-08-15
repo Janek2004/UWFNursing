@@ -21,6 +21,9 @@
     UILabel *_barcodeLabel;
     UILabel *_dobLabel;
     UILabel *_nameLabel;
+    UILabel *_mrLabel;
+    UILabel *_nkaLabel;
+    
     UIButton *_startButton;
 }
 @end
@@ -65,25 +68,40 @@
     [self.view addSubview:_startButton];
 
     [_startButton addTarget:self action:@selector(sessionAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    _nameLabel = [[UILabel alloc] init];
+    _nameLabel.frame = CGRectMake(0, CGRectGetMaxY(_startButton.frame)+2, self.view.bounds.size.width, 40);
+    _nameLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
+    _nameLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
+    _nameLabel.textColor = [UIColor whiteColor];
+    _nameLabel.textAlignment = NSTextAlignmentLeft;
 
+    [self.view addSubview:_nameLabel];
     
     _dobLabel = [[UILabel alloc] init];
-    _dobLabel.frame = CGRectMake(0, CGRectGetMaxY(_startButton.frame), self.view.bounds.size.width, 40);
+    _dobLabel.frame = CGRectMake(0, CGRectGetMaxY(_nameLabel.frame), self.view.bounds.size.width, 40);
     _dobLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
     _dobLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
     _dobLabel.textColor = [UIColor whiteColor];
     _dobLabel.textAlignment = NSTextAlignmentLeft;
-    
-    [self.view addSubview:_dobLabel];
-    
-    _nameLabel = [[UILabel alloc] init];
-    _nameLabel.frame = CGRectMake(0, CGRectGetMaxY(_dobLabel.frame)+2, self.view.bounds.size.width, 40);
-    _nameLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
-    _nameLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
-    _nameLabel.textColor = [UIColor whiteColor];
-    _nameLabel.textAlignment = NSTextAlignmentCenter;
 
-    [self.view addSubview:_nameLabel];
+    [self.view addSubview:_dobLabel];
+    _mrLabel = [[UILabel alloc] init];
+    _mrLabel.frame = CGRectMake(0, CGRectGetMaxY(_dobLabel.frame), self.view.bounds.size.width, 40);
+    _mrLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
+    _mrLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
+    _mrLabel.textColor = [UIColor whiteColor];
+    _mrLabel.textAlignment = NSTextAlignmentLeft;
+    [self.view addSubview:_mrLabel];
+    
+    _nkaLabel = [[UILabel alloc] init];
+    _nkaLabel.text = @"NKA";
+    _nkaLabel.frame = CGRectMake(0, CGRectGetMaxY(_mrLabel.frame), self.view.bounds.size.width, 40);
+    _nkaLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
+    _nkaLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
+    _nkaLabel.textColor = [UIColor whiteColor];
+    _nkaLabel.textAlignment = NSTextAlignmentLeft;
+    [self.view addSubview:_nkaLabel];
     
     _session = [[AVCaptureSession alloc] init];
     _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -106,14 +124,25 @@
     _prevLayer.frame = self.view.bounds;
     _prevLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.view.layer addSublayer:_prevLayer];
-
+    //activate session
+    [self sessionAction];
     
 }
 
 -(void)sessionAction{
+    
+    _dobLabel.text =@"";
+    _nameLabel.text =@"";
+    _mrLabel.text=@"";
+    
+    [self.view sendSubviewToBack:_dobLabel];
+    [self.view sendSubviewToBack:_nameLabel];
+    [self.view sendSubviewToBack:_mrLabel];
+    [self.view sendSubviewToBack:_nkaLabel];
+    
     if(_session.isRunning){
         [_session stopRunning ];
-          [_startButton setTitle:@"Start Scanning" forState:UIControlStateNormal];
+        [_startButton setTitle:@"Start Scanning" forState:UIControlStateNormal];
     }
     else{
         [_startButton setTitle:@"Stop Scanning" forState:UIControlStateNormal];
@@ -131,13 +160,53 @@
     long long nr  = barcode.longLongValue;
     
     if(nr == 36000291452){
-        _dobLabel.text = @"01/01/1970";
-        _nameLabel.text = @"John Doe";
-    
-        [self.view bringSubviewToFront:_dobLabel];
-        [self.view bringSubviewToFront:_nameLabel];
-
+        _dobLabel.text = @"DOB: 3/11/xx";
+        _nameLabel.text = [@"Name: Skyler Hansen" uppercaseString] ;
+        
+        _mrLabel.text = @"MR# PCS31100";
+        
     }
+    else if(nr==123456789012){
+        _dobLabel.text = @"DOB: 3/11/xx";
+        _nameLabel.text = [@"Name: Skyler Jansen"uppercaseString];
+        _mrLabel.text = @"MR# PCS33300";
+        
+    }
+    else if(nr==5012345678900){
+        _dobLabel.text = @"DOB: 1/1/xx";
+        _nameLabel.text = [@"Name: Jennie Jones"uppercaseString];
+        _mrLabel.text = @"MR# J123";
+        
+    }
+    else if(nr==9771234567003){
+        _dobLabel.text = @"DOB: 1/1/xx";
+        _nameLabel.text = [@"Name: Joy Jackson"uppercaseString];
+        _mrLabel.text = @"MR# JJ1";
+        
+    }
+    else if(nr==1234567890128){
+        _dobLabel.text = @"DOB: 5 days ago";
+        _nameLabel.text = [@"Name: Jones, BABY BOY"uppercaseString];
+        _mrLabel.text = @"MR# MJ1";
+        
+        
+    }
+    else if(nr==671860013624){
+        _dobLabel.text = @"DOB: 5 days ago";
+        
+        _nameLabel.text = [@"Name: JAMES, BABY BOY"uppercaseString];
+        _mrLabel.text = @"MR# KJ1";
+        
+    }
+    else{
+        _nameLabel.text =@"Patient Not Recognized";
+    }
+
+    [self.view bringSubviewToFront:_dobLabel];
+    [self.view bringSubviewToFront:_nameLabel];
+    [self.view bringSubviewToFront:_nkaLabel];
+    [self.view bringSubviewToFront:_mrLabel];
+    
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
@@ -164,14 +233,16 @@
         {
             _barcodeLabel.text = detectionString;
             [self processBarCode:detectionString];
+
+            [_startButton setTitle:@"Start Scanning" forState:UIControlStateNormal];
             [_session stopRunning];
             
             break;
         }
-        else
-            _barcodeLabel.text = @"(none)";
+        //       else
+           // _barcodeLabel.text = @"(none)";
     }
-
+    
     _highlightView.frame = highlightViewRect;
 }
 
