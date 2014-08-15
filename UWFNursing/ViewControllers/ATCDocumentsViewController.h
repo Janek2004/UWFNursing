@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  Class that is used to display documents in a table view
+ */
 @interface ATCDocumentsViewController : UITableViewController
 
 @end

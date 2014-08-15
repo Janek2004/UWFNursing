@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ *  Class that displays content of the document in a web view
+ */
 @interface ATCDetailsWebViewController : UIViewController
     @property(nonatomic,strong)NSString * filePath;
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ *  main view controller that displays menu of the application
+ */
 @interface ATCViewController : UIViewController
 
 @end

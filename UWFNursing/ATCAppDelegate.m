@@ -19,7 +19,7 @@
       _networkManager= [ATCBeaconNetworkUtilities new];
         [_beaconManager saveLog:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__]];
     
-    
+   __block NSDate * date = [NSDate new];
     NSMutableString * message =[NSMutableString new];
     
         if([_beaconManager isSupported:message]){
@@ -27,23 +27,27 @@
             
            __weak __typeof__(self) weakSelf = self;
             
+
             _beaconManager.beaconFound =^void(int major, int minor, CLProximity proximity){
                __typeof__(self) strongSelf = weakSelf;
-                [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"  proximity:proximity user:@"Janek" withErrorCompletionHandler:^(NSError *error) {
-                    [[strongSelf beaconManager] saveLog:error.debugDescription];
-                }];
+                NSDate * now = [NSDate date];
+                NSTimeInterval interval = [now  timeIntervalSinceDate:date];
                 
+                if(interval>30){
+                    [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"  proximity:proximity user:@"Janek" withErrorCompletionHandler:^(NSError *error) {
+                    [[strongSelf beaconManager] saveLog:error.debugDescription];
+                    }];
+                }
+                date = now;
             };
              __weak __typeof__(self) weakSelf2 = self;
             _beaconManager.regionEvent =^void(int major, int minor, NSUInteger state){
                  __typeof__(self) strongSelf = weakSelf2;
                 
-                 [[strongSelf networkManager] sendRegionNotification:major minor:minor proximityID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"  regionState:state user:@"Janek" withErrorCompletionHandler:^(NSError *error) {
+                                  [[strongSelf networkManager] sendRegionNotification:major minor:minor proximityID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"  regionState:state user:@"Janek" withErrorCompletionHandler:^(NSError *error) {
                         [[strongSelf beaconManager] saveLog:error.debugDescription];
-                }];
+                    }];
             };
-            
-            
         }
         else {
             NSLog(@"Message: %@ %s",message,__PRETTY_FUNCTION__);

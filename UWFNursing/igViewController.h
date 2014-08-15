@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+/**
+ *  Class used for scanning the barcode
+*/
 
 @interface igViewController : UIViewController
 
