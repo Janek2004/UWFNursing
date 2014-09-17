@@ -17,10 +17,11 @@
     
       _beaconManager = [JMCBeaconManager new];
       _networkManager= [ATCBeaconNetworkUtilities new];
-        [_beaconManager saveLog:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__]];
+       [_beaconManager saveLog:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__]];
     
    __block NSDate * date = [NSDate new];
     NSMutableString * message =[NSMutableString new];
+
     
         if([_beaconManager isSupported:message]){
             [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC BEACON" major:2984 andMinor:2];
@@ -89,5 +90,11 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
      [_beaconManager saveLog:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__]];
 }
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    NSLog(@" Notification Received ");
+    
+}
+
 
 @end

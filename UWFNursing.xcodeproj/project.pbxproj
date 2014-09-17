@@ -36,6 +36,10 @@
 		4F6529181988212A00030100 /* PEDS G & D.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6529141988212A00030100 /* PEDS G & D.pdf */; };
 		4F65291C1988219300030100 /* ATCDetailsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65291B1988219300030100 /* ATCDetailsWebViewController.m */; };
 		4F65292019882C6500030100 /* igViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65291F19882C6500030100 /* igViewController.m */; };
+		4F85E61519C77ECA008B4D1C /* low_power.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4F85E61419C77ECA008B4D1C /* low_power.wav */; };
+		4F85E61719C785AB008B4D1C /* wash-hands-no-germs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F85E61619C785AB008B4D1C /* wash-hands-no-germs.jpg */; };
+		4F85E61A19C786C6008B4D1C /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E61919C786C6008B4D1C /* Utilities.m */; };
+		4F85E61D19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E61C19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +94,12 @@
 		4F65291B1988219300030100 /* ATCDetailsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCDetailsWebViewController.m; sourceTree = "<group>"; };
 		4F65291E19882C6500030100 /* igViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = igViewController.h; sourceTree = "<group>"; };
 		4F65291F19882C6500030100 /* igViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = igViewController.m; sourceTree = "<group>"; };
+		4F85E61419C77ECA008B4D1C /* low_power.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = low_power.wav; sourceTree = "<group>"; };
+		4F85E61619C785AB008B4D1C /* wash-hands-no-germs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wash-hands-no-germs.jpg"; sourceTree = "<group>"; };
+		4F85E61819C786C6008B4D1C /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		4F85E61919C786C6008B4D1C /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		4F85E61B19C78AF1008B4D1C /* ATCWashingHandsStationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCWashingHandsStationViewController.h; path = ViewControllers/ATCWashingHandsStationViewController.h; sourceTree = "<group>"; };
+		4F85E61C19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCWashingHandsStationViewController.m; path = ViewControllers/ATCWashingHandsStationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +169,7 @@
 				4F65291D198821FA00030100 /* ViewControllers */,
 				4F6529191988213300030100 /* Model */,
 				4F6528DD1988123B00030100 /* Images.xcassets */,
+				4F85E61619C785AB008B4D1C /* wash-hands-no-germs.jpg */,
 				4F6528CC1988123B00030100 /* Supporting Files */,
 			);
 			path = UWFNursing;
@@ -212,6 +223,7 @@
 		4F6529191988213300030100 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4F85E61419C77ECA008B4D1C /* low_power.wav */,
 				4F65290E1988174500030100 /* DataSource.h */,
 				4F65290F1988174500030100 /* DataSource.m */,
 			);
@@ -229,6 +241,8 @@
 				4F6528DB1988123B00030100 /* ATCViewController.m */,
 				4F65291E19882C6500030100 /* igViewController.h */,
 				4F65291F19882C6500030100 /* igViewController.m */,
+				4F85E61B19C78AF1008B4D1C /* ATCWashingHandsStationViewController.h */,
+				4F85E61C19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -236,6 +250,8 @@
 		4FB575EC198AB02700B4DE63 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4F85E61819C786C6008B4D1C /* Utilities.h */,
+				4F85E61919C786C6008B4D1C /* Utilities.m */,
 				4F3582DD19902C0200B349D7 /* ATCBeaconNetworkUtilities.h */,
 				4F3582DE19902C0200B349D7 /* ATCBeaconNetworkUtilities.m */,
 				4F3582E019902C5900B349D7 /* JMCBeaconManager.h */,
@@ -340,6 +356,8 @@
 				4F6529031988167F00030100 /* Juniorsimapp1.pdf in Resources */,
 				4F6529161988212A00030100 /* OB PPD.pdf in Resources */,
 				4F6529051988167F00030100 /* Juniorsimapp3.pdf in Resources */,
+				4F85E61719C785AB008B4D1C /* wash-hands-no-germs.jpg in Resources */,
+				4F85E61519C77ECA008B4D1C /* low_power.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +381,9 @@
 				4F65290D1988171200030100 /* ATCDocumentsViewController.m in Sources */,
 				4F6528D21988123B00030100 /* main.m in Sources */,
 				4F6528DC1988123B00030100 /* ATCViewController.m in Sources */,
+				4F85E61D19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m in Sources */,
 				4F6528D61988123B00030100 /* ATCAppDelegate.m in Sources */,
+				4F85E61A19C786C6008B4D1C /* Utilities.m in Sources */,
 				4F3582E219902C5900B349D7 /* JMCBeaconManager.m in Sources */,
 				4F6529101988174500030100 /* DataSource.m in Sources */,
 				4F5B295719951DC80055E462 /* ATCLogViewController.m in Sources */,
