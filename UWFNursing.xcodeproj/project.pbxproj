@@ -40,6 +40,46 @@
 		4F85E61719C785AB008B4D1C /* wash-hands-no-germs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F85E61619C785AB008B4D1C /* wash-hands-no-germs.jpg */; };
 		4F85E61A19C786C6008B4D1C /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E61919C786C6008B4D1C /* Utilities.m */; };
 		4F85E61D19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E61C19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m */; };
+		4FD3DC8F19D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DC8E19D9D95B00E8A759 /* ATCAuthenticateViewController.m */; };
+		4FD3DC9019D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DC8E19D9D95B00E8A759 /* ATCAuthenticateViewController.m */; };
+		4FD3DC9219D9E06100E8A759 /* sampleLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9119D9E06100E8A759 /* sampleLogo.png */; };
+		4FD3DC9319D9E06100E8A759 /* sampleLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9119D9E06100E8A759 /* sampleLogo.png */; };
+		4FD3DC9519D9FACE00E8A759 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9419D9FACE00E8A759 /* documents.png */; };
+		4FD3DC9619D9FACE00E8A759 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9419D9FACE00E8A759 /* documents.png */; };
+		4FD3DC9C19D9FB3900E8A759 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9B19D9FB3900E8A759 /* help.png */; };
+		4FD3DC9D19D9FB3900E8A759 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9B19D9FB3900E8A759 /* help.png */; };
+		4FD3DC9F19D9FBC700E8A759 /* padlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9E19D9FBC700E8A759 /* padlock.png */; };
+		4FD3DCA019D9FBC700E8A759 /* padlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9E19D9FBC700E8A759 /* padlock.png */; };
+		4FD3DCA219D9FD5400E8A759 /* scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCA119D9FD5400E8A759 /* scan.png */; };
+		4FD3DCA319D9FD5400E8A759 /* scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCA119D9FD5400E8A759 /* scan.png */; };
+		4FD3DCA519D9FE1800E8A759 /* debugging.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCA419D9FE1800E8A759 /* debugging.png */; };
+		4FD3DCA619D9FE1800E8A759 /* debugging.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCA419D9FE1800E8A759 /* debugging.png */; };
+		4FD3DCA819D9FE6000E8A759 /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCA719D9FE6000E8A759 /* unlock.png */; };
+		4FD3DCA919D9FE6000E8A759 /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCA719D9FE6000E8A759 /* unlock.png */; };
+		4FD3DCAB19DA016800E8A759 /* debugging@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAA19DA016800E8A759 /* debugging@2x.png */; };
+		4FD3DCAC19DA016800E8A759 /* debugging@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAA19DA016800E8A759 /* debugging@2x.png */; };
+		4FD3DCB019DA01D500E8A759 /* documents@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAD19DA01D500E8A759 /* documents@2x.png */; };
+		4FD3DCB119DA01D500E8A759 /* documents@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAD19DA01D500E8A759 /* documents@2x.png */; };
+		4FD3DCB219DA01D500E8A759 /* help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAE19DA01D500E8A759 /* help@2x.png */; };
+		4FD3DCB319DA01D500E8A759 /* help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAE19DA01D500E8A759 /* help@2x.png */; };
+		4FD3DCB419DA01D500E8A759 /* padlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAF19DA01D500E8A759 /* padlock@2x.png */; };
+		4FD3DCB519DA01D500E8A759 /* padlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAF19DA01D500E8A759 /* padlock@2x.png */; };
+		4FD3DCB719DA01DC00E8A759 /* scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCB619DA01DC00E8A759 /* scan@2x.png */; };
+		4FD3DCB819DA01DC00E8A759 /* scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCB619DA01DC00E8A759 /* scan@2x.png */; };
+		4FD3DCBB19DA028400E8A759 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCB919DA028400E8A759 /* clear.png */; };
+		4FD3DCBC19DA028400E8A759 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCB919DA028400E8A759 /* clear.png */; };
+		4FD3DCBD19DA028400E8A759 /* clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCBA19DA028400E8A759 /* clear@2x.png */; };
+		4FD3DCBE19DA028400E8A759 /* clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCBA19DA028400E8A759 /* clear@2x.png */; };
+		4FD3DCC219DB008700E8A759 /* ATCBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCC119DB008700E8A759 /* ATCBeacon.m */; };
+		4FD3DCC519DB00E500E8A759 /* ACTPatientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCC419DB00E500E8A759 /* ACTPatientCell.m */; };
+		4FD3DCC819DB01B600E8A759 /* ATCStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCC719DB01B600E8A759 /* ATCStation.m */; };
+		4FD3DCCA19DB03C800E8A759 /* female_patient.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCC919DB03C800E8A759 /* female_patient.png */; };
+		4FD3DCCC19DB043B00E8A759 /* female_patient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCCB19DB043B00E8A759 /* female_patient@2x.png */; };
+		4FD3DCD319DB0D6900E8A759 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD219DB0D6900E8A759 /* Localizable.strings */; };
+		4FD3DCD519DB110600E8A759 /* ATCBeaconContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */; };
+		4FD3DCD619DB110600E8A759 /* ATCBeaconContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */; };
+		4FD3DCD819DB2C5100E8A759 /* ATCPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD719DB2C5100E8A759 /* ATCPatient.m */; };
+		4FD3DCD919DB2C5100E8A759 /* ATCPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD719DB2C5100E8A759 /* ATCPatient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +93,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F1AA61419DB3DBA00825E6A /* ATCBeaconContentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCBeaconContentManager.h; sourceTree = "<group>"; };
 		4F3582DD19902C0200B349D7 /* ATCBeaconNetworkUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCBeaconNetworkUtilities.h; path = ../../TrainingStations/ATCTrainingStationsiOS/ATCTrainingStations/ATCBeaconNetworkUtilities.h; sourceTree = "<group>"; };
 		4F3582DE19902C0200B349D7 /* ATCBeaconNetworkUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCBeaconNetworkUtilities.m; path = ../../TrainingStations/ATCTrainingStationsiOS/ATCTrainingStations/ATCBeaconNetworkUtilities.m; sourceTree = "<group>"; };
 		4F3582E019902C5900B349D7 /* JMCBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMCBeaconManager.h; path = ../../../OpenSource/iBeaconTest/iBeaconTest/JMCBeaconManager.h; sourceTree = "<group>"; };
@@ -100,6 +141,34 @@
 		4F85E61919C786C6008B4D1C /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		4F85E61B19C78AF1008B4D1C /* ATCWashingHandsStationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCWashingHandsStationViewController.h; path = ViewControllers/ATCWashingHandsStationViewController.h; sourceTree = "<group>"; };
 		4F85E61C19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCWashingHandsStationViewController.m; path = ViewControllers/ATCWashingHandsStationViewController.m; sourceTree = "<group>"; };
+		4FD3DC8D19D9D95B00E8A759 /* ATCAuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCAuthenticateViewController.h; path = ViewControllers/ATCAuthenticateViewController.h; sourceTree = "<group>"; };
+		4FD3DC8E19D9D95B00E8A759 /* ATCAuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCAuthenticateViewController.m; path = ViewControllers/ATCAuthenticateViewController.m; sourceTree = "<group>"; };
+		4FD3DC9119D9E06100E8A759 /* sampleLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleLogo.png; sourceTree = "<group>"; };
+		4FD3DC9419D9FACE00E8A759 /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
+		4FD3DC9B19D9FB3900E8A759 /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
+		4FD3DC9E19D9FBC700E8A759 /* padlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = padlock.png; sourceTree = "<group>"; };
+		4FD3DCA119D9FD5400E8A759 /* scan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan.png; sourceTree = "<group>"; };
+		4FD3DCA419D9FE1800E8A759 /* debugging.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debugging.png; sourceTree = "<group>"; };
+		4FD3DCA719D9FE6000E8A759 /* unlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unlock.png; sourceTree = "<group>"; };
+		4FD3DCAA19DA016800E8A759 /* debugging@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "debugging@2x.png"; sourceTree = "<group>"; };
+		4FD3DCAD19DA01D500E8A759 /* documents@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "documents@2x.png"; sourceTree = "<group>"; };
+		4FD3DCAE19DA01D500E8A759 /* help@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help@2x.png"; sourceTree = "<group>"; };
+		4FD3DCAF19DA01D500E8A759 /* padlock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "padlock@2x.png"; sourceTree = "<group>"; };
+		4FD3DCB619DA01DC00E8A759 /* scan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan@2x.png"; sourceTree = "<group>"; };
+		4FD3DCB919DA028400E8A759 /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
+		4FD3DCBA19DA028400E8A759 /* clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear@2x.png"; sourceTree = "<group>"; };
+		4FD3DCC019DB008700E8A759 /* ATCBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCBeacon.h; sourceTree = "<group>"; };
+		4FD3DCC119DB008700E8A759 /* ATCBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCBeacon.m; sourceTree = "<group>"; };
+		4FD3DCC319DB00E400E8A759 /* ACTPatientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACTPatientCell.h; sourceTree = "<group>"; };
+		4FD3DCC419DB00E500E8A759 /* ACTPatientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACTPatientCell.m; sourceTree = "<group>"; };
+		4FD3DCC619DB01B600E8A759 /* ATCStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCStation.h; sourceTree = "<group>"; };
+		4FD3DCC719DB01B600E8A759 /* ATCStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCStation.m; sourceTree = "<group>"; };
+		4FD3DCC919DB03C800E8A759 /* female_patient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female_patient.png; sourceTree = "<group>"; };
+		4FD3DCCB19DB043B00E8A759 /* female_patient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "female_patient@2x.png"; sourceTree = "<group>"; };
+		4FD3DCD219DB0D6900E8A759 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCBeaconContentManager.m; path = Logic/ATCBeaconContentManager.m; sourceTree = "<group>"; };
+		4FD3DCD719DB2C5100E8A759 /* ATCPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCPatient.m; path = Logic/ATCPatient.m; sourceTree = "<group>"; };
+		4FD3DCDB19DB3A8400E8A759 /* ATCPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCPatient.h; path = Logic/ATCPatient.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +198,7 @@
 		4F6528B91988123B00030100 = {
 			isa = PBXGroup;
 			children = (
+				4FD3DC9719D9FAD400E8A759 /* Resources */,
 				4F6528CB1988123B00030100 /* UWFNursing */,
 				4F6528EA1988123B00030100 /* UWFNursingTests */,
 				4F6528C41988123B00030100 /* Frameworks */,
@@ -164,8 +234,6 @@
 				4F6528D41988123B00030100 /* ATCAppDelegate.h */,
 				4F6528D51988123B00030100 /* ATCAppDelegate.m */,
 				4F6528D71988123B00030100 /* Main.storyboard */,
-				4F5B295519951DC80055E462 /* ATCLogViewController.h */,
-				4F5B295619951DC80055E462 /* ATCLogViewController.m */,
 				4F65291D198821FA00030100 /* ViewControllers */,
 				4F6529191988213300030100 /* Model */,
 				4F6528DD1988123B00030100 /* Images.xcassets */,
@@ -180,6 +248,7 @@
 			children = (
 				4F6528CD1988123B00030100 /* UWFNursing-Info.plist */,
 				4F6528CE1988123B00030100 /* InfoPlist.strings */,
+				4FD3DCD219DB0D6900E8A759 /* Localizable.strings */,
 				4F6528D11988123B00030100 /* main.m */,
 				4F6528D31988123B00030100 /* UWFNursing-Prefix.pch */,
 			);
@@ -223,9 +292,16 @@
 		4F6529191988213300030100 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4F85E61419C77ECA008B4D1C /* low_power.wav */,
+				4FD3DCC619DB01B600E8A759 /* ATCStation.h */,
+				4FD3DCC719DB01B600E8A759 /* ATCStation.m */,
+				4FD3DCC319DB00E400E8A759 /* ACTPatientCell.h */,
+				4FD3DCC419DB00E500E8A759 /* ACTPatientCell.m */,
+				4FD3DCC019DB008700E8A759 /* ATCBeacon.h */,
+				4FD3DCC119DB008700E8A759 /* ATCBeacon.m */,
 				4F65290E1988174500030100 /* DataSource.h */,
 				4F65290F1988174500030100 /* DataSource.m */,
+				4FD3DCD719DB2C5100E8A759 /* ATCPatient.m */,
+				4FD3DCDB19DB3A8400E8A759 /* ATCPatient.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -233,16 +309,12 @@
 		4F65291D198821FA00030100 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4F65290B1988171200030100 /* ATCDocumentsViewController.h */,
-				4F65290C1988171200030100 /* ATCDocumentsViewController.m */,
-				4F65291A1988219300030100 /* ATCDetailsWebViewController.h */,
-				4F65291B1988219300030100 /* ATCDetailsWebViewController.m */,
-				4F6528DA1988123B00030100 /* ATCViewController.h */,
-				4F6528DB1988123B00030100 /* ATCViewController.m */,
-				4F65291E19882C6500030100 /* igViewController.h */,
-				4F65291F19882C6500030100 /* igViewController.m */,
-				4F85E61B19C78AF1008B4D1C /* ATCWashingHandsStationViewController.h */,
-				4F85E61C19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m */,
+				4FD3DCCD19DB074900E8A759 /* Debug Log */,
+				4FD3DCCE19DB07D800E8A759 /* Authenticate */,
+				4FD3DCD119DB08F500E8A759 /* Documents and web view */,
+				4FD3DCBF19DAFDE100E8A759 /* Home View Controller */,
+				4FD3DCCF19DB08C700E8A759 /* Scanner */,
+				4FD3DCD019DB08E200E8A759 /* Washing Hands Station */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -256,8 +328,91 @@
 				4F3582DE19902C0200B349D7 /* ATCBeaconNetworkUtilities.m */,
 				4F3582E019902C5900B349D7 /* JMCBeaconManager.h */,
 				4F3582E119902C5900B349D7 /* JMCBeaconManager.m */,
+				4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */,
+				4F1AA61419DB3DBA00825E6A /* ATCBeaconContentManager.h */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		4FD3DC9719D9FAD400E8A759 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4FD3DC9B19D9FB3900E8A759 /* help.png */,
+				4FD3DC9E19D9FBC700E8A759 /* padlock.png */,
+				4FD3DC9419D9FACE00E8A759 /* documents.png */,
+				4FD3DC9119D9E06100E8A759 /* sampleLogo.png */,
+				4FD3DCA119D9FD5400E8A759 /* scan.png */,
+				4FD3DCAA19DA016800E8A759 /* debugging@2x.png */,
+				4FD3DCA419D9FE1800E8A759 /* debugging.png */,
+				4F85E61419C77ECA008B4D1C /* low_power.wav */,
+				4FD3DCAD19DA01D500E8A759 /* documents@2x.png */,
+				4FD3DCAE19DA01D500E8A759 /* help@2x.png */,
+				4FD3DCAF19DA01D500E8A759 /* padlock@2x.png */,
+				4FD3DCB619DA01DC00E8A759 /* scan@2x.png */,
+				4FD3DCA719D9FE6000E8A759 /* unlock.png */,
+				4FD3DCB919DA028400E8A759 /* clear.png */,
+				4FD3DCBA19DA028400E8A759 /* clear@2x.png */,
+				4FD3DCCB19DB043B00E8A759 /* female_patient@2x.png */,
+				4FD3DCC919DB03C800E8A759 /* female_patient.png */,
+			);
+			name = Resources;
+			path = UWFNursing;
+			sourceTree = "<group>";
+		};
+		4FD3DCBF19DAFDE100E8A759 /* Home View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4F6528DA1988123B00030100 /* ATCViewController.h */,
+				4F6528DB1988123B00030100 /* ATCViewController.m */,
+			);
+			name = "Home View Controller";
+			sourceTree = "<group>";
+		};
+		4FD3DCCD19DB074900E8A759 /* Debug Log */ = {
+			isa = PBXGroup;
+			children = (
+				4F5B295519951DC80055E462 /* ATCLogViewController.h */,
+				4F5B295619951DC80055E462 /* ATCLogViewController.m */,
+			);
+			name = "Debug Log";
+			sourceTree = "<group>";
+		};
+		4FD3DCCE19DB07D800E8A759 /* Authenticate */ = {
+			isa = PBXGroup;
+			children = (
+				4FD3DC8D19D9D95B00E8A759 /* ATCAuthenticateViewController.h */,
+				4FD3DC8E19D9D95B00E8A759 /* ATCAuthenticateViewController.m */,
+			);
+			name = Authenticate;
+			sourceTree = "<group>";
+		};
+		4FD3DCCF19DB08C700E8A759 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				4F65291E19882C6500030100 /* igViewController.h */,
+				4F65291F19882C6500030100 /* igViewController.m */,
+			);
+			name = Scanner;
+			sourceTree = "<group>";
+		};
+		4FD3DCD019DB08E200E8A759 /* Washing Hands Station */ = {
+			isa = PBXGroup;
+			children = (
+				4F85E61B19C78AF1008B4D1C /* ATCWashingHandsStationViewController.h */,
+				4F85E61C19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m */,
+			);
+			name = "Washing Hands Station";
+			sourceTree = "<group>";
+		};
+		4FD3DCD119DB08F500E8A759 /* Documents and web view */ = {
+			isa = PBXGroup;
+			children = (
+				4F65290B1988171200030100 /* ATCDocumentsViewController.h */,
+				4F65290C1988171200030100 /* ATCDocumentsViewController.m */,
+				4F65291A1988219300030100 /* ATCDetailsWebViewController.h */,
+				4F65291B1988219300030100 /* ATCDetailsWebViewController.m */,
+			);
+			name = "Documents and web view";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,7 +464,7 @@
 				ORGANIZATIONNAME = "Janusz Chudzynski";
 				TargetAttributes = {
 					4F6528C11988123B00030100 = {
-						DevelopmentTeam = W23JT3HF49;
+						DevelopmentTeam = 8KV53E363M;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -345,19 +500,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FD3DC9219D9E06100E8A759 /* sampleLogo.png in Resources */,
 				4F6529061988167F00030100 /* Juniorsimapp4.pdf in Resources */,
+				4FD3DCA219D9FD5400E8A759 /* scan.png in Resources */,
+				4FD3DCCC19DB043B00E8A759 /* female_patient@2x.png in Resources */,
+				4FD3DCBB19DA028400E8A759 /* clear.png in Resources */,
 				4F6528DE1988123B00030100 /* Images.xcassets in Resources */,
 				4F6529151988212A00030100 /* OB POSTPARTUM ASSESSMENT.pdf in Resources */,
+				4FD3DCBD19DA028400E8A759 /* clear@2x.png in Resources */,
+				4FD3DCB019DA01D500E8A759 /* documents@2x.png in Resources */,
+				4FD3DCB719DA01DC00E8A759 /* scan@2x.png in Resources */,
+				4FD3DC9C19D9FB3900E8A759 /* help.png in Resources */,
+				4FD3DC9F19D9FBC700E8A759 /* padlock.png in Resources */,
 				4F6529041988167F00030100 /* Juniorsimapp2.pdf in Resources */,
+				4FD3DC9519D9FACE00E8A759 /* documents.png in Resources */,
 				4F6528D01988123B00030100 /* InfoPlist.strings in Resources */,
 				4F6529171988212A00030100 /* PEDS ASTHMA.pdf in Resources */,
+				4FD3DCCA19DB03C800E8A759 /* female_patient.png in Resources */,
 				4F6529181988212A00030100 /* PEDS G & D.pdf in Resources */,
 				4F6528D91988123B00030100 /* Main.storyboard in Resources */,
+				4FD3DCAB19DA016800E8A759 /* debugging@2x.png in Resources */,
 				4F6529031988167F00030100 /* Juniorsimapp1.pdf in Resources */,
 				4F6529161988212A00030100 /* OB PPD.pdf in Resources */,
+				4FD3DCB419DA01D500E8A759 /* padlock@2x.png in Resources */,
 				4F6529051988167F00030100 /* Juniorsimapp3.pdf in Resources */,
+				4FD3DCB219DA01D500E8A759 /* help@2x.png in Resources */,
+				4FD3DCD319DB0D6900E8A759 /* Localizable.strings in Resources */,
 				4F85E61719C785AB008B4D1C /* wash-hands-no-germs.jpg in Resources */,
 				4F85E61519C77ECA008B4D1C /* low_power.wav in Resources */,
+				4FD3DCA819D9FE6000E8A759 /* unlock.png in Resources */,
+				4FD3DCA519D9FE1800E8A759 /* debugging.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +537,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FD3DC9D19D9FB3900E8A759 /* help.png in Resources */,
+				4FD3DC9319D9E06100E8A759 /* sampleLogo.png in Resources */,
+				4FD3DCB819DA01DC00E8A759 /* scan@2x.png in Resources */,
+				4FD3DCA919D9FE6000E8A759 /* unlock.png in Resources */,
+				4FD3DCA319D9FD5400E8A759 /* scan.png in Resources */,
+				4FD3DCAC19DA016800E8A759 /* debugging@2x.png in Resources */,
+				4FD3DCBE19DA028400E8A759 /* clear@2x.png in Resources */,
+				4FD3DCB519DA01D500E8A759 /* padlock@2x.png in Resources */,
+				4FD3DCA619D9FE1800E8A759 /* debugging.png in Resources */,
 				4F6528EF1988123B00030100 /* InfoPlist.strings in Resources */,
+				4FD3DCBC19DA028400E8A759 /* clear.png in Resources */,
+				4FD3DCB119DA01D500E8A759 /* documents@2x.png in Resources */,
+				4FD3DC9619D9FACE00E8A759 /* documents.png in Resources */,
+				4FD3DCA019D9FBC700E8A759 /* padlock.png in Resources */,
+				4FD3DCB319DA01D500E8A759 /* help@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +563,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F65291C1988219300030100 /* ATCDetailsWebViewController.m in Sources */,
+				4FD3DCC819DB01B600E8A759 /* ATCStation.m in Sources */,
 				4F3582DF19902C0200B349D7 /* ATCBeaconNetworkUtilities.m in Sources */,
 				4F65290D1988171200030100 /* ATCDocumentsViewController.m in Sources */,
 				4F6528D21988123B00030100 /* main.m in Sources */,
@@ -384,9 +571,14 @@
 				4F85E61D19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m in Sources */,
 				4F6528D61988123B00030100 /* ATCAppDelegate.m in Sources */,
 				4F85E61A19C786C6008B4D1C /* Utilities.m in Sources */,
+				4FD3DC8F19D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */,
+				4FD3DCC519DB00E500E8A759 /* ACTPatientCell.m in Sources */,
 				4F3582E219902C5900B349D7 /* JMCBeaconManager.m in Sources */,
 				4F6529101988174500030100 /* DataSource.m in Sources */,
 				4F5B295719951DC80055E462 /* ATCLogViewController.m in Sources */,
+				4FD3DCD519DB110600E8A759 /* ATCBeaconContentManager.m in Sources */,
+				4FD3DCC219DB008700E8A759 /* ATCBeacon.m in Sources */,
+				4FD3DCD819DB2C5100E8A759 /* ATCPatient.m in Sources */,
 				4F65292019882C6500030100 /* igViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,7 +587,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FD3DCD919DB2C5100E8A759 /* ATCPatient.m in Sources */,
+				4FD3DC9019D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */,
 				4F6528F11988123B00030100 /* UWFNursingTests.m in Sources */,
+				4FD3DCD619DB110600E8A759 /* ATCBeaconContentManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +709,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UWFNursing/UWFNursing-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -523,6 +719,7 @@
 				INFOPLIST_FILE = "UWFNursing/UWFNursing-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -534,6 +731,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UWFNursing/UWFNursing-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -543,6 +741,7 @@
 				INFOPLIST_FILE = "UWFNursing/UWFNursing-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

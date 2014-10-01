@@ -56,6 +56,7 @@
   
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if(self.items.count == 0) return 1;
     if([self.items[0] respondsToSelector:@selector(objectAtIndex:)])
         return self.items.count;
     else
@@ -63,12 +64,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if(self.items.count==0) return 0;
     if([self.items[0] respondsToSelector:@selector(objectAtIndex:)])
         return [self.items[section] count];
     else
         return self.items.count;
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
     if(self.headers.count >0)
     {
         return self.headers[section];
@@ -91,6 +94,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.cellIdentifier forIndexPath:indexPath];
+
     id item = self.items[(NSUInteger)indexPath.row];
     self.configureCellBlock(cell, item, indexPath);
     return cell;

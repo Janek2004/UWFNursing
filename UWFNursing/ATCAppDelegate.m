@@ -9,45 +9,69 @@
 #import "ATCAppDelegate.h"
 #import "JMCBeaconManager.h"
 #import "ATCBeaconNetworkUtilities.h"
+#import "ATCBeaconContentManager.h"
+
 
 @implementation ATCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-      _beaconManager = [JMCBeaconManager new];
-      _networkManager= [ATCBeaconNetworkUtilities new];
-       [_beaconManager saveLog:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__]];
+    _beaconManager = [JMCBeaconManager new];
+    _networkManager= [ATCBeaconNetworkUtilities new];
+    _contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray * patients) {
+        self.patients = patients;
+        NSLog(@"\n\n\n____CURRENT PATIENTS ____ %@  \n\n\n\n", self.patients);
     
-   __block NSDate * date = [NSDate new];
+    }];
+
+    
+//      _contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray *){
+//       
+//      }];
+    
+   
+    __block NSDate * date = [NSDate new];
     NSMutableString * message =[NSMutableString new];
 
     
         if([_beaconManager isSupported:message]){
-            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC BEACON" major:2984 andMinor:2];
+            //that will be patient
+            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC BEACON" major:1 andMinor:1];
             
+            //that will be sink
+            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC SINK" major:2984 andMinor:1];
+      
            __weak __typeof__(self) weakSelf = self;
             
-
             _beaconManager.beaconFound =^void(int major, int minor, CLProximity proximity){
                __typeof__(self) strongSelf = weakSelf;
                 NSDate * now = [NSDate date];
                 NSTimeInterval interval = [now  timeIntervalSinceDate:date];
+                
+             strongSelf.patients =   [strongSelf.contentManager contentForBeaconID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andMajor:@(major) andMinor:@(minor) proximity:proximity];
+                
                 
                 if(interval>30){
                     [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"  proximity:proximity user:@"Janek" withErrorCompletionHandler:^(NSError *error) {
                     [[strongSelf beaconManager] saveLog:error.debugDescription];
                     }];
                 }
+                
                 date = now;
             };
              __weak __typeof__(self) weakSelf2 = self;
             _beaconManager.regionEvent =^void(int major, int minor, NSUInteger state){
                  __typeof__(self) strongSelf = weakSelf2;
                 
-                                  [[strongSelf networkManager] sendRegionNotification:major minor:minor proximityID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"  regionState:state user:@"Janek" withErrorCompletionHandler:^(NSError *error) {
+                        [[strongSelf networkManager] sendRegionNotification:major minor:minor proximityID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"  regionState:state user:@"Janek" withErrorCompletionHandler:^(NSError *error) {
                         [[strongSelf beaconManager] saveLog:error.debugDescription];
                     }];
+            
+                if(state == CLRegionStateOutside||state == CLRegionStateUnknown){
+                    [strongSelf.contentManager removeAll];
+                
+                }
             };
         }
         else {

@@ -26,7 +26,7 @@
 		<key>A9481602EB434BBFF46A0180B967A0DC54E30F3A</key>
 		<string>../../../TrainingStations/ATCTrainingStationsiOS</string>
 		<key>ECBB171DCF623A24CFA437E53A683352E5308186</key>
-		<string>../../../../OpenSource</string>
+		<string>../../../OpenSource</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Janek2004/UWFNursing.git</string>
