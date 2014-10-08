@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F35538519E585E300F48092 /* Girls.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F35538419E585E300F48092 /* Girls.pdf */; };
 		4F3582DF19902C0200B349D7 /* ATCBeaconNetworkUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3582DE19902C0200B349D7 /* ATCBeaconNetworkUtilities.m */; };
 		4F3582E219902C5900B349D7 /* JMCBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3582E119902C5900B349D7 /* JMCBeaconManager.m */; };
 		4F5B295719951DC80055E462 /* ATCLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5B295619951DC80055E462 /* ATCLogViewController.m */; };
@@ -40,6 +41,8 @@
 		4F85E61719C785AB008B4D1C /* wash-hands-no-germs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F85E61619C785AB008B4D1C /* wash-hands-no-germs.jpg */; };
 		4F85E61A19C786C6008B4D1C /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E61919C786C6008B4D1C /* Utilities.m */; };
 		4F85E61D19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E61C19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m */; };
+		4F98B65519DC3F8D002624AA /* caution.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F98B65319DC3F8D002624AA /* caution.png */; };
+		4F98B65619DC3F8D002624AA /* caution@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F98B65419DC3F8D002624AA /* caution@2x.png */; };
 		4FD3DC8F19D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DC8E19D9D95B00E8A759 /* ATCAuthenticateViewController.m */; };
 		4FD3DC9019D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DC8E19D9D95B00E8A759 /* ATCAuthenticateViewController.m */; };
 		4FD3DC9219D9E06100E8A759 /* sampleLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9119D9E06100E8A759 /* sampleLogo.png */; };
@@ -94,6 +97,7 @@
 
 /* Begin PBXFileReference section */
 		4F1AA61419DB3DBA00825E6A /* ATCBeaconContentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCBeaconContentManager.h; sourceTree = "<group>"; };
+		4F35538419E585E300F48092 /* Girls.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Girls.pdf; sourceTree = "<group>"; };
 		4F3582DD19902C0200B349D7 /* ATCBeaconNetworkUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCBeaconNetworkUtilities.h; path = ../../TrainingStations/ATCTrainingStationsiOS/ATCTrainingStations/ATCBeaconNetworkUtilities.h; sourceTree = "<group>"; };
 		4F3582DE19902C0200B349D7 /* ATCBeaconNetworkUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCBeaconNetworkUtilities.m; path = ../../TrainingStations/ATCTrainingStationsiOS/ATCTrainingStations/ATCBeaconNetworkUtilities.m; sourceTree = "<group>"; };
 		4F3582E019902C5900B349D7 /* JMCBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMCBeaconManager.h; path = ../../../OpenSource/iBeaconTest/iBeaconTest/JMCBeaconManager.h; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 		4F85E61919C786C6008B4D1C /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		4F85E61B19C78AF1008B4D1C /* ATCWashingHandsStationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCWashingHandsStationViewController.h; path = ViewControllers/ATCWashingHandsStationViewController.h; sourceTree = "<group>"; };
 		4F85E61C19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCWashingHandsStationViewController.m; path = ViewControllers/ATCWashingHandsStationViewController.m; sourceTree = "<group>"; };
+		4F98B65319DC3F8D002624AA /* caution.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caution.png; sourceTree = "<group>"; };
+		4F98B65419DC3F8D002624AA /* caution@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "caution@2x.png"; sourceTree = "<group>"; };
 		4FD3DC8D19D9D95B00E8A759 /* ATCAuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCAuthenticateViewController.h; path = ViewControllers/ATCAuthenticateViewController.h; sourceTree = "<group>"; };
 		4FD3DC8E19D9D95B00E8A759 /* ATCAuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCAuthenticateViewController.m; path = ViewControllers/ATCAuthenticateViewController.m; sourceTree = "<group>"; };
 		4FD3DC9119D9E06100E8A759 /* sampleLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleLogo.png; sourceTree = "<group>"; };
@@ -276,6 +282,7 @@
 		4F6528FA1988167F00030100 /* Documents Simulation */ = {
 			isa = PBXGroup;
 			children = (
+				4F35538419E585E300F48092 /* Girls.pdf */,
 				4F6529111988212A00030100 /* OB POSTPARTUM ASSESSMENT.pdf */,
 				4F6529121988212A00030100 /* OB PPD.pdf */,
 				4F6529131988212A00030100 /* PEDS ASTHMA.pdf */,
@@ -354,6 +361,8 @@
 				4FD3DCBA19DA028400E8A759 /* clear@2x.png */,
 				4FD3DCCB19DB043B00E8A759 /* female_patient@2x.png */,
 				4FD3DCC919DB03C800E8A759 /* female_patient.png */,
+				4F98B65319DC3F8D002624AA /* caution.png */,
+				4F98B65419DC3F8D002624AA /* caution@2x.png */,
 			);
 			name = Resources;
 			path = UWFNursing;
@@ -516,6 +525,8 @@
 				4FD3DC9519D9FACE00E8A759 /* documents.png in Resources */,
 				4F6528D01988123B00030100 /* InfoPlist.strings in Resources */,
 				4F6529171988212A00030100 /* PEDS ASTHMA.pdf in Resources */,
+				4F98B65519DC3F8D002624AA /* caution.png in Resources */,
+				4F35538519E585E300F48092 /* Girls.pdf in Resources */,
 				4FD3DCCA19DB03C800E8A759 /* female_patient.png in Resources */,
 				4F6529181988212A00030100 /* PEDS G & D.pdf in Resources */,
 				4F6528D91988123B00030100 /* Main.storyboard in Resources */,
@@ -529,6 +540,7 @@
 				4F85E61719C785AB008B4D1C /* wash-hands-no-germs.jpg in Resources */,
 				4F85E61519C77ECA008B4D1C /* low_power.wav in Resources */,
 				4FD3DCA819D9FE6000E8A759 /* unlock.png in Resources */,
+				4F98B65619DC3F8D002624AA /* caution@2x.png in Resources */,
 				4FD3DCA519D9FE1800E8A759 /* debugging.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

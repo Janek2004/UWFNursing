@@ -131,9 +131,9 @@
 
 -(void)sessionAction{
     
-    _dobLabel.text =@"";
-    _nameLabel.text =@"";
-    _mrLabel.text=@"";
+    _dobLabel.text = @"";
+    _nameLabel.text = @"";
+    _mrLabel.text= @"";
     
     [self.view sendSubviewToBack:_dobLabel];
     [self.view sendSubviewToBack:_nameLabel];
@@ -159,44 +159,48 @@
 -(void)processBarCode:(NSString *)barcode{
     long long nr  = barcode.longLongValue;
     
-    if(nr == 36000291452){
+    if(nr == 36000291452){//id 1
         _dobLabel.text = @"DOB: 3/11/xx";
         _nameLabel.text = [@"Name: Skyler Hansen" uppercaseString] ;
         
         _mrLabel.text = @"MR# PCS31100";
         
     }
-    else if(nr==123456789012){
+    else if(nr==123456789012){//id 2
         _dobLabel.text = @"DOB: 3/11/xx";
         _nameLabel.text = [@"Name: Skyler Jansen"uppercaseString];
         _mrLabel.text = @"MR# PCS33300";
         
     }
-    else if(nr==5012345678900){
+    else if(nr==5012345678900){//id 3
         _dobLabel.text = @"DOB: 1/1/xx";
         _nameLabel.text = [@"Name: Jennie Jones"uppercaseString];
         _mrLabel.text = @"MR# J123";
         
     }
-    else if(nr==9771234567003){
+    else if(nr==9771234567003){//id 4
         _dobLabel.text = @"DOB: 1/1/xx";
         _nameLabel.text = [@"Name: Joy Jackson"uppercaseString];
         _mrLabel.text = @"MR# JJ1";
         
     }
-    else if(nr==1234567890128){
+    else if(nr==1234567890128){//id 5
         _dobLabel.text = @"DOB: 5 days ago";
         _nameLabel.text = [@"Name: Jones, BABY BOY"uppercaseString];
         _mrLabel.text = @"MR# MJ1";
         
         
     }
-    else if(nr==671860013624){
+    else if(nr==671860013624){// id 6
         _dobLabel.text = @"DOB: 5 days ago";
         
         _nameLabel.text = [@"Name: JAMES, BABY BOY"uppercaseString];
         _mrLabel.text = @"MR# KJ1";
         
+    }
+    else if([barcode.lowercaseString isEqualToString:@"nurse"]){
+        _nameLabel.text =@"Thank you for identification.";
+    
     }
     else{
         _nameLabel.text =@"Patient Not Recognized";
