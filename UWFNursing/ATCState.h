@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface ATCState : NSObject
-    @property(nonatomic, assign)NSInteger session;
-    @property(nonatomic, assign)BOOL primaryNurse;
+    @property(nonatomic, readonly) NSInteger session;
+    @property(nonatomic, readonly)BOOL primaryNurse;
     @property (readonly) BOOL loggedIn;
-    @property (nonatomic, assign)NSInteger nurse;
+    @property (nonatomic, readonly) NSInteger nurse;
+    
+
 
 
 @end

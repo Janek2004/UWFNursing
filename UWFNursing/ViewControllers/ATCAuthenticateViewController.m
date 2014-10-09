@@ -43,7 +43,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+/** Authenticating User */
 - (IBAction)authenticate:(id)sender {
     LAContext *context = [[LAContext alloc] init];
     __block  NSString *msg;
@@ -87,7 +87,7 @@
     }
 }
 
-
+/** In case if 'fancy' authentication fails */
 -(void)showDefaultAuthentication{
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -96,13 +96,9 @@
         a.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
         [a show];
     });
-                   
-                   
-    
-    
 }
 
-
+/**Alert view delegate callback*/
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
      
@@ -112,13 +108,15 @@
     
     [_networkUtilities loginUserWithUsername:username.text andPassword:password.text withCompletionHandler:^(NSError *error, NSUInteger userId,NSInteger session, NSString *errorMessage) {
        
+        //send notification
+        NSNotification * notification =[[NSNotification alloc]initWithName:@"LOGIN" object:nil userInfo:@{@"user":@(userId), @"session":@(session)}];
+        [[NSNotificationCenter defaultCenter]postNotification:notification];
+      
         dispatch_async(dispatch_get_main_queue(), ^{
             if(!error && !errorMessage &&session != 0 &&userId!=0)
             {
                 ATCViewController *homeVC= [self.storyboard instantiateViewControllerWithIdentifier:@"ATCViewController"];
                 [self.navigationController pushViewController:homeVC animated:YES];
-
-            
             }
             else{
                 if(errorMessage) self.message_label.text = errorMessage;

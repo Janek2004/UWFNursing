@@ -104,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="-435" y="3"/>
         </scene>
-        <!--View Controller-->
+        <!--Primary Nurse Choice-->
         <scene sceneID="fDy-iK-oeM">
             <objects>
-                <viewController id="I4w-Yh-eW1" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ATCPrimaryNurseChoice" id="I4w-Yh-eW1" customClass="ATCPrimaryNurseChoice" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XSe-jR-Ua3"/>
                         <viewControllerLayoutGuide type="bottom" id="413-Bz-VQn"/>
@@ -119,12 +119,15 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0x3-Mf-lxF">
                                 <rect key="frame" x="86" y="261" width="149" height="29"/>
                                 <segments>
-                                    <segment title="Yes"/>
                                     <segment title="No"/>
+                                    <segment title="Yes"/>
                                 </segments>
+                                <connections>
+                                    <action selector="optionSelected:" destination="I4w-Yh-eW1" eventType="valueChanged" id="kSJ-fy-BMY"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Are you a primary nurse?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKJ-W6-lgI">
-                                <rect key="frame" x="64" y="146" width="192" height="21"/>
+                                <rect key="frame" x="64" y="187" width="192" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -135,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBu-6J-TZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-647" y="-29"/>
+            <point key="canvasLocation" x="-495" y="-50"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lMA-UW-gkX">
@@ -223,7 +226,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OOl-d0-2nY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="492" y="1001"/>
+            <point key="canvasLocation" x="847" y="683"/>
         </scene>
         <!--Washing Hands Station View Controller-->
         <scene sceneID="3uS-md-qU3">

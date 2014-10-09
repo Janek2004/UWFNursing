@@ -29,7 +29,7 @@
 
 -(void)testLogin;{
     
-    [_networkUtils loginUserWithUsername:@"jabbey" andPassword:@"2731" withCompletionHandler:^(NSError *error, NSUInteger userId, NSString *errorMessage) {
+    [_networkUtils loginUserWithUsername:@"jabbey" andPassword:@"2731" withCompletionHandler:^(NSError *error, NSUInteger userId, NSInteger session, NSString *errorMessage) {
         NSLog(@"Error %@", error);
         NSLog(@"User id %lu", userId);
         NSLog(@"Error %@", errorMessage);

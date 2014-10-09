@@ -12,6 +12,8 @@
 		4F35538919E599B700F48092 /* ATCNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35538719E599B700F48092 /* ATCNetworkTest.m */; };
 		4F35538C19E6E1C400F48092 /* ATCState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35538B19E6E1C400F48092 /* ATCState.m */; };
 		4F35538D19E6E1C400F48092 /* ATCState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35538B19E6E1C400F48092 /* ATCState.m */; };
+		4F35539119E6EED500F48092 /* ATCPrimaryNurseChoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35539019E6EED500F48092 /* ATCPrimaryNurseChoice.m */; };
+		4F35539219E6EED500F48092 /* ATCPrimaryNurseChoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35539019E6EED500F48092 /* ATCPrimaryNurseChoice.m */; };
 		4F3582DF19902C0200B349D7 /* ATCBeaconNetworkUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3582DE19902C0200B349D7 /* ATCBeaconNetworkUtilities.m */; };
 		4F3582E219902C5900B349D7 /* JMCBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3582E119902C5900B349D7 /* JMCBeaconManager.m */; };
 		4F5B295719951DC80055E462 /* ATCLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5B295619951DC80055E462 /* ATCLogViewController.m */; };
@@ -106,6 +108,8 @@
 		4F35538719E599B700F48092 /* ATCNetworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCNetworkTest.m; path = Tests/ATCNetworkTest.m; sourceTree = "<group>"; };
 		4F35538A19E6E1C400F48092 /* ATCState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCState.h; sourceTree = "<group>"; };
 		4F35538B19E6E1C400F48092 /* ATCState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCState.m; sourceTree = "<group>"; };
+		4F35538F19E6EED500F48092 /* ATCPrimaryNurseChoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCPrimaryNurseChoice.h; path = ViewControllers/ATCPrimaryNurseChoice.h; sourceTree = "<group>"; };
+		4F35539019E6EED500F48092 /* ATCPrimaryNurseChoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCPrimaryNurseChoice.m; path = ViewControllers/ATCPrimaryNurseChoice.m; sourceTree = "<group>"; };
 		4F3582DD19902C0200B349D7 /* ATCBeaconNetworkUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCBeaconNetworkUtilities.h; path = ../../TrainingStations/ATCTrainingStationsiOS/ATCTrainingStations/ATCBeaconNetworkUtilities.h; sourceTree = "<group>"; };
 		4F3582DE19902C0200B349D7 /* ATCBeaconNetworkUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCBeaconNetworkUtilities.m; path = ../../TrainingStations/ATCTrainingStationsiOS/ATCTrainingStations/ATCBeaconNetworkUtilities.m; sourceTree = "<group>"; };
 		4F3582E019902C5900B349D7 /* JMCBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMCBeaconManager.h; path = ../../../OpenSource/iBeaconTest/iBeaconTest/JMCBeaconManager.h; sourceTree = "<group>"; };
@@ -209,6 +213,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F35538E19E6EEAD00F48092 /* Primary Nurse Choice View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4F35538F19E6EED500F48092 /* ATCPrimaryNurseChoice.h */,
+				4F35539019E6EED500F48092 /* ATCPrimaryNurseChoice.m */,
+			);
+			name = "Primary Nurse Choice View Controller";
+			sourceTree = "<group>";
+		};
 		4F6528B91988123B00030100 = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +339,7 @@
 		4F65291D198821FA00030100 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F35538E19E6EEAD00F48092 /* Primary Nurse Choice View Controller */,
 				4FD3DCCD19DB074900E8A759 /* Debug Log */,
 				4FD3DCCE19DB07D800E8A759 /* Authenticate */,
 				4FD3DCD119DB08F500E8A759 /* Documents and web view */,
@@ -587,6 +601,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F65291C1988219300030100 /* ATCDetailsWebViewController.m in Sources */,
+				4F35539119E6EED500F48092 /* ATCPrimaryNurseChoice.m in Sources */,
 				4FD3DCC819DB01B600E8A759 /* ATCStation.m in Sources */,
 				4F3582DF19902C0200B349D7 /* ATCBeaconNetworkUtilities.m in Sources */,
 				4F65290D1988171200030100 /* ATCDocumentsViewController.m in Sources */,
@@ -614,6 +629,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F35538D19E6E1C400F48092 /* ATCState.m in Sources */,
+				4F35539219E6EED500F48092 /* ATCPrimaryNurseChoice.m in Sources */,
 				4FD3DCD919DB2C5100E8A759 /* ATCPatient.m in Sources */,
 				4FD3DC9019D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */,
 				4F35538919E599B700F48092 /* ATCNetworkTest.m in Sources */,
