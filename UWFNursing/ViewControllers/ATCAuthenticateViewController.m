@@ -8,11 +8,18 @@
 
 #import "ATCAuthenticateViewController.h"
 #import "ATCViewController.h"
+#import "ATCBeaconNetworkUtilities.h"
+#import "ATCAppDelegate.h"
+
+
 @import LocalAuthentication;
 
 @interface ATCAuthenticateViewController ()<UIAlertViewDelegate>
+@property (nonatomic,strong) ATCBeaconNetworkUtilities * networkUtilities;
+@property (strong, nonatomic) IBOutlet UILabel *message_label;
 
 @end
+
 
 @implementation ATCAuthenticateViewController
 
@@ -20,10 +27,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
+    _networkUtilities = [ATCBeaconNetworkUtilities new];
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
+    self.message_label.text=nil;
     [self authenticate:nil];
     
 }
@@ -97,23 +106,32 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
      
-       // UITextField *username = [alertView textFieldAtIndex:0];
-      //  UITextField *password = [alertView textFieldAtIndex:1];
-      //  NSLog(@"Username: %@\nPassword: %@", username.text);
-        
-       //  = [[ATCViewController alloc]initWithNibName:@"ATCViewController" bundle:nil];
+       UITextField *username = [alertView textFieldAtIndex:0];
+       UITextField *password = [alertView textFieldAtIndex:1];
+    
+    
+    [_networkUtilities loginUserWithUsername:username.text andPassword:password.text withCompletionHandler:^(NSError *error, NSUInteger userId,NSInteger session, NSString *errorMessage) {
+       
         dispatch_async(dispatch_get_main_queue(), ^{
-            ATCViewController *homeVC= [self.storyboard instantiateViewControllerWithIdentifier:@"ATCViewController"];
-            
-            [self.navigationController pushViewController:homeVC animated:YES];
-            
-            NSLog(@" %@ %@ ",self.navigationController, homeVC);
+            if(!error && !errorMessage &&session != 0 &&userId!=0)
+            {
+                ATCViewController *homeVC= [self.storyboard instantiateViewControllerWithIdentifier:@"ATCViewController"];
+                [self.navigationController pushViewController:homeVC animated:YES];
 
             
+            }
+            else{
+                if(errorMessage) self.message_label.text = errorMessage;
+                
+                }
         });
         
-        
-  
+    }];
+
+}
+
+-(void)viewDidUnload{
+    self.message_label.text=nil;
 }
 
 

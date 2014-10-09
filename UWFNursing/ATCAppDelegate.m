@@ -10,13 +10,25 @@
 #import "JMCBeaconManager.h"
 #import "ATCBeaconNetworkUtilities.h"
 #import "ATCBeaconContentManager.h"
+#import "ATCNetworkTest.h"
+#import "ATCState.h"
 
+@interface ATCAppDelegate()
+@property (nonatomic,strong) ATCNetworkTest * tester;
+@end
 
 @implementation ATCAppDelegate
 
+
+-(void)runTests{
+    _tester = [[ATCNetworkTest alloc]init];
+    [_tester testLogin];
+    
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    _state =[ATCState new];
     _beaconManager = [JMCBeaconManager new];
     _networkManager= [ATCBeaconNetworkUtilities new];
     _contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray * patients) {
@@ -25,6 +37,9 @@
     
     }];
 
+    #warning TESTS
+   // [self runTests];
+    
     
 //      _contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray *){
 //       

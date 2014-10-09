@@ -10,14 +10,17 @@
 @class JMCBeaconManager;
 @class ATCBeaconNetworkUtilities;
 @class ATCBeaconContentManager;
+@class ATCState;
 
 @interface ATCAppDelegate : UIResponder <UIApplicationDelegate>
 @property(nonatomic, strong) JMCBeaconManager * beaconManager;
 @property(nonatomic, strong) ATCBeaconNetworkUtilities * networkManager;
 @property(nonatomic, strong) ATCBeaconContentManager * contentManager;
+@property(nonatomic,strong)  ATCState * state;
+
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSArray * patients;
 
-@property (assign) BOOL loggedIn;
+
 @end
