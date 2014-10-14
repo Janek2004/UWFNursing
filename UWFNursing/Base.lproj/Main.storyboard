@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9n0-YL-LL5">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -56,11 +55,6 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9QZ-EL-gV3">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem image="padlock.png" id="Z5A-YQ-Dnf">
-                                        <connections>
-                                            <action selector="logout:" destination="vXZ-lx-hvc" id="PaQ-Pu-FTj"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="I9d-2f-yCF"/>
                                     <barButtonItem image="scan.png" id="IOE-Xe-GRL">
                                         <connections>
@@ -122,9 +116,6 @@
                                     <segment title="No"/>
                                     <segment title="Yes"/>
                                 </segments>
-                                <connections>
-                                    <action selector="optionSelected:" destination="I4w-Yh-eW1" eventType="valueChanged" id="kSJ-fy-BMY"/>
-                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Are you a primary nurse?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKJ-W6-lgI">
                                 <rect key="frame" x="64" y="187" width="192" height="21"/>
@@ -132,13 +123,25 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQf-Df-cGa">
+                                <rect key="frame" x="115" y="366" width="91" height="30"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmChoice:" destination="I4w-Yh-eW1" eventType="touchUpInside" id="fF8-8x-cki"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="segmentedControl" destination="0x3-Mf-lxF" id="af5-Gb-Gdl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBu-6J-TZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-495" y="-50"/>
+            <point key="canvasLocation" x="154" y="10"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lMA-UW-gkX">
@@ -155,10 +158,10 @@
             </objects>
             <point key="canvasLocation" x="-832" y="3"/>
         </scene>
-        <!--View Controller-->
+        <!--Warning View Controller-->
         <scene sceneID="Edw-LI-2zB">
             <objects>
-                <viewController id="VOW-oW-JAt" sceneMemberID="viewController">
+                <viewController id="VOW-oW-JAt" customClass="ATCWarningViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d5g-o0-vM3"/>
                         <viewControllerLayoutGuide type="bottom" id="O2g-qZ-jnr"/>
@@ -174,11 +177,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RF-Td-eBE">
-                                <rect key="frame" x="133" y="470" width="54" height="30"/>
-                                <state key="normal" title="Dismiss">
+                                <rect key="frame" x="78" y="435" width="165" height="30"/>
+                                <state key="normal" title="Override Warning">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismissWarning:" destination="VOW-oW-JAt" eventType="touchUpInside" id="mhI-RA-TUk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -187,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CIN-s1-s2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-352" y="1406"/>
+            <point key="canvasLocation" x="-319" y="1625"/>
         </scene>
         <!--Documents-->
         <scene sceneID="bho-62-0jG">
@@ -276,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lty-hg-1M8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-32" y="3"/>
+            <point key="canvasLocation" x="15" y="-158"/>
         </scene>
         <!--Log View Controller-->
         <scene sceneID="Szh-NC-QLp">
@@ -315,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YjH-1n-rRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-176" y="720"/>
+            <point key="canvasLocation" x="-44" y="866"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="biO-T3-keX">
@@ -379,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6X1-y0-TOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="390" y="664"/>
+            <point key="canvasLocation" x="520" y="494"/>
         </scene>
         <!--Document-->
         <scene sceneID="bzs-kh-RTm">
@@ -453,7 +459,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNk-W5-CYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-569" y="720"/>
+            <point key="canvasLocation" x="-596" y="945"/>
         </scene>
         <!--UWF Nursing App-->
         <scene sceneID="b1G-MU-Aox">
@@ -503,7 +509,6 @@
         <image name="documents.png" width="44" height="44"/>
         <image name="female_patient.png" width="57" height="80"/>
         <image name="help.png" width="44" height="44"/>
-        <image name="padlock.png" width="44" height="44"/>
         <image name="scan.png" width="44" height="44"/>
         <image name="unlock.png" width="512" height="512"/>
         <image name="wash-hands-no-germs.jpg" width="730" height="980"/>
@@ -514,6 +519,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="XhI-40-MDb"/>
+        <segue reference="wwk-Kq-f3Y"/>
     </inferredMetricsTieBreakers>
 </document>

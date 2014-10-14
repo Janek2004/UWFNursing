@@ -200,7 +200,7 @@
     }
     else if([barcode.lowercaseString isEqualToString:@"nurse"]){
         _nameLabel.text =@"Thank you for identification.";
-    
+#warning change it! 
     }
     else{
         _nameLabel.text =@"Patient Not Recognized";
@@ -210,6 +210,10 @@
     [self.view bringSubviewToFront:_nameLabel];
     [self.view bringSubviewToFront:_nkaLabel];
     [self.view bringSubviewToFront:_mrLabel];
+    
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"BARCODE_SCAN" object:nil    userInfo:@{@"barcode":barcode}];
+    
     
 }
 

@@ -41,7 +41,7 @@
    // [self runTests];
     
     
-//      _contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray *){
+//_contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray *){
 //       
 //      }];
     
@@ -56,6 +56,10 @@
             
             //that will be sink
             [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC SINK" major:2984 andMinor:1];
+            
+            //that will be room with patients
+            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC ROOM" major:2984 andMinor:1];
+            
       
            __weak __typeof__(self) weakSelf = self;
             
@@ -68,7 +72,7 @@
                 
                 
                 if(interval>30){
-                    [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"  proximity:proximity user:@"Janek" withErrorCompletionHandler:^(NSError *error) {
+                    [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.nurse] withErrorCompletionHandler:^(NSError *error) {
                     [[strongSelf beaconManager] saveLog:error.debugDescription];
                     }];
                 }
@@ -79,7 +83,7 @@
             _beaconManager.regionEvent =^void(int major, int minor, NSUInteger state){
                  __typeof__(self) strongSelf = weakSelf2;
                 
-                        [[strongSelf networkManager] sendRegionNotification:major minor:minor proximityID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"  regionState:state user:@"Janek" withErrorCompletionHandler:^(NSError *error) {
+                        [[strongSelf networkManager] sendRegionNotification:major minor:minor proximityID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"  regionState:state user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.nurse] withErrorCompletionHandler:^(NSError *error) {
                         [[strongSelf beaconManager] saveLog:error.debugDescription];
                     }];
             

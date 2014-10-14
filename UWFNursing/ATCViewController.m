@@ -20,15 +20,6 @@
 
 @implementation ATCViewController
 
-- (IBAction)logout:(id)sender {
-
-    UIAlertView * alert =[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"LOGOUT",nil) message:NSLocalizedString(@"LOGOUT_TEXT", nil) delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-    
-    [alert show];
-    
-    
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationController.navigationBarHidden = YES;
+   self.navigationController.navigationBarHidden = YES;
     _networkUtilities = [ATCBeaconNetworkUtilities new];
 }
 
@@ -115,7 +115,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if(!error && !errorMessage &&session != 0 &&userId!=0)
             {
-                ATCViewController *homeVC= [self.storyboard instantiateViewControllerWithIdentifier:@"ATCViewController"];
+                UIViewController *homeVC= [self.storyboard instantiateViewControllerWithIdentifier:@"ATCPrimaryNurseChoice"];
                 [self.navigationController pushViewController:homeVC animated:YES];
             }
             else{

@@ -35,6 +35,6 @@
         NSLog(@"Error %@", errorMessage);
         
     }];
-
+    //http://atcwebapp.argo.uwf.edu/trainingstations/wp_trainingstations/?missions_json=1&action=updatenurse&nurse=0&session=6
 }
 @end
