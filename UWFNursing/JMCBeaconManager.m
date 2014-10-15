@@ -217,7 +217,7 @@
     [self logMessage:[NSString stringWithFormat:@"State for region: %@ is: %d %@ %@",region, (int)state, [(CLBeaconRegion *) region major], [(CLBeaconRegion *) region minor]]];
     
     if(self.regionEvent){
-        self.regionEvent([[(CLBeaconRegion *) region major]intValue],[[(CLBeaconRegion *) region minor]intValue],(NSUInteger)state );
+        self.regionEvent( [[(CLBeaconRegion *) region  proximityUUID]UUIDString], [[(CLBeaconRegion *) region major]intValue],[[(CLBeaconRegion *) region minor]intValue],(NSUInteger)state );
     }
   
     if(state == CLRegionStateInside){
@@ -253,7 +253,7 @@
             NSLog(@"Beacon proximity is: %d",(int)beacon.proximity);
             NSLog(@"Beacon found: %@",beacon);
             if(self.beaconFound){
-                self.beaconFound(beacon.major.intValue, beacon.minor.intValue, beacon.proximity);
+                self.beaconFound(beacon.proximityUUID.UUIDString, beacon.major.intValue, beacon.minor.intValue, beacon.proximity);
             }
     }
     
