@@ -12,6 +12,7 @@
 #import "ATCBeaconContentManager.h"
 #import "ATCNetworkTest.h"
 #import "ATCState.h"
+#import "ATCBeacon.h"
 
 @interface ATCAppDelegate()
 @property (nonatomic,strong) ATCNetworkTest * tester;
@@ -39,6 +40,7 @@
 
     #warning TESTS
    // [self runTests];
+
     
     
 //_contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray *){
@@ -48,17 +50,24 @@
    
     __block NSDate * date = [NSDate new];
     NSMutableString * message =[NSMutableString new];
-
+    
+    
+        //  ATCBeacon * sink =
     
         if([_beaconManager isSupported:message]){
             //that will be patient
-            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC BEACON" major:1 andMinor:1];
+            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC PATIENT" major:1 andMinor:1];
             
             //that will be sink
-            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC SINK" major:2984 andMinor:1];
+            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC SINK" major:2984 andMinor:2];
             
             //that will be room with patients
-            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC ROOM" major:2984 andMinor:1];
+            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC ROOM" major:2984 andMinor:111];
+            
+            //that will be room with patients
+            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC BRIEFING ROOM" major:29842 andMinor:1112];
+            
+            
             
       
            __weak __typeof__(self) weakSelf = self;
@@ -68,12 +77,36 @@
                 NSDate * now = [NSDate date];
                 NSTimeInterval interval = [now  timeIntervalSinceDate:date];
                 
+            if(major == 1 && minor ==1){//ATC Patient
+                [strongSelf.state registerPatientProximityEvent:proximity];
+            }
+
+            //sink or not?
+            if(major == 2984 && minor ==2){//ATC SINK
+                
+                [strongSelf.state registerSinkProximityEvent:proximity];
+            }
+
+            if(major == 2984 && minor ==111){//ATC ROOM
+                    [strongSelf.state registerRoomProximityEvent:proximity];
+            }
+                
+            
+            if(major == 29842 && minor ==1112){//Debriefing room
+                    [strongSelf.state registerRoomProximityEvent:proximity];
+            }
+                
+                
+                
+             //?
              strongSelf.patients =   [strongSelf.contentManager contentForBeaconID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andMajor:@(major) andMinor:@(minor) proximity:proximity];
                 
                 
-                if(interval>30){
+                if(interval>10){
                     [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.nurse] withErrorCompletionHandler:^(NSError *error) {
-                    [[strongSelf beaconManager] saveLog:error.debugDescription];
+                        
+                        [[strongSelf beaconManager] saveLog:error.debugDescription];
+                    
                     }];
                 }
                 
@@ -91,6 +124,20 @@
                     [strongSelf.contentManager removeAll];
                 
                 }
+                if(major == 1 && minor ==1){//ATC PATIENT
+                    [strongSelf.state registerPatientRegionEvent:state];
+                }
+                
+                //sink or not?
+                if(major == 2984 && minor ==2){//ATC SINK
+                    [strongSelf.state registerSinkRegionEvent:state];
+                }
+                
+                if(major == 2984 && minor ==111){//ATC ROOM
+                    [strongSelf.state registerRoomRegionEvent:state];
+                }
+
+            
             };
         }
         else {

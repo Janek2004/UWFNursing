@@ -14,7 +14,12 @@
     @property (readonly) BOOL loggedIn;
     @property (nonatomic, readonly) NSInteger nurse;
     
+    -(void)registerSinkProximityEvent:(NSInteger)proximity;
+    -(void)registerPatientProximityEvent:(NSInteger)proximity;
+    -(void)registerRoomProximityEvent:(NSInteger)proximity;
 
-
+    -(void)registerSinkRegionEvent:(NSInteger)region;
+    -(void)registerPatientRegionEvent:(NSInteger)region;
+    -(void)registerRoomRegionEvent:(NSInteger)region;
 
 @end

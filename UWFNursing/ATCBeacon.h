@@ -4,11 +4,13 @@
  */
 #import <Foundation/Foundation.h>
 
+enum beacontype{sink,bed,room,briefing};
+
 @interface ATCBeacon : NSObject
     @property(nonatomic,strong) NSString * identifier;
     @property(nonatomic,strong) NSNumber * major;
     @property(nonatomic,strong) NSNumber * minor;
     @property(nonatomic,strong) NSString * iOSidentifier;
-
+    @property(nonatomic) enum beacontype type;
 
 @end
