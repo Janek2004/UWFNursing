@@ -18,7 +18,7 @@
 		4F35539619EC777B00F48092 /* ATCWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35539419EC777B00F48092 /* ATCWarningViewController.m */; };
 		4F3553AC19EEB37700F48092 /* ATCBeaconNetworkUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3553AB19EEB37700F48092 /* ATCBeaconNetworkUtilities.m */; };
 		4F3553AD19EEB37700F48092 /* ATCBeaconNetworkUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3553AB19EEB37700F48092 /* ATCBeaconNetworkUtilities.m */; };
-		4F3582E219902C5900B349D7 /* JMCBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3582E119902C5900B349D7 /* JMCBeaconManager.m */; };
+		4F3553B319EED63200F48092 /* JMCBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3553B219EED63200F48092 /* JMCBeaconManager.m */; };
 		4F5B295719951DC80055E462 /* ATCLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5B295619951DC80055E462 /* ATCLogViewController.m */; };
 		4F6528C61988123B00030100 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528C51988123B00030100 /* Foundation.framework */; };
 		4F6528C81988123B00030100 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528C71988123B00030100 /* CoreGraphics.framework */; };
@@ -117,8 +117,8 @@
 		4F35539419EC777B00F48092 /* ATCWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCWarningViewController.m; path = ViewControllers/ATCWarningViewController.m; sourceTree = "<group>"; };
 		4F3553AA19EEB37700F48092 /* ATCBeaconNetworkUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCBeaconNetworkUtilities.h; sourceTree = "<group>"; };
 		4F3553AB19EEB37700F48092 /* ATCBeaconNetworkUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCBeaconNetworkUtilities.m; sourceTree = "<group>"; };
-		4F3582E019902C5900B349D7 /* JMCBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMCBeaconManager.h; path = ../../../OpenSource/iBeaconTest/iBeaconTest/JMCBeaconManager.h; sourceTree = "<group>"; };
-		4F3582E119902C5900B349D7 /* JMCBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMCBeaconManager.m; path = ../../../OpenSource/iBeaconTest/iBeaconTest/JMCBeaconManager.m; sourceTree = "<group>"; };
+		4F3553B119EED63200F48092 /* JMCBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMCBeaconManager.h; sourceTree = "<group>"; };
+		4F3553B219EED63200F48092 /* JMCBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMCBeaconManager.m; sourceTree = "<group>"; };
 		4F5B295519951DC80055E462 /* ATCLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCLogViewController.h; sourceTree = "<group>"; };
 		4F5B295619951DC80055E462 /* ATCLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCLogViewController.m; sourceTree = "<group>"; };
 		4F6528C21988123B00030100 /* UWFNursing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UWFNursing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -364,8 +364,8 @@
 				4F85E61919C786C6008B4D1C /* Utilities.m */,
 				4F3553AA19EEB37700F48092 /* ATCBeaconNetworkUtilities.h */,
 				4F3553AB19EEB37700F48092 /* ATCBeaconNetworkUtilities.m */,
-				4F3582E019902C5900B349D7 /* JMCBeaconManager.h */,
-				4F3582E119902C5900B349D7 /* JMCBeaconManager.m */,
+				4F3553B119EED63200F48092 /* JMCBeaconManager.h */,
+				4F3553B219EED63200F48092 /* JMCBeaconManager.m */,
 				4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */,
 				4F1AA61419DB3DBA00825E6A /* ATCBeaconContentManager.h */,
 				4F35538A19E6E1C400F48092 /* ATCState.h */,
@@ -615,12 +615,12 @@
 				4F6528D21988123B00030100 /* main.m in Sources */,
 				4F6528DC1988123B00030100 /* ATCViewController.m in Sources */,
 				4F85E61D19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m in Sources */,
+				4F3553B319EED63200F48092 /* JMCBeaconManager.m in Sources */,
 				4F6528D61988123B00030100 /* ATCAppDelegate.m in Sources */,
 				4F85E61A19C786C6008B4D1C /* Utilities.m in Sources */,
 				4F35538819E599B700F48092 /* ATCNetworkTest.m in Sources */,
 				4FD3DC8F19D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */,
 				4FD3DCC519DB00E500E8A759 /* ACTPatientCell.m in Sources */,
-				4F3582E219902C5900B349D7 /* JMCBeaconManager.m in Sources */,
 				4F6529101988174500030100 /* DataSource.m in Sources */,
 				4F5B295719951DC80055E462 /* ATCLogViewController.m in Sources */,
 				4FD3DCD519DB110600E8A759 /* ATCBeaconContentManager.m in Sources */,
