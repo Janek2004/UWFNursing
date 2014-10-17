@@ -29,7 +29,7 @@
 
 -(NSString*)hashedBeacon:(NSString *)identifier major:(NSInteger)major minor:(NSInteger)minor{
   
-    return [NSString stringWithFormat:@"%@%lu%lu",identifier,major,minor ];
+    return [NSString stringWithFormat:@"%@%lu%lu",[identifier lowercaseString],(long)major,(long)minor ];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -46,12 +46,7 @@
     #warning TESTS
    // [self runTests];
 
-    
-    
-//_contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray *){
-//       
-//      }];
-    
+
    
     NSString * kontaktIo =@"f7826da6-4fa2-4e98-8024-bc5b71e0893e";
     NSString * estimote = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D";
@@ -73,7 +68,7 @@
         room.minor = @5919;
     
         ATCBeacon * bed =[ATCBeacon new];
-        bed.iOSidentifier = @"room";
+        bed.iOSidentifier = @"bed";
         bed.identifier =kontaktIo;
         bed.major =@43332;
         bed.minor = @62552;
@@ -83,7 +78,6 @@
         debriefingRoom.identifier = estimote;
         debriefingRoom.major =  @2984;
         debriefingRoom.minor =  @2;
-    
     
         sink.type = ksink;
         room.type = kroom;
@@ -96,24 +90,12 @@
     
         if([_beaconManager isSupported:message]){
             //that will be patient
-//            [_beaconManager registerRegionWithProximityId: andIdentifier:@"ATC PATIENT" major:1 andMinor:1];
-//            
-//            //that will be sink
-//            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC SINK" major:2984 andMinor:2];
-//            
-//            //that will be room with patients
-//            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC ROOM" major:2984 andMinor:111];
-//            
-//            //that will be room with patients
-//            [_beaconManager registerRegionWithProximityId:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D" andIdentifier:@"ATC BRIEFING ROOM" major:29842 andMinor:1112];
-           // NSDictionary * dict =
+
             for(ATCBeacon * beacon in beacons ){
-                [_beaconManager registerRegionWithProximityId:beacon.identifier  andIdentifier:beacon.iOSidentifier    major:beacon.major.intValue   andMinor:beacon.major.intValue];
-//                NSString * s =[NSString stringWithFormat:@"%@%@%@",beacon.identifier,beacon.major,beacon.minor ];
+                [_beaconManager registerRegionWithProximityId:beacon.identifier  andIdentifier:beacon.iOSidentifier    major:beacon.major.intValue   andMinor:beacon.minor.intValue];
                 NSString * key = [self hashedBeacon:beacon.identifier major:beacon.major.integerValue minor:beacon.minor.integerValue];
         
                 [dictionary setObject:beacon forKey:key];
-                
             }
 
            __weak __typeof__(self) weakSelf = self;
@@ -122,34 +104,35 @@
                __typeof__(self) strongSelf = weakSelf;
                 NSDate * now = [NSDate date];
                 NSTimeInterval interval = [now  timeIntervalSinceDate:date];
-            
-                
             NSString *key =   [strongSelf hashedBeacon:proximityID major:major minor:minor];
             ATCBeacon * beacon = [dictionary objectForKey:key];
+            strongSelf.warning = [strongSelf.state logicFor:beacon];
+
             if(beacon){
                 switch (beacon.type) {
-                    case kbed:
+                    case kbed:{
                         [strongSelf.state registerPatientProximityEvent:proximity];
-                        break;
-                    case kroom:
+                        
+                        break;}
+                    case kroom:{
                         [strongSelf.state registerRoomProximityEvent:proximity];
-                        break;
-                    case ksink:
+                         strongSelf.patients = [strongSelf.contentManager contentForBeaconID:room.identifier  andMajor:room.major    andMinor:room.minor proximity:proximity];
+                        
+                        break;}
+                    case ksink:{
                          [strongSelf.state registerSinkProximityEvent:proximity];
-                        break;
-                    case kbriefing:
-//                         [strongSelf.state registerRoomProximityEvent:proximity];
-                        break;
+                        
+                        
+                        break;}
+                    case kbriefing:{
+                         [strongSelf.state registerBriefingRoomProximityEvent:proximity];
+                        break;}
                     default:
                         break;
                 }
                 
             }
-                
-#warning cheating here?
-             strongSelf.patients =   [strongSelf.contentManager contentForBeaconID:room.identifier  andMajor:room.major    andMinor:room.minor proximity:proximity];
-                
-                
+        
                 if(interval>10){
                     [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:room.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.nurse] withErrorCompletionHandler:^(NSError *error) {
                         
@@ -172,7 +155,7 @@
                     }];
             
                
-                             if(beacon){
+                if(beacon){
                     switch (beacon.type) {
                         case kbed:
                              [strongSelf.state registerPatientRegionEvent:state];
@@ -189,7 +172,8 @@
                               [strongSelf.state registerSinkRegionEvent:state];
                             break;
                         case kbriefing:
-                            
+                            [strongSelf.state registerBriefingRoomRegionEvent:state];
+
                             break;
                         default:
                             break;

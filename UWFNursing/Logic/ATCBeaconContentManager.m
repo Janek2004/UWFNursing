@@ -43,9 +43,8 @@
 -(id)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)pr{
     //check whick kind of ibeacon it is?
     #warning get dynamic content in the future
-    //NSMutableArray * allKeys = [self.patients.allKeys mutableCopy];
-    
-    if([minor  isEqual: @1] && [major  isEqual: @1]){
+
+    if([minor  isEqual: @5919] && [major  isEqual: @6914]){
         NSString * bid = [self generateID:beaconId andMajor:major andMinor:minor];
       //  [allKeys removeObject:bid];
         //check how old the data is

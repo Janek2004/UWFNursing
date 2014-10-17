@@ -7,22 +7,31 @@
 //
 
 #import "ATCState.h"
-#import <ATCAppDelegate.h>
+#import "ATCAppDelegate.h"
 #import "ATCBeaconNetworkUtilities.h"
+#import "ATCBeacon.h"
 
-@interface ATCState() <UINavigationControllerDelegate>
+@interface ATCState() <UINavigationControllerDelegate>{
+    BOOL warningOnScreen;
+}
     @property(nonatomic,strong) UIBarButtonItem * logoutButton;
     @property(nonatomic,strong) ATCBeaconNetworkUtilities *networkUtilities;
 
     @property(nonatomic,strong) NSMutableArray * sinkProximityEvents;
     @property(nonatomic,strong) NSMutableArray * roomProximityEvents;
     @property(nonatomic,strong) NSMutableArray * patientsProximityEvents;
+    @property(nonatomic,strong) NSMutableArray * briefingProximityEvents;
 
     @property(nonatomic,strong) NSMutableArray * sinkRegionEvents;
     @property(nonatomic,strong) NSMutableArray * roomRegionEvents;
+    @property(nonatomic,strong) NSMutableArray * briefingRegionEvents;
     @property(nonatomic,strong) NSMutableArray * patientsRegionEvents;
 
+ //   @property(nonatomic,strong) ATCAppDelegate * delegate;// =   [[UIApplication sharedApplication]delegate];
+    @property(nonatomic,strong) UINavigationController * nav;// = (UINavigationController *) delegate.window.rootViewController
 
+
+    @property(nonatomic, strong) NSDate * lastOverride;
 @end
 
 @implementation ATCState
@@ -30,30 +39,52 @@
 #pragma mark event hadlers
 /**Register events*/
 -(void)registerSinkProximityEvent:(NSInteger)proximity;{
-    [self insertElement: @{@"date":[NSDate new],@"proximity":@(proximity)} into:self.sinkProximityEvents];
+    [self insertElement: @{@"date":[NSDate new],@"proximity":@(proximity),@"type":@(ksink) } into:self.sinkProximityEvents];
 }
 
 -(void)registerPatientProximityEvent:(NSInteger)proximity;{
-    [self insertElement:@{@"date":[NSDate new],@"proximity":@(proximity)} into:self.patientsProximityEvents];
+    
+    
+    [self insertElement:@{@"date":[NSDate new],@"proximity":@(proximity),@"type":@(kbed)} into:self.patientsProximityEvents];
 }
 
 -(void)registerRoomProximityEvent:(NSInteger)proximity;{
-    [self insertElement:@{@"date":[NSDate new],@"proximity":@(proximity)} into:self.roomProximityEvents];
+    [self insertElement:@{@"date":[NSDate new],@"proximity":@(proximity),@"type": @(kroom)} into:self.roomProximityEvents];
+}
+
+-(void)registerBriefingRoomProximityEvent:(NSInteger)proximity;
+{
+    [self insertElement:@{@"date":[NSDate new],@"proximity":@(proximity),@"type": @(kbriefing)} into:self.briefingProximityEvents];
 }
 
 -(void)registerSinkRegionEvent:(NSInteger)region;{
-    [self insertElement:@{@"date":[NSDate new],@"state":@(region)} into:self.sinkRegionEvents];
+    [self insertElement:@{@"date":[NSDate new],@"state":@(region),@"type": @(ksink)} into:self.sinkRegionEvents];
 }
 
 -(void)registerPatientRegionEvent:(NSInteger)region;{
-    [self insertElement:@{@"date":[NSDate new],@"state":@(region)} into:self.patientsRegionEvents];
+    [self insertElement:@{@"date":[NSDate new],@"state":@(region),@"type": @(kbed)} into:self.patientsRegionEvents];
 }
 
 -(void)registerRoomRegionEvent:(NSInteger)region;{
-    [self insertElement:@{@"date":[NSDate new],@"state":@(region)} into:self.roomRegionEvents];
+    [self insertElement:@{@"date":[NSDate new],@"state":@(region),@"type": @(kroom)} into:self.roomRegionEvents];
+}
+
+-(void)registerBriefingRoomRegionEvent:(NSInteger)region;{
+    [self insertElement:@{@"date":[NSDate new],@"state":@(region),@"type": @(kbriefing)} into:self.briefingRegionEvents];
 }
 
 -(void)insertElement:(id)element into:(NSMutableArray *)array{
+    
+    NSMutableArray * temp = [_events mutableCopy];
+    if(temp.count<10){
+        [temp addObject:element];
+    }
+    else{
+        [temp removeObjectAtIndex:0];
+        [temp addObject:element];
+    }
+    _events = temp;
+    
     if(array.count<10){
         [array addObject:element];
     }
@@ -61,13 +92,14 @@
         [array removeObjectAtIndex:0];
         [array addObject:element];
     }
-    [self showWarning];
+   // [self showWarning];
 }
 #pragma mark end event hadlers
 
 -(id)init{
     if(self = [super init])
     {
+        _events = [NSArray new];
         //init arrays
         _sinkProximityEvents = [NSMutableArray new];
         _patientsProximityEvents = [NSMutableArray new];
@@ -77,7 +109,7 @@
         _patientsRegionEvents = [NSMutableArray new];
         _roomRegionEvents = [NSMutableArray new];
         
-        
+        warningOnScreen = NO;
         //add notifications
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginNotification:) name:@"LOGIN" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(logoutNotification:) name:@"LOGOUT" object:nil];
@@ -86,16 +118,13 @@
 
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(nurseOverrideNotification:) name:@"NURSE_OVERRIDE" object:nil];
         
-
         ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
-        UINavigationController * nav = (UINavigationController *) delegate.window.rootViewController;
-        nav.delegate = self;
+        _nav = (UINavigationController *) delegate.window.rootViewController;
+        _nav.delegate = self;
         
         _logoutButton=[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)];
         
         _networkUtilities = [[ATCBeaconNetworkUtilities alloc]init];
-        
-        
         
     }
     return self;
@@ -144,6 +173,9 @@
 -(void)nurseOverrideNotification:(NSNotification *)notification{
     //_primaryNurse =  [[[notification userInfo] valueForKey:@"override"]integerValue];
     [_networkUtilities overrideWarningForSession:self.session andNurse:self.nurse ];
+    _lastOverride = [NSDate new];
+     warningOnScreen = NO;
+    
 
 }
 
@@ -161,111 +193,167 @@
     return self.nurse!=0;
 }
 
+-(NSDictionary *)getLastEvent{
+    NSDictionary * lastSinkRegion = [[self.sinkRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
+    NSDictionary * lastBedRegion = [[self.patientsRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
+   // NSDictionary * lastRoomRegion = [[self.roomRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
+    NSDictionary * lastBriefingRoomRegion = [[self.roomRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
+    
+//    NSDictionary * sinkProximity = [self.sinkProximityEvents lastObject];
+//    NSDictionary * debProximity = [self.briefingProximityEvents lastObject];
+//    NSDictionary * bedProximity = [self.patientsProximityEvents lastObject];
+//    NSDictionary * roomProximity = [self.roomProximityEvents lastObject];
+//    
+    NSMutableArray * events = [NSMutableArray new];
+    if(lastSinkRegion){
+        [events addObject:lastSinkRegion];
+    }
+    if(lastBedRegion){
+        [events addObject:lastBedRegion];
+    }
+    //    if(lastRoomRegion){
+    //        [events addObject:lastRoomRegion];
+    //    }
+    
+    if(lastBriefingRoomRegion){
+        [events addObject:lastBriefingRoomRegion];
+    }
+    
+    id mySort = ^(NSDictionary * obj1, NSDictionary * obj2){
+        
+        return [[obj1 objectForKey:@"date"] compare:[obj2 objectForKey:@"date"]];
+        
+    };
+    
+    NSArray * sortedEvents = [events sortedArrayUsingComparator:mySort];
+    NSLog(@"%@",sortedEvents);
+    return [sortedEvents lastObject];
+}
 
+-(void)showWarning{
+    if(!warningOnScreen){
+     UIViewController * c=  [_nav.topViewController.storyboard instantiateViewControllerWithIdentifier:@"ATCWarningViewController"];
+        [_nav pushViewController:c animated:YES];
+            c.navigationController.navigationBarHidden = YES;
+            warningOnScreen = YES;
+    }
+}
 
+-(BOOL)logicFor:(ATCBeacon *)beacon{
+    
+    if([[NSDate new]timeIntervalSinceDate:self.lastOverride]<60 )
+    {
 
--(BOOL)logic{
-
+        return YES;
+    }
+    if(self.session == 0){
+        return YES;
+    }
+    
     //where I am at?
     //get last current enter region?
-    NSDictionary * lastSink = [[self.sinkRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
-    NSDictionary * lastBed = [[self.patientsRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
-    NSDictionary * room = [[self.roomRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
+//    NSDictionary * lastSinkRegion = [[self.sinkRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
+   NSDictionary * lastBedRegion = [[self.patientsRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
+//    NSDictionary * lastRoomRegion = [[self.roomRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
+//    NSDictionary * lastBriefingRoomRegion = [[self.roomRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
+//
+  // NSDictionary * sinkProximity = [self.sinkProximityEvents lastObject];
+    NSDictionary * debProximity = [self.briefingProximityEvents lastObject];
+    NSDictionary * bedProximity = [self.patientsProximityEvents lastObject];
+  //  NSDictionary * roomProximity = [self.roomProximityEvents lastObject];
+    
+    if(beacon){
+        switch (beacon.type) {
+            case kbed:{
+                //if we are close
+                NSInteger proximity = [[bedProximity objectForKey:@"proximity"]integerValue] ;
+                if(proximity==CLProximityNear||proximity==CLProximityImmediate)
+                {
 
-//    NSDictionary * room = [[self.roomRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@) OR (state==%@)",@1, @2]]lastObject];
+                    NSDictionary * lastEvent =                     [self getLastEvent];
+                    if(lastEvent){
+                        
+                        NSLog(@"LAST EVENT IS %@ %@ %@",lastEvent,lastEvent.allKeys, lastEvent.allValues);
+                        
+                        NSLog(@"SINK IS why? ??  %@ %d ",[lastEvent objectForKey:@"type"], ksink);
+                        if([[lastEvent objectForKey:@"type"]integerValue] != ksink)
+                        {
+                            //we need to return no since user didn't go to wash hands prior to going to the bedside
+                            [self showWarning];
+                            NSLog(@"Last event is not sink");
+                            return  NO;
+                        }
+                        else{
+                        
+                            return YES;
+                        }
+                        
+                    }
+                    return YES;
+                    
+                }
+                
+                
+                break;}
+            case ksink:{
+                NSLog(@"You are at the sink. Make sure that you wash your hands properly");
+                if(warningOnScreen){
+                    [_nav popViewControllerAnimated:YES];
+                    _nav.navigationBarHidden = NO;
+                    warningOnScreen = NO;
+                }
+                break;}
+            case kbriefing:{
+                
+              //if we are close
+                NSInteger proximity = [[debProximity objectForKey:@"proximity"]integerValue] ;
+                if(proximity==CLProximityNear||proximity==CLProximityImmediate)
+                {
+                    
+                    NSDictionary * lastEvent =  [self getLastEvent];
+                    if(lastEvent){
+                        if(([[lastEvent objectForKey:@"type"]integerValue] != [@(ksink)integerValue]) && lastBedRegion  )
+                        {
+                            //we need to return no since user didn't go to wash hands prior to going going back to the debriefing room
+                            [self showWarning];
+                            NSLog(@"Last event is not sink");
+                            return  NO;
+                        }
+                        else{
+                            
+                            return YES;
+                        }
+                        
+                    }
+                    return YES;
+                    
+                }
+                
+                
+                break;}
+     
+                
+    
+            case kroom: // no action
+                
+                    //NSLog(@"You are at the sink. Make sure that you wash your hands properly");
+                break;
 
-    
-    //does it matter?
-    //if Im at the patient's bed it means that 
-    
-    
-    
-    
+                
+                
+            default:
+                break;
+        }
+        
+    }
+
+
+
+
     return NO;
 }
 
 
-//main logic of application goes here
--(BOOL)showWarning{
-
-    //get latest washing time
-    BOOL warning = NO;
-    NSDictionary * dictionary = self.sinkRegionEvents.lastObject;
-    //NSDictionary * prDictionary = self.sinkProximityEvents.lastObject;
-    
-    if(!dictionary)return  NO;
-    //get recent proximity events in last minute?
-    
-    // self.sinkProximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(date"]
-    //NSMutableArray * avgArray = [NSMutableArray new];
-//    __block double avgValue = 0.0;
-//    __block double total = 0.0;
-//   
-//    /*
-//    [self.sinkProximityEvents enumerateObjectsUsingBlock:^(NSDictionary * dict, NSUInteger idx, BOOL *stop) {
-//        if([[NSDate new] timeIntervalSinceDate:[dict objectForKey:@"time"]]<60){
-//            avgValue =   avgValue + [[dict objectForKey:@"proximity"]doubleValue];
-//            total++;
-//        }
-//    }];
-//    */
-//    
-//    
-//    avgValue = avgValue/total;
-//    NSLog(@"avgValue");
-
-    
-   
-
-    
-    
-    if([[dictionary objectForKey:@"state"]integerValue] == CLRegionStateInside){ //is user still there?
-        
-    }
-    else{//any other value indicates the last time when user was next to the sink. Also we can try to calculate the total time he/she spent there
-
-        
-       __block NSDictionary * lastDict;
-        [self.sinkRegionEvents enumerateObjectsUsingBlock:^(NSDictionary * dict, NSUInteger idx, BOOL *stop) {
-            if([[NSDate new] timeIntervalSinceDate:[dict objectForKey:@"time"]]<600){
-                lastDict = dict;
-            }
-        }];
-        
-        if(lastDict!=NULL){
-            //check for latest entrance to the region
-           // self.sinkRegionEvents fil
-            NSDate *entranceDate = [lastDict objectForKey:@"date"];
-            NSDictionary * dictionary = [[self.sinkRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@) OR (state==%@) AND (date>%@)",@1, @0,entranceDate]]lastObject];
-            //get time at the sink
-            if(dictionary){
-                NSDate * leftDate = [dictionary objectForKey:@"date"];
-                NSInteger timeAtSink =[leftDate timeIntervalSinceDate:entranceDate];
-                
-                //last time at the sink is: timeAtSink
-                NSLog(@"Time at sink %d",timeAtSink);
-            }
-            
-            
-        }
-        else{
-            warning = YES;
-        }
-    }
-    
-    
-    //if([date timeIntervalSinceNow])
-    
-    //get average time of hand washing
-    
-    //get time between hand washing and approaching the patient's bed
-    
-    //get time between leaving the room and leaving patient's bed
-    
-    //if that time is in the limits display warning.
-    
-    return  NO;
-}
 
 
 

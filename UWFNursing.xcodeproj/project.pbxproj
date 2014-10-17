@@ -92,6 +92,8 @@
 		4FD3DCD619DB110600E8A759 /* ATCBeaconContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */; };
 		4FD3DCD819DB2C5100E8A759 /* ATCPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD719DB2C5100E8A759 /* ATCPatient.m */; };
 		4FD3DCD919DB2C5100E8A759 /* ATCPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD719DB2C5100E8A759 /* ATCPatient.m */; };
+		82A9629F19F0AFF3009CAB7A /* ATCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */; };
+		82A962A019F0AFF3009CAB7A /* ATCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +194,8 @@
 		4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCBeaconContentManager.m; path = Logic/ATCBeaconContentManager.m; sourceTree = "<group>"; };
 		4FD3DCD719DB2C5100E8A759 /* ATCPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCPatient.m; path = Logic/ATCPatient.m; sourceTree = "<group>"; };
 		4FD3DCDB19DB3A8400E8A759 /* ATCPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCPatient.h; path = Logic/ATCPatient.h; sourceTree = "<group>"; };
+		82A9629D19F0AFF3009CAB7A /* ATCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCMapViewController.h; sourceTree = "<group>"; };
+		82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCMapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +357,8 @@
 				4FD3DCD019DB08E200E8A759 /* Washing Hands Station */,
 				4F35539319EC777A00F48092 /* ATCWarningViewController.h */,
 				4F35539419EC777B00F48092 /* ATCWarningViewController.m */,
+				82A9629D19F0AFF3009CAB7A /* ATCMapViewController.h */,
+				82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -506,7 +512,7 @@
 				ORGANIZATIONNAME = "Janusz Chudzynski";
 				TargetAttributes = {
 					4F6528C11988123B00030100 = {
-						DevelopmentTeam = 8KV53E363M;
+						DevelopmentTeam = BZUY5AR8YB;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -514,6 +520,7 @@
 						};
 					};
 					4F6528E21988123B00030100 = {
+						DevelopmentTeam = BZUY5AR8YB;
 						TestTargetID = 4F6528C11988123B00030100;
 					};
 				};
@@ -621,6 +628,7 @@
 				4F35538819E599B700F48092 /* ATCNetworkTest.m in Sources */,
 				4FD3DC8F19D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */,
 				4FD3DCC519DB00E500E8A759 /* ACTPatientCell.m in Sources */,
+				82A9629F19F0AFF3009CAB7A /* ATCMapViewController.m in Sources */,
 				4F6529101988174500030100 /* DataSource.m in Sources */,
 				4F5B295719951DC80055E462 /* ATCLogViewController.m in Sources */,
 				4FD3DCD519DB110600E8A759 /* ATCBeaconContentManager.m in Sources */,
@@ -644,6 +652,7 @@
 				4FD3DC9019D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */,
 				4F35538919E599B700F48092 /* ATCNetworkTest.m in Sources */,
 				4F6528F11988123B00030100 /* UWFNursingTests.m in Sources */,
+				82A962A019F0AFF3009CAB7A /* ATCMapViewController.m in Sources */,
 				4FD3DCD619DB110600E8A759 /* ATCBeaconContentManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
