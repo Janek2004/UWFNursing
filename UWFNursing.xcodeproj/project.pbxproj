@@ -52,6 +52,10 @@
 		4F85E61D19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E61C19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m */; };
 		4F98B65519DC3F8D002624AA /* caution.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F98B65319DC3F8D002624AA /* caution.png */; };
 		4F98B65619DC3F8D002624AA /* caution@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F98B65419DC3F8D002624AA /* caution@2x.png */; };
+		4F9CB51A19F1C0C3006DA3FC /* bedside.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9CB51619F1C0C3006DA3FC /* bedside.png */; };
+		4F9CB51B19F1C0C3006DA3FC /* briefing_room.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9CB51719F1C0C3006DA3FC /* briefing_room.png */; };
+		4F9CB51C19F1C0C3006DA3FC /* simlab.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9CB51819F1C0C3006DA3FC /* simlab.png */; };
+		4F9CB51D19F1C0C3006DA3FC /* sink.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9CB51919F1C0C3006DA3FC /* sink.png */; };
 		4FD3DC8F19D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DC8E19D9D95B00E8A759 /* ATCAuthenticateViewController.m */; };
 		4FD3DC9019D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DC8E19D9D95B00E8A759 /* ATCAuthenticateViewController.m */; };
 		4FD3DC9219D9E06100E8A759 /* sampleLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9119D9E06100E8A759 /* sampleLogo.png */; };
@@ -166,6 +170,10 @@
 		4F85E61C19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCWashingHandsStationViewController.m; path = ViewControllers/ATCWashingHandsStationViewController.m; sourceTree = "<group>"; };
 		4F98B65319DC3F8D002624AA /* caution.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caution.png; sourceTree = "<group>"; };
 		4F98B65419DC3F8D002624AA /* caution@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "caution@2x.png"; sourceTree = "<group>"; };
+		4F9CB51619F1C0C3006DA3FC /* bedside.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bedside.png; sourceTree = "<group>"; };
+		4F9CB51719F1C0C3006DA3FC /* briefing_room.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefing_room.png; sourceTree = "<group>"; };
+		4F9CB51819F1C0C3006DA3FC /* simlab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simlab.png; sourceTree = "<group>"; };
+		4F9CB51919F1C0C3006DA3FC /* sink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sink.png; sourceTree = "<group>"; };
 		4FD3DC8D19D9D95B00E8A759 /* ATCAuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCAuthenticateViewController.h; path = ViewControllers/ATCAuthenticateViewController.h; sourceTree = "<group>"; };
 		4FD3DC8E19D9D95B00E8A759 /* ATCAuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCAuthenticateViewController.m; path = ViewControllers/ATCAuthenticateViewController.m; sourceTree = "<group>"; };
 		4FD3DC9119D9E06100E8A759 /* sampleLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleLogo.png; sourceTree = "<group>"; };
@@ -383,6 +391,10 @@
 		4FD3DC9719D9FAD400E8A759 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4F9CB51619F1C0C3006DA3FC /* bedside.png */,
+				4F9CB51719F1C0C3006DA3FC /* briefing_room.png */,
+				4F9CB51819F1C0C3006DA3FC /* simlab.png */,
+				4F9CB51919F1C0C3006DA3FC /* sink.png */,
 				4FD3DC9B19D9FB3900E8A759 /* help.png */,
 				4FD3DC9E19D9FBC700E8A759 /* padlock.png */,
 				4FD3DC9419D9FACE00E8A759 /* documents.png */,
@@ -549,6 +561,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F9CB51B19F1C0C3006DA3FC /* briefing_room.png in Resources */,
+				4F9CB51C19F1C0C3006DA3FC /* simlab.png in Resources */,
 				4FD3DC9219D9E06100E8A759 /* sampleLogo.png in Resources */,
 				4F6529061988167F00030100 /* Juniorsimapp4.pdf in Resources */,
 				4FD3DCA219D9FD5400E8A759 /* scan.png in Resources */,
@@ -567,8 +581,10 @@
 				4F6529171988212A00030100 /* PEDS ASTHMA.pdf in Resources */,
 				4F98B65519DC3F8D002624AA /* caution.png in Resources */,
 				4F35538519E585E300F48092 /* Girls.pdf in Resources */,
+				4F9CB51D19F1C0C3006DA3FC /* sink.png in Resources */,
 				4FD3DCCA19DB03C800E8A759 /* female_patient.png in Resources */,
 				4F6529181988212A00030100 /* PEDS G & D.pdf in Resources */,
+				4F9CB51A19F1C0C3006DA3FC /* bedside.png in Resources */,
 				4F6528D91988123B00030100 /* Main.storyboard in Resources */,
 				4FD3DCAB19DA016800E8A759 /* debugging@2x.png in Resources */,
 				4F6529031988167F00030100 /* Juniorsimapp1.pdf in Resources */,
