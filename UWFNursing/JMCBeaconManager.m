@@ -30,8 +30,8 @@
     message =[NSString stringWithFormat:@"%@\r\n %@ \r\n %@", [NSDate new],message,self.logView.text];
     self.logView.text = message;
    
-    NSLog(@"\n %@ \n ",message);
-    [self saveLog:message];
+  //  NSLog(@"\n %@ \n ",message);
+   // [self saveLog:message];
 }
 
 

@@ -29,6 +29,8 @@
 
  //   @property(nonatomic,strong) ATCAppDelegate * delegate;// =   [[UIApplication sharedApplication]delegate];
     @property(nonatomic,strong) UINavigationController * nav;// = (UINavigationController *) delegate.window.rootViewController
+@property (nonatomic,strong) UIViewController * warningVC;
+
 
 
     @property(nonatomic, strong) NSDate * lastOverride;
@@ -83,7 +85,7 @@
         [temp removeObjectAtIndex:0];
         [temp addObject:element];
     }
-    _events = temp;
+    self.events = temp;
     
     if(array.count<10){
         [array addObject:element];
@@ -121,10 +123,13 @@
         ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
         _nav = (UINavigationController *) delegate.window.rootViewController;
         _nav.delegate = self;
-        
+        _warningVC =  [_nav.topViewController.storyboard instantiateViewControllerWithIdentifier:@"ATCWarningViewController"];
+
         _logoutButton=[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)];
         
         _networkUtilities = [[ATCBeaconNetworkUtilities alloc]init];
+     
+        
         
     }
     return self;
@@ -175,7 +180,8 @@
     [_networkUtilities overrideWarningForSession:self.session andNurse:self.nurse ];
     _lastOverride = [NSDate new];
      warningOnScreen = NO;
-    
+    [_warningVC dismissViewControllerAnimated:NO completion:nil];
+    //_nav pop
 
 }
 
@@ -193,28 +199,24 @@
     return self.nurse!=0;
 }
 
+/**
+    Currently we are checking region events
+*/
 -(NSDictionary *)getLastEvent{
     NSDictionary * lastSinkRegion = [[self.sinkRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
     NSDictionary * lastBedRegion = [[self.patientsRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
-   // NSDictionary * lastRoomRegion = [[self.roomRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
+
     NSDictionary * lastBriefingRoomRegion = [[self.roomRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
     
-//    NSDictionary * sinkProximity = [self.sinkProximityEvents lastObject];
-//    NSDictionary * debProximity = [self.briefingProximityEvents lastObject];
-//    NSDictionary * bedProximity = [self.patientsProximityEvents lastObject];
-//    NSDictionary * roomProximity = [self.roomProximityEvents lastObject];
-//    
     NSMutableArray * events = [NSMutableArray new];
     if(lastSinkRegion){
         [events addObject:lastSinkRegion];
     }
+
     if(lastBedRegion){
         [events addObject:lastBedRegion];
     }
-    //    if(lastRoomRegion){
-    //        [events addObject:lastRoomRegion];
-    //    }
-    
+
     if(lastBriefingRoomRegion){
         [events addObject:lastBriefingRoomRegion];
     }
@@ -232,16 +234,15 @@
 
 -(void)showWarning{
     if(!warningOnScreen){
-     UIViewController * c=  [_nav.topViewController.storyboard instantiateViewControllerWithIdentifier:@"ATCWarningViewController"];
-        [_nav pushViewController:c animated:YES];
-            c.navigationController.navigationBarHidden = YES;
+        [_nav.topViewController presentViewController: _warningVC animated:NO completion:^{
             warningOnScreen = YES;
+        }];
     }
 }
 
 -(BOOL)logicFor:(ATCBeacon *)beacon{
     
-    if([[NSDate new]timeIntervalSinceDate:self.lastOverride]<60 )
+    if([[NSDate new]timeIntervalSinceDate:self.lastOverride]<120 )
     {
 
         return YES;

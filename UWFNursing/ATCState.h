@@ -15,7 +15,7 @@
     @property (readonly) BOOL loggedIn;
     @property (nonatomic, readonly) NSInteger nurse;
     @property (nonatomic, readonly)BOOL warning;
-    @property (nonatomic,readonly)NSArray * events;
+    @property (nonatomic,strong) NSArray * events;
 
     -(void)registerSinkProximityEvent:(NSInteger)proximity;
     -(void)registerPatientProximityEvent:(NSInteger)proximity;
