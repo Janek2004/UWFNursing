@@ -26,7 +26,7 @@
     // Do any additional setup after loading the view.
     [self.controlButton addTarget:self action:@selector(startWashing:) forControlEvents:UIControlEventTouchUpInside];
         secondsLeft  = WASHING_TIME;
-        self.timerLabel.text = [NSString stringWithFormat:@"%d",secondsLeft];
+        self.timerLabel.text = [NSString stringWithFormat:@"%d",(int) secondsLeft];
     _utils = [[Utilities alloc]init];
     [_utils loadSound];
 }
@@ -51,7 +51,7 @@
         secondsLeft =WASHING_TIME;
         
     }else{
-        self.timerLabel.text = [NSString stringWithFormat:@"%d",secondsLeft];
+        self.timerLabel.text = [NSString stringWithFormat:@"%d",(int)secondsLeft];
     }
 
  

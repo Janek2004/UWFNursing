@@ -96,7 +96,8 @@
     if(enabled) {
         message = [@"iBeacon monitoring is supported" mutableCopy];
     }
-    [self logMessage:message];
+    NSLog(@"Message: %@",message);
+    // [self logMessage:message];
 
     
     return enabled;
@@ -179,7 +180,7 @@
     
     NSString * log = [NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__];
     [self logMessage:log];
-    NSLog(@"%@",log);
+ //   NSLog(@"%@",log);
     
 
     
@@ -196,7 +197,7 @@
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region{
     NSString * log = [NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__];
     [self logMessage:log];
-    NSLog(@"%@",log);
+  //  NSLog(@"%@",log);
     proximity = -1;
     
     if([region isKindOfClass:[CLBeaconRegion class]]){
@@ -250,8 +251,7 @@
     {
             proximity = beacon.proximity;
             [self logMessage:[NSString stringWithFormat:@"Beacon range: %@",beacon]];
-            NSLog(@"Beacon proximity is: %d",(int)beacon.proximity);
-            NSLog(@"Beacon found: %@",beacon);
+        
             if(self.beaconFound){
                 self.beaconFound(beacon.proximityUUID.UUIDString, beacon.major.intValue, beacon.minor.intValue, beacon.proximity);
             }

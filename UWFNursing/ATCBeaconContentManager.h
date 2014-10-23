@@ -11,7 +11,7 @@
     
 }
 
-@property (nonatomic,copy) void (^patiensBlock)(NSArray *);
+//
 @property (nonatomic,strong) NSMutableDictionary * patients;
 -(id)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)pr;
 -(id)initWithCompletion:(void (^)(NSArray *))patientsBlock;

@@ -11,7 +11,7 @@
 #import "DataSource.h"
 #import "ACTPatientCell.h"
 #import "ATCPatient.h"
-
+@import CoreLocation;
 
 @interface ATCViewController ()
     @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -26,7 +26,8 @@
 	// Do any additional setup after loading the view, typically from a nib.
     ATCAppDelegate * delegate = [[UIApplication sharedApplication]delegate];
 
-
+   
+    
     self.datasource = [[DataSource alloc]initWithItems:delegate.patients  cellIdentifier:@"patient_cell" configureCellBlock:^(ACTPatientCell* cell, ATCPatient * item, id indexPath) {
         if([item isKindOfClass:[ATCPatient class]]){
             //[cell.distanceSlider setValue:item.proximity animated:YES];
@@ -52,30 +53,19 @@
 
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBarHidden = NO;
     //self.navigationController.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
-    
-//
-//    ATCAppDelegate * delegate = [[UIApplication sharedApplication]delegate];
-//    if(delegate)
-//    {
-//        
-//    }
-//    UIBarButtonItem * item=    [[UIBarButtonItem alloc]initWithTitle:@"Log In" style:UIBarButtonItemStyleBordered target:self action:@selector(login:)];
-//    self.navigationItem.rightBarButtonItem = item;
-//
-
 }
 
-
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 
 
