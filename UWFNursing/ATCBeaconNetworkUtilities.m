@@ -173,6 +173,8 @@
 
     NSString * urlstring =[NSString stringWithFormat:@"%@&action=saveRegion&beacon_uuid=%@&beacon_minor=%d&beacon_major=%d&user=Janek&state=%d&event_date=%f",BEACON_URL,proximityID,minor,major, (int)state,timeInterval];
    
+    //NSLog(@"Data to send: %@",urlstring);
+    
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
     
     
@@ -198,6 +200,8 @@
     NSTimeInterval timeInterval =[d timeIntervalSince1970];
     
     NSString * urlstring =[NSString stringWithFormat:@"%@&action=saveProximity&beacon_uuid=%@&beacon_minor=%d&beacon_major=%d&user=%@&proximity=%d&event_date=%f",BEACON_URL,proximityID,minor,major, user,(int) proximity,timeInterval];
+    
+    //NSLog(@"Data Proximity to send: \n %@",urlstring);
     
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]];
     

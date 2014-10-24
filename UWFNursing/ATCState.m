@@ -80,11 +80,15 @@
     
     NSMutableArray * temp = [_regionEvents mutableCopy];
     if(temp.count<30){
-        if([element objectForKey:@"state"])  [temp addObject:element];
+        if([element objectForKey:@"state"])  {
+         [temp addObject:element];
+        }
     }
     else{
-        [temp removeObjectAtIndex:0];
-        [temp addObject:element];
+        if([element objectForKey:@"state"]) {
+            [temp removeObjectAtIndex:0];
+            [temp addObject:element];
+        }
     }
     self.regionEvents = [NSArray arrayWithArray:[temp copy]];
     
@@ -273,7 +277,9 @@
     }
 }
 
+
 -(BOOL)logicFor:(ATCBeacon *)beacon{
+    //where I am at?
     self.location =  [self checkLocation:beacon];
 
     if([[NSDate new]timeIntervalSinceDate:self.lastOverride]<120 )
@@ -285,23 +291,15 @@
         return YES;
     }
     
-    //where I am at?
- 
    NSDictionary * lastBedRegion = [[self.patientsRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
 
-    NSDictionary * sinkProximity = [self.sinkProximityEvents lastObject];
-    NSDictionary * debProximity = [self.briefingProximityEvents lastObject];
-    NSDictionary * bedProximity = [self.patientsProximityEvents lastObject];
    
+    NSDictionary * lastEvent = [self getLastEvent];
     
         switch (self.location) {
             case kbed:{
                 //if we are close
-                NSInteger proximity = [[bedProximity objectForKey:@"proximity"]integerValue] ;
-                if(proximity==CLProximityNear||proximity==CLProximityImmediate||proximity==CLProximityFar)
-                {
-
-                    NSDictionary * lastEvent = [self getLastEvent];
+                  NSLog(@"You are at the bedside");
                     if(lastEvent){
                         if([[lastEvent objectForKey:@"type"]integerValue] != ksink)
                         {
@@ -313,35 +311,27 @@
                         else{
                             
                             [self showWarning:NO];
+                            return  YES;
                         }
                         
-                    }
-                            [self showWarning:NO];
-                }
-                
+                     }
+                        [self showWarning:NO];
+                         return  YES;
                 break;}
             case ksink:{
-                NSInteger proximity = [[sinkProximity objectForKey:@"proximity"]integerValue];
-                if(proximity!=CLProximityUnknown){
                     NSLog(@"You are at the sink. Make sure that you wash your hands properly");
                     [self showWarning:NO];
-                }                                          
-                
-                break;}
+                      return  YES;
+                  break;
+            }
             case kbriefing:{
                 
-              //if we are close
-                NSInteger proximity = [[debProximity objectForKey:@"proximity"]integerValue] ;
-                if(proximity==CLProximityNear||proximity==CLProximityImmediate)
-                {
-                    
-                    NSDictionary * lastEvent =  [self getLastEvent];
-                    if(lastEvent){
+                if(lastEvent){
                         if(([[lastEvent objectForKey:@"type"]integerValue] != [@(ksink)integerValue]) && lastBedRegion  )
                         {
                             //we need to return no since user didn't go to wash hands prior to going going back to the debriefing room
                            // [self showWarning];
-                            NSLog(@"Last event is not sink");
+                            NSLog(@"Briefing Last event is not sink");
                             return  NO;
                         }
                         else{
@@ -351,16 +341,13 @@
                         
                     }
                     return YES;
-                    
-                }
-                
                 
                 break;}
             case kroom: // no action
-                    [self showWarning:NO];
+                [self showWarning:NO];
                 NSLog(@"You are in the room.");
                 break;
-            
+                return  YES;
             default:
                 break;
         }

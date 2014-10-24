@@ -16,6 +16,7 @@
 
 @interface ATCAppDelegate()
 @property (nonatomic,strong) ATCNetworkTest * tester;
+@property (nonatomic,strong) NSMutableDictionary * networkDictionary;
 @end
 
 @implementation ATCAppDelegate
@@ -54,12 +55,10 @@
     ATCBeacon * sink =[ATCBeacon new];
     sink.iOSidentifier =@"SINK";
     sink.identifier = kontaktIo;
-   // sink.identifier=estimote;
+
             sink.major = @33690;
             sink.minor = @9767;
-//    sink.major = @2984;
-//    sink.minor = @2;
-    
+
     
     ATCBeacon * room =[ATCBeacon new];
     room.iOSidentifier = @"room";
@@ -105,7 +104,7 @@
         _beaconManager.beaconFound =^void(NSString * proximityID, int major, int minor, CLProximity proximity){
             __typeof__(self) strongSelf = weakSelf;
             NSDate * now = [NSDate date];
-            NSTimeInterval interval = [now  timeIntervalSinceDate:date];
+      //      NSTimeInterval interval = [now  timeIntervalSinceDate:date];
             NSString *key =   [strongSelf hashedBeacon:proximityID major:major minor:minor];
             ATCBeacon * beacon = [dictionary objectForKey:key];
             //strongSelf.warning =
@@ -135,8 +134,9 @@
                 }
                 
             }
-            
-            if(interval>10||tempProximity!=proximity){
+
+            if([strongSelf sendData:@(beacon.type) state:@(proximity) andDate:now pid:key]){
+
                 [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:room.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.nurse] withErrorCompletionHandler:^(NSError *error) {
                     
                     [[strongSelf beaconManager] saveLog:error.debugDescription];
@@ -152,39 +152,44 @@
             
             NSString *key =   [strongSelf hashedBeacon:proximityID major:major minor:minor];
             ATCBeacon * beacon = [dictionary objectForKey:key];
-            //CLRegionState
+   
             NSLog(@"Region Event %d, %d state (0 unknown, inside, outside): %d",major,minor, (int)state);
+         
             
             [[strongSelf networkManager] sendRegionNotification:major minor:minor proximityID:beacon.identifier  regionState:state user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.nurse] withErrorCompletionHandler:^(NSError *error) {
-                //[[strongSelf beaconManager] saveLog:error.debugDescription];
             }];
-            
-            
-            if(beacon){
+            BOOL sent = FALSE;
                 switch (beacon.type) {
-                    case kbed:
+                    case kbed:{
                         [strongSelf.state registerPatientRegionEvent:state];
-                        
-                        break;
-                    case kroom:
+                        sent = YES;
+                        break;}
+                    case kroom:{
                         [strongSelf.state registerRoomRegionEvent:state];
                         if(state == CLRegionStateOutside||state == CLRegionStateUnknown){
                             [strongSelf.contentManager removeAll];
                         }
-                        
-                        break;
-                    case ksink:
+                        sent = YES;
+                        break;}
+                    case ksink:{
                         [strongSelf.state registerSinkRegionEvent:state];
-                        break;
-                    case kbriefing:
+                        sent = YES;
+                        break;}
+                    case kbriefing:{
+                        sent = YES;
                         [strongSelf.state registerBriefingRoomRegionEvent:state];
-                        
                         break;
+                    }
                     default:
                         break;
                 }
-                
-            }
+            
+            UILocalNotification * notif = [[UILocalNotification alloc]init];
+            notif.alertBody = [NSString stringWithFormat:@"Region Notification: (0 unknown, inside, outside) maj %d min %d state: %d",major,minor,(int)state];
+            
+            [[UIApplication sharedApplication] presentLocalNotificationNow:notif];
+            
+            
         };
     }
     else {
@@ -193,6 +198,29 @@
 
 }
 
+-(BOOL)sendData:(NSNumber*)type state:(NSNumber *)state andDate:(NSDate *)newDate pid:(NSString *)pid{
+    
+     NSDictionary * newDict = @{@"type":type, @"proximity":state, @"date":newDate};
+    if([_networkDictionary objectForKey:pid]){
+        NSDictionary * dict =[_networkDictionary objectForKey:pid];
+
+        NSDate * date = [dict objectForKey:@"date"];
+        NSInteger newState =[[dict objectForKey:@"proximity"]integerValue];
+        NSInteger difference =[newDate timeIntervalSinceDate:date];
+       
+        if(difference > 10||state.integerValue != newState ){
+             [_networkDictionary setObject:newDict forKey:pid];
+            return  YES;
+        }
+    }
+    else{
+       
+        [_networkDictionary setObject:newDict forKey:pid];
+        return YES;
+    }
+    
+    return NO;
+}
 
 
 
@@ -202,8 +230,14 @@
    
     #warning TESTS
    // [self runTests];
+    _networkDictionary = [NSMutableDictionary new];
     [self setUp];
+    
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];
+    }
 
+    
    
   
     

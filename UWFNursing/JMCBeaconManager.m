@@ -180,7 +180,7 @@
     
     NSString * log = [NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__];
     [self logMessage:log];
- //   NSLog(@"%@",log);
+    NSLog(@"%@",log);
     
 
     

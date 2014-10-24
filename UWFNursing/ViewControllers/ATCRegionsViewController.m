@@ -48,9 +48,9 @@
     }];
     self.datasource.headers = @[@"Region Events"];
     self.tableView.dataSource = self.datasource;
-    
-    [delegate.state addObserver:self forKeyPath:@"regionEvents" options:NSKeyValueObservingOptionNew context:nil];
-    
+    [self.tableView reloadData];
+//    [delegate.state addObserver:self forKeyPath:@"regionEvents" options:NSKeyValueObservingOptionNew context:nil];
+//    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -61,6 +61,17 @@
         self.tableView.dataSource = self.datasource;
         [self.tableView reloadData];
     }
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    @try {
+        ATCAppDelegate * delegate = [[UIApplication sharedApplication]delegate];
+       // [delegate.state removeObserver:self forKeyPath:@"regionEvents"];
+    }
+    @catch (NSException *exception) {
+           }
+    @finally {
+    }    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,9 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "ATCAppDelegate.h"
+#import "ATCState.h"
 
 @interface UWFNursingTests : XCTestCase
-
+@property (nonatomic,strong) ATCState * state;
 @end
 
 @implementation UWFNursingTests
@@ -26,9 +28,18 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+-(void)testWarning{
+    
+    ATCState *state = [ATCState new];
+    
+   // XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+
 }
+
+//
+//- (void)testExample
+//{
+//    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+//}
 
 @end
