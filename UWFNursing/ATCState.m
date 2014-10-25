@@ -221,30 +221,20 @@
 /**
     Currently we are checking region events
 */
--(NSDictionary *)getLastEvent{
-    NSDictionary * lastSinkRegion = [[self.sinkRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
-    NSDictionary * lastBedRegion = [[self.patientsRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
-
-    NSDictionary * lastBriefingRoomRegion = [[self.roomRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
+-(NSDictionary *)getLastEventBefore:(NSInteger)room{
     
     NSMutableArray * events = [NSMutableArray new];
-    if(lastSinkRegion){
-        [events addObject:lastSinkRegion];
-    }
 
-    if(lastBedRegion){
-        [events addObject:lastBedRegion];
-    }
-
-    if(lastBriefingRoomRegion){
-        [events addObject:lastBriefingRoomRegion];
-    }
+     [events addObjectsFromArray:[self.sinkRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
+     [events addObjectsFromArray:[self.patientsRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
+     [events addObjectsFromArray:[self.briefingRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
     
     id mySort = ^(NSDictionary * obj1, NSDictionary * obj2){
-        
         return [[obj1 objectForKey:@"date"] compare:[obj2 objectForKey:@"date"]];
-        
     };
+    
+    
+    
     
     NSArray * sortedEvents = [events sortedArrayUsingComparator:mySort];
    // NSLog(@"Sorted Events are: %@",sortedEvents);
@@ -253,8 +243,20 @@
     }
 
     
-    
-    return [sortedEvents lastObject];
+    if([[[sortedEvents lastObject] objectForKey:@"type"]integerValue] == room){
+        //get the last event
+        for(NSInteger index = sortedEvents.count-1; index>=0; index--){
+            NSDictionary * suspect = sortedEvents[index];
+            if([[suspect objectForKey:@"type"]integerValue]!=room){
+                return suspect;
+            }
+        }
+        
+    }
+    else{
+        return sortedEvents.lastObject;
+    }
+    return nil;
 }
 
 -(void)showWarning:(BOOL)show{
@@ -291,15 +293,12 @@
         return YES;
     }
     
-   NSDictionary * lastBedRegion = [[self.patientsRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]lastObject];
-
-   
-    NSDictionary * lastEvent = [self getLastEvent];
+        NSDictionary * lastEvent = [self getLastEventBefore:self.location];
+        NSLog(@"Last Event Is %@", lastEvent);
     
         switch (self.location) {
             case kbed:{
-                //if we are close
-                  NSLog(@"You are at the bedside");
+                NSLog(@"You are at the bedside");
                     if(lastEvent){
                         if([[lastEvent objectForKey:@"type"]integerValue] != ksink)
                         {
@@ -315,8 +314,9 @@
                         }
                         
                      }
-                        [self showWarning:NO];
-                         return  YES;
+                        //previous event doesnt exist which means that user never been to sink
+                        [self showWarning:YES];
+                        return  YES;
                 break;}
             case ksink:{
                     NSLog(@"You are at the sink. Make sure that you wash your hands properly");
@@ -327,15 +327,15 @@
             case kbriefing:{
                 
                 if(lastEvent){
-                        if(([[lastEvent objectForKey:@"type"]integerValue] != [@(ksink)integerValue]) && lastBedRegion  )
+                        if([[lastEvent objectForKey:@"type"]integerValue] != [@(ksink)integerValue])
                         {
                             //we need to return no since user didn't go to wash hands prior to going going back to the debriefing room
-                           // [self showWarning];
+                            [self showWarning:YES];
                             NSLog(@"Briefing Last event is not sink");
                             return  NO;
                         }
                         else{
-                            
+                            [self showWarning:NO];
                             return YES;
                         }
                         
