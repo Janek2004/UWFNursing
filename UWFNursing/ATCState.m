@@ -11,6 +11,7 @@
 #import "ATCBeaconNetworkUtilities.h"
 #import "ATCBeacon.h"
 #import "ATCWarningViewController.h"
+#import "JMCBeaconManager.h"
 
 @interface ATCState() <UINavigationControllerDelegate>{
     BOOL warningOnScreen;
@@ -106,7 +107,7 @@
 -(id)init{
     if(self = [super init])
     {
-       // _events = [NSArray new];
+        _session = 0;
         //init arrays
         _sinkProximityEvents = [NSMutableArray new];
         _patientsProximityEvents = [NSMutableArray new];
@@ -129,9 +130,6 @@
         _nav = (UINavigationController *) delegate.window.rootViewController;
         _nav.delegate = self;
        
-//        UIStoryboard * storybord = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        _nav = [storybord instantiateInitialViewController];
-//        _nav.delegate = self;
         
         _warningVC =  [_nav.topViewController.storyboard instantiateViewControllerWithIdentifier:@"ATCWarningViewController"];
 
@@ -164,15 +162,19 @@
 -(void)loginNotification:(NSNotification *)notification{
     _nurse =  [[[notification userInfo] valueForKey:@"user"]integerValue];
     _session =  [[[notification userInfo] valueForKey:@"session"]integerValue];
+    ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
+    [delegate.beaconManager startMonitoring];
 }
 
 /**Used to logout the user*/
 -(void)logout{
-    [self loginNotification:nil];
+   // [self loginNotification:nil];
+    _nurse = 0;
+    _session = 0;
     ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
     UINavigationController * nav = (UINavigationController *) delegate.window.rootViewController;
     [nav popToRootViewControllerAnimated:YES];
-   
+    [delegate.beaconManager stopMonitoring];
 }
 
 

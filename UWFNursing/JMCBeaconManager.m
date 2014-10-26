@@ -18,6 +18,7 @@
 }
 @property(nonatomic,strong)CLLocationManager * locationManager;
 @property(nonatomic,strong) CLBeacon * currentBeacon;
+@property(nonatomic,strong) NSMutableArray * regions;
 @end
 
 
@@ -40,7 +41,7 @@
     if(self){
         _locationManager = [[CLLocationManager alloc]init];
         [_locationManager requestAlwaysAuthorization];
-        
+        _regions = [NSMutableArray new];
         _locationManager.delegate = self;
               counter =0;
        
@@ -125,6 +126,25 @@
     }
     return NO;
 }
+/**Start monitoring regions */
+-(void)startMonitoring{
+    for (CLBeaconRegion * beaconRegion in self.regions) {
+        [self.locationManager startMonitoringForRegion:beaconRegion];
+        [self.locationManager startRangingBeaconsInRegion:beaconRegion];
+        [self.locationManager startUpdatingLocation];
+        [self.locationManager performSelector:@selector(requestStateForRegion:) withObject:beaconRegion afterDelay:1];
+    }
+}
+
+//Stops Monitoring Services
+-(void)stopMonitoring;{
+    for (CLBeaconRegion * beaconRegion in self.regions) {
+        [self.locationManager stopMonitoringForRegion:beaconRegion];
+        [self.locationManager stopRangingBeaconsInRegion:beaconRegion];
+        [self.locationManager stopUpdatingLocation];
+    }
+
+}
 
 /**
  Register beacons only using identifier and proximity uiid
@@ -139,11 +159,9 @@
     beaconRegion.notifyOnEntry=YES;
     beaconRegion.notifyOnExit=YES;
     beaconRegion.notifyEntryStateOnDisplay=YES;
+
+    [self.regions addObject:beaconRegion];
     
-    [self.locationManager startMonitoringForRegion:beaconRegion];
-    [self.locationManager startRangingBeaconsInRegion:beaconRegion];
-    [self.locationManager startUpdatingLocation];
-    [self.locationManager performSelector:@selector(requestStateForRegion:) withObject:beaconRegion afterDelay:1];
 }
 
 /**
@@ -169,10 +187,7 @@
     beaconRegion.notifyOnExit=YES;
     beaconRegion.notifyEntryStateOnDisplay=YES;
     
-    [self.locationManager startMonitoringForRegion:beaconRegion];
-    [self.locationManager startUpdatingLocation];
-    [self.locationManager performSelector:@selector(requestStateForRegion:) withObject:beaconRegion afterDelay:1];
-    [self.locationManager startRangingBeaconsInRegion:beaconRegion];
+    [self.regions addObject:beaconRegion];
 }
 
 /**Tells the delegate that the user enter  specified region.*/

@@ -15,6 +15,12 @@
 @import CoreLocation;
 
 @interface JMCBeaconManager : NSObject
+/**Description: start monitoring services for all regions*/
+-(void)startMonitoring;
+
+/**Description: stop monitoring services for all regions*/
+-(void)stopMonitoring;
+
 
 /**
 *  Description:  Registers beacon's region using major and minor identifier

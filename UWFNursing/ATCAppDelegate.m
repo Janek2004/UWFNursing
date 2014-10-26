@@ -103,11 +103,12 @@
         
         _beaconManager.beaconFound =^void(NSString * proximityID, int major, int minor, CLProximity proximity){
             __typeof__(self) strongSelf = weakSelf;
+          //  if(strongSelf.state.session == 0) return;
+            
             NSDate * now = [NSDate date];
-      //      NSTimeInterval interval = [now  timeIntervalSinceDate:date];
             NSString *key =   [strongSelf hashedBeacon:proximityID major:major minor:minor];
             ATCBeacon * beacon = [dictionary objectForKey:key];
-            //strongSelf.warning =
+            
             [strongSelf.state logicFor:beacon];
             
             if(beacon){
@@ -150,6 +151,7 @@
         _beaconManager.regionEvent =^void(NSString * proximityID, int major, int minor, NSUInteger state){
             __typeof__(self) strongSelf = weakSelf2;
             
+           // if(strongSelf.state.session == 0) return;
             NSString *key =   [strongSelf hashedBeacon:proximityID major:major minor:minor];
             ATCBeacon * beacon = [dictionary objectForKey:key];
    

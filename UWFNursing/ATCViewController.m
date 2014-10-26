@@ -36,9 +36,10 @@
         }
     }];
     self.datasource.headers = @[@"Nearby Patients"];
-    [delegate addObserver:self forKeyPath:@"patients" options:NSKeyValueObservingOptionNew context:nil];
+  
 
 }
+
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -52,13 +53,35 @@
 
 
 
-
+-(void)viewWillDisappear:(BOOL)animated{
+    @try {
+        ATCAppDelegate * delegate = [[UIApplication sharedApplication]delegate];
+        [delegate removeObserver:self forKeyPath:@"patients"];
+    }
+    @catch (NSException *exception) {
+    }
+    @finally {
+    }
+    
+    
+}
 
 
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBarHidden = NO;
     //self.navigationController.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
+    @try {
+        ATCAppDelegate * delegate = [[UIApplication sharedApplication]delegate];
+        [delegate addObserver:self forKeyPath:@"patients" options:NSKeyValueObservingOptionNew context:nil];
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
