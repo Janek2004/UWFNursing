@@ -19,10 +19,27 @@
 @property(nonatomic,strong)CLLocationManager * locationManager;
 @property(nonatomic,strong) CLBeacon * currentBeacon;
 @property(nonatomic,strong) NSMutableArray * regions;
+@property(nonatomic,strong) NSMutableDictionary * stateDictionary;
 @end
 
 
 @implementation JMCBeaconManager
+
+/**Sometimes ios doesn't call did enter region in this case we will call it manually*/
+-(void)updateState:(CLBeaconRegion *)region state:(CLRegionState)state{
+    if([[_stateDictionary objectForKey:region.identifier]integerValue]!=state ){
+        [_stateDictionary setObject:@(state) forKey:region.identifier];
+    }
+}
+
+/***/
+-(void)checkStateForRegion:(CLBeaconRegion *)region{
+    if([[_stateDictionary objectForKey:region.identifier]integerValue]!=CLRegionStateInside){
+       [self.locationManager requestStateForRegion:region];
+    }
+}
+
+
 
 
 
@@ -44,7 +61,8 @@
         _regions = [NSMutableArray new];
         _locationManager.delegate = self;
               counter =0;
-       
+        _stateDictionary = [NSMutableDictionary new];
+        
     }
     return self;
 }
@@ -197,7 +215,7 @@
     [self logMessage:log];
     NSLog(@"%@",log);
     
-
+  
     
     if([region isKindOfClass:[CLBeaconRegion class]]){
         [self.locationManager startRangingBeaconsInRegion:(CLBeaconRegion *) region];
@@ -224,14 +242,16 @@
 /** Tells the delegate about the state of the specified region. (required) */
 - (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region{
     NSString * log = [NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__];
-    
-    
-    if([region isKindOfClass:[CLBeaconRegion class]]){   //check if the region is beacon region
 
+
+    if([region isKindOfClass:[CLBeaconRegion class]]){   //check if the region is beacon region
+        [self updateState:(CLBeaconRegion *)region state:state];
     [self logMessage:log];
     
     [self logMessage:[NSString stringWithFormat:@"State for region: %@ is: %d %@ %@",region, (int)state, [(CLBeaconRegion *) region major], [(CLBeaconRegion *) region minor]]];
-    
+
+    NSLog(@"%@",[NSString stringWithFormat:@"State for region: %@ is: %d %@ %@",region, (int)state, [(CLBeaconRegion *) region major], [(CLBeaconRegion *) region minor]]);
+        
     if(self.regionEvent){
         self.regionEvent( [[(CLBeaconRegion *) region  proximityUUID]UUIDString], [[(CLBeaconRegion *) region major]intValue],[[(CLBeaconRegion *) region minor]intValue],(NSUInteger)state );
     }
@@ -239,8 +259,16 @@
     if(state == CLRegionStateInside){
              //start ranging beacons
             [self.locationManager startRangingBeaconsInRegion:(CLBeaconRegion *) region];
-      
+            [self locationManager:self.locationManager didEnterRegion:region];
+        
         }
+        if(state == CLRegionStateOutside){
+            //start ranging beacons
+            [self.locationManager stopRangingBeaconsInRegion:(CLBeaconRegion *) region];
+            [self locationManager:self.locationManager didExitRegion:region];
+            
+        }
+        
     }
 }
 
@@ -264,6 +292,7 @@
 
     for(CLBeacon *beacon in beacons)
     {
+            [self checkStateForRegion:region];
             proximity = beacon.proximity;
             [self logMessage:[NSString stringWithFormat:@"Beacon range: %@",beacon]];
         

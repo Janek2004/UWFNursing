@@ -169,20 +169,34 @@
 /**Used to logout the user*/
 -(void)logout{
    // [self loginNotification:nil];
+    ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
+    [delegate.networkManager logoutUser:[NSString stringWithFormat:@"%d",self.session] withCompletionHandler:^(NSError *error) {
+        
+    }];
+
+    
     _nurse = 0;
     _session = 0;
-    ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
+    
     UINavigationController * nav = (UINavigationController *) delegate.window.rootViewController;
     [nav popToRootViewControllerAnimated:YES];
     [delegate.beaconManager stopMonitoring];
+    
 }
 
 
-/**Log out notification*/
+/**Log out notification currently unused*/
 -(void)logoutNotification:(NSNotification *)notification{
+    ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
+    
+    [delegate.networkManager logoutUser:[NSString stringWithFormat:@"%d",self.nurse] withCompletionHandler:^(NSError *error) {
+        
+    }];
+    
     _nurse = 0;
     _session = 0;
     _primaryNurse = 0;
+   
 }
 
 /** nurse status notification*/
@@ -240,9 +254,9 @@
     
     NSArray * sortedEvents = [events sortedArrayUsingComparator:mySort];
    // NSLog(@"Sorted Events are: %@",sortedEvents);
-    if(sortedEvents.count >1){
-        return [sortedEvents objectAtIndex:sortedEvents.count -2];
-    }
+//    if(sortedEvents.count >1){
+//        return [sortedEvents objectAtIndex:sortedEvents.count -2];
+//    }
 
     
     if([[[sortedEvents lastObject] objectForKey:@"type"]integerValue] == room){

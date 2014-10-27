@@ -109,7 +109,10 @@
 
 /**Logs out user*/
 -(void)logoutUser:(NSString * )sessionId withCompletionHandler:(void (^)(NSError *error))completionBlock;{
-    NSString * urlstring =[NSString stringWithFormat:@"%@&action=logout&session=%ld",BEACON_URL, (long)sessionId];
+    NSString * urlstring =[NSString stringWithFormat:@"%@&action=logout&session=%@",BEACON_URL, sessionId];
+    
+    
+    
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -171,9 +174,7 @@
     NSDate * d = [NSDate new];
     NSTimeInterval timeInterval =[d timeIntervalSince1970];
 
-    NSString * urlstring =[NSString stringWithFormat:@"%@&action=saveRegion&beacon_uuid=%@&beacon_minor=%d&beacon_major=%d&user=Janek&state=%d&event_date=%f",BEACON_URL,proximityID,minor,major, (int)state,timeInterval];
-   
-    //NSLog(@"Data to send: %@",urlstring);
+    NSString * urlstring =[NSString stringWithFormat:@"%@&action=saveRegion&beacon_uuid=%@&beacon_minor=%d&beacon_major=%d&user=%@&state=%d&event_date=%f",BEACON_URL,proximityID,minor,major,user, (int)state,timeInterval];
     
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
     

@@ -30,8 +30,8 @@
     -(void)registerBriefingRoomRegionEvent:(NSInteger)region;
 
     -(BOOL)logicFor:(ATCBeacon *)beacon;
+    -(void)logout;
 
-    
 
 
 @end

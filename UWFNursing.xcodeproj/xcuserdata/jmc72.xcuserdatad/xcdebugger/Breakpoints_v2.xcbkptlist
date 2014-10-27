@@ -105,7 +105,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            landmarkName = "-setUp"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,7 +137,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
             endingLineNumber = "47"
-            landmarkName = "-registerPatientProximityEvent:"
+            landmarkName = "-registerSinkProximityEvent:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -218,6 +218,38 @@
             startingLineNumber = "34"
             endingLineNumber = "34"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UWFNursing/ATCState.m"
+            timestampString = "436134798.249453"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "-logicFor:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UWFNursing/ATCState.m"
+            timestampString = "436135117.951557"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
+            landmarkName = "-getLastEventBefore:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

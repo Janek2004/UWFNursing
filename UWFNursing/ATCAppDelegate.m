@@ -136,7 +136,7 @@
                 
             }
 
-            if([strongSelf sendData:@(beacon.type) state:@(proximity) andDate:now pid:key]){
+            if([strongSelf sendProximityData:@(beacon.type) state:@(proximity) andDate:now pid:key]){
 
                 [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:room.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.nurse] withErrorCompletionHandler:^(NSError *error) {
                     
@@ -197,10 +197,12 @@
     else {
         NSLog(@"Message: %@ %s",message,__PRETTY_FUNCTION__);
     }
-
 }
 
--(BOOL)sendData:(NSNumber*)type state:(NSNumber *)state andDate:(NSDate *)newDate pid:(NSString *)pid{
+
+
+/**Checks if data should be sent */
+-(BOOL)sendProximityData:(NSNumber*)type state:(NSNumber *)state andDate:(NSDate *)newDate pid:(NSString *)pid{
     
      NSDictionary * newDict = @{@"type":type, @"proximity":state, @"date":newDate};
     if([_networkDictionary objectForKey:pid]){
@@ -278,6 +280,8 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // [_beaconManager saveLog:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__]];
+
+    //self.state log
 }
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
