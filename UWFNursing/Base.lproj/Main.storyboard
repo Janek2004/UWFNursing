@@ -101,6 +101,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Nursing" id="BoW-mJ-XLK"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="tableView" destination="Yse-CW-3YC" id="Ffi-ea-zLU"/>
                     </connections>
@@ -158,6 +160,8 @@
         <scene sceneID="lMA-UW-gkX">
             <objects>
                 <navigationController definesPresentationContext="YES" id="9n0-YL-LL5" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KqZ-UW-ZcW">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -511,7 +515,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNk-W5-CYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-596" y="945"/>
+            <point key="canvasLocation" x="-471" y="932"/>
         </scene>
         <!--UWF Nursing App-->
         <scene sceneID="b1G-MU-Aox">

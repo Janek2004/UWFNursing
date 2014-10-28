@@ -162,6 +162,14 @@
 -(void)loginNotification:(NSNotification *)notification{
     _nurse =  [[[notification userInfo] valueForKey:@"user"]integerValue];
     _session =  [[[notification userInfo] valueForKey:@"session"]integerValue];
+    _sinkProximityEvents = [NSMutableArray new];
+    _patientsProximityEvents = [NSMutableArray new];
+    _roomProximityEvents = [NSMutableArray new];
+    
+    _sinkRegionEvents = [NSMutableArray new];
+    _patientsRegionEvents = [NSMutableArray new];
+    _roomRegionEvents = [NSMutableArray new];
+    
     ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
     [delegate.beaconManager startMonitoring];
 }
@@ -223,7 +231,8 @@
 
 -(void)nurseScanNotification:(NSNotification *)notification{
     NSString * barcode = [[notification userInfo] valueForKey:@"barcode"];
-    [_networkUtilities scanBarcode:barcode.integerValue userId:self.nurse sessionId:self.session withCompletionHandler: ^(NSError *error) {
+    
+    [_networkUtilities scanBarcode:barcode.longLongValue userId:self.nurse sessionId:self.session withCompletionHandler: ^(NSError *error) {
         
     }];
 }
@@ -341,7 +350,7 @@
                   break;
             }
             case kbriefing:{
-                
+                NSLog(@"You are in the briefing room");
                 if(lastEvent){
                         if([[lastEvent objectForKey:@"type"]integerValue] != [@(ksink)integerValue])
                         {

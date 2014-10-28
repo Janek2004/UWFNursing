@@ -333,7 +333,7 @@
 /** Tells the delegate that an error occurred while gathering ranging information for a set of beacons. */
 - (void)locationManager:(CLLocationManager *)manager rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region withError:(NSError *)error{
     NSString * log = [NSString stringWithFormat:@"Failed: %@ %s", error, __PRETTY_FUNCTION__];
-    [self logMessage:log];
+   // [self logMessage:log];
     NSLog(@"%@",log);
     
 }
