@@ -170,7 +170,7 @@
 -(void)logout{
    // [self loginNotification:nil];
     ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
-    [delegate.networkManager logoutUser:[NSString stringWithFormat:@"%d",self.session] withCompletionHandler:^(NSError *error) {
+        [delegate.networkManager logoutUser:[NSString stringWithFormat:@"%d",(int)self.session] withCompletionHandler:^(NSError *error) {
         
     }];
 

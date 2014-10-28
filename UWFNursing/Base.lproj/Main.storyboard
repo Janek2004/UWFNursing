@@ -64,18 +64,20 @@
                                             <segue destination="JL3-pX-ZoL" kind="push" id="HOp-YZ-yrA"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3Wi-P9-SFh"/>
                                     <barButtonItem image="documents.png" id="wmc-xE-UIV">
                                         <connections>
                                             <segue destination="Ta8-UN-L2E" kind="push" id="wwk-Kq-f3Y"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="mbd-0O-Pni"/>
-                                    <barButtonItem image="debugging.png" id="eQX-kP-eys">
+                                    <barButtonItem image="justify.png" id="eQX-kP-eys">
                                         <connections>
                                             <segue destination="bNh-5Q-SYt" kind="push" id="4SD-uW-cCR"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="caution.png" id="pwM-Uc-Ops">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="o6T-kO-aTz"/>
+                                    <barButtonItem image="map.png" id="pwM-Uc-Ops">
                                         <connections>
                                             <segue destination="Zln-HZ-sfA" kind="push" id="DQf-FY-rZy"/>
                                         </connections>
@@ -581,11 +583,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="caution.png" width="44" height="44"/>
-        <image name="debugging.png" width="44" height="44"/>
         <image name="documents.png" width="44" height="44"/>
         <image name="female_patient.png" width="57" height="80"/>
         <image name="help.png" width="44" height="44"/>
+        <image name="justify.png" width="44" height="44"/>
+        <image name="map.png" width="35" height="44"/>
         <image name="scan.png" width="44" height="44"/>
         <image name="unlock.png" width="512" height="512"/>
         <image name="wash-hands-no-germs.jpg" width="730" height="980"/>

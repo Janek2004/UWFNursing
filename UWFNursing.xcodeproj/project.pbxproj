@@ -46,6 +46,10 @@
 		4F6529181988212A00030100 /* PEDS G & D.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6529141988212A00030100 /* PEDS G & D.pdf */; };
 		4F65291C1988219300030100 /* ATCDetailsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65291B1988219300030100 /* ATCDetailsWebViewController.m */; };
 		4F65292019882C6500030100 /* igViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65291F19882C6500030100 /* igViewController.m */; };
+		4F73F64F19FFFAB500B25D7C /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73F64D19FFFAB500B25D7C /* map.png */; };
+		4F73F65019FFFAB500B25D7C /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73F64E19FFFAB500B25D7C /* map@2x.png */; };
+		4F73F65319FFFC4500B25D7C /* justify.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73F65119FFFC4500B25D7C /* justify.png */; };
+		4F73F65419FFFC4500B25D7C /* justify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73F65219FFFC4500B25D7C /* justify@2x.png */; };
 		4F85E61519C77ECA008B4D1C /* low_power.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4F85E61419C77ECA008B4D1C /* low_power.wav */; };
 		4F85E61719C785AB008B4D1C /* wash-hands-no-germs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F85E61619C785AB008B4D1C /* wash-hands-no-germs.jpg */; };
 		4F85E61A19C786C6008B4D1C /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E61919C786C6008B4D1C /* Utilities.m */; };
@@ -164,6 +168,10 @@
 		4F65291B1988219300030100 /* ATCDetailsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCDetailsWebViewController.m; sourceTree = "<group>"; };
 		4F65291E19882C6500030100 /* igViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = igViewController.h; sourceTree = "<group>"; };
 		4F65291F19882C6500030100 /* igViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = igViewController.m; sourceTree = "<group>"; };
+		4F73F64D19FFFAB500B25D7C /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		4F73F64E19FFFAB500B25D7C /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
+		4F73F65119FFFC4500B25D7C /* justify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = justify.png; sourceTree = "<group>"; };
+		4F73F65219FFFC4500B25D7C /* justify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "justify@2x.png"; sourceTree = "<group>"; };
 		4F85E61419C77ECA008B4D1C /* low_power.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = low_power.wav; sourceTree = "<group>"; };
 		4F85E61619C785AB008B4D1C /* wash-hands-no-germs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wash-hands-no-germs.jpg"; sourceTree = "<group>"; };
 		4F85E61819C786C6008B4D1C /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
@@ -402,6 +410,10 @@
 		4FD3DC9719D9FAD400E8A759 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4F73F65119FFFC4500B25D7C /* justify.png */,
+				4F73F65219FFFC4500B25D7C /* justify@2x.png */,
+				4F73F64D19FFFAB500B25D7C /* map.png */,
+				4F73F64E19FFFAB500B25D7C /* map@2x.png */,
 				4F9CB51619F1C0C3006DA3FC /* bedside.png */,
 				4F9CB51719F1C0C3006DA3FC /* briefing_room.png */,
 				4F9CB51819F1C0C3006DA3FC /* simlab.png */,
@@ -584,6 +596,7 @@
 				4FD3DCBD19DA028400E8A759 /* clear@2x.png in Resources */,
 				4FD3DCB019DA01D500E8A759 /* documents@2x.png in Resources */,
 				4FD3DCB719DA01DC00E8A759 /* scan@2x.png in Resources */,
+				4F73F65419FFFC4500B25D7C /* justify@2x.png in Resources */,
 				4FD3DC9C19D9FB3900E8A759 /* help.png in Resources */,
 				4FD3DC9F19D9FBC700E8A759 /* padlock.png in Resources */,
 				4F6529041988167F00030100 /* Juniorsimapp2.pdf in Resources */,
@@ -600,9 +613,12 @@
 				4FD3DCAB19DA016800E8A759 /* debugging@2x.png in Resources */,
 				4F6529031988167F00030100 /* Juniorsimapp1.pdf in Resources */,
 				4F6529161988212A00030100 /* OB PPD.pdf in Resources */,
+				4F73F65319FFFC4500B25D7C /* justify.png in Resources */,
+				4F73F64F19FFFAB500B25D7C /* map.png in Resources */,
 				4FD3DCB419DA01D500E8A759 /* padlock@2x.png in Resources */,
 				4F6529051988167F00030100 /* Juniorsimapp3.pdf in Resources */,
 				4FD3DCB219DA01D500E8A759 /* help@2x.png in Resources */,
+				4F73F65019FFFAB500B25D7C /* map@2x.png in Resources */,
 				4FD3DCD319DB0D6900E8A759 /* Localizable.strings in Resources */,
 				4F85E61719C785AB008B4D1C /* wash-hands-no-germs.jpg in Resources */,
 				4F85E61519C77ECA008B4D1C /* low_power.wav in Resources */,
