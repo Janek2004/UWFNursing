@@ -76,8 +76,8 @@
     ATCBeacon * debriefingRoom =[ATCBeacon new];
     debriefingRoom.iOSidentifier = @"Debriefing room";
     debriefingRoom.identifier = estimote;
-    debriefingRoom.major =  @2984;
-    debriefingRoom.minor =  @2;
+    debriefingRoom.major =  @1;
+    debriefingRoom.minor =  @3;
     
     sink.type = ksink;
     room.type = kroom;
