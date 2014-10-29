@@ -138,7 +138,7 @@
 
             if([strongSelf sendProximityData:@(beacon.type) state:@(proximity) andDate:now pid:key]){
 
-                [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:room.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.nurse] withErrorCompletionHandler:^(NSError *error) {
+                [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:beacon.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.nurse] withErrorCompletionHandler:^(NSError *error) {
                     
                     [[strongSelf beaconManager] saveLog:error.debugDescription];
                     tempProximity =proximity;
