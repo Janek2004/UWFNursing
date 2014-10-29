@@ -547,7 +547,7 @@
 				ORGANIZATIONNAME = "Janusz Chudzynski";
 				TargetAttributes = {
 					4F6528C11988123B00030100 = {
-						DevelopmentTeam = W23JT3HF49;
+						DevelopmentTeam = 8KV53E363M;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
