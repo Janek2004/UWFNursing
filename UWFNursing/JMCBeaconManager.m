@@ -5,9 +5,10 @@
 //  Created by sadmin on 2/21/14.
 //  Copyright (c) 2014 JanuszChudzynski. All rights reserved.
 //
-
-
 #import "JMCBeaconManager.h"
+
+#error RESET THE DATA
+
 @import AudioToolbox;
 
 @interface JMCBeaconManager()<CLLocationManagerDelegate>
@@ -282,7 +283,7 @@
     
     UIAlertView *errorAlert = [[UIAlertView alloc]     initWithTitle:NSLocalizedString(@"application_name", nil) message:NSLocalizedString(@"location_error", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil];
     
-    [errorAlert show];
+   // [errorAlert show];
     [self logMessage:error.debugDescription];
     
 }
