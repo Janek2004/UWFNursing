@@ -69,7 +69,7 @@
                     patient.lastname=@"Jansen";
                     patient.dob =  @"3/11/xx";
                     patient.pid = @"MR PCS33300";
-                      [self addPatient:patient id:bid];
+                    [self addPatient:patient id:bid];
                 }
               //  self.patiensBlock(self.patients.allValues);
             }

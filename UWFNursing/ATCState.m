@@ -107,17 +107,9 @@
 -(id)init{
     if(self = [super init])
     {
-        _session = 0;
-        //init arrays
-        _sinkProximityEvents = [NSMutableArray new];
-        _patientsProximityEvents = [NSMutableArray new];
-        _roomProximityEvents = [NSMutableArray new];
-        
-        _sinkRegionEvents = [NSMutableArray new];
-        _patientsRegionEvents = [NSMutableArray new];
-        _roomRegionEvents = [NSMutableArray new];
-        
+        [self setup];
         warningOnScreen = NO;
+
         //add notifications
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginNotification:) name:@"LOGIN" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(logoutNotification:) name:@"LOGOUT" object:nil];
@@ -174,22 +166,32 @@
     [delegate.beaconManager startMonitoring];
 }
 
+/** Resets evars to default values*/
+-(void)setup{
+    _sinkProximityEvents = [NSMutableArray new];
+    _patientsProximityEvents = [NSMutableArray new];
+    _roomProximityEvents = [NSMutableArray new];
+    
+    _sinkRegionEvents = [NSMutableArray new];
+    _patientsRegionEvents = [NSMutableArray new];
+    _roomRegionEvents = [NSMutableArray new];
+    
+    _nurse = 0;
+    _session = 0;
+
+}
+
 /**Used to logout the user*/
 -(void)logout{
-   // [self loginNotification:nil];
+   
     ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
         [delegate.networkManager logoutUser:[NSString stringWithFormat:@"%d",(int)self.session] withCompletionHandler:^(NSError *error) {
         
     }];
-
-    
-    _nurse = 0;
-    _session = 0;
-    
     UINavigationController * nav = (UINavigationController *) delegate.window.rootViewController;
     [nav popToRootViewControllerAnimated:YES];
     [delegate.beaconManager stopMonitoring];
-    
+    [self setup];
 }
 
 

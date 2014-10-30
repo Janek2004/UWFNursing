@@ -7,7 +7,6 @@
 //
 #import "JMCBeaconManager.h"
 
-#error RESET THE DATA
 
 @import AudioToolbox;
 
