@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-@class ATCBeacon;
+@import CoreLocation;
 
+@class ATCBeacon;
 @interface ATCState : NSObject
     @property(nonatomic, readonly) NSInteger session;
     @property(nonatomic, readonly)BOOL primaryNurse;
@@ -16,8 +17,9 @@
     @property (nonatomic, readonly) NSInteger nurse;
     @property (nonatomic, readonly)BOOL warning;
     @property(nonatomic) NSInteger location;
-
+    @property (strong, nonatomic) NSArray * patients;
     @property (nonatomic,strong) NSArray * regionEvents;
+    -(void)registerProximity:(ATCBeacon*)beacon andProximity:(CLProximity)proximity;
 
     -(void)registerSinkProximityEvent:(NSInteger)proximity;
     -(void)registerPatientProximityEvent:(NSInteger)proximity;

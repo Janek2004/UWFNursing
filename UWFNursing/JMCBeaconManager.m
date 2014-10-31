@@ -172,7 +172,6 @@
                              initWithUUIDString:pid];
     
     CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:proximityUUID identifier:identifier];
-    beaconRegion= [[CLBeaconRegion alloc]initWithProximityUUID:proximityUUID identifier:identifier];
     
     beaconRegion.notifyOnEntry=YES;
     beaconRegion.notifyOnExit=YES;
@@ -280,7 +279,7 @@
     // Delegate of the location manager, when you have an error
     NSLog(@"didFailWithError: %@", error);
     
-    UIAlertView *errorAlert = [[UIAlertView alloc]     initWithTitle:NSLocalizedString(@"application_name", nil) message:NSLocalizedString(@"location_error", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil];
+  //  UIAlertView *errorAlert = [[UIAlertView alloc]     initWithTitle:NSLocalizedString(@"application_name", nil) message:NSLocalizedString(@"location_error", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil];
     
    // [errorAlert show];
     [self logMessage:error.debugDescription];

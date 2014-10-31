@@ -10,10 +10,10 @@
 @interface ATCBeaconContentManager : NSObject {
     
 }
-
+@property (nonatomic,strong) NSDictionary * data;
 //
 @property (nonatomic,strong) NSMutableDictionary * patients;
--(id)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)pr;
+-(NSArray *)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)pr;
 -(id)initWithCompletion:(void (^)(NSArray *))patientsBlock;
 -(void)removeAll;
 

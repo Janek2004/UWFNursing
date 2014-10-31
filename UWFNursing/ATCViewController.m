@@ -11,6 +11,9 @@
 #import "DataSource.h"
 #import "ACTPatientCell.h"
 #import "ATCPatient.h"
+#import "ATCState.h"
+#import "ATCPatientViewController.h"
+
 @import CoreLocation;
 
 @interface ATCViewController ()
@@ -25,10 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     ATCAppDelegate * delegate = [[UIApplication sharedApplication]delegate];
-
-   
-    
-    self.datasource = [[DataSource alloc]initWithItems:delegate.patients  cellIdentifier:@"patient_cell" configureCellBlock:^(ACTPatientCell* cell, ATCPatient * item, id indexPath) {
+    self.datasource = [[DataSource alloc]initWithItems:delegate.state.patients  cellIdentifier:@"patient_cell" configureCellBlock:^(ACTPatientCell* cell, ATCPatient * item, id indexPath) {
         if([item isKindOfClass:[ATCPatient class]]){
             //[cell.distanceSlider setValue:item.proximity animated:YES];
             cell.iconImageView.image = item.icon;
@@ -36,7 +36,6 @@
         }
     }];
     self.datasource.headers = @[@"Nearby Patients"];
-  
 
 }
 
@@ -45,6 +44,8 @@
 {
     if([keyPath isEqualToString:@"patients"]){
         NSArray * patients = [change objectForKey:NSKeyValueChangeNewKey];
+        NSLog(@"%@",patients);
+        
         self.datasource.items = patients;
         self.tableView.dataSource = self.datasource;
         [self.tableView reloadData];
@@ -54,9 +55,10 @@
 
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     @try {
         ATCAppDelegate * delegate = [[UIApplication sharedApplication]delegate];
-        [delegate removeObserver:self forKeyPath:@"patients"];
+        [delegate.state removeObserver:self forKeyPath:@"patients"];
     }
     @catch (NSException *exception) {
     }
@@ -68,12 +70,14 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
     self.navigationController.navigationBarHidden = NO;
     //self.navigationController.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
     @try {
         ATCAppDelegate * delegate = [[UIApplication sharedApplication]delegate];
-        [delegate addObserver:self forKeyPath:@"patients" options:NSKeyValueObservingOptionNew context:nil];
+        [delegate.state addObserver:self forKeyPath:@"patients" options:NSKeyValueObservingOptionNew context:nil];
     }
     @catch (NSException *exception) {
         
@@ -83,6 +87,17 @@
     }
     
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"patient_segue"]){
+        NSIndexPath * indexPath = [self.tableView indexPathForSelectedRow];
+        ATCPatient * patient=  [self.datasource.items objectAtIndex:indexPath.row];
+        [segue.destinationViewController setPatient: patient];
+        
+    }
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {

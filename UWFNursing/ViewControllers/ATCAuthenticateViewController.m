@@ -32,6 +32,7 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.message_label.text=nil;
     [self authenticate:nil];
     
@@ -91,7 +92,7 @@
 -(void)showDefaultAuthentication{
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertView * a = [[UIAlertView alloc]initWithTitle:@"Authenticate" message:@"Please log in using your unique passcode. DEMO: enter any value" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok",nil];
+        UIAlertView * a = [[UIAlertView alloc]initWithTitle:@"Authenticate" message:@"Please log in." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok",nil];
         
         a.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
         [a show];
@@ -129,6 +130,7 @@
 }
 
 -(void)viewDidUnload{
+    [super viewDidUnload];
     self.message_label.text=nil;
 }
 

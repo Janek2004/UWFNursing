@@ -12,6 +12,7 @@
 #import "ATCBeacon.h"
 #import "ATCWarningViewController.h"
 #import "JMCBeaconManager.h"
+#import "ATCBeaconContentManager.h"
 
 @interface ATCState() <UINavigationControllerDelegate>{
     BOOL warningOnScreen;
@@ -39,6 +40,37 @@
 @end
 
 @implementation ATCState
+
+-(void)registerProximity:(ATCBeacon*)beacon  andProximity:(CLProximity)proximity{
+    if(beacon){
+        ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
+        switch (beacon.type) {
+            case kbed:{
+                [self registerPatientProximityEvent:proximity];
+                
+                break;}
+            case kroom:{
+                [self registerRoomProximityEvent:proximity];
+                self.patients = [delegate.contentManager contentForBeaconID:beacon.identifier  andMajor:beacon.major andMinor:beacon.minor proximity:proximity];
+                
+                break;}
+            case ksink:{
+                [self registerSinkProximityEvent:proximity];
+                
+                
+                break;}
+            case kbriefing:{
+                [self registerBriefingRoomProximityEvent:proximity];
+                break;}
+            default:
+                break;
+        }
+        
+    }
+
+
+}
+
 
 #pragma mark event hadlers
 /**Register events*/

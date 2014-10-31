@@ -11,10 +11,12 @@
 #import "ATCPatient.h"
 #import "ATCBeaconContentManager.h"
 
+
 #define REFRESH_RATE 15
 
 @interface ATCBeaconContentManager()
 @property (nonatomic,copy) void (^patiensBlock)(NSArray *);
+
 @end
 
 
@@ -25,7 +27,7 @@
 -(instancetype)init{
     if(self = [super init]){
         _patients = [NSMutableDictionary new];
-        
+
     }
     return self;
 }
@@ -41,50 +43,34 @@
 /**
     Check beacons
 */
--(id)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)pr{
-    #warning get dynamic content in the future
-
-    if([minor  isEqual: @5919] && [major  isEqual: @6914]){
-        NSString * bid = [self generateID:beaconId andMajor:major andMinor:minor];
-      //  [allKeys removeObject:bid];
-        //check how old the data is
-        if([_patients objectForKey:bid]){
-            #warning content expiration date
-          if(pr== CLProximityUnknown){
-                [self.patients removeObjectForKey:bid];
-             //    self.patiensBlock(self.patients.allValues);
-                 return [self getPatients];
-          }
-            
-            }
-            else{
-                if(pr== CLProximityUnknown){
-                    [self.patients removeObjectForKey:bid];
-//                    self.patiensBlock(self.patients.allValues);
+-(NSArray *)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)proximity{
+    
+   NSString *key =  [ATCBeacon hashedBeacon:beaconId major:major.integerValue minor:minor.integerValue];
+        //if([self.data objectForKey:key]) return self.patients;
+        NSDictionary * beaconData = [self.data objectForKey:key];
+    
+        NSInteger type = [[beaconData objectForKey:@"type"]integerValue];
+        if(type != kbed) return self.patients.allValues;
+        //get patients
+        NSArray *patients = [beaconData objectForKey:@"patients"];
+        for(ATCPatient *patient in patients)
+        {
+           NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
+           if(patient.displayStartDate.integerValue<timestamp&&patient.displayStopDate.integerValue>timestamp){
+               if(proximity== CLProximityUnknown){
+                  [self.patients removeObjectForKey:patient.pid];
                 }
-                else{
-                    ATCPatient * patient = [[ATCPatient alloc]init];
-                    
-                    patient.name = @"Skyler";
-                    patient.lastname=@"Jansen";
-                    patient.dob =  @"3/11/xx";
-                    patient.pid = @"MR PCS33300";
-                    [self addPatient:patient id:bid];
-                }
-              //  self.patiensBlock(self.patients.allValues);
+               else{
+                   [self.patients setObject:patient forKey:patient.pid];
+               }
             }
+           else{
+               [self.patients removeObjectForKey:patient.pid];
+           
+           }
         }
     
-    return [self getPatients];
-}
-
--(NSArray *)getPatients{
-    NSMutableArray * a = [NSMutableArray new];
-    for(NSDictionary * d in self.patients.allValues ){
-        [a addObject:[d objectForKey:@"patient"]];
-    }
-    
-    return a;
+    return self.patients.allValues;
 }
 
 -(void)addPatient:(ATCPatient *)patient id:(NSString *)bid{
@@ -98,22 +84,5 @@
     [self.patients removeAllObjects];
 }
 
-/**
- *  Generates unique ID
- *
- *  @param beaconId beacon identifier
- *  @param major    beacon major
- *  @param minor    beacon minor
- *
- *  @return returns string with unique identifier
- */
--(NSString *)generateID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor{
-
-    //according to estimote id has format: proximityUUID.major.minor
-   // NSString * log = [NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__];
-  
-    
-    return [NSString stringWithFormat:@"%@.%@.%@",beaconId,major,minor];
-}
 
 @end

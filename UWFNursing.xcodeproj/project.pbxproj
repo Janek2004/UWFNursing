@@ -46,6 +46,10 @@
 		4F6529181988212A00030100 /* PEDS G & D.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6529141988212A00030100 /* PEDS G & D.pdf */; };
 		4F65291C1988219300030100 /* ATCDetailsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65291B1988219300030100 /* ATCDetailsWebViewController.m */; };
 		4F65292019882C6500030100 /* igViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65291F19882C6500030100 /* igViewController.m */; };
+		4F6C86491A03EE5B0093E72C /* ATCBedStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6C86481A03EE5B0093E72C /* ATCBedStationViewController.m */; };
+		4F6C864A1A03EE5B0093E72C /* ATCBedStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6C86481A03EE5B0093E72C /* ATCBedStationViewController.m */; };
+		4F6C864D1A040FDC0093E72C /* ATCPatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6C864C1A040FDC0093E72C /* ATCPatientViewController.m */; };
+		4F6C864E1A040FDC0093E72C /* ATCPatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6C864C1A040FDC0093E72C /* ATCPatientViewController.m */; };
 		4F73F64F19FFFAB500B25D7C /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73F64D19FFFAB500B25D7C /* map.png */; };
 		4F73F65019FFFAB500B25D7C /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73F64E19FFFAB500B25D7C /* map@2x.png */; };
 		4F73F65319FFFC4500B25D7C /* justify.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73F65119FFFC4500B25D7C /* justify.png */; };
@@ -168,6 +172,10 @@
 		4F65291B1988219300030100 /* ATCDetailsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCDetailsWebViewController.m; sourceTree = "<group>"; };
 		4F65291E19882C6500030100 /* igViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = igViewController.h; sourceTree = "<group>"; };
 		4F65291F19882C6500030100 /* igViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = igViewController.m; sourceTree = "<group>"; };
+		4F6C86471A03EE5B0093E72C /* ATCBedStationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCBedStationViewController.h; path = StationsVC/ATCBedStationViewController.h; sourceTree = "<group>"; };
+		4F6C86481A03EE5B0093E72C /* ATCBedStationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCBedStationViewController.m; path = StationsVC/ATCBedStationViewController.m; sourceTree = "<group>"; };
+		4F6C864B1A040FDC0093E72C /* ATCPatientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCPatientViewController.h; sourceTree = "<group>"; };
+		4F6C864C1A040FDC0093E72C /* ATCPatientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCPatientViewController.m; sourceTree = "<group>"; };
 		4F73F64D19FFFAB500B25D7C /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		4F73F64E19FFFAB500B25D7C /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
 		4F73F65119FFFC4500B25D7C /* justify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = justify.png; sourceTree = "<group>"; };
@@ -370,6 +378,7 @@
 		4F65291D198821FA00030100 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F6C86461A03EDF50093E72C /* StationsVC */,
 				4F35538E19E6EEAD00F48092 /* Primary Nurse Choice View Controller */,
 				4FD3DCCD19DB074900E8A759 /* Debug Log */,
 				4FD3DCCE19DB07D800E8A759 /* Authenticate */,
@@ -381,8 +390,27 @@
 				4F35539419EC777B00F48092 /* ATCWarningViewController.m */,
 				82A9629D19F0AFF3009CAB7A /* ATCMapViewController.h */,
 				82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */,
+				4F6C864F1A040FE30093E72C /* Patient View Controller */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4F6C86461A03EDF50093E72C /* StationsVC */ = {
+			isa = PBXGroup;
+			children = (
+				4F6C86471A03EE5B0093E72C /* ATCBedStationViewController.h */,
+				4F6C86481A03EE5B0093E72C /* ATCBedStationViewController.m */,
+			);
+			name = StationsVC;
+			sourceTree = "<group>";
+		};
+		4F6C864F1A040FE30093E72C /* Patient View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4F6C864B1A040FDC0093E72C /* ATCPatientViewController.h */,
+				4F6C864C1A040FDC0093E72C /* ATCPatientViewController.m */,
+			);
+			name = "Patient View Controller";
 			sourceTree = "<group>";
 		};
 		4FB575EC198AB02700B4DE63 /* Helpers */ = {
@@ -677,6 +705,8 @@
 				823D3B3919F86F210018947A /* ATCRegionsViewController.m in Sources */,
 				4FD3DCD519DB110600E8A759 /* ATCBeaconContentManager.m in Sources */,
 				4FD3DCC219DB008700E8A759 /* ATCBeacon.m in Sources */,
+				4F6C864D1A040FDC0093E72C /* ATCPatientViewController.m in Sources */,
+				4F6C86491A03EE5B0093E72C /* ATCBedStationViewController.m in Sources */,
 				4F35539519EC777B00F48092 /* ATCWarningViewController.m in Sources */,
 				4FD3DCD819DB2C5100E8A759 /* ATCPatient.m in Sources */,
 				4F35538C19E6E1C400F48092 /* ATCState.m in Sources */,
@@ -691,8 +721,10 @@
 			files = (
 				4F35538D19E6E1C400F48092 /* ATCState.m in Sources */,
 				4F3553AD19EEB37700F48092 /* ATCBeaconNetworkUtilities.m in Sources */,
+				4F6C864A1A03EE5B0093E72C /* ATCBedStationViewController.m in Sources */,
 				4F35539219E6EED500F48092 /* ATCPrimaryNurseChoice.m in Sources */,
 				4F35539619EC777B00F48092 /* ATCWarningViewController.m in Sources */,
+				4F6C864E1A040FDC0093E72C /* ATCPatientViewController.m in Sources */,
 				4FD3DCD919DB2C5100E8A759 /* ATCPatient.m in Sources */,
 				4FD3DC9019D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */,
 				4F35538919E599B700F48092 /* ATCNetworkTest.m in Sources */,
@@ -828,6 +860,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -850,6 +883,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

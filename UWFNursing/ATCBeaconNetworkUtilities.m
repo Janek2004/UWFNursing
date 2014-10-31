@@ -76,8 +76,6 @@
                 completionBlock(nil, 0, 0,@"Unexpected error occured. Please try again later.");
             }
             
- 
-            
             NSError *error;
             id object = [NSJSONSerialization
                          JSONObjectWithData:data
@@ -134,7 +132,7 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if(connectionError){
             NSLog(@" Error %@ ",connectionError);
-    #warning that should return patient's data
+            #warning that should return patient's data
             
             return;
         }}];

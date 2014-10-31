@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ATCBeacon.h"
 
 @import CoreLocation;
 
@@ -23,9 +24,14 @@
     @property(nonatomic,strong) NSArray * nearbyContent;
     @property(nonatomic,strong) NSArray * farContent;
 
-    @property (nonatomic,strong) NSMutableDictionary * dict;
+    @property (nonatomic,strong) NSMutableDictionary * data;// ?
     @property (nonatomic,assign) CLProximity  proximity;
-    @property (nonatomic,assign) NSString * station_hash;
+    @property (nonatomic,assign) NSString * beaconKey;
+
+    @property (nonatomic,strong)  NSNumber * displayStartDate;
+    @property (nonatomic,strong)  NSNumber * displayStopDate;
+
+    @property (nonatomic, assign) enum beacontype type;
 
 
 @end

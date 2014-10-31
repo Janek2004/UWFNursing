@@ -64,8 +64,9 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     @try {
-        ATCAppDelegate * delegate = [[UIApplication sharedApplication]delegate];
+      //  ATCAppDelegate * delegate = [[UIApplication sharedApplication]delegate];
        // [delegate.state removeObserver:self forKeyPath:@"regionEvents"];
     }
     @catch (NSException *exception) {

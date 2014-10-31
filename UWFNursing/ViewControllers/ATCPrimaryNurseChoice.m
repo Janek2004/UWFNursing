@@ -20,6 +20,7 @@
 @implementation ATCPrimaryNurseChoice
 
 -(void)viewDidLoad{
+    [super viewDidLoad];
     _networkUtils = [[ATCBeaconNetworkUtilities alloc]init];
      self.navigationController.navigationBarHidden = YES;
 }

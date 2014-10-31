@@ -159,6 +159,9 @@
 -(void)processBarCode:(NSString *)barcode{
     long long nr  = barcode.longLongValue;
     
+    #warning probably other class should be responsible for processing the barcode, perhaps ATCState? Plus it should redirect user to appropriate Patients View Controller
+    
+    
     if(nr == 36000291452){//id 1
         _dobLabel.text = @"DOB: 3/11/xx";
         _nameLabel.text = [@"Name: Skyler Hansen" uppercaseString] ;
@@ -188,19 +191,16 @@
         _dobLabel.text = @"DOB: 5 days ago";
         _nameLabel.text = [@"Name: Jones, BABY BOY"uppercaseString];
         _mrLabel.text = @"MR# MJ1";
-        
-        
     }
     else if(nr==671860013624){// id 6
         _dobLabel.text = @"DOB: 5 days ago";
         
         _nameLabel.text = [@"Name: JAMES, BABY BOY"uppercaseString];
         _mrLabel.text = @"MR# KJ1";
-        
     }
-    else if([barcode.lowercaseString isEqualToString:@"nurse"]){
+    else if(nr==1){
         _nameLabel.text =@"Thank you for identification.";
-#warning change it! 
+        #warning change it!
     }
     else{
         _nameLabel.text =@"Patient Not Recognized";
@@ -212,7 +212,7 @@
     [self.view bringSubviewToFront:_mrLabel];
     
     
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"BARCODE_SCAN" object:nil    userInfo:@{@"barcode":barcode}];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"BARCODE_SCAN" object:nil userInfo:@{@"barcode":barcode}];
     
     
 }

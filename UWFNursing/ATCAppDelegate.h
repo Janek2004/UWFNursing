@@ -19,7 +19,7 @@
 @property(nonatomic,strong)  ATCState * state;
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) NSArray * patients;
+
 @property (nonatomic,assign) BOOL warning;
 -(void)setUp;
 
