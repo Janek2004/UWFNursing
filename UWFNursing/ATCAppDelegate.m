@@ -19,7 +19,7 @@
 @interface ATCAppDelegate()
 @property (nonatomic,strong) ATCNetworkTest * tester;
 @property (nonatomic,strong) NSMutableDictionary * networkDictionary;
-@property (nonatomic,strong) NSDate * lastNotification;
+//@property (nonatomic,strong) NSDate * lastNotification;
 @end
 
 @implementation ATCAppDelegate
@@ -34,7 +34,7 @@
 
 
 
--(void)parseData:(ATCBeacon *)bed{
+-(void)parseData:(ATCBeacon *)_bed{
     ATCPatient * p1 = [[ATCPatient alloc]init];
     p1.name = @"Skyler";
     p1.lastname=@"Jansen";
@@ -71,11 +71,92 @@
     p4.displayStopDate = @1415404800;
     p4.type = kbed;
     
-
+    NSString * kontaktIo =@"f7826da6-4fa2-4e98-8024-bc5b71e0893e";
+    NSString * estimote = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D";
+    
+    ATCBeacon * sink =[ATCBeacon new];
+    sink.iOSidentifier =@"SINK";
+    sink.identifier = kontaktIo;
+    sink.major = @33690;
+    sink.minor = @9767;
+    
+    ATCBeacon * room =[ATCBeacon new];
+    room.iOSidentifier = @"room";
+    room.identifier =kontaktIo;
+    room.major =@6914;
+    room.minor = @5919;
+    
+    ATCBeacon * bed =[ATCBeacon new];
+    bed.iOSidentifier = @"bed";
+    bed.identifier =kontaktIo;
+    bed.major =@43332;
+    bed.minor = @62552;
+    
+    ATCBeacon * bed2 =[ATCBeacon new];
+    bed2.iOSidentifier = @"bed_right";
+    bed2.identifier =estimote;
+    bed2.major =@1;
+    bed2.minor = @4;
+    bed2.type = kbed;
+    
+    ATCBeacon * debriefingRoom =[ATCBeacon new];
+    debriefingRoom.iOSidentifier = @"Debriefing room";
+    debriefingRoom.identifier = estimote;
+    debriefingRoom.major =  @1;
+    debriefingRoom.minor =  @3;
+    
+    sink.type = ksink;
+    room.type = kroom;
+    bed.type = kbed;
+    debriefingRoom.type =kbriefing;
+    
+    
+    ATCStation * bedStation = [ATCStation new];
+    bedStation.beaconKey = bed.hashedBeacon;
+    bedStation.icon = [UIImage imageNamed:@"patient"];
+    bedStation.data = @{@"patient":p3};
+    bedStation.title = [NSString stringWithFormat:@"%@ %@",p3.name, p3.lastname];
+    bedStation.image = [UIImage imageNamed:@"bedside"];
+    bedStation.vcname = @"ATCBedStationViewController";
+    
+    ATCStation * bedStation2 = [ATCStation new];
+    bedStation2.beaconKey = bed2.hashedBeacon;
+    bedStation2.icon = [UIImage imageNamed:@"patient"];
+    bedStation2.data = @{@"patient":p4};
+    bedStation2.title = [NSString stringWithFormat:@"%@ %@",p4.name, p4.lastname];
+    bedStation2.image =[UIImage imageNamed:@"bedside"];
+    bedStation2.vcname = @"ATCBedStationViewController";
+    
+    ATCStation * sinkStation = [ATCStation new];
+    sinkStation.beaconKey =sink.hashedBeacon;
+    sinkStation.icon = [UIImage imageNamed:@"sink_station"];
+    sinkStation.title = @"Sink";
+    sinkStation.vcname=@"ATCStationViewController";
+    
+    ATCStation * simLabStation = [ATCStation new];
+    simLabStation.beaconKey = room.hashedBeacon;
+    simLabStation.icon = [UIImage imageNamed:@""];
+    simLabStation.title = @"Sim Lab";
+    simLabStation.image = [UIImage imageNamed:@"simlab"];
+    simLabStation.vcname = @"ATCHospitalRoomViewController";
+    
+    
+    ATCStation * debriefingRoomStation= [ATCStation new];
+    debriefingRoomStation.beaconKey = debriefingRoom.hashedBeacon;
+    debriefingRoomStation.icon = [UIImage imageNamed:@""];
+    debriefingRoomStation.title = @"Debriefing Room";
+    debriefingRoomStation.image = [UIImage imageNamed:@"briefing_room"];
+    debriefingRoomStation.vcname = @"ATCStationViewController";
+    
+    
+    NSDictionary * appData = @{@"stations":@[bedStation, bedStation2, sinkStation,simLabStation,debriefingRoomStation]};
     NSString * b1key = [ATCBeacon hashedBeacon:bed.identifier major:bed.major.integerValue minor:bed.minor.integerValue];
     NSDictionary * data = @{b1key:@{@"type":@(kbed), @"patients":@[p2,p3,p4]}};
     _contentManager.data = data;
 
+    
+    
+    
 }
 
 -(void)setUp{
@@ -83,8 +164,8 @@
     _beaconManager = [JMCBeaconManager new];
     _networkManager= [ATCBeaconNetworkUtilities new];
     _contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray * patients) {
-        self.state.patients = patients;
-        NSLog(@"\n\n\n____CURRENT PATIENTS ____ %@  \n", self.state.patients);
+        self.state.stations = patients;
+        NSLog(@"\n\n\n____CURRENT PATIENTS ____ %@  \n", self.state.stations);
     }];
 #warning I should update it from the cloud!
     
@@ -162,7 +243,7 @@
             
             if([strongSelf sendProximityData:@(beacon.type) state:@(proximity) andDate:now pid:key]){
 
-                [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:beacon.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.nurse] withErrorCompletionHandler:^(NSError *error) {
+                [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:beacon.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.user] withErrorCompletionHandler:^(NSError *error) {
                     
                     [[strongSelf beaconManager] saveLog:error.debugDescription];
                     tempProximity =proximity;
@@ -182,42 +263,14 @@
             NSLog(@"Region Event %d, %d state (0 unknown, inside, outside): %d",major,minor, (int)state);
          
             
-            [[strongSelf networkManager] sendRegionNotification:major minor:minor proximityID:beacon.identifier  regionState:state user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.nurse] withErrorCompletionHandler:^(NSError *error) {
+            [[strongSelf networkManager] sendRegionNotification:major minor:minor proximityID:beacon.identifier  regionState:state user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.user] withErrorCompletionHandler:^(NSError *error) {
+          
+            
             }];
-           
-                switch (beacon.type) {
-                    case kbed:{
-                        [strongSelf.state registerPatientRegionEvent:state];
-                        break;}
-                    case kroom:{
-                        [strongSelf.state registerRoomRegionEvent:state];
-                        if(state == CLRegionStateOutside||state == CLRegionStateUnknown){
-                            [strongSelf.contentManager removeAll];
-                        }
-                           break;}
-                    case ksink:{
-                        [strongSelf.state registerSinkRegionEvent:state];
-                        NSTimeInterval time = [[NSDate new] timeIntervalSinceDate:strongSelf.lastNotification];
-                        if (time> 15||!strongSelf.lastNotification) {
-                            UILocalNotification * notif = [[UILocalNotification alloc]init];
-                            notif.alertBody =@"Make sure to take care of your hand hygiene.";
-                            
-                            [[UIApplication sharedApplication] presentLocalNotificationNow:notif];
-                            strongSelf.lastNotification = [NSDate new];
-                        }
+            
+            [strongSelf.state registerRegionEvent:beacon andState:state];
 
                         
-                    
-                        break;}
-                    case kbriefing:{
-                                      [strongSelf.state registerBriefingRoomRegionEvent:state];
-                        break;
-                    }
-                    default:
-                        break;
-                }
-            
-            
         };
     }
     else {

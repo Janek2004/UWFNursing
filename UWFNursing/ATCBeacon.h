@@ -13,4 +13,5 @@ enum beacontype{ksink,kbed,kroom,kbriefing};
     @property(nonatomic,strong) NSString * iOSidentifier;
     @property(nonatomic) enum beacontype type;
     +(NSString*)hashedBeacon:(NSString *)identifier major:(NSInteger)major minor:(NSInteger)minor;
+    -(NSString*)hashedBeacon;
 @end

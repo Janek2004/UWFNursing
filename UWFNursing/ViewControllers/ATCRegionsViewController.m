@@ -9,7 +9,7 @@
 #import "ATCRegionsViewController.h"
 #import "ATCAppDelegate.h"
 #import "DataSource.h"
-#import "ACTPatientCell.h"
+#import "ATCPatientCell.h"
 #import "ATCPatient.h"
 #import "ATCState.h"
 

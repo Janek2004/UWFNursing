@@ -7,7 +7,7 @@
 //
 
 #import "ATCAuthenticateViewController.h"
-#import "ATCViewController.h"
+#import "ATCStationsViewController.h"
 #import "ATCBeaconNetworkUtilities.h"
 #import "ATCAppDelegate.h"
 
@@ -56,7 +56,7 @@
              if (success) {
                  msg =[NSString stringWithFormat:NSLocalizedString(@"EVALUATE_POLICY_SUCCESS", nil)];
                  dispatch_async(dispatch_get_main_queue(), ^{
-                 ATCViewController *homeVC= [self.storyboard instantiateViewControllerWithIdentifier:@"ATCViewController"];
+                 ATCStationsViewController *homeVC= [self.storyboard instantiateViewControllerWithIdentifier:@"ATCViewController"];
                  
                  [self.navigationController pushViewController:homeVC animated:YES];
                  });

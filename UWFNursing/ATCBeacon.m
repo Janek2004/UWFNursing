@@ -14,4 +14,9 @@
     return [NSString stringWithFormat:@"%@%lu%lu",[identifier lowercaseString],(long)major,(long)minor ];
 }
 
+-(NSString*)hashedBeacon{
+    return [ATCBeacon hashedBeacon: self.identifier major:self.major.integerValue minor:self.minor.integerValue];
+}
+
+
 @end

@@ -12,10 +12,9 @@
 }
 @property (nonatomic,strong) NSDictionary * data;
 //
-@property (nonatomic,strong) NSMutableDictionary * patients;
+@property (nonatomic,strong) NSMutableDictionary * stations;
 -(NSArray *)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)pr;
--(id)initWithCompletion:(void (^)(NSArray *))patientsBlock;
+-(id)initWithCompletion:(void (^)(NSArray *))stationsBlock;
 -(void)removeAll;
-
 
 @end

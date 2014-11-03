@@ -10,27 +10,19 @@
 @import CoreLocation;
 
 @class ATCBeacon;
+@class ATCStation;
 @interface ATCState : NSObject
-    @property(nonatomic, readonly) NSInteger session;
-    @property(nonatomic, readonly)BOOL primaryNurse;
+    @property (nonatomic, readonly) NSInteger session;
+    @property (nonatomic, readonly)BOOL primaryNurse;
     @property (readonly) BOOL loggedIn;
-    @property (nonatomic, readonly) NSInteger nurse;
+    @property (nonatomic, readonly) NSInteger user;
     @property (nonatomic, readonly)BOOL warning;
-    @property(nonatomic) NSInteger location;
-    @property (strong, nonatomic) NSArray * patients;
+    @property (nonatomic) NSInteger location;
+    @property (strong, nonatomic) NSArray * stations;
     @property (nonatomic,strong) NSArray * regionEvents;
+
     -(void)registerProximity:(ATCBeacon*)beacon andProximity:(CLProximity)proximity;
-
-    -(void)registerSinkProximityEvent:(NSInteger)proximity;
-    -(void)registerPatientProximityEvent:(NSInteger)proximity;
-    -(void)registerRoomProximityEvent:(NSInteger)proximity;
-    -(void)registerBriefingRoomProximityEvent:(NSInteger)proximity;
-
-    -(void)registerSinkRegionEvent:(NSInteger)region;
-    -(void)registerPatientRegionEvent:(NSInteger)region;
-    -(void)registerRoomRegionEvent:(NSInteger)region;
-    -(void)registerBriefingRoomRegionEvent:(NSInteger)region;
-
+    -(void)registerRegionEvent:(ATCStation*)beacon andState:(CLRegionState)state;
     -(BOOL)logicFor:(ATCBeacon *)beacon;
     -(void)logout;
 

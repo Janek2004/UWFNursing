@@ -10,6 +10,8 @@
 #import "ATCAppDelegate.h"
 #import "ATCBeaconNetworkUtilities.h"
 #import "ATCBeacon.h"
+#import "ATCStation.h"
+
 #import "ATCWarningViewController.h"
 #import "JMCBeaconManager.h"
 #import "ATCBeaconContentManager.h"
@@ -17,6 +19,8 @@
 @interface ATCState() <UINavigationControllerDelegate>{
     BOOL warningOnScreen;
     BOOL ready;
+    
+    
 }
     @property(nonatomic,strong) UIBarButtonItem * logoutButton;
     @property(nonatomic,strong) ATCBeaconNetworkUtilities *networkUtilities;
@@ -32,18 +36,65 @@
     @property(nonatomic,strong) NSMutableArray * patientsRegionEvents;
 
     @property(nonatomic,strong) UINavigationController * nav;
-@property (nonatomic,strong) ATCWarningViewController * warningVC;
-
-
-
+    @property (nonatomic,strong) ATCWarningViewController * warningVC;
     @property(nonatomic, strong) NSDate * lastOverride;
+    @property (nonatomic,strong) NSDate * lastNotification;
+
+    -(void)registerSinkProximityEvent:(NSInteger)proximity;
+    -(void)registerPatientProximityEvent:(NSInteger)proximity;
+    -(void)registerRoomProximityEvent:(NSInteger)proximity;
+    -(void)registerBriefingRoomProximityEvent:(NSInteger)proximity;
+
+    -(void)registerSinkRegionEvent:(NSInteger)region;
+    -(void)registerPatientRegionEvent:(NSInteger)region;
+    -(void)registerRoomRegionEvent:(NSInteger)region;
+    -(void)registerBriefingRoomRegionEvent:(NSInteger)region;
+
+
 @end
 
 @implementation ATCState
 
+-(void)registerRegionEvent:(ATCStation*)beacon andState:(CLRegionState)state;
+{
+    switch (beacon.type) {
+        case kbed:{
+            [self registerPatientRegionEvent:state];
+            break
+            
+            ;}
+        case kroom:{
+            [self registerRoomRegionEvent:state];
+            if(state == CLRegionStateOutside||state == CLRegionStateUnknown){
+                //[strongSelf.contentManager removeAll];
+            }
+            break;}
+        case ksink:{
+            [self registerSinkRegionEvent:state];
+            NSTimeInterval time = [[NSDate new] timeIntervalSinceDate:self.lastNotification];
+            if (time> 15||!self.lastNotification) {
+                UILocalNotification * notif = [[UILocalNotification alloc]init];
+                notif.alertBody =@"Make sure to take care of your hand hygiene.";
+                
+                [[UIApplication sharedApplication] presentLocalNotificationNow:notif];
+                self.lastNotification = [NSDate new];
+            }
+            
+            break;}
+        case kbriefing:{
+            [self registerBriefingRoomRegionEvent:state];
+            break;
+        }
+        default:
+            break;
+    }
+    
+
+}
+
 -(void)registerProximity:(ATCBeacon*)beacon  andProximity:(CLProximity)proximity{
     if(beacon){
-        ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
+        //ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
         switch (beacon.type) {
             case kbed:{
                 [self registerPatientProximityEvent:proximity];
@@ -51,7 +102,6 @@
                 break;}
             case kroom:{
                 [self registerRoomProximityEvent:proximity];
-                self.patients = [delegate.contentManager contentForBeaconID:beacon.identifier  andMajor:beacon.major andMinor:beacon.minor proximity:proximity];
                 
                 break;}
             case ksink:{
@@ -65,10 +115,7 @@
             default:
                 break;
         }
-        
     }
-
-
 }
 
 
@@ -184,7 +231,7 @@
 
 /**Log in notification*/
 -(void)loginNotification:(NSNotification *)notification{
-    _nurse =  [[[notification userInfo] valueForKey:@"user"]integerValue];
+    _user =  [[[notification userInfo] valueForKey:@"user"]integerValue];
     _session =  [[[notification userInfo] valueForKey:@"session"]integerValue];
     _sinkProximityEvents = [NSMutableArray new];
     _patientsProximityEvents = [NSMutableArray new];
@@ -208,7 +255,7 @@
     _patientsRegionEvents = [NSMutableArray new];
     _roomRegionEvents = [NSMutableArray new];
     
-    _nurse = 0;
+    _user = 0;
     _session = 0;
 
 }
@@ -231,11 +278,11 @@
 -(void)logoutNotification:(NSNotification *)notification{
     ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
     
-    [delegate.networkManager logoutUser:[NSString stringWithFormat:@"%d",self.nurse] withCompletionHandler:^(NSError *error) {
+    [delegate.networkManager logoutUser:[NSString stringWithFormat:@"%d",(int)self.user] withCompletionHandler:^(NSError *error) {
         
     }];
     
-    _nurse = 0;
+    _user = 0;
     _session = 0;
     _primaryNurse = 0;
    
@@ -250,7 +297,7 @@
 /** nurse override notification */
 -(void)nurseOverrideNotification:(NSNotification *)notification{
     //_primaryNurse =  [[[notification userInfo] valueForKey:@"override"]integerValue];
-    [_networkUtilities overrideWarningForSession:self.session andNurse:self.nurse ];
+    [_networkUtilities overrideWarningForSession:self.session andNurse:self.user ];
     _lastOverride = [NSDate new];
     [_warningVC.view removeFromSuperview];
     warningOnScreen = NO;
@@ -266,7 +313,7 @@
 -(void)nurseScanNotification:(NSNotification *)notification{
     NSString * barcode = [[notification userInfo] valueForKey:@"barcode"];
     
-    [_networkUtilities scanBarcode:barcode.longLongValue userId:self.nurse sessionId:self.session withCompletionHandler: ^(NSError *error) {
+    [_networkUtilities scanBarcode:barcode.longLongValue userId:self.user sessionId:self.session withCompletionHandler: ^(NSError *error) {
         
     }];
 }
@@ -274,7 +321,7 @@
 
 
 -(BOOL)loggedIn{
-    return self.nurse!=0;
+    return self.user!=0;
 }
 
 /**

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 /**Will be used to display a patient's bed and information about them */
 @interface ATCBedStationViewController : UIViewController
+@property(nonatomic,strong)id station;
 
 @end

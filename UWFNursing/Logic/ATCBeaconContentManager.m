@@ -15,7 +15,7 @@
 #define REFRESH_RATE 15
 
 @interface ATCBeaconContentManager()
-@property (nonatomic,copy) void (^patiensBlock)(NSArray *);
+@property (nonatomic,copy) void (^stationsBlock)(NSArray *);
 
 @end
 
@@ -26,7 +26,7 @@
 
 -(instancetype)init{
     if(self = [super init]){
-        _patients = [NSMutableDictionary new];
+        _stations = [NSMutableDictionary new];
 
     }
     return self;
@@ -35,7 +35,7 @@
 -(id)initWithCompletion:(void (^)(NSArray *))patientsBlock{
     self = [self init];
     if(self){
-        self.patiensBlock = [patientsBlock copy];
+        self.stationsBlock = [patientsBlock copy];
     }
     return self;
 }
@@ -45,12 +45,12 @@
 */
 -(NSArray *)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)proximity{
     
-   NSString *key =  [ATCBeacon hashedBeacon:beaconId major:major.integerValue minor:minor.integerValue];
+        NSString *key =  [ATCBeacon hashedBeacon:beaconId major:major.integerValue minor:minor.integerValue];
         //if([self.data objectForKey:key]) return self.patients;
         NSDictionary * beaconData = [self.data objectForKey:key];
     
         NSInteger type = [[beaconData objectForKey:@"type"]integerValue];
-        if(type != kbed) return self.patients.allValues;
+        if(type != kbed) return self.stations.allValues;
         //get patients
         NSArray *patients = [beaconData objectForKey:@"patients"];
         for(ATCPatient *patient in patients)
@@ -58,30 +58,30 @@
            NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
            if(patient.displayStartDate.integerValue<timestamp&&patient.displayStopDate.integerValue>timestamp){
                if(proximity== CLProximityUnknown){
-                  [self.patients removeObjectForKey:patient.pid];
+                  [self.stations removeObjectForKey:patient.pid];
                 }
                else{
-                   [self.patients setObject:patient forKey:patient.pid];
+                   [self.stations setObject:patient forKey:patient.pid];
                }
             }
            else{
-               [self.patients removeObjectForKey:patient.pid];
+               [self.stations removeObjectForKey:patient.pid];
            
            }
         }
     
-    return self.patients.allValues;
+    return self.stations.allValues;
 }
 
 -(void)addPatient:(ATCPatient *)patient id:(NSString *)bid{
     
-    [self.patients setObject:@{@"date":[NSDate new],@"patient":patient} forKey:bid];
+    [self.stations setObject:@{@"date":[NSDate new],@"patient":patient} forKey:bid];
     
                    
 }
 
 -(void)removeAll;{
-    [self.patients removeAllObjects];
+    [self.stations removeAllObjects];
 }
 
 
