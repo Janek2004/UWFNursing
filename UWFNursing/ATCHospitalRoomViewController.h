@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ATCHospitalRoomViewController : UIViewController
+@property(nonatomic,strong)id station;
 
 @end

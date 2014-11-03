@@ -93,6 +93,7 @@
 }
 
 -(void)registerProximity:(ATCBeacon*)beacon  andProximity:(CLProximity)proximity{
+    
     if(beacon){
         //ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
         switch (beacon.type) {

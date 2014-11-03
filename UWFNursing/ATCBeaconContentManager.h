@@ -10,11 +10,11 @@
 @interface ATCBeaconContentManager : NSObject {
     
 }
-@property (nonatomic,strong) NSDictionary * data;
-//
-@property (nonatomic,strong) NSMutableDictionary * stations;
+
+@property (nonatomic,strong) NSDictionary * data; //contains all information about
+@property (nonatomic,strong) NSMutableDictionary * stations; //
 -(NSArray *)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)pr;
 -(id)initWithCompletion:(void (^)(NSArray *))stationsBlock;
--(void)removeAll;
+//-(void)removeAll;
 
 @end

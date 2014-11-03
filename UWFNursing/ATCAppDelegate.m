@@ -41,35 +41,8 @@
     p1.dob =  @"3/11/xx";
     p1.pid = @"MR PCS33300";
     
-    ATCPatient * p2 = [ATCPatient new];
-    p2.name = @"Skylar";
-    p2.lastname=@"Hansen";
-    p2.dob =  @"3/11/xx";
-    p2.pid = @"MR PCS31100";
-    p2.wristbandCode = @"036000291452";
-    p2.displayStartDate=@1415404800;
-    p2.displayStopDate= @1446940800;
-    p2.type = kbed;
     
-    ATCPatient * p3 = [ATCPatient new];
-    p3.name = @"Baby Boy";
-    p3.lastname=@"Jones";
-    p3.dob =  @"5 days ago";
-    p3.pid = @"MR# MJ1";
-    p3.wristbandCode = @"1234567890128";
-    p3.displayStartDate =@1414779895;
-    p3.displayStopDate = @1415404800;
-    p3.type = kbed;
-    
-    ATCPatient * p4 = [ATCPatient new];
-    p4.name = @"Jennie";
-    p4.lastname=@"Jones";
-    p4.dob =  @"1/1/xx";
-    p4.pid = @"J123";
-    p4.wristbandCode = @"5012345678900";
-    p4.displayStartDate =@1414779895;
-    p4.displayStopDate = @1415404800;
-    p4.type = kbed;
+
     
     NSString * kontaktIo =@"f7826da6-4fa2-4e98-8024-bc5b71e0893e";
     NSString * estimote = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D";
@@ -102,8 +75,8 @@
     ATCBeacon * debriefingRoom =[ATCBeacon new];
     debriefingRoom.iOSidentifier = @"Debriefing room";
     debriefingRoom.identifier = estimote;
-    debriefingRoom.major =  @1;
-    debriefingRoom.minor =  @3;
+    debriefingRoom.major =  @10229;
+    debriefingRoom.minor =  @12626;
     
     sink.type = ksink;
     room.type = kroom;
@@ -111,27 +84,70 @@
     debriefingRoom.type =kbriefing;
     
     
-    ATCStation * bedStation = [ATCStation new];
-    bedStation.beaconKey = bed.hashedBeacon;
-    bedStation.icon = [UIImage imageNamed:@"patient"];
-    bedStation.data = @{@"patient":p3};
-    bedStation.title = [NSString stringWithFormat:@"%@ %@",p3.name, p3.lastname];
-    bedStation.image = [UIImage imageNamed:@"bedside"];
-    bedStation.vcname = @"ATCBedStationViewController";
+    ATCPatient * p2 = [ATCPatient new];
+    p2.name = @"Skylar";
+    p2.lastname=@"Hansen";
+    p2.dob =  @"3/11/xx";
+    p2.pid = @"MR PCS31100";
+    p2.wristbandCode = @"036000291452";
+    p2.displayStartDate=@1415404800;
+    p2.displayStopDate= @1446940800;
+    p2.type = kbed;
+    p2.type= kbed;
+    p2.beaconKey = bed.hashedBeacon;
+    p2.icon = [UIImage imageNamed:@"patient"];
+
+    p2.title = [NSString stringWithFormat:@"%@ %@",p2.name, p2.lastname];
+    p2.image = [UIImage imageNamed:@"bedside"];
+    p2.vcname = @"ATCPatientViewController";
     
-    ATCStation * bedStation2 = [ATCStation new];
-    bedStation2.beaconKey = bed2.hashedBeacon;
-    bedStation2.icon = [UIImage imageNamed:@"patient"];
-    bedStation2.data = @{@"patient":p4};
-    bedStation2.title = [NSString stringWithFormat:@"%@ %@",p4.name, p4.lastname];
-    bedStation2.image =[UIImage imageNamed:@"bedside"];
-    bedStation2.vcname = @"ATCBedStationViewController";
+    ATCPatient * bedStation = [ATCPatient new];
+    bedStation.name = @"Baby Boy";
+    bedStation.lastname=@"Jones";
+    bedStation.dob =  @"5 days ago";
+    bedStation.pid = @"MR# MJ1";
+    bedStation.wristbandCode = @"1234567890128";
+    bedStation.displayStartDate =@1414779895;
+    bedStation.displayStopDate = @1415404800;
+    bedStation.type = kbed;
+    bedStation.beaconKey =bed.hashedBeacon;
+    bedStation.icon = [UIImage imageNamed:@"patient"];
+  
+    bedStation.title = [NSString stringWithFormat:@"%@ %@",bedStation.name, bedStation.lastname];
+    bedStation.image = [UIImage imageNamed:@"bedside"];
+    bedStation.vcname = @"ATCPatientViewController";
+    
+    
+    ATCPatient * bedStation3 = [ATCPatient new];
+    bedStation3.name = @"Jennie";
+    bedStation3.lastname=@"Jones";
+    bedStation3.dob =  @"1/1/xx";
+    bedStation3.pid = @"J123";
+    bedStation3.wristbandCode = @"5012345678900";
+    bedStation3.displayStartDate =@1414779895;
+    bedStation3.displayStopDate = @1415404800;
+    bedStation3.type = kbed;
+   
+   
+    
+    bedStation3.beaconKey = bed2.hashedBeacon;
+    bedStation3.icon = [UIImage imageNamed:@"patient"];
+   // bedStation2.data = @{@"patient":bedStation2};
+    bedStation3.title = [NSString stringWithFormat:@"%@ %@",bedStation3.name, bedStation3.lastname];
+    bedStation3.image =[UIImage imageNamed:@"bedside"];
+    bedStation3.vcname = @"ATCPatientViewController";
+    
+    NSDate * past = [NSDate distantPast];
+    NSDate * future = [NSDate distantFuture];
     
     ATCStation * sinkStation = [ATCStation new];
     sinkStation.beaconKey =sink.hashedBeacon;
-    sinkStation.icon = [UIImage imageNamed:@"sink_station"];
+    sinkStation.icon = [UIImage imageNamed:@"sink_icon"];
+    sinkStation.image =[UIImage imageNamed:@"sink"];
     sinkStation.title = @"Sink";
     sinkStation.vcname=@"ATCStationViewController";
+    sinkStation.displayStopDate =@([future timeIntervalSince1970]);
+    sinkStation.displayStartDate =@([past timeIntervalSince1970]);
     
     ATCStation * simLabStation = [ATCStation new];
     simLabStation.beaconKey = room.hashedBeacon;
@@ -139,7 +155,9 @@
     simLabStation.title = @"Sim Lab";
     simLabStation.image = [UIImage imageNamed:@"simlab"];
     simLabStation.vcname = @"ATCHospitalRoomViewController";
-    
+    simLabStation.displayStopDate =@([future timeIntervalSince1970]);
+    simLabStation.displayStartDate =@([past timeIntervalSince1970]);
+    simLabStation.data =@{@"patients":@[bedStation,bedStation3]};
     
     ATCStation * debriefingRoomStation= [ATCStation new];
     debriefingRoomStation.beaconKey = debriefingRoom.hashedBeacon;
@@ -147,28 +165,27 @@
     debriefingRoomStation.title = @"Debriefing Room";
     debriefingRoomStation.image = [UIImage imageNamed:@"briefing_room"];
     debriefingRoomStation.vcname = @"ATCStationViewController";
+    debriefingRoomStation.displayStopDate =@([future timeIntervalSince1970]);
+    debriefingRoomStation.displayStartDate =@([past timeIntervalSince1970]);
     
     
-    NSDictionary * appData = @{@"stations":@[bedStation, bedStation2, sinkStation,simLabStation,debriefingRoomStation]};
-    NSString * b1key = [ATCBeacon hashedBeacon:bed.identifier major:bed.major.integerValue minor:bed.minor.integerValue];
-    NSDictionary * data = @{b1key:@{@"type":@(kbed), @"patients":@[p2,p3,p4]}};
-    _contentManager.data = data;
+    NSDictionary * appData = @{@"stations":@[sinkStation,simLabStation,debriefingRoomStation,bedStation, bedStation3]};
+    _contentManager.data = appData;
 
-    
-    
-    
 }
 
 -(void)setUp{
     _state =[ATCState new];
     _beaconManager = [JMCBeaconManager new];
     _networkManager= [ATCBeaconNetworkUtilities new];
-    _contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray * patients) {
-        self.state.stations = patients;
-        NSLog(@"\n\n\n____CURRENT PATIENTS ____ %@  \n", self.state.stations);
+    _contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray * stations) {
+        self.state.stations =stations;
+        NSLog(@"\n\n\n____CURRENT STATIONS ____ %@  \n", self.state.stations);
     }];
-#warning I should update it from the cloud!
     
+    
+
+#warning I should update it from the cloud!
     NSString * kontaktIo =@"f7826da6-4fa2-4e98-8024-bc5b71e0893e";
     NSString * estimote = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D";
     
@@ -203,8 +220,8 @@
     ATCBeacon * debriefingRoom =[ATCBeacon new];
     debriefingRoom.iOSidentifier = @"Debriefing room";
     debriefingRoom.identifier = estimote;
-    debriefingRoom.major =  @1;
-    debriefingRoom.minor =  @3;
+    debriefingRoom.major =  @10229;
+    debriefingRoom.minor =  @12626;
     
     sink.type = ksink;
     room.type = kroom;
@@ -239,6 +256,11 @@
             ATCBeacon * beacon = [dictionary objectForKey:key];
             [strongSelf.state registerProximity:beacon andProximity:proximity];
             
+           //send data to content manager that figures out nearby stations 
+            NSArray * stations =[strongSelf.contentManager contentForBeaconID:proximityID andMajor:@(major) andMinor:@(minor) proximity:proximity];
+            if(stations!=strongSelf.state.stations){
+                strongSelf.state.stations = stations;
+            }
             [strongSelf.state logicFor:beacon];
             
             if([strongSelf sendProximityData:@(beacon.type) state:@(proximity) andDate:now pid:key]){
@@ -267,8 +289,8 @@
           
             
             }];
-            
-            [strongSelf.state registerRegionEvent:beacon andState:state];
+            ATCStation * station = [strongSelf.contentManager.stations objectForKey:key];
+            [strongSelf.state registerRegionEvent:station andState:state];
 
                         
         };

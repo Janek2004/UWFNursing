@@ -7,8 +7,11 @@
 //
 
 #import "ATCStationViewController.h"
+#import "ATCStation.h"
 
 @interface ATCStationViewController ()
+@property (strong, nonatomic) IBOutlet UILabel *stationTitle;
+@property (strong, nonatomic) IBOutlet UIImageView *stationImage;
 
 @end
 
@@ -17,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if(_station){
+        self.stationTitle.text = self.station.title;
+        self.stationImage.image = self.station.image;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +31,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+-(void)setStation:(ATCStation *)station{
+    _station = station;
+    self.stationTitle.text = self.station.title;
+    self.stationImage.image = self.station.image;
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

@@ -16,6 +16,8 @@
 
 @interface ATCBeaconContentManager()
 @property (nonatomic,copy) void (^stationsBlock)(NSArray *);
+@property (nonatomic,strong) NSArray * stationsArray;
+@property (nonatomic,strong) NSMutableDictionary * stationsCompleteDictionary;
 
 @end
 
@@ -27,15 +29,15 @@
 -(instancetype)init{
     if(self = [super init]){
         _stations = [NSMutableDictionary new];
-
+        _stationsCompleteDictionary =[NSMutableDictionary new];
     }
     return self;
 }
 
--(id)initWithCompletion:(void (^)(NSArray *))patientsBlock{
+-(id)initWithCompletion:(void (^)(NSArray *))stationsBlock{
     self = [self init];
     if(self){
-        self.stationsBlock = [patientsBlock copy];
+        self.stationsBlock = [stationsBlock copy];
     }
     return self;
 }
@@ -46,43 +48,50 @@
 -(NSArray *)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)proximity{
     
         NSString *key =  [ATCBeacon hashedBeacon:beaconId major:major.integerValue minor:minor.integerValue];
-        //if([self.data objectForKey:key]) return self.patients;
-        NSDictionary * beaconData = [self.data objectForKey:key];
+
+        ATCStation * station =[self.stationsCompleteDictionary objectForKey:key];
+        NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
     
-        NSInteger type = [[beaconData objectForKey:@"type"]integerValue];
-        if(type != kbed) return self.stations.allValues;
-        //get patients
-        NSArray *patients = [beaconData objectForKey:@"patients"];
-        for(ATCPatient *patient in patients)
-        {
-           NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
-           if(patient.displayStartDate.integerValue<timestamp&&patient.displayStopDate.integerValue>timestamp){
-               if(proximity== CLProximityUnknown){
-                  [self.stations removeObjectForKey:patient.pid];
+    //if it doesn't exist we need to add it.
+        if(![self.stations objectForKey:key]){
+            if(proximity!=0){
+                if(station.displayStartDate.integerValue<timestamp&&station.displayStopDate.integerValue>timestamp){
+                   [self.stations setObject:station  forKey:key];
                 }
-               else{
-                   [self.stations setObject:patient forKey:patient.pid];
-               }
+                
+                if(!station.displayStartDate.integerValue<timestamp&&!station.displayStopDate){
+                    [self.stations setObject:station  forKey:key];
+                }
             }
-           else{
-               [self.stations removeObjectForKey:patient.pid];
-           
-           }
+            return self.stations.allValues;
         }
-    
-    return self.stations.allValues;
+    //it should exist but proximity is unknown. Therefore we need to remove it
+        if(proximity == 0){
+            [self.stations removeObjectForKey:key];
+            return self.stations.allValues;
+        }
+
+
+//    //content is expired or not ready yet.
+//        if(station.displayStartDate.integerValue < timestamp&&!station.displayStopDate){
+//            [self.stations removeObjectForKey:key];
+//            return self.stations.allValues;
+//        }
+    //other cases, simply display it and return the stations
+  [self.stations setObject:station forKey:key];
+   return self.stations.allValues;
 }
 
--(void)addPatient:(ATCPatient *)patient id:(NSString *)bid{
+
+-(void)setData:(NSDictionary *)data{
+    _data =data;
+    NSArray *array = [data objectForKey:@"stations"];
+    for(ATCStation * station in array){
+        [self.stationsCompleteDictionary setObject:station forKey:station.beaconKey];
+    }
     
-    [self.stations setObject:@{@"date":[NSDate new],@"patient":patient} forKey:bid];
-    
-                   
 }
 
--(void)removeAll;{
-    [self.stations removeAllObjects];
-}
 
 
 @end

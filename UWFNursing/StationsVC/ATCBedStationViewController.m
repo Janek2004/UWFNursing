@@ -19,7 +19,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property(strong, nonatomic)DataSource * datasource;
-
 @property(strong, nonatomic)NSArray *patients;
 
 

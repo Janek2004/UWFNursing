@@ -31,7 +31,17 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [_delegate.state removeObserver:self forKeyPath:@"location"];
+    @try {
+         [_delegate.state removeObserver:self forKeyPath:@"location"];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Exception %@",exception);
+    }
+    @finally {
+        
+    }
+    
+   
 }
 
 ///**PRoximity Check */

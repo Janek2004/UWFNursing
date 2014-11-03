@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ATCStation;
 @interface ATCStationViewController : UIViewController
-
+@property(nonatomic,strong) ATCStation * station;
 @end

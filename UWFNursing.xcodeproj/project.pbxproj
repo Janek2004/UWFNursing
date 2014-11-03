@@ -137,6 +137,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F10D00F1A08084E00512266 /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocols.h; sourceTree = "<group>"; };
 		4F1AA61419DB3DBA00825E6A /* ATCBeaconContentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCBeaconContentManager.h; sourceTree = "<group>"; };
 		4F35538419E585E300F48092 /* Girls.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Girls.pdf; sourceTree = "<group>"; };
 		4F35538619E599B700F48092 /* ATCNetworkTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCNetworkTest.h; path = Tests/ATCNetworkTest.h; sourceTree = "<group>"; };
@@ -430,6 +431,8 @@
 				82C804331A050FD8004E7294 /* ATCStationViewController.m */,
 				82C804361A05105D004E7294 /* ATCHospitalRoomViewController.h */,
 				82C804371A05105D004E7294 /* ATCHospitalRoomViewController.m */,
+				4F6C864B1A040FDC0093E72C /* ATCPatientViewController.h */,
+				4F6C864C1A040FDC0093E72C /* ATCPatientViewController.m */,
 			);
 			name = StationsVC;
 			sourceTree = "<group>";
@@ -437,8 +440,6 @@
 		4F6C864F1A040FE30093E72C /* Patient View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4F6C864B1A040FDC0093E72C /* ATCPatientViewController.h */,
-				4F6C864C1A040FDC0093E72C /* ATCPatientViewController.m */,
 			);
 			name = "Patient View Controller";
 			sourceTree = "<group>";
@@ -455,6 +456,7 @@
 				4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */,
 				4F1AA61419DB3DBA00825E6A /* ATCBeaconContentManager.h */,
 				4F35538A19E6E1C400F48092 /* ATCState.h */,
+				4F10D00F1A08084E00512266 /* Protocols.h */,
 				4F35538B19E6E1C400F48092 /* ATCState.m */,
 				823D3B3419F8399F0018947A /* ATCNavigationViewController.h */,
 				823D3B3519F8399F0018947A /* ATCNavigationViewController.m */,
@@ -611,7 +613,7 @@
 				ORGANIZATIONNAME = "Janusz Chudzynski";
 				TargetAttributes = {
 					4F6528C11988123B00030100 = {
-						DevelopmentTeam = BZUY5AR8YB;
+						DevelopmentTeam = 8KV53E363M;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;

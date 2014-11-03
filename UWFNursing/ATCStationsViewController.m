@@ -13,6 +13,7 @@
 #import "ATCPatient.h"
 #import "ATCState.h"
 #import "ATCPatientViewController.h"
+#import "Protocols.h"
 
 @import CoreLocation;
 
@@ -37,16 +38,17 @@
         }
     }];
     
-    self.datasource.headers = @[@"Nearby"];
+    self.datasource.headers = @[@"Nearby Locations"];
     [self.tableView reloadData];
-    
+     self.tableView.delegate = self;
+   
 
 }
 
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if([keyPath isEqualToString:@"patients"]){
+    if([keyPath isEqualToString:@"stations"]){
         NSArray * patients = [change objectForKey:NSKeyValueChangeNewKey];
         NSLog(@"%@",patients);
         
@@ -96,7 +98,7 @@
     //get row
     ATCStation* station = [self.datasource.items objectAtIndex:indexPath.row];
     if(!station.vcname) return;
-    UIViewController * vc=NULL;
+    id <StationVC> vc;//=NULL;
     @try {
         vc = [self.storyboard instantiateViewControllerWithIdentifier:station.vcname];
     }
@@ -106,7 +108,9 @@
     }
     @finally {
         if(vc){
-            [self.navigationController pushViewController:vc animated:YES];
+            [vc setStation:station];
+//            [vc setStation:station];
+            [self.navigationController pushViewController:(UIViewController *)vc animated:YES];
         }
     }
 }

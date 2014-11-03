@@ -26,15 +26,7 @@
     [self.patientsData setObject:patient.dob forKey:@"dob"];
     [self.patientsData setObject:patient.pid    forKey:@"pid"];
     
-    self.datasource = [[DataSource alloc]initWithItems:self.patientsData.allKeys cellIdentifier:@"patients_cell" configureCellBlock:^(UITableViewCell *cell, NSString * key, id indexPath) {
-        cell.detailTextLabel.text = [self.patientsData objectForKey:key];
-        cell.textLabel.text = key;
-        
-        
-    }];
-    self.tableView.dataSource = self.datasource;
-    [self.tableView reloadData];
-    self.datasource.headers= @[@"Patient's Information"];
+  
     
     
     _patient = patient;
@@ -42,7 +34,15 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    if(self.patient) [self setPatient:self.patient];
+     self.datasource = [[DataSource alloc]initWithItems:self.patientsData.allKeys cellIdentifier:@"patients_cell" configureCellBlock:^(UITableViewCell *cell, NSString * key, id indexPath) {
+        cell.detailTextLabel.text = [self.patientsData objectForKey:key];
+        cell.textLabel.text = key;
+        
+        
+    }];
+    self.tableView.dataSource = self.datasource;
+    self.datasource.headers= @[@"Patient's Information"];
+    [self.tableView reloadData];
     
 }
 

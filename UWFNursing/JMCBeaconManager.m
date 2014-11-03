@@ -297,6 +297,8 @@
         
             if(self.beaconFound){
                 self.beaconFound(beacon.proximityUUID.UUIDString, beacon.major.intValue, beacon.minor.intValue, beacon.proximity);
+                NSLog(@"%ld",beacon.proximity);
+                
             }
     }
     

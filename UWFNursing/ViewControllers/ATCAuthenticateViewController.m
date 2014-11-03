@@ -17,6 +17,8 @@
 @interface ATCAuthenticateViewController ()<UIAlertViewDelegate>
 @property (nonatomic,strong) ATCBeaconNetworkUtilities * networkUtilities;
 @property (strong, nonatomic) IBOutlet UILabel *message_label;
+@property (strong, nonatomic) IBOutlet UITextField *usernameLabel;
+@property (strong, nonatomic) IBOutlet UITextField *passwordLabel;
 
 @end
 
@@ -34,7 +36,8 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.message_label.text=nil;
-    [self authenticate:nil];
+    //[self authenticate:nil];
+    [self.usernameLabel becomeFirstResponder];
     
 }
 
@@ -46,6 +49,29 @@
 
 /** Authenticating User */
 - (IBAction)authenticate:(id)sender {
+    
+    [_networkUtilities loginUserWithUsername:self.usernameLabel.text andPassword:self.passwordLabel.text withCompletionHandler:^(NSError *error, NSUInteger userId,NSInteger session, NSString *errorMessage) {
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(!error && !errorMessage &&session != 0 &&userId!=0)
+            {    //send notification
+                NSNotification * notification =[[NSNotification alloc]initWithName:@"LOGIN" object:nil userInfo:@{@"user":@(userId), @"session":@(session)}];
+                [[NSNotificationCenter defaultCenter]postNotification:notification];
+                
+                UIViewController *homeVC= [self.storyboard instantiateViewControllerWithIdentifier:@"ATCPrimaryNurseChoice"];
+                [self.navigationController pushViewController:homeVC animated:YES];
+            }
+            else{
+                if(errorMessage) self.message_label.text = errorMessage;
+                
+            }
+        });
+        
+    }];
+}
+
+
+-(void)unused{
     LAContext *context = [[LAContext alloc] init];
     __block  NSString *msg;
     
@@ -56,9 +82,9 @@
              if (success) {
                  msg =[NSString stringWithFormat:NSLocalizedString(@"EVALUATE_POLICY_SUCCESS", nil)];
                  dispatch_async(dispatch_get_main_queue(), ^{
-                 ATCStationsViewController *homeVC= [self.storyboard instantiateViewControllerWithIdentifier:@"ATCViewController"];
-                 
-                 [self.navigationController pushViewController:homeVC animated:YES];
+                     ATCStationsViewController *homeVC= [self.storyboard instantiateViewControllerWithIdentifier:@"ATCViewController"];
+                     
+                     [self.navigationController pushViewController:homeVC animated:YES];
                  });
                  
                  
@@ -68,25 +94,26 @@
                  switch (authenticationError.code) {
                      case LAErrorUserFallback:
                          //show passcode
-                        [self showDefaultAuthentication];
+                         [self showDefaultAuthentication];
                          break;
                          
                      default:
-                        [self showDefaultAuthentication];
+                         [self showDefaultAuthentication];
                          break;
                  }
                  
-                // show the authentication UI with our reason string
+                 // show the authentication UI with our reason string
                  msg = [NSString stringWithFormat:NSLocalizedString(@"EVALUATE_POLICY_WITH_ERROR", nil), authenticationError.localizedDescription];
              }
              
          }];
-   
+        
     }
     else{
         [self showDefaultAuthentication];
     }
 }
+
 
 /** In case if 'fancy' authentication fails */
 -(void)showDefaultAuthentication{
@@ -126,6 +153,9 @@
         });
         
     }];
+    
+    
+    
 
 }
 
@@ -145,4 +175,6 @@
 }
 */
 
+- (IBAction)usernameLabel:(id)sender {
+}
 @end
