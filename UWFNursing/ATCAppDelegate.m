@@ -46,7 +46,7 @@
     
     ATCBeacon * sink =[ATCBeacon new];
     sink.iOSidentifier =@"SINK";
-    sink.identifier = kontaktIo;
+    sink.identifier = estimote;
     sink.major = @46515;
     sink.minor = @14779;
     
@@ -67,7 +67,7 @@
     bed2.identifier =estimote;
     bed2.major =@30412;
     bed2.minor = @5559;
-    bed2.type = kbed;
+  
     
     ATCBeacon * debriefingRoom =[ATCBeacon new];
     debriefingRoom.iOSidentifier = @"Debriefing room";
@@ -79,7 +79,7 @@
     room.type = kroom;
     bed.type = kbed;
     debriefingRoom.type =kbriefing;
-    
+      bed2.type = kbed;
     
     ATCPatient * p2 = [ATCPatient new];
     p2.name = @"Skylar";

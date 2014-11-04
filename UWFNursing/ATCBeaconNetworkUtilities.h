@@ -35,7 +35,7 @@ Logs in to database
 /**Overrides warning by user*/
 -(void)overrideWarningForSession:(NSInteger)session andNurse:(NSUInteger)userId ;
 
-
+-(void)showWarning:(NSInteger)session andNurse:(NSUInteger)userId ;
 
 /**
 *  Sends data about regions to the database

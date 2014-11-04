@@ -364,9 +364,20 @@
 }
 
 -(void)showWarning:(BOOL)show{
-    
     if(show){
         if(!warningOnScreen){
+            @try {
+                ATCAppDelegate * del = [[UIApplication sharedApplication]delegate];
+                [del.networkManager showWarning:self.session andNurse:self.user];
+                
+            }
+            @catch (NSException *exception) {
+                
+            }
+            @finally {
+                
+            }
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
                 [delegate.window addSubview:_warningVC.view];

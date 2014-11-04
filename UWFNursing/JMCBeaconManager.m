@@ -57,6 +57,7 @@
     self = [super init];
     if(self){
         _locationManager = [[CLLocationManager alloc]init];
+        
         [_locationManager requestAlwaysAuthorization];
         _regions = [NSMutableArray new];
         _locationManager.delegate = self;

@@ -138,6 +138,21 @@
         }}];
 
 }
+-(void)showWarning:(NSInteger)session andNurse:(NSUInteger)userId{
+    NSString * urlstring =[NSString stringWithFormat:@"%@&action=warning&session=%ld&nurse=%ld",BEACON_URL, (long)session, (long)userId];
+    
+    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if(connectionError){
+            NSLog(@" Error %@ ",connectionError);
+            
+            
+            return;
+        }}];
+
+}
+
 
 /**Overrides warning by user*/
 -(void)overrideWarningForSession:(NSInteger)session andNurse:(NSUInteger)userId ;{
