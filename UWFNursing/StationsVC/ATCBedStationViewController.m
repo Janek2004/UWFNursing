@@ -54,7 +54,7 @@
     if([segue.identifier isEqualToString:@"patient_segue"]){
         NSIndexPath * indexPath = [self.tableView indexPathForSelectedRow];
         ATCPatient * patient=  [self.datasource.items objectAtIndex:indexPath.row];
-        [segue.destinationViewController setPatient: patient];
+        [segue.destinationViewController setStation: patient];
     }
 }
 

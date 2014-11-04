@@ -56,6 +56,7 @@
     self.tableView.dataSource = self.datasource;
     [self.tableView reloadData];
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //patient
     ATCPatient * patient = [self.datasource.items objectAtIndex:indexPath.row];
@@ -69,7 +70,7 @@
     }
     @finally {
         if(vc){
-            vc.patient = patient;
+            vc.station= patient;
             [self.navigationController pushViewController:vc animated:YES];
         }
     }

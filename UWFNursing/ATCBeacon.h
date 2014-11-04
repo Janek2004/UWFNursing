@@ -4,7 +4,7 @@
  */
 #import <Foundation/Foundation.h>
 
-enum beacontype{ksink,kbed,kroom,kbriefing};
+enum beacontype{kbed=1,kroom=2,kbriefing=3,ksink=4};
 
 @interface ATCBeacon : NSObject
     @property(nonatomic,strong) NSString * identifier;

@@ -7,14 +7,14 @@
 //
 @import CoreLocation;
 
-@interface ATCBeaconContentManager : NSObject {
-    
-}
+@interface ATCBeaconContentManager : NSObject
+@property (nonatomic,strong) NSDictionary * data; //contains raw data
+@property (nonatomic,strong) NSMutableDictionary * stations; //current stations
+@property (nonatomic,strong) NSMutableDictionary * stationsCompleteDictionary;
 
-@property (nonatomic,strong) NSDictionary * data; //contains all information about
-@property (nonatomic,strong) NSMutableDictionary * stations; //
+
 -(NSArray *)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)pr;
+-(NSArray *)setNearbyBeacons:(NSArray*)beacons;
 -(id)initWithCompletion:(void (^)(NSArray *))stationsBlock;
-//-(void)removeAll;
 
 @end

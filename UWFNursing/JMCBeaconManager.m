@@ -288,17 +288,20 @@
 
 /**Tells the delegate that one or more beacons are in range. */
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region{
-
+    
+    if(self.nearbyBeacons){
+        self.nearbyBeacons(beacons);
+    }
+    
     for(CLBeacon *beacon in beacons)
     {
             [self checkStateForRegion:region];
             proximity = beacon.proximity;
-            [self logMessage:[NSString stringWithFormat:@"Beacon range: %@",beacon]];
+          //  [self logMessage:[NSString stringWithFormat:@"Beacon range: %@",beacon]];
         
             if(self.beaconFound){
                 self.beaconFound(beacon.proximityUUID.UUIDString, beacon.major.intValue, beacon.minor.intValue, beacon.proximity);
-                NSLog(@"%ld",beacon.proximity);
-                
+                NSLog(@"Proximity: %ld",beacon.proximity);
             }
     }
     

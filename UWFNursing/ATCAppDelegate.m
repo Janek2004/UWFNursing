@@ -34,15 +34,12 @@
 
 
 
--(void)parseData:(ATCBeacon *)_bed{
+-(NSDictionary *)parseData{
     ATCPatient * p1 = [[ATCPatient alloc]init];
     p1.name = @"Skyler";
     p1.lastname=@"Jansen";
     p1.dob =  @"3/11/xx";
     p1.pid = @"MR PCS33300";
-    
-    
-
     
     NSString * kontaktIo =@"f7826da6-4fa2-4e98-8024-bc5b71e0893e";
     NSString * estimote = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D";
@@ -50,8 +47,8 @@
     ATCBeacon * sink =[ATCBeacon new];
     sink.iOSidentifier =@"SINK";
     sink.identifier = kontaktIo;
-    sink.major = @33690;
-    sink.minor = @9767;
+    sink.major = @46515;
+    sink.minor = @14779;
     
     ATCBeacon * room =[ATCBeacon new];
     room.iOSidentifier = @"room";
@@ -68,8 +65,8 @@
     ATCBeacon * bed2 =[ATCBeacon new];
     bed2.iOSidentifier = @"bed_right";
     bed2.identifier =estimote;
-    bed2.major =@1;
-    bed2.minor = @4;
+    bed2.major =@30412;
+    bed2.minor = @5559;
     bed2.type = kbed;
     
     ATCBeacon * debriefingRoom =[ATCBeacon new];
@@ -93,7 +90,6 @@
     p2.displayStartDate=@1415404800;
     p2.displayStopDate= @1446940800;
     p2.type = kbed;
-    p2.type= kbed;
     p2.beaconKey = bed.hashedBeacon;
     p2.icon = [UIImage imageNamed:@"patient"];
 
@@ -171,7 +167,19 @@
     
     NSDictionary * appData = @{@"stations":@[sinkStation,simLabStation,debriefingRoomStation,bedStation, bedStation3]};
     _contentManager.data = appData;
-
+    NSArray * beacons = @[room, sink, bed, bed2, debriefingRoom];
+    
+    NSMutableDictionary * dictionary =[@{}mutableCopy];
+    
+    
+    for(ATCBeacon * beacon in beacons ){
+        [_beaconManager registerRegionWithProximityId:beacon.identifier  andIdentifier:beacon.iOSidentifier    major:beacon.major.intValue   andMinor:beacon.minor.intValue];
+        NSString * key = [ATCBeacon hashedBeacon:beacon.identifier major:beacon.major.integerValue minor:beacon.minor.integerValue];
+        
+        [dictionary setObject:beacon forKey:key];
+    }
+    
+    return dictionary;
 }
 
 -(void)setUp{
@@ -186,68 +194,15 @@
     
 
 #warning I should update it from the cloud!
-    NSString * kontaktIo =@"f7826da6-4fa2-4e98-8024-bc5b71e0893e";
-    NSString * estimote = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D";
-    
-    __block NSDate * date = [NSDate new];
     NSMutableString * message =[NSMutableString new];
-    
-    ATCBeacon * sink =[ATCBeacon new];
-    sink.iOSidentifier =@"SINK";
-    sink.identifier = kontaktIo;
-    sink.major = @33690;
-    sink.minor = @9767;
-    
-    ATCBeacon * room =[ATCBeacon new];
-    room.iOSidentifier = @"room";
-    room.identifier =kontaktIo;
-    room.major =@6914;
-    room.minor = @5919;
-    
-    ATCBeacon * bed =[ATCBeacon new];
-    bed.iOSidentifier = @"bed";
-    bed.identifier =kontaktIo;
-    bed.major =@43332;
-    bed.minor = @62552;
-    
-    ATCBeacon * bed2 =[ATCBeacon new];
-    bed2.iOSidentifier = @"bed_right";
-    bed2.identifier =estimote;
-    bed2.major =@1;
-    bed2.minor = @4;
-    bed2.type = kbed;
-    
-    ATCBeacon * debriefingRoom =[ATCBeacon new];
-    debriefingRoom.iOSidentifier = @"Debriefing room";
-    debriefingRoom.identifier = estimote;
-    debriefingRoom.major =  @10229;
-    debriefingRoom.minor =  @12626;
-    
-    sink.type = ksink;
-    room.type = kroom;
-    bed.type = kbed;
-    debriefingRoom.type =kbriefing;
-
-    [self parseData:room];
-    
-    NSArray * beacons = @[room, sink, bed, bed2, debriefingRoom];
-    
-    NSMutableDictionary * dictionary =[@{}mutableCopy];
+  __block  NSDate * date;
+    NSMutableDictionary * dictionary = [[self parseData]mutableCopy];
    __block NSInteger tempProximity = -1;
-
     
     if([_beaconManager isSupported:message]){
         //that will be patient
         
-        for(ATCBeacon * beacon in beacons ){
-            [_beaconManager registerRegionWithProximityId:beacon.identifier  andIdentifier:beacon.iOSidentifier    major:beacon.major.intValue   andMinor:beacon.minor.intValue];
-            NSString * key = [ATCBeacon hashedBeacon:beacon.identifier major:beacon.major.integerValue minor:beacon.minor.integerValue];
-            
-            [dictionary setObject:beacon forKey:key];
-        }
-        
         __weak __typeof__(self) weakSelf = self;
-        
         _beaconManager.beaconFound =^void(NSString * proximityID, int major, int minor, CLProximity proximity){
             __typeof__(self) strongSelf = weakSelf;
             
@@ -256,43 +211,34 @@
             ATCBeacon * beacon = [dictionary objectForKey:key];
             [strongSelf.state registerProximity:beacon andProximity:proximity];
             
-           //send data to content manager that figures out nearby stations 
-            NSArray * stations =[strongSelf.contentManager contentForBeaconID:proximityID andMajor:@(major) andMinor:@(minor) proximity:proximity];
-            if(stations!=strongSelf.state.stations){
-                strongSelf.state.stations = stations;
-            }
+            strongSelf.state.stations = [strongSelf.contentManager contentForBeaconID:proximityID andMajor:@(major) andMinor:@(minor) proximity:proximity];
+            
+            //send data to content manager that figures out nearby stations
             [strongSelf.state logicFor:beacon];
             
             if([strongSelf sendProximityData:@(beacon.type) state:@(proximity) andDate:now pid:key]){
-
                 [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:beacon.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.user] withErrorCompletionHandler:^(NSError *error) {
                     
-                    [[strongSelf beaconManager] saveLog:error.debugDescription];
+                   // [[strongSelf beaconManager] saveLog:error.debugDescription];
                     tempProximity =proximity;
                 }];
                 date = now;
-            }            
-            
+            }
         };
         __weak __typeof__(self) weakSelf2 = self;
         _beaconManager.regionEvent =^void(NSString * proximityID, int major, int minor, NSUInteger state){
             __typeof__(self) strongSelf = weakSelf2;
-            
             if(strongSelf.state.session == 0) return;
             NSString *key =   [ATCBeacon hashedBeacon:proximityID major:major minor:minor];
             ATCBeacon * beacon = [dictionary objectForKey:key];
-   
             NSLog(@"Region Event %d, %d state (0 unknown, inside, outside): %d",major,minor, (int)state);
-         
             
             [[strongSelf networkManager] sendRegionNotification:major minor:minor proximityID:beacon.identifier  regionState:state user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.user] withErrorCompletionHandler:^(NSError *error) {
-          
-            
             }];
-            ATCStation * station = [strongSelf.contentManager.stations objectForKey:key];
+            
+            ATCStation * station = [strongSelf.contentManager.stationsCompleteDictionary  objectForKey:key];
             [strongSelf.state registerRegionEvent:station andState:state];
-
-                        
+            
         };
     }
     else {

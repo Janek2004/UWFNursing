@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ATCPatient;
+@class ATCStation;
 @interface ATCPatientViewController : UIViewController
-@property  (nonatomic,strong)ATCPatient * patient;
+@property(nonatomic,strong) ATCStation * station;
 
 
 @end

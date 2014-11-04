@@ -63,6 +63,7 @@
  *  Block used for monitoring and processing the beacons 
  */
 @property(nonatomic, copy) void (^beaconFound)(NSString * uuid, int major, int minor, CLProximity proximity);
+@property(nonatomic, copy) void (^nearbyBeacons)(NSArray * beacons);
 
 /**
  *  Block used for monitoring region events

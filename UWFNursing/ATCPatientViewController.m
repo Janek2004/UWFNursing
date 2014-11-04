@@ -9,28 +9,29 @@
 #import "ATCPatientViewController.h"
 #import  "ATCPatient.h"
 #import  "DataSource.h"
+#import "ATCStation.h"
+
 @interface ATCPatientViewController()
 @property (strong, nonatomic) IBOutlet UIImageView *patientIcon;
 @property (strong, nonatomic)DataSource * datasource;
 @property (strong, nonatomic)NSMutableDictionary * patientsData;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) ATCPatient * patient;
+
 
 @end
 
 @implementation ATCPatientViewController
--(void)setPatient:(ATCPatient *)patient{
-    if(!_patientsData)_patientsData = [NSMutableDictionary new];
 
-    [self.patientsData setObject:patient.name forKey:@"name"];
-    [self.patientsData setObject:patient.lastname forKey:@"lastName"];
-    [self.patientsData setObject:patient.dob forKey:@"dob"];
-    [self.patientsData setObject:patient.pid    forKey:@"pid"];
-    
-  
-    
-    
-    _patient = patient;
+-(void)setStation:(ATCStation *)station{
+    if(!_patientsData) _patientsData = [NSMutableDictionary new];
+    self.patient = (ATCPatient *)station;
+    [self.patientsData setObject:_patient.name forKey:@"name"];
+    [self.patientsData setObject:_patient.lastname forKey:@"lastName"];
+    [self.patientsData setObject:_patient.dob forKey:@"dob"];
+    [self.patientsData setObject:_patient.pid  forKey:@"pid"];
 }
+
 
 -(void)viewDidLoad{
     [super viewDidLoad];

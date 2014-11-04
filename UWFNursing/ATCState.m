@@ -57,6 +57,7 @@
 
 -(void)registerRegionEvent:(ATCStation*)beacon andState:(CLRegionState)state;
 {
+    
     switch (beacon.type) {
         case kbed:{
             [self registerPatientRegionEvent:state];
@@ -70,6 +71,7 @@
             }
             break;}
         case ksink:{
+            
             [self registerSinkRegionEvent:state];
             NSTimeInterval time = [[NSDate new] timeIntervalSinceDate:self.lastNotification];
             if (time> 15||!self.lastNotification) {
@@ -107,7 +109,7 @@
                 break;}
             case ksink:{
                 [self registerSinkProximityEvent:proximity];
-                
+                NSLog(@"Sink Proximity");
                 
                 break;}
             case kbriefing:{
@@ -171,6 +173,7 @@
             [temp addObject:element];
         }
     }
+    
     self.regionEvents = [NSArray arrayWithArray:[temp copy]];
     
     if(array.count<30){
@@ -256,6 +259,8 @@
     _patientsRegionEvents = [NSMutableArray new];
     _roomRegionEvents = [NSMutableArray new];
     
+    _regionEvents = [NSArray new];
+    
     _user = 0;
     _session = 0;
 
@@ -339,17 +344,9 @@
     id mySort = ^(NSDictionary * obj1, NSDictionary * obj2){
         return [[obj1 objectForKey:@"date"] compare:[obj2 objectForKey:@"date"]];
     };
-    
-    
-    
-    
-    NSArray * sortedEvents = [events sortedArrayUsingComparator:mySort];
-   // NSLog(@"Sorted Events are: %@",sortedEvents);
-//    if(sortedEvents.count >1){
-//        return [sortedEvents objectAtIndex:sortedEvents.count -2];
-//    }
 
-    
+    NSArray * sortedEvents = [events sortedArrayUsingComparator:mySort];
+
     if([[[sortedEvents lastObject] objectForKey:@"type"]integerValue] == room){
         //get the last event
         for(NSInteger index = sortedEvents.count-1; index>=0; index--){
@@ -432,7 +429,7 @@
                   break;
             }
             case kbriefing:{
-                NSLog(@"You are in the briefing room");
+               // NSLog(@"You are in the briefing room");
                 if(lastEvent){
                         if([[lastEvent objectForKey:@"type"]integerValue] != [@(ksink)integerValue])
                         {
@@ -452,7 +449,7 @@
                 break;}
             case kroom: // no action
                 [self showWarning:NO];
-                NSLog(@"You are in the room.");
+               // NSLog(@"You are in the room.");
                 break;
                 return  YES;
             default:
@@ -463,10 +460,6 @@
 
 
 -(NSInteger)checkLocation:(ATCBeacon *)beacon{
- 
-
-//    NSDictionary * dict = [events lastObject];
-//    NSInteger type =[[dict objectForKey:@"type"]integerValue];
     
     switch (beacon.type) {
         case kbed:{

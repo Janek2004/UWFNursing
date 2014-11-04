@@ -50,7 +50,7 @@
 {
     if([keyPath isEqualToString:@"stations"]){
         NSArray * patients = [change objectForKey:NSKeyValueChangeNewKey];
-        NSLog(@"%@",patients);
+        NSLog(@"Patients: %@",patients);
         
         self.datasource.items = patients;
         self.tableView.dataSource = self.datasource;
