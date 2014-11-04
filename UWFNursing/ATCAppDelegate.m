@@ -108,7 +108,6 @@
     bedStation.type = kbed;
     bedStation.beaconKey =bed.hashedBeacon;
     bedStation.icon = [UIImage imageNamed:@"patient"];
-  
     bedStation.title = [NSString stringWithFormat:@"%@ %@",bedStation.name, bedStation.lastname];
     bedStation.image = [UIImage imageNamed:@"bedside"];
     bedStation.vcname = @"ATCPatientViewController";
@@ -123,12 +122,8 @@
     bedStation3.displayStartDate =@1414779895;
     bedStation3.displayStopDate = @1415404800;
     bedStation3.type = kbed;
-   
-   
-    
     bedStation3.beaconKey = bed2.hashedBeacon;
     bedStation3.icon = [UIImage imageNamed:@"patient"];
-   // bedStation2.data = @{@"patient":bedStation2};
     bedStation3.title = [NSString stringWithFormat:@"%@ %@",bedStation3.name, bedStation3.lastname];
     bedStation3.image =[UIImage imageNamed:@"bedside"];
     bedStation3.vcname = @"ATCPatientViewController";
@@ -144,6 +139,7 @@
     sinkStation.vcname=@"ATCStationViewController";
     sinkStation.displayStopDate =@([future timeIntervalSince1970]);
     sinkStation.displayStartDate =@([past timeIntervalSince1970]);
+    sinkStation.type = ksink;
     
     ATCStation * simLabStation = [ATCStation new];
     simLabStation.beaconKey = room.hashedBeacon;
@@ -154,6 +150,7 @@
     simLabStation.displayStopDate =@([future timeIntervalSince1970]);
     simLabStation.displayStartDate =@([past timeIntervalSince1970]);
     simLabStation.data =@{@"patients":@[bedStation,bedStation3]};
+    simLabStation.type=kroom;
     
     ATCStation * debriefingRoomStation= [ATCStation new];
     debriefingRoomStation.beaconKey = debriefingRoom.hashedBeacon;
@@ -163,7 +160,7 @@
     debriefingRoomStation.vcname = @"ATCStationViewController";
     debriefingRoomStation.displayStopDate =@([future timeIntervalSince1970]);
     debriefingRoomStation.displayStartDate =@([past timeIntervalSince1970]);
-    
+    debriefingRoom.type = kbriefing;
     
     NSDictionary * appData = @{@"stations":@[sinkStation,simLabStation,debriefingRoomStation,bedStation, bedStation3]};
     _contentManager.data = appData;
@@ -237,6 +234,8 @@
             }];
             
             ATCStation * station = [strongSelf.contentManager.stationsCompleteDictionary  objectForKey:key];
+            
+            
             [strongSelf.state registerRegionEvent:station andState:state];
             
         };
