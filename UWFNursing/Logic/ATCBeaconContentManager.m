@@ -106,6 +106,15 @@
    return self.stations.allValues;
 }
 
+-(NSArray *)removeBeacon:(NSString *)pid{
+    [self.stations removeObjectForKey:pid];
+    return self.stations.allValues;
+}
+
+-(NSArray *)addBeacon:(NSString *)pid{
+    [self.stations removeObjectForKey:pid];
+    return self.stations.allValues;
+}
 
 -(void)setData:(NSDictionary *)data{
     _data =data;

@@ -15,6 +15,9 @@
 
 -(NSArray *)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)pr;
 -(NSArray *)setNearbyBeacons:(NSArray*)beacons;
+-(NSArray *)removeBeacon:(NSString *)pid;
+-(NSArray *)addBeacon:(NSString *)pid;
+
 -(id)initWithCompletion:(void (^)(NSArray *))stationsBlock;
 
 @end

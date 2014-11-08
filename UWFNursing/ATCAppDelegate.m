@@ -225,8 +225,17 @@
         __weak __typeof__(self) weakSelf2 = self;
         _beaconManager.regionEvent =^void(NSString * proximityID, int major, int minor, NSUInteger state){
             __typeof__(self) strongSelf = weakSelf2;
+             NSString *key =   [ATCBeacon hashedBeacon:proximityID major:major minor:minor];
+            
+            if(state == CLRegionStateOutside||state==CLRegionStateUnknown){
+                strongSelf.state.stations = [strongSelf.contentManager removeBeacon:key];
+            }
+            else{
+                strongSelf.state.stations = [strongSelf.contentManager addBeacon:key];
+            }
+            
             if(strongSelf.state.session == 0) return;
-            NSString *key =   [ATCBeacon hashedBeacon:proximityID major:major minor:minor];
+           
             ATCBeacon * beacon = [dictionary objectForKey:key];
             NSLog(@"Region Event %d, %d state (0 unknown, inside, outside): %d",major,minor, (int)state);
             
@@ -234,8 +243,6 @@
             }];
             
             ATCStation * station = [strongSelf.contentManager.stationsCompleteDictionary  objectForKey:key];
-            
-            
             [strongSelf.state registerRegionEvent:station andState:state];
             
         };
