@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9n0-YL-LL5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9n0-YL-LL5">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -91,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-715" y="-389"/>
+            <point key="canvasLocation" x="-611" y="-538"/>
         </scene>
         <!--Primary Nurse Choice-->
         <scene sceneID="fDy-iK-oeM">
@@ -144,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBu-6J-TZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="59" y="-186"/>
+            <point key="canvasLocation" x="-228" y="-538"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lMA-UW-gkX">
@@ -161,7 +162,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EzW-oI-ISO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-982" y="-141"/>
+            <point key="canvasLocation" x="-1033" y="212"/>
         </scene>
         <!--Warning View Controller-->
         <scene sceneID="Edw-LI-2zB">
@@ -224,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CIN-s1-s2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-531" y="1567"/>
+            <point key="canvasLocation" x="451" y="905"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="JQr-bO-akv">
@@ -273,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QmT-uM-BCF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-299" y="669"/>
+            <point key="canvasLocation" x="145" y="113"/>
         </scene>
         <!--Documents-->
         <scene sceneID="bho-62-0jG">
@@ -312,7 +313,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OOl-d0-2nY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992" y="947"/>
+            <point key="canvasLocation" x="817" y="905"/>
         </scene>
         <!--Washing Hands Station View Controller-->
         <scene sceneID="3uS-md-qU3">
@@ -362,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lty-hg-1M8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="513" y="-570"/>
+            <point key="canvasLocation" x="151" y="-538"/>
         </scene>
         <!--Log View Controller-->
         <scene sceneID="Szh-NC-QLp">
@@ -401,7 +402,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YjH-1n-rRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-44" y="866"/>
+            <point key="canvasLocation" x="85" y="905"/>
         </scene>
         <!--Patient View Controller-->
         <scene sceneID="biO-T3-keX">
@@ -494,7 +495,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6X1-y0-TOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="513" y="110"/>
+            <point key="canvasLocation" x="-288" y="212"/>
         </scene>
         <!--Bed Station View Controller-->
         <scene sceneID="qve-BA-bdy">
@@ -644,7 +645,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNk-W5-CYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-471" y="932"/>
+            <point key="canvasLocation" x="-645" y="900"/>
         </scene>
         <!--Authentication-->
         <scene sceneID="b1G-MU-Aox">
@@ -736,7 +737,7 @@ jsmith username and 2014 as password.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXx-Da-pHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-982" y="631"/>
+            <point key="canvasLocation" x="-1033" y="900"/>
         </scene>
         <!--Regions View Controller-->
         <scene sceneID="zxc-zE-X9c">
@@ -770,7 +771,7 @@ jsmith username and 2014 as password.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nut-Y8-LWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-788" y="489"/>
+            <point key="canvasLocation" x="-645" y="212"/>
         </scene>
         <!--Station View Controller-->
         <scene sceneID="K6s-Gl-qfn">
@@ -824,7 +825,7 @@ jsmith username and 2014 as password.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lJi-zZ-Xzf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-299" y="669"/>
+            <point key="canvasLocation" x="-288" y="900"/>
         </scene>
         <!--Hospital Room View Controller-->
         <scene sceneID="UFR-Cj-JOs">

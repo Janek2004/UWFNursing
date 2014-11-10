@@ -62,12 +62,17 @@
     bed.major =@43332;
     bed.minor = @62552;
     
+//    ATCBeacon * bed2 =[ATCBeacon new];
+//    bed2.iOSidentifier = @"bed_right";
+//    bed2.identifier =estimote;
+//    bed2.major =@30412;
+//    bed2.minor = @5559;
+    
     ATCBeacon * bed2 =[ATCBeacon new];
     bed2.iOSidentifier = @"bed_right";
     bed2.identifier =estimote;
-    bed2.major =@30412;
-    bed2.minor = @5559;
-  
+    bed2.major =@1;
+    bed2.minor = @3;
     
     ATCBeacon * debriefingRoom =[ATCBeacon new];
     debriefingRoom.iOSidentifier = @"Debriefing room";
@@ -202,7 +207,7 @@
         __weak __typeof__(self) weakSelf = self;
         _beaconManager.beaconFound =^void(NSString * proximityID, int major, int minor, CLProximity proximity){
             __typeof__(self) strongSelf = weakSelf;
-            
+            if(strongSelf.state.session == 0) return;
             NSDate * now = [NSDate date];
             NSString *key =   [ATCBeacon hashedBeacon:proximityID major:major minor:minor];
             ATCBeacon * beacon = [dictionary objectForKey:key];
@@ -216,7 +221,7 @@
             if([strongSelf sendProximityData:@(beacon.type) state:@(proximity) andDate:now pid:key]){
                 [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:beacon.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.user] withErrorCompletionHandler:^(NSError *error) {
                     
-                   // [[strongSelf beaconManager] saveLog:error.debugDescription];
+                   //[[strongSelf beaconManager] saveLog:error.debugDescription];
                     tempProximity =proximity;
                 }];
                 date = now;
@@ -294,10 +299,7 @@
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];
     }
 
-    
-   
   
-    
     
     return YES;
 }
