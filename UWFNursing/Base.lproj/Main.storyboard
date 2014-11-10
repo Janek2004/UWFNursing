@@ -120,7 +120,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQf-Df-cGa">
-                                <rect key="frame" x="129" y="366" width="62" height="30"/>
+                                <rect key="frame" x="120" y="366" width="80" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Continue">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -128,9 +129,14 @@
                                     <action selector="confirmChoice:" destination="I4w-Yh-eW1" eventType="touchUpInside" id="fF8-8x-cki"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="d8P-V2-uwd">
+                                <rect key="frame" x="150" y="326" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="d8P-V2-uwd" secondAttribute="centerX" id="5r3-td-187"/>
+                            <constraint firstAttribute="centerY" secondItem="d8P-V2-uwd" secondAttribute="centerY" constant="-52" id="9KK-4s-PEX"/>
                             <constraint firstAttribute="centerX" secondItem="SQf-Df-cGa" secondAttribute="centerX" constant="-0.5" id="Pvz-yD-Qaa"/>
                             <constraint firstAttribute="centerX" secondItem="XKJ-W6-lgI" secondAttribute="centerX" id="STz-Mf-c7c"/>
                             <constraint firstItem="SQf-Df-cGa" firstAttribute="top" secondItem="ecX-pa-aIZ" secondAttribute="top" constant="366" id="SoL-Bc-Zg1"/>
@@ -140,6 +146,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="d8P-V2-uwd" id="Tsa-hC-Au6"/>
+                        <outlet property="continueButton" destination="SQf-Df-cGa" id="wyP-EI-Zdj"/>
                         <outlet property="segmentedControl" destination="0x3-Mf-lxF" id="af5-Gb-Gdl"/>
                     </connections>
                 </viewController>
