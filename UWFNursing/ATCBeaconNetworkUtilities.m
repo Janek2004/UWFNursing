@@ -138,6 +138,8 @@
         }}];
 
 }
+
+/**Shows warning to the user*/
 -(void)showWarning:(NSInteger)session andNurse:(NSUInteger)userId{
     NSString * urlstring =[NSString stringWithFormat:@"%@&action=warning&session=%ld&nurse=%ld",BEACON_URL, (long)session, (long)userId];
     

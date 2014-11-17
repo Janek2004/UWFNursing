@@ -62,17 +62,17 @@
     bed.major =@43332;
     bed.minor = @62552;
     
-//    ATCBeacon * bed2 =[ATCBeacon new];
-//    bed2.iOSidentifier = @"bed_right";
-//    bed2.identifier =estimote;
-//    bed2.major =@30412;
-//    bed2.minor = @5559;
-    
     ATCBeacon * bed2 =[ATCBeacon new];
     bed2.iOSidentifier = @"bed_right";
     bed2.identifier =estimote;
-    bed2.major =@1;
-    bed2.minor = @3;
+    bed2.major =@30412;
+    bed2.minor = @5559;
+    
+//    ATCBeacon * bed2 =[ATCBeacon new];
+//    bed2.iOSidentifier = @"bed_right";
+//    bed2.identifier =estimote;
+//    bed2.major =@1;
+//    bed2.minor = @3;
     
     ATCBeacon * debriefingRoom =[ATCBeacon new];
     debriefingRoom.iOSidentifier = @"Debriefing room";

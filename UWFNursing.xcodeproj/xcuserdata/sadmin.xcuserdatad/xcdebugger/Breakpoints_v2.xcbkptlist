@@ -83,22 +83,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UWFNursing/igViewController.m"
-            timestampString = "436220891.805188"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "-processBarCode:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "UWFNursing/ATCBeaconNetworkUtilities.m"
             timestampString = "436221026.739608"
             startingColumnNumber = "9223372036854775807"
@@ -115,7 +99,7 @@
                   symbolName = "-[ATCBeaconNetworkUtilities scanBarcode:userId:sessionId:withCompletionHandler:]"
                   moduleName = "UWFNursing"
                   urlString = "file:///Users/sadmin/Desktop/NewRepositories/UWFNursing/UWFNursing/ATCBeaconNetworkUtilities.m"
-                  timestampString = "437328263.072796"
+                  timestampString = "437498713.625702"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -129,7 +113,7 @@
                   symbolName = "__80-[ATCBeaconNetworkUtilities scanBarcode:userId:sessionId:withCompletionHandler:]_block_invoke"
                   moduleName = "UWFNursing"
                   urlString = "file:///Users/sadmin/Desktop/NewRepositories/UWFNursing/UWFNursing/ATCBeaconNetworkUtilities.m"
-                  timestampString = "437328263.073064"
+                  timestampString = "437498713.625933"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -188,7 +172,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UWFNursing/ViewControllers/ATCRegionsViewController.m"
