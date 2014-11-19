@@ -29,6 +29,15 @@
     _tester = [[ATCNetworkTest alloc]init];
     [_tester testLogin];
     
+    ATCBeacon * sink =[ATCBeacon new];
+    sink.iOSidentifier =@"SINK";
+    NSString * estimote = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D";
+    sink.identifier = estimote;
+    sink.major = @46515;
+    sink.minor = @14779;
+    
+    [_tester testProximityData:sink];
+    
 }
 
 
@@ -291,7 +300,7 @@
 {
    
     #warning TESTS
-   // [self runTests];
+    [self runTests];
     _networkDictionary = [NSMutableDictionary new];
     [self setUp];
     

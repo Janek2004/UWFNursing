@@ -83,12 +83,12 @@
                   symbolName = "-[ATCBedStationViewController viewDidLoad]"
                   moduleName = "UWFNursing"
                   urlString = "file:///Users/jmc72/Desktop/NewRepositories/iBeacons/UWFNursing/UWFNursing/StationsVC/ATCBedStationViewController.m"
-                  timestampString = "436738414.354046"
+                  timestampString = "438126413.820979"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "40"
                   endingLineNumber = "40"
-                  offsetFromSymbolStart = "108">
+                  offsetFromSymbolStart = "71">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -97,12 +97,12 @@
                   symbolName = "__42-[ATCBedStationViewController viewDidLoad]_block_invoke"
                   moduleName = "UWFNursing"
                   urlString = "file:///Users/jmc72/Desktop/NewRepositories/iBeacons/UWFNursing/UWFNursing/StationsVC/ATCBedStationViewController.m"
-                  timestampString = "436738414.354303"
+                  timestampString = "438126413.8212"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "40"
                   endingLineNumber = "40"
-                  offsetFromSymbolStart = "116">
+                  offsetFromSymbolStart = "95">
                </Location>
             </Locations>
          </BreakpointContent>

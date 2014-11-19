@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+@class ATCBeacon;
 
 @interface ATCNetworkTest : NSObject
+
+-(void)testProximityData:(ATCBeacon *)beacon;
+-(void)testRegionData:(ATCBeacon *)beacon;
 -(void)testLogin;
 
 @end

@@ -189,7 +189,7 @@
     NSDate * d = [NSDate new];
     NSTimeInterval timeInterval =[d timeIntervalSince1970];
 
-    NSString * urlstring =[NSString stringWithFormat:@"%@&action=saveRegion&beacon_uuid=%@&beacon_minor=%d&beacon_major=%d&user=%@&state=%d&event_date=%f",BEACON_URL,proximityID,minor,major,user, (int)state,timeInterval];
+    NSString * urlstring =[NSString stringWithFormat:@"%@&action=saveRegion&beacon_uuid=%@&beacon_minor=%d&beacon_major=%d&user=%@&state=%d&event_date=%f&foreground=%ld",BEACON_URL,proximityID,minor,major,user, (int)state,timeInterval,[[UIApplication sharedApplication]applicationState]];
     
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
     
@@ -215,16 +215,16 @@
     NSDate * d = [NSDate new];
     NSTimeInterval timeInterval =[d timeIntervalSince1970];
     
-    NSString * urlstring =[NSString stringWithFormat:@"%@&action=saveProximity&beacon_uuid=%@&beacon_minor=%d&beacon_major=%d&user=%@&proximity=%d&event_date=%f",BEACON_URL,proximityID,minor,major, user,(int) proximity,timeInterval];
+    NSString * urlstring =[NSString stringWithFormat:@"%@&action=saveProximity&beacon_uuid=%@&beacon_minor=%d&beacon_major=%d&user=%@&proximity=%d&event_date=%f&foreground=%ld",BEACON_URL,proximityID,minor,major, user,(int) proximity,timeInterval,[[UIApplication sharedApplication]applicationState]];
     
-    //NSLog(@"Data Proximity to send: \n %@",urlstring);
+    NSLog(@"Data Proximity to send: \n %@",urlstring);
     
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]];
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if(connectionError){
-            NSLog(@" Error %@ ",connectionError);
+            NSLog(@" Error %@ %s",connectionError,__PRETTY_FUNCTION__);
             return;
         }}];
 
