@@ -41,8 +41,6 @@
 }
 
 
-
-
 -(NSDictionary *)parseData{
     ATCPatient * p1 = [[ATCPatient alloc]init];
     p1.name = @"Skyler";
@@ -227,6 +225,15 @@
             //send data to content manager that figures out nearby stations
             [strongSelf.state logicFor:beacon];
             
+            if(beacon.type == ksink)
+            {
+                [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:beacon.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.user] withErrorCompletionHandler:^(NSError *error) {
+                    
+                                tempProximity =proximity;
+                }];
+                return;
+            }
+            
             if([strongSelf sendProximityData:@(beacon.type) state:@(proximity) andDate:now pid:key]){
                 [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:beacon.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.user] withErrorCompletionHandler:^(NSError *error) {
                     
@@ -267,8 +274,7 @@
 }
 
 
-
-/**Checks if data should be sent */
+/** Checks if data should be sent */
 -(BOOL)sendProximityData:(NSNumber*)type state:(NSNumber *)state andDate:(NSDate *)newDate pid:(NSString *)pid{
     
      NSDictionary * newDict = @{@"type":type, @"proximity":state, @"date":newDate};
@@ -294,22 +300,15 @@
 }
 
 
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-   
     #warning TESTS
-    [self runTests];
     _networkDictionary = [NSMutableDictionary new];
     [self setUp];
     
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];
     }
-
-  
-    
     return YES;
 }
 							
