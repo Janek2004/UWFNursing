@@ -20,7 +20,6 @@
     BOOL warningOnScreen;
     BOOL ready;
     
-    
 }
     @property(nonatomic,strong) UIBarButtonItem * logoutButton;
     @property(nonatomic,strong) ATCBeaconNetworkUtilities *networkUtilities;
@@ -34,6 +33,10 @@
     @property(nonatomic,strong) NSMutableArray * roomRegionEvents;
     @property(nonatomic,strong) NSMutableArray * briefingRegionEvents;
     @property(nonatomic,strong) NSMutableArray * patientsRegionEvents;
+
+    @property (nonatomic,strong) NSMutableArray * sequence;
+    @property (nonatomic,strong) NSMutableArray * proximityEvents;
+
 
     @property(nonatomic,strong) UINavigationController * nav;
     @property (nonatomic,strong) ATCWarningViewController * warningVC;
@@ -90,30 +93,39 @@
         default:
             break;
     }
-    
-
 }
+
+
+
+
 
 -(void)registerProximity:(ATCBeacon*)beacon  andProximity:(CLProximity)proximity{
     
     if(beacon){
-        //ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
+        //proximityEvents addOb
+
+        [self insertElement: @{@"date":[NSDate new],@"proximity":@(proximity),@"type":@(beacon.type) } into:self.proximityEvents];
+        
         switch (beacon.type) {
             case kbed:{
-                [self registerPatientProximityEvent:proximity];
+   //               [self registerPatientProximityEvent:proximity];
+                  [self insertElement: @{@"date":[NSDate new],@"proximity":@(proximity),@"type":@(ksink) } into:self.sinkProximityEvents];
                 
                 break;}
             case kroom:{
-                [self registerRoomProximityEvent:proximity];
+     //           [self registerRoomProximityEvent:proximity];
+                 [self insertElement:@{@"date":[NSDate new],@"proximity":@(proximity),@"type": @(kroom)} into:self.roomProximityEvents];
                 
                 break;}
             case ksink:{
-                [self registerSinkProximityEvent:proximity];
+       //         [self registerSinkProximityEvent:proximity];
+                 [self insertElement: @{@"date":[NSDate new],@"proximity":@(proximity),@"type":@(ksink) } into:self.sinkProximityEvents];
                 NSLog(@"Sink Proximity");
                 
                 break;}
             case kbriefing:{
-                [self registerBriefingRoomProximityEvent:proximity];
+         //       [self registerBriefingRoomProximityEvent:proximity];
+                [self insertElement:@{@"date":[NSDate new],@"proximity":@(proximity),@"type": @(kbriefing)} into:self.briefingProximityEvents];
                 break;}
             default:
                 break;
@@ -162,7 +174,7 @@
 -(void)insertElement:(id)element into:(NSMutableArray *)array{
     
     NSMutableArray * temp = [_regionEvents mutableCopy];
-    if(temp.count<30){
+    if(temp.count<200){
         if([element objectForKey:@"state"])  {
          [temp addObject:element];
         }
@@ -175,8 +187,9 @@
     }
     
     self.regionEvents = [NSArray arrayWithArray:[temp copy]];
-    
-    if(array.count<30){
+
+    //proximity
+    if(array.count<200){
         [array addObject:element];
     }
     else{
@@ -260,7 +273,8 @@
     _roomRegionEvents = [NSMutableArray new];
     
     _regionEvents = [NSArray new];
-    
+    _sequence = [NSMutableArray new];
+
     _user = 0;
     _session = 0;
 
@@ -337,9 +351,17 @@
     
     NSMutableArray * events = [NSMutableArray new];
 
-     [events addObjectsFromArray:[self.sinkRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
-     [events addObjectsFromArray:[self.patientsRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
-     [events addObjectsFromArray:[self.briefingRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
+//     [events addObjectsFromArray:[self.sinkRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
+//     [events addObjectsFromArray:[self.patientsRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
+//     [events addObjectsFromArray:[self.briefingRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
+    
+    
+    [events addObjectsFromArray:[self.sinkProximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
+    [events addObjectsFromArray:[self.patientsProximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
+    [events addObjectsFromArray:[self.briefingProximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
+
+    
+ 
     
     id mySort = ^(NSDictionary * obj1, NSDictionary * obj2){
         return [[obj1 objectForKey:@"date"] compare:[obj2 objectForKey:@"date"]];
@@ -514,7 +536,44 @@
     return  -1;
 }
 
-/**PRoximity Check */
+
+/**Location Check*/
+-(BOOL)locationCheck:(NSDictionary *)dict{
+#warning to do determine location based on past events
+    //get latest events in last 10s with proximity 1 or 2
+    //sort it
+    //check if they belong to one or more categories
+    //check the proximity of them
+   
+    NSArray * lastTen =     [self.proximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary * evaluatedObject, NSDictionary *bindings) {
+        NSDate * date = [dict objectForKey:@"date"];
+        NSDate * now = [NSDate new];
+        NSInteger proximity =[[dict objectForKey:@"proximity"] integerValue];
+        NSInteger diff = [now timeIntervalSinceDate:date];
+        if(diff<5&&(proximity==1&&proximity==2)){
+            return  YES;
+        }
+        
+        return NO;
+    }]];
+    
+    [lastTen filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(type==%@)",@(kbed)]];
+    
+    
+    
+   //  [events addObjectsFromArray:[self.sinkProximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
+    
+    if([dict objectForKey:@"proximity"]){//proximity event (how can I know which one?
+        
+        
+    }
+    
+    
+    return NO;
+}
+
+
+/**Proximity Check */
 -(BOOL)proximityCheck:(NSDictionary *)dict{
     if([dict objectForKey:@"proximity"]){
         NSInteger proximity =[[dict objectForKey:@"proximity"] integerValue];
@@ -527,7 +586,6 @@
         }
     }
     return NO;
-    
 }
 
 

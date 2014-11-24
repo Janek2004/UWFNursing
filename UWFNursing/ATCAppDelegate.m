@@ -192,6 +192,8 @@
 }
 
 -(void)setUp{
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    
     _state =[ATCState new];
     _beaconManager = [JMCBeaconManager new];
     _networkManager= [ATCBeaconNetworkUtilities new];
@@ -199,6 +201,8 @@
         self.state.stations =stations;
         NSLog(@"\n\n\n____CURRENT STATIONS ____ %@  \n", self.state.stations);
     }];
+    
+    
     
     
 
