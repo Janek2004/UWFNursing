@@ -77,6 +77,15 @@
     assert(response == true);
     assert(state.location == kroom);
     
+    [state registerProximity:briefing andProximity:CLProximityFar];
+    [state registerProximity:briefing andProximity:CLProximityNear];
+    [state registerProximity:simlab   andProximity:CLProximityNear];
+    [state registerProximity:briefing andProximity:CLProximityFar];
+    
+    response = [state logicFor:briefing];
+    
+    assert(response == false);
+    assert(state.location == kbriefing);
 
     
     //get current location kbed=1,kroom=2,kbriefing=3,ksink=4,koverride=5,kunknown=6
