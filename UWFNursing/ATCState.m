@@ -37,21 +37,20 @@
     @property (nonatomic,strong) NSMutableArray * sequence;
     @property (nonatomic,strong) NSMutableArray * proximityEvents;
 
-
     @property(nonatomic,strong) UINavigationController * nav;
     @property (nonatomic,strong) ATCWarningViewController * warningVC;
     @property(nonatomic, strong) NSDate * lastOverride;
     @property (nonatomic,strong) NSDate * lastNotification;
 
-    -(void)registerSinkProximityEvent:(NSInteger)proximity;
-    -(void)registerPatientProximityEvent:(NSInteger)proximity;
-    -(void)registerRoomProximityEvent:(NSInteger)proximity;
-    -(void)registerBriefingRoomProximityEvent:(NSInteger)proximity;
+//    -(void)registerSinkProximityEvent:(NSInteger)proximity;
+//    -(void)registerPatientProximityEvent:(NSInteger)proximity;
+//    -(void)registerRoomProximityEvent:(NSInteger)proximity;
+//    -(void)registerBriefingRoomProximityEvent:(NSInteger)proximity;
 
-    -(void)registerSinkRegionEvent:(NSInteger)region;
-    -(void)registerPatientRegionEvent:(NSInteger)region;
-    -(void)registerRoomRegionEvent:(NSInteger)region;
-    -(void)registerBriefingRoomRegionEvent:(NSInteger)region;
+//    -(void)registerSinkRegionEvent:(NSInteger)region;
+//    -(void)registerPatientRegionEvent:(NSInteger)region;
+//    -(void)registerRoomRegionEvent:(NSInteger)region;
+//    -(void)registerBriefingRoomRegionEvent:(NSInteger)region;
 
 
 @end
@@ -84,7 +83,6 @@
                 [[UIApplication sharedApplication] presentLocalNotificationNow:notif];
                 self.lastNotification = [NSDate new];
             }
-            
             break;}
         case kbriefing:{
             [self registerBriefingRoomRegionEvent:state];
@@ -102,29 +100,24 @@
 -(void)registerProximity:(ATCBeacon*)beacon  andProximity:(CLProximity)proximity{
     
     if(beacon){
-        //proximityEvents addOb
 
         [self insertElement: @{@"date":[NSDate new],@"proximity":@(proximity),@"type":@(beacon.type) } into:self.proximityEvents];
         
         switch (beacon.type) {
             case kbed:{
-   //               [self registerPatientProximityEvent:proximity];
-                  [self insertElement: @{@"date":[NSDate new],@"proximity":@(proximity),@"type":@(ksink) } into:self.sinkProximityEvents];
+            [self insertElement: @{@"date":[NSDate new],@"proximity":@(proximity),@"type":@(ksink) } into:self.sinkProximityEvents];
                 
                 break;}
             case kroom:{
-     //           [self registerRoomProximityEvent:proximity];
                  [self insertElement:@{@"date":[NSDate new],@"proximity":@(proximity),@"type": @(kroom)} into:self.roomProximityEvents];
                 
                 break;}
             case ksink:{
-       //         [self registerSinkProximityEvent:proximity];
                  [self insertElement: @{@"date":[NSDate new],@"proximity":@(proximity),@"type":@(ksink) } into:self.sinkProximityEvents];
                 NSLog(@"Sink Proximity");
                 
                 break;}
             case kbriefing:{
-         //       [self registerBriefingRoomProximityEvent:proximity];
                 [self insertElement:@{@"date":[NSDate new],@"proximity":@(proximity),@"type": @(kbriefing)} into:self.briefingProximityEvents];
                 break;}
             default:
@@ -134,7 +127,7 @@
 }
 
 
-#pragma mark event hadlers
+#pragma mark event hadlers //will be deleted later on
 /**Register events*/
 -(void)registerSinkProximityEvent:(NSInteger)proximity;{
     [self insertElement: @{@"date":[NSDate new],@"proximity":@(proximity),@"type":@(ksink) } into:self.sinkProximityEvents];
@@ -205,7 +198,7 @@
     {
         [self setup];
         warningOnScreen = NO;
-
+        
         //add notifications
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginNotification:) name:@"LOGIN" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(logoutNotification:) name:@"LOGOUT" object:nil];
@@ -350,18 +343,10 @@
 -(NSDictionary *)getLastEventBefore:(NSInteger)room{
     
     NSMutableArray * events = [NSMutableArray new];
-
-//     [events addObjectsFromArray:[self.sinkRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
-//     [events addObjectsFromArray:[self.patientsRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
-//     [events addObjectsFromArray:[self.briefingRegionEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
-    
-    
+ 
     [events addObjectsFromArray:[self.sinkProximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
     [events addObjectsFromArray:[self.patientsProximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
     [events addObjectsFromArray:[self.briefingProximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
-
-    
- 
     
     id mySort = ^(NSDictionary * obj1, NSDictionary * obj2){
         return [[obj1 objectForKey:@"date"] compare:[obj2 objectForKey:@"date"]];
@@ -419,8 +404,9 @@
 
 -(BOOL)logicFor:(ATCBeacon *)beacon{
     //where I am at?
-    self.location =  [self checkLocation:beacon];
-
+    self.location = [self locationCheckForProximityEvents:self.proximityEvents];
+    
+    
     if([[NSDate new]timeIntervalSinceDate:self.lastOverride]<120 )
     {
 
@@ -538,38 +524,47 @@
 
 
 /**Location Check*/
--(BOOL)locationCheck:(NSDictionary *)dict{
-#warning to do determine location based on past events
-    //get latest events in last 10s with proximity 1 or 2
-    //sort it
-    //check if they belong to one or more categories
-    //check the proximity of them
-   
-    NSArray * lastTen =     [self.proximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary * evaluatedObject, NSDictionary *bindings) {
-        NSDate * date = [dict objectForKey:@"date"];
+-(NSInteger)locationCheckForProximityEvents:(NSArray *)proximityEvents{
+
+    NSArray * lastEvents = [proximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary * evaluatedObject, NSDictionary *bindings) {
+        NSDate * date = [evaluatedObject objectForKey:@"date"];
         NSDate * now = [NSDate new];
-        NSInteger proximity =[[dict objectForKey:@"proximity"] integerValue];
+        NSInteger proximity =[[evaluatedObject objectForKey:@"proximity"] integerValue];
         NSInteger diff = [now timeIntervalSinceDate:date];
-        if(diff<5&&(proximity==1&&proximity==2)){
+        if(diff<5&&(proximity!=CLProximityUnknown)){
             return  YES;
         }
-        
         return NO;
     }]];
     
-    [lastTen filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(type==%@)",@(kbed)]];
     
+    NSInteger first= lastEvents.count <5 ? 0:lastEvents.count-5;
+    NSInteger count =lastEvents.count > 5? 5:lastEvents.count;
+    NSArray * lastTen = [lastEvents subarrayWithRange: NSMakeRange(first
+                                               , count)  ];
+    NSArray * beds = [lastTen filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(type==%@)",@(kbed)]];
+    NSArray * sinks = [lastTen filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(type==%@)",@(ksink)]];
+    NSArray * briefings = [lastTen filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(type==%@)",@(kbriefing)]];
+    NSArray * simlabs = [lastTen filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(type==%@)",@(kroom)]];
     
-    
-   //  [events addObjectsFromArray:[self.sinkProximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(state==%@)",@1]]];
-    
-    if([dict objectForKey:@"proximity"]){//proximity event (how can I know which one?
-        
-        
+    if(beds.count> count/2){
+        return kbed;
     }
     
+    if(sinks.count> count/2){
+        return kbed;
+    }
     
-    return NO;
+    if(briefings.count> count/2){
+        return kbriefing;
+    }
+    
+    if(simlabs.count> count/2){
+        return kroom;
+    }
+    
+
+    return 0;
 }
 
 

@@ -103,7 +103,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "401"
             endingLineNumber = "401"
-            landmarkName = "-logicFor:"
+            landmarkName = "-showWarning:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -119,7 +119,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "474"
             endingLineNumber = "474"
-            landmarkName = "-checkLocation:"
+            landmarkName = "-logicFor:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
