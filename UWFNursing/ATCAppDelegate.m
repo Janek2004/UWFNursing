@@ -40,7 +40,7 @@
     
 }
 
-
+#pragma mark refactoring needed!!!!
 -(NSDictionary *)parseData{
     ATCPatient * p1 = [[ATCPatient alloc]init];
     p1.name = @"Skyler";
@@ -75,11 +75,7 @@
     bed2.major =@30412;
     bed2.minor = @5559;
     
-//    ATCBeacon * bed2 =[ATCBeacon new];
-//    bed2.iOSidentifier = @"bed_right";
-//    bed2.identifier =estimote;
-//    bed2.major =@1;
-//    bed2.minor = @3;
+    
     
     ATCBeacon * debriefingRoom =[ATCBeacon new];
     debriefingRoom.iOSidentifier = @"Debriefing room";
@@ -91,7 +87,7 @@
     room.type = kroom;
     bed.type = kbed;
     debriefingRoom.type =kbriefing;
-      bed2.type = kbed;
+    bed2.type = kbed;
     
     ATCPatient * p2 = [ATCPatient new];
     p2.name = @"Skylar";
@@ -104,7 +100,7 @@
     p2.type = kbed;
     p2.beaconKey = bed.hashedBeacon;
     p2.icon = [UIImage imageNamed:@"patient"];
-
+    
     p2.title = [NSString stringWithFormat:@"%@ %@",p2.name, p2.lastname];
     p2.image = [UIImage imageNamed:@"bedside"];
     p2.vcname = @"ATCPatientViewController";
@@ -188,6 +184,8 @@
         [dictionary setObject:beacon forKey:key];
     }
     
+    [dictionary setObject:beacons forKey:@"beacons"];
+    
     return dictionary;
 }
 
@@ -204,13 +202,11 @@
     
     
     
-    
-
 #warning I should update it from the cloud!
     NSMutableString * message =[NSMutableString new];
-  __block  NSDate * date;
+    __block  NSDate * date;
     NSMutableDictionary * dictionary = [[self parseData]mutableCopy];
-   __block NSInteger tempProximity = -1;
+    __block NSInteger tempProximity = -1;
     
     if([_beaconManager isSupported:message]){
         //that will be patient
@@ -229,19 +225,21 @@
             //send data to content manager that figures out nearby stations
             [strongSelf.state logicFor:beacon];
             
+            
             if(beacon.type == ksink)
             {
                 [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:beacon.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.user] withErrorCompletionHandler:^(NSError *error) {
                     
-                                tempProximity =proximity;
+                    tempProximity =proximity;
                 }];
                 return;
             }
             
+            
             if([strongSelf sendProximityData:@(beacon.type) state:@(proximity) andDate:now pid:key]){
                 [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:beacon.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.user] withErrorCompletionHandler:^(NSError *error) {
                     
-                   //[[strongSelf beaconManager] saveLog:error.debugDescription];
+                    //[[strongSelf beaconManager] saveLog:error.debugDescription];
                     tempProximity =proximity;
                 }];
                 date = now;
@@ -250,7 +248,7 @@
         __weak __typeof__(self) weakSelf2 = self;
         _beaconManager.regionEvent =^void(NSString * proximityID, int major, int minor, NSUInteger state){
             __typeof__(self) strongSelf = weakSelf2;
-             NSString *key =   [ATCBeacon hashedBeacon:proximityID major:major minor:minor];
+            NSString *key =   [ATCBeacon hashedBeacon:proximityID major:major minor:minor];
             
             if(state == CLRegionStateOutside||state==CLRegionStateUnknown){
                 strongSelf.state.stations = [strongSelf.contentManager removeBeacon:key];
@@ -260,7 +258,7 @@
             }
             
             if(strongSelf.state.session == 0) return;
-           
+            
             ATCBeacon * beacon = [dictionary objectForKey:key];
             NSLog(@"Region Event %d, %d state (0 unknown, inside, outside): %d",major,minor, (int)state);
             
@@ -279,23 +277,23 @@
 
 
 /** Checks if data should be sent */
--(BOOL)sendProximityData:(NSNumber*)type state:(NSNumber *)state andDate:(NSDate *)newDate pid:(NSString *)pid{
+-(BOOL)sendProximityData:(NSNumber*)type state:(NSNumber *)proximity andDate:(NSDate *)newDate pid:(NSString *)pid{
     
-     NSDictionary * newDict = @{@"type":type, @"proximity":state, @"date":newDate};
+    NSDictionary * newDict = @{@"type":type, @"proximity":proximity, @"date":newDate};
     if([_networkDictionary objectForKey:pid]){
         NSDictionary * dict =[_networkDictionary objectForKey:pid];
-
+        
         NSDate * date = [dict objectForKey:@"date"];
         NSInteger newState =[[dict objectForKey:@"proximity"]integerValue];
         NSInteger difference =[newDate timeIntervalSinceDate:date];
-       
-        if(difference > 10||state.integerValue != newState ){
-             [_networkDictionary setObject:newDict forKey:pid];
+        
+        if(difference > 8||proximity.integerValue != newState ){
+            [_networkDictionary setObject:newDict forKey:pid];
             return  YES;
         }
     }
     else{
-       
+        
         [_networkDictionary setObject:newDict forKey:pid];
         return YES;
     }
@@ -306,7 +304,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    #warning TESTS
     _networkDictionary = [NSMutableDictionary new];
     [self setUp];
     
@@ -315,7 +312,7 @@
     }
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -326,9 +323,9 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-     //[_beaconManager saveLog:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__]];
+    //[_beaconManager saveLog:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__]];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -340,14 +337,14 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-   //  [_beaconManager saveLog:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__]];
+    //  [_beaconManager saveLog:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // [_beaconManager saveLog:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__]];
-
+    
     [self.state logout];
     
     //self.state log

@@ -19,8 +19,9 @@
     @property (nonatomic, readonly)BOOL warning;
     @property (nonatomic) NSInteger location;
     @property (strong, nonatomic) NSArray * stations;
-    @property (nonatomic,strong) NSArray * regionEvents;
+    @property (nonatomic,strong) NSMutableArray * regionEvents;
 
+    -(NSInteger)locationCheckForProximityEvents:(NSArray *)proximityEvents andDate:(NSDate *)date;
     -(void)registerProximity:(ATCBeacon*)beacon andProximity:(CLProximity)proximity;
     -(void)registerRegionEvent:(ATCStation*)beacon andState:(CLRegionState)state;
     -(BOOL)logicFor:(ATCBeacon *)beacon;

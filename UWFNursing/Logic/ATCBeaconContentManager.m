@@ -47,7 +47,7 @@
     NSMutableDictionary* keysLeft = self.stations.mutableCopy;
     for (CLBeacon * beacon in beacons){
         NSString * key = [ATCBeacon hashedBeacon:beacon.proximityUUID.UUIDString  major:beacon.major.integerValue minor:beacon.minor.integerValue];
-
+        
         if(![self.stations objectForKey:key])
         {
             [self.stations setObject:[self.stationsCompleteDictionary objectForKey:key]  forKey:key];
@@ -61,49 +61,49 @@
         [self.stations removeObjectForKey:s];
     }
     
-     return self.stations.allValues;
+    return self.stations.allValues;
     
 }
 
 
 /**
-    Check beacons
-*/
+ Check beacons
+ */
 -(NSArray *)contentForBeaconID:(NSString *)beaconId andMajor:(NSNumber *)major andMinor:(NSNumber *)minor proximity:(CLProximity)proximity{
     
-        NSString *key =  [ATCBeacon hashedBeacon:beaconId major:major.integerValue minor:minor.integerValue];
-
-        ATCStation * station =[self.stationsCompleteDictionary objectForKey:key];
+    NSString *key =  [ATCBeacon hashedBeacon:beaconId major:major.integerValue minor:minor.integerValue];
+    
+    ATCStation * station =[self.stationsCompleteDictionary objectForKey:key];
     //    NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
     
     //if it doesn't exist we need to add it.
-        if(![self.stations objectForKey:key]){
-            if(proximity!=CLProximityUnknown){
-               // if(station.displayStartDate.integerValue<timestamp&&station.displayStopDate.integerValue>timestamp){
-                   [self.stations setObject:station  forKey:key];
-               // }
-                
-               // if(!station.displayStartDate.integerValue<timestamp&&!station.displayStopDate){
-                 //   [self.stations setObject:station  forKey:key];
-               // }
-            }
-            return self.stations.allValues;
+    if(![self.stations objectForKey:key]){
+        if(proximity!=CLProximityUnknown){
+            // if(station.displayStartDate.integerValue<timestamp&&station.displayStopDate.integerValue>timestamp){
+            [self.stations setObject:station  forKey:key];
+            // }
+            
+            // if(!station.displayStartDate.integerValue<timestamp&&!station.displayStopDate){
+            //   [self.stations setObject:station  forKey:key];
+            // }
         }
+        return self.stations.allValues;
+    }
     //it should exist but proximity is unknown. Therefore we need to remove it
-        if(proximity == CLProximityUnknown){
-            [self.stations removeObjectForKey:key];
-            return self.stations.allValues;
-        }
-
-
-//    //content is expired or not ready yet.
-//        if(station.displayStartDate.integerValue < timestamp&&!station.displayStopDate){
-//            [self.stations removeObjectForKey:key];
-//            return self.stations.allValues;
-//        }
+    if(proximity == CLProximityUnknown){
+        [self.stations removeObjectForKey:key];
+        return self.stations.allValues;
+    }
+    
+    
+    //    //content is expired or not ready yet.
+    //        if(station.displayStartDate.integerValue < timestamp&&!station.displayStopDate){
+    //            [self.stations removeObjectForKey:key];
+    //            return self.stations.allValues;
+    //        }
     //other cases, simply display it and return the stations
-  [self.stations setObject:station forKey:key];
-   return self.stations.allValues;
+    [self.stations setObject:station forKey:key];
+    return self.stations.allValues;
 }
 
 -(NSArray *)removeBeacon:(NSString *)pid{
