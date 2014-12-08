@@ -17,8 +17,6 @@
 #import "ATCBeaconContentManager.h"
 #define OVERRIDE 120
 
-
-
 @interface ATCState() <UINavigationControllerDelegate>{
     BOOL warningOnScreen;
     // BOOL ready;
@@ -42,8 +40,8 @@
 @property(nonatomic,strong) UINavigationController * nav;
 @property (nonatomic,strong) ATCWarningViewController * warningVC;
 @property(nonatomic, strong) NSDate * lastOverride;
-// @property (nonatomic,strong) NSDate * lastNotification;
 
+@property(nonatomic,strong) UINavigationController * navigationController;
 
 
 @end
@@ -55,7 +53,6 @@
 -(void)registerRegionEvent:(ATCStation*)beacon andState:(CLRegionState)state;
 {
     self.regionEvents= [self insertElement:@{@"date":[NSDate new],@"state":@(state),@"type": @(beacon.type)} into:self.regionEvents];
-    
     
     switch (beacon.type) {
         case kbed:{
@@ -81,6 +78,10 @@
         default:
             break;
     }
+    
+    
+    
+    
 }
 
 
@@ -134,12 +135,20 @@
 #pragma mark navigation controller
 -(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
     //check for warnings.
-    
+    //[self.navigationController.navigationBar setTintColor:[UIColor orangeColor]];
+    // [self.navigationController.navigationBar setBackgroundColor:[UIColor orangeColor]];
+    // [self.navigationController.navigationBar setBarTintColor :[UIColor orangeColor]];
+    // self.navigationController.navigationBar setBackgroun
+    // self.navigationController.navigationBar.barStyle = [UIBarSt]
     //  ready = YES;
 }
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    //ready = NO;
+    self.navigationController = navigationController;
+    
+    UIToolbar * toolbar = [[UIToolbar alloc]init];
+   // UIBarButtonItem * item = [UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@""] style:<#(UIBarButtonItemStyle)#> target:<#(id)#> action:<#(SEL)#>
+    [toolbar setItems:@[]];
     if(_session !=0){
         viewController.navigationItem.rightBarButtonItem =self.logoutButton;
     }
@@ -155,7 +164,9 @@
     {
         [self setup];
         warningOnScreen = NO;
+        self.warningStatus = kAllWarnings;
         
+
         //add notifications
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginNotification:) name:@"LOGIN" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(logoutNotification:) name:@"LOGOUT" object:nil];
@@ -297,7 +308,7 @@
                 
             }
             @catch (NSException *exception) {
-                
+                NSLog(@"%@",exception.debugDescription);
             }
             @finally {
                 
@@ -333,6 +344,21 @@
 }
 
 
+-(void)showPositive{
+    if(self.warningStatus == kPositiveWarnings || self.warningStatus== kAllWarnings){
+        self.navigationController.navigationBar.barTintColor = [UIColor greenColor];
+    }
+}
+
+-(void)showNegative{
+    if(self.warningStatus == kNegativeWarnings||self.warningStatus== kAllWarnings){
+        self.navigationController.navigationBar.barTintColor = [UIColor redColor];
+    }
+}
+
+-(void)showNeutral{
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+}
 
 /**Main logic of the application. Based on beacon passed to it and information about last event and sequence determines if we should display warning or not
  
@@ -342,7 +368,6 @@
 -(BOOL)logicFor:(ATCBeacon *)beacon{
     
     //check latest location before updating the sequence
-    
     self.location = [self locationCheckForProximityEvents:self.proximityEvents andDate:[NSDate new]];
     //update sequence
     [self updateSequence:self.sequence WithLocation:self.location];
@@ -353,56 +378,82 @@
         case kbed:{
             NSLog(@"You are at the bedside");
             if(self.sequence.count > 1){
+                //shows positive response
+                if(lastEvent==ksink)
+                {
+                    [self showPositive];
+
+                    return YES;
+                }
+                
+                //shows negative response
                 if(lastEvent != ksink || lastEvent !=koverride)
                 {
                     //we need to return no since user didn't go to wash hands prior to going to the bedside
-                    [self showWarning:YES];
+                    //[self showWarning:YES];
+                    [self showNegative];
                     NSLog(@"Last event is not sink");
                     return  NO;
                 }
                 else{
                     
-                    [self showWarning:NO];
+                   // [self showWarning:NO];
+                    [self showPositive];
                     return  YES;
                 }
             }
-            
-            [self showWarning:YES];
+
+//          [self showWarning:YES];
+            [self showNegative];
             return  YES;
             break;
         
         }
         case ksink:{
             NSLog(@"You are at the sink. Make sure that you wash your hands properly");
-            [self showWarning:NO];
+            [self showPositive];
+           // [self showWarning:NO];
             return  YES;
             break;
         }
         case kbriefing:{
+
+            //show positive feedback
+            if(lastEvent==ksink)
+            {
+                [self showPositive];
+                return YES;
+            }
+
             if(self.sequence.count > 1){
+                //shows positive response
                 if(lastEvent != ksink || lastEvent !=koverride){
-                    [self showWarning:YES];
+                    //[self showWarning:YES];
+                    [self showNegative];
                     NSLog(@"Briefing Last event is not sink");
                     return  NO;
                 }
                 else{
-                    [self showWarning:NO];
+                    [self showPositive];
+                    //[self showWarning:NO];
                     return YES;
 
                 }
         }
             
-            [self showWarning:YES];
+            [self showNegative];
+            //[self showWarning:YES];
             return YES;
             break;
         }
-        case kroom: // no action
-            [self showWarning:NO];
+        case kroom: //no action don't display anything
+            [self showNeutral];
             
             break;
             return  YES;
             
         default:{
+            [self showNeutral];
             return YES;
             
             break;

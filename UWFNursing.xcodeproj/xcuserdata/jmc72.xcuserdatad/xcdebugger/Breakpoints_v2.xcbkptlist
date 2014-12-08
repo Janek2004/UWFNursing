@@ -218,103 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UWFNursing/ATCState.m"
-            timestampString = "438727740.159604"
+            timestampString = "439751097.539526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "-setup"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ATCState setup]"
-                  moduleName = "UWFNursing"
-                  urlString = "file:///Users/jmc72/Desktop/NewRepositories/iBeacons/UWFNursing/UWFNursing/ATCState.m"
-                  timestampString = "438713028.321499"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "190"
-                  endingLineNumber = "190"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ATCState setup]"
-                  moduleName = "UWFNursingTests"
-                  urlString = "file:///Users/jmc72/Desktop/NewRepositories/iBeacons/UWFNursing/UWFNursing/ATCState.m"
-                  timestampString = "438713028.52194"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "190"
-                  endingLineNumber = "190"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "UWFNursing/ATCState.m"
-            timestampString = "438725849.489437"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-registerProximity:andProximity:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ATCState registerProximity:andProximity:]"
-                  moduleName = "UWFNursing"
-                  urlString = "file:///Users/jmc72/Desktop/NewRepositories/iBeacons/UWFNursing/UWFNursing/ATCState.m"
-                  timestampString = "438726789.710632"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "86">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ATCState registerProximity:andProximity:]"
-                  moduleName = "UWFNursingTests"
-                  urlString = "file:///Users/jmc72/Desktop/NewRepositories/iBeacons/UWFNursing/UWFNursing/ATCState.m"
-                  timestampString = "438726789.936138"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "86">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "UWFNursing/ATCState.m"
-            timestampString = "438732538.764932"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "421"
-            endingLineNumber = "421"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "-getLastEventBefore:"
             landmarkType = "5">
             <Locations>
@@ -356,11 +264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UWFNursing/ATCState.m"
-            timestampString = "438732538.764932"
+            timestampString = "439751097.539526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
             landmarkName = "-getLastEventBefore:"
             landmarkType = "5">
             <Locations>

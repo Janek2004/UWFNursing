@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 @import CoreLocation;
+typedef NS_ENUM(NSUInteger, kWarningStatus) {
+    kNoWarnings,
+    kPositiveWarnings,
+    kNegativeWarnings,
+    kAllWarnings
+};
 
 @class ATCBeacon;
 @class ATCStation;
@@ -20,6 +26,7 @@
     @property (nonatomic) NSInteger location;
     @property (strong, nonatomic) NSArray * stations;
     @property (nonatomic,strong) NSMutableArray * regionEvents;
+    @property kWarningStatus warningStatus;
 
     -(NSInteger)locationCheckForProximityEvents:(NSArray *)proximityEvents andDate:(NSDate *)date;
     -(void)registerProximity:(ATCBeacon*)beacon andProximity:(CLProximity)proximity;
