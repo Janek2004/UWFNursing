@@ -19,6 +19,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *message_label;
 @property (strong, nonatomic) IBOutlet UITextField *usernameLabel;
 @property (strong, nonatomic) IBOutlet UITextField *passwordLabel;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) IBOutlet UIButton *authenticateButton;
 
 @end
 
@@ -49,13 +51,23 @@
 
 /** Authenticating User */
 - (IBAction)authenticate:(id)sender {
-    
-    [_networkUtilities loginUserWithUsername:self.usernameLabel.text andPassword:self.passwordLabel.text withCompletionHandler:^(NSError *error, NSUInteger userId,NSInteger session, NSString *errorMessage) {
-
+    [self.activityIndicator startAnimating];
+    [self.authenticateButton setEnabled:NO];
+    [self.usernameLabel setEnabled:NO];
+    [self.passwordLabel setEnabled:NO];
+ 
+    [_networkUtilities loginUserWithUsername:self.usernameLabel.text andPassword:self.passwordLabel.text withCompletionHandler:^(NSError *error, NSUInteger userId,NSInteger session, NSInteger warningState, NSString *errorMessage) {
+        
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.activityIndicator stopAnimating];
+            [self.authenticateButton setEnabled:YES];
+            [self.usernameLabel setEnabled:YES];
+            [self.passwordLabel setEnabled:YES];
+            
             if(!error && !errorMessage &&session != 0 &&userId!=0)
             {    //send notification
-                NSNotification * notification =[[NSNotification alloc]initWithName:@"LOGIN" object:nil userInfo:@{@"user":@(userId), @"session":@(session)}];
+              
+                NSNotification * notification =[[NSNotification alloc]initWithName:@"LOGIN" object:nil userInfo:@{@"user":@(userId), @"session":@(session), @"warning_state":@(warningState) }];
                 [[NSNotificationCenter defaultCenter]postNotification:notification];
                 
                 UIViewController *homeVC= [self.storyboard instantiateViewControllerWithIdentifier:@"ATCPrimaryNurseChoice"];
@@ -134,10 +146,12 @@
        UITextField *password = [alertView textFieldAtIndex:1];
     
     
-    [_networkUtilities loginUserWithUsername:username.text andPassword:password.text withCompletionHandler:^(NSError *error, NSUInteger userId,NSInteger session, NSString *errorMessage) {
+    [_networkUtilities loginUserWithUsername:username.text andPassword:password.text withCompletionHandler:^(NSError *error, NSUInteger userId,NSInteger session, NSInteger warningState, NSString *errorMessage) {
        
         //send notification
-        NSNotification * notification =[[NSNotification alloc]initWithName:@"LOGIN" object:nil userInfo:@{@"user":@(userId), @"session":@(session)}];
+        NSNotification * notification =[[NSNotification alloc]initWithName:@"LOGIN" object:nil userInfo:@{@"user":@(userId), @"session":@(session), @"warning_state":@(warningState) }];
+        [[NSNotificationCenter defaultCenter]postNotification:notification];
+
         [[NSNotificationCenter defaultCenter]postNotification:notification];
       
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -161,6 +175,7 @@
 
 -(void)viewDidUnload{
     [super viewDidUnload];
+    [self.activityIndicator stopAnimating];
     self.message_label.text=nil;
 }
 

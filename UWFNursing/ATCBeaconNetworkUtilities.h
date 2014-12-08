@@ -20,7 +20,7 @@ Logs in to database
 @param username
 @param password
  */
--(void)loginUserWithUsername:(NSString *)username andPassword:(NSString *)password withCompletionHandler:(void (^)(NSError *error, NSUInteger userId,NSInteger sessionId, NSString * errorMessage))completionBlock;
+-(void)loginUserWithUsername:(NSString *)username andPassword:(NSString *)password withCompletionHandler:(void (^)(NSError *error, NSUInteger userId, NSInteger sessionId, NSInteger warningState, NSString * errorMessage))completionBlock;
 
 /**Logs out user*/
 -(void)logoutUser:(NSString * )sessionid withCompletionHandler:(void (^)(NSError *error))completionBlock;

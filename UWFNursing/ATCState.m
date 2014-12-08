@@ -182,7 +182,7 @@
         
         _warningVC =  [_nav.topViewController.storyboard instantiateViewControllerWithIdentifier:@"ATCWarningViewController"];
         
-        _logoutButton=[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)];
+        _logoutButton=[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
         
         _networkUtilities = [[ATCBeaconNetworkUtilities alloc]init];
         
@@ -240,6 +240,8 @@
 -(void)loginNotification:(NSNotification *)notification{
     _user =  [[[notification userInfo] valueForKey:@"user"]integerValue];
     _session =  [[[notification userInfo] valueForKey:@"session"]integerValue];
+    _warningStatus =[[[notification userInfo] valueForKey:@"warning_state"]integerValue];
+    
     _sinkProximityEvents = [NSMutableArray new];
     _patientsProximityEvents = [NSMutableArray new];
     _roomProximityEvents = [NSMutableArray new];

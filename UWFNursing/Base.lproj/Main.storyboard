@@ -718,6 +718,9 @@ jsmith username and 2014 as password.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" secureTextEntry="YES"/>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="itg-MI-Ef3">
+                                <rect key="frame" x="150" y="116" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -738,6 +741,8 @@ jsmith username and 2014 as password.</string>
                     <navigationItem key="navigationItem" title="UWF Nursing App" id="xh6-R4-V4y"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="itg-MI-Ef3" id="PJz-kg-Gdb"/>
+                        <outlet property="authenticateButton" destination="ANA-P2-sUF" id="vyO-Vx-3ul"/>
                         <outlet property="message_label" destination="9qa-g8-27B" id="fju-3l-RWt"/>
                         <outlet property="passwordLabel" destination="enj-g3-jWV" id="uyj-MF-IbB"/>
                         <outlet property="usernameLabel" destination="ewY-4V-xY9" id="g83-hm-3uS"/>
@@ -745,7 +750,7 @@ jsmith username and 2014 as password.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXx-Da-pHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1033" y="900"/>
+            <point key="canvasLocation" x="-1033" y="947"/>
         </scene>
         <!--Regions View Controller-->
         <scene sceneID="zxc-zE-X9c">

@@ -56,7 +56,7 @@
 }
 
 
--(void)loginUserWithUsername:(NSString *)username andPassword:(NSString *)password withCompletionHandler:(void (^)(NSError *error, NSUInteger userId,NSInteger sessionId, NSString * errorMessage))completionBlock;{
+-(void)loginUserWithUsername:(NSString *)username andPassword:(NSString *)password withCompletionHandler:(void (^)(NSError *error, NSUInteger userId,NSInteger sessionId, NSInteger warningState, NSString * errorMessage))completionBlock;{
 
     NSString * urlstring =[NSString stringWithFormat:@"%@&action=login&user=%@&password=%@",BEACON_URL, username, password];
     
@@ -66,14 +66,14 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if(connectionError){
             NSLog(@" Error %@ ",connectionError);
-            completionBlock(connectionError,0,0,connectionError.localizedFailureReason);
+            completionBlock(connectionError,0,0,0,connectionError.localizedFailureReason);
             return;
         }
         else{
             //get data
             if(!data){
                 NSLog(@" Data not available ");
-                completionBlock(nil, 0, 0,@"Unexpected error occured. Please try again later.");
+                completionBlock(nil, 0, 0,0, @"Unexpected error occured. Please try again later.");
             }
             
             NSError *error;
@@ -87,20 +87,23 @@
             if(!error){
                 if([object isKindOfClass:[NSDictionary class]]){
                     if(object[@"error_message"]){
-                        completionBlock(nil, 0, 0, object[@"error_message"]);
+                        completionBlock(nil, 0, 0, 0, object[@"error_message"]);
+                        return;
                     }
-                    else if(object[@"userid"] &&object[@"session"]){
-                        completionBlock(nil,[object[@"userid"]integerValue],[object[@"session"]integerValue], nil);
+                    else if(object[@"userid"] && object[@"session"]&& object[@"warning_state"] ){
+                        completionBlock(nil,[object[@"userid"]integerValue],[object[@"session"]integerValue],[object[@"warning_state"]integerValue], nil);
+                                            return;
                     }
                     else{
-                         completionBlock(nil,0,0, @"Unknown problem occured.Please try again later");
+                         completionBlock(nil,0,0, 0,@"Unknown problem occured.Please try again later");
+                                           return;
                     }
                 }
             }
-            else{
-             completionBlock(nil,0,0,@"Unknown problem occured. Please try again later");
+            //else{
+                completionBlock(nil,0,0,0, @"Unknown problem occured. Please try again later");
             
-            }
+            
         }
     }];
 }

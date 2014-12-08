@@ -200,6 +200,7 @@
         NSLog(@"\n\n\n____CURRENT STATIONS ____ %@  \n", self.state.stations);
     }];
     
+   // [self runTests];
     
     
 #warning I should update it from the cloud!

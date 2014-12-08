@@ -48,9 +48,12 @@
 
 -(void)testLogin;{
     
-    [_networkUtils loginUserWithUsername:@"jabbey" andPassword:@"2731" withCompletionHandler:^(NSError *error, NSUInteger userId, NSInteger session, NSString *errorMessage) {
-            NSLog(@"Error %@ %s", error,__PRETTY_FUNCTION__);
+    [_networkUtils loginUserWithUsername:@"Tester1" andPassword:@"Tester1" withCompletionHandler:^(NSError *error, NSUInteger userId, NSInteger session, NSInteger warningState, NSString *errorMessage) {
+ 
+        NSLog(@"Error %@ %s", error,__PRETTY_FUNCTION__);
         NSLog(@"User id %d", (int)userId);
+        NSLog(@"Warning State is %d", (int)warningState);
+        
         NSLog(@"Error %@", errorMessage);
         
     }];

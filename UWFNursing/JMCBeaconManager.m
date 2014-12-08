@@ -86,7 +86,7 @@
     
     NSLog(@"%d",[CLLocationManager authorizationStatus]);
     
-    if([CLLocationManager authorizationStatus ]== kCLAuthorizationStatusAuthorized ){
+    if([CLLocationManager authorizationStatus ]== kCLAuthorizationStatusAuthorizedAlways ){
         enabled = YES&&enabled;
     }
     else{
@@ -124,7 +124,7 @@
 }
 
 -(BOOL)isEnabled{
-    return [CLLocationManager isMonitoringAvailableForClass:[CLRegion class]] &&[CLLocationManager authorizationStatus ]== kCLAuthorizationStatusAuthorized;
+    return [CLLocationManager isMonitoringAvailableForClass:[CLRegion class]] &&[CLLocationManager authorizationStatus ]== kCLAuthorizationStatusAuthorizedAlways;
 }
 
 -(BOOL)canDeviceSupportAppBackgroundRefresh
