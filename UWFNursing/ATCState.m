@@ -11,6 +11,7 @@
 #import "ATCBeaconNetworkUtilities.h"
 #import "ATCBeacon.h"
 #import "ATCStation.h"
+#import "Utilities.h"
 
 #import "ATCWarningViewController.h"
 #import "JMCBeaconManager.h"
@@ -33,8 +34,6 @@
 @property(nonatomic,strong) NSMutableArray * roomRegionEvents;
 @property(nonatomic,strong) NSMutableArray * briefingRegionEvents;
 @property(nonatomic,strong) NSMutableArray * patientsRegionEvents;
-
-@property (nonatomic,strong) NSMutableArray * sequence;
 @property (nonatomic,strong) NSMutableArray * proximityEvents;
 
 @property(nonatomic,strong) UINavigationController * nav;
@@ -43,7 +42,7 @@
 
 @property(nonatomic,strong) UINavigationController * navigationController;
 
-
+@property (nonatomic,strong) Utilities * utils;
 @end
 
 @implementation ATCState
@@ -92,7 +91,7 @@
     
     switch (beacon.type) {
         case kbed:{
-            self.patientsProximityEvents = [self insertElement: @{@"date":[NSDate new],@"proximity":@(proximity),@"type":@(ksink) } into:self.patientsProximityEvents];
+            self.patientsProximityEvents = [self insertElement: @{@"date":[NSDate new],@"proximity":@(proximity),@"type":@(kbed) } into:self.patientsProximityEvents];
             
             break;}
         case kroom:{
@@ -116,7 +115,7 @@
 -(NSMutableArray *)insertElement:(NSDictionary *) element into:(NSMutableArray *)array{
     
     NSMutableArray * temp = [array mutableCopy];
-    if(temp.count<200){
+    if(temp.count<5000){
         [temp addObject:element];
         
     }
@@ -165,7 +164,9 @@
         [self setup];
         warningOnScreen = NO;
         self.warningStatus = kAllWarnings;
-        
+        _utils = [[Utilities alloc]init];
+        [_utils loadSound];
+
 
         //add notifications
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginNotification:) name:@"LOGIN" object:nil];
@@ -334,14 +335,20 @@
 
 /**Updates the sequence */
 -(void)updateSequence:(NSMutableArray *)sequence WithLocation:(NSInteger )location {
+    if(location == kroom) return;
+    
+    NSMutableArray * tempArray = [sequence mutableCopy];
     //get last object
     NSDictionary * last = sequence.lastObject;
     if(!last){
-        [sequence addObject:@{@"type":@(location)}];
-        return;}
+        [tempArray addObject:@{@"type":@(location)}];
+        self.sequence = tempArray;
+        return;
+    }
     
     if([[last objectForKey:@"type"]integerValue] != location){
-        [sequence addObject:@{@"type":@(location)}];
+        [tempArray addObject:@{@"type":@(location)}];
+         self.sequence = tempArray;
     }
 }
 
@@ -362,6 +369,36 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 }
 
+
+
+/** Analyzes proximit events and estimates duration of the event */
+-(NSInteger)checkDurationOfEvent:(NSInteger )type inEvents:(NSArray *)proximityEvents{
+   
+    NSArray * lastEvents = [proximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary * evaluatedObject, NSDictionary *bindings) {
+     //   NSDate * edate = [evaluatedObject objectForKey:@"date"];
+        NSInteger proximity =[[evaluatedObject objectForKey:@"proximity"] integerValue];
+        //  NSInteger diff = [[NSDate new] timeIntervalSinceDate:edate];
+        if([[evaluatedObject objectForKey:@"type"] isEqual:@(type)] && proximity != CLProximityUnknown)return  YES;
+        return NO;
+        
+    }]];
+    
+    NSDate * currentEvent = nil;
+    NSDate * lastEvent = [lastEvents.lastObject objectForKey:@"date"];
+
+    for(NSInteger i=lastEvents.count-1; i>0;i--){
+
+        currentEvent = [lastEvents[i] objectForKey:@"date"];
+        NSDate * previousEvent = [lastEvents[i-1] objectForKey:@"date"];
+        //get the difference
+        if([currentEvent timeIntervalSinceDate:previousEvent]>3){
+            break;
+        }
+    }
+    return [lastEvent timeIntervalSinceDate:currentEvent];
+}
+
+
 /**Main logic of the application. Based on beacon passed to it and information about last event and sequence determines if we should display warning or not
  
  @param beacon beacon that is currently found
@@ -371,11 +408,31 @@
     
     //check latest location before updating the sequence
     self.location = [self locationCheckForProximityEvents:self.proximityEvents andDate:[NSDate new]];
+    
     //update sequence
-    [self updateSequence:self.sequence WithLocation:self.location];
+    if(self.location !=kunknown||beacon.type != ksink){
+        [self updateSequence:self.sequence WithLocation:self.location];
+    }
+
+    if(beacon.type == ksink){
+        //check duration
+        NSInteger duration = [self checkDurationOfEvent:ksink inEvents:self.proximityEvents];
+        NSLog(@"Duration %ld",(long)duration);
+        if(duration==25||duration==24){
+            if(self.warningStatus == kAllWarnings ||kPositiveWarnings){
+                [_utils playSystemSoundWithMessage:@"You can stop now."];
+            }
+        
+        }
+        
+        if(duration>24){
+            [self updateSequence:self.sequence WithLocation:ksink];
+            [self showPositive];
+        }
+    }
+    
     NSInteger  lastEvent =[self  getLastEventBefore: self.location];
     
-    NSLog(@"Last Event Is %ld", (long)lastEvent );
     switch (self.location) {
         case kbed:{
             NSLog(@"You are at the bedside");
@@ -389,7 +446,7 @@
                 }
                 
                 //shows negative response
-                if(lastEvent != ksink || lastEvent !=koverride)
+                if(lastEvent != ksink || lastEvent !=koverride||lastEvent == kbriefing)
                 {
                     //we need to return no since user didn't go to wash hands prior to going to the bedside
                     //[self showWarning:YES];
@@ -413,7 +470,7 @@
         }
         case ksink:{
             NSLog(@"You are at the sink. Make sure that you wash your hands properly");
-            [self showPositive];
+         
            // [self showWarning:NO];
             return  YES;
             break;
@@ -428,6 +485,9 @@
             }
 
             if(self.sequence.count > 1){
+                
+              //  NSLog(@"Sequence %@",self.sequence);
+
                 //shows positive response
                 if(lastEvent != ksink || lastEvent !=koverride){
                     //[self showWarning:YES];
@@ -442,10 +502,14 @@
 
                 }
         }
+            else{
+                [self showPositive];
+                return YES;
+                
+            }
             
-            [self showNegative];
-            //[self showWarning:YES];
-            return YES;
+         
+           
             break;
         }
         case kroom: //no action don't display anything
@@ -477,7 +541,9 @@
             NSInteger type = [[suspect objectForKey:@"type"]integerValue];
             
             //thats not relevant for our calculations and signal can be picked up from a lot of different places
-            if(type == kroom || type == kbriefing) continue;
+            
+            //|| type == kbriefing
+            if(type == kroom ) continue;
             
             //we are interested if user before getting to patient's bed washed hands or before getting debriefing room.
             //Therefore we are looking for either bed or sink as previous event
@@ -493,57 +559,79 @@
     else{
         return [[self.sequence.lastObject objectForKey:@"type"]integerValue];
     }
-    return 0;
+    return -1;
 }
 
 
 /**Location Check*/
 -(NSInteger)locationCheckForProximityEvents:(NSArray *)proximityEvents andDate:(NSDate *)date{
     
-    NSInteger accuracy = 5; // time in seconds to be evaluated
+    NSInteger timeDelta = 5; // time in seconds to be evaluated
+    NSInteger numberOfEvents = 20;
+    
     NSArray * lastEvents = [proximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary * evaluatedObject, NSDictionary *bindings) {
         NSDate * edate = [evaluatedObject objectForKey:@"date"];
         
         NSInteger proximity =[[evaluatedObject objectForKey:@"proximity"] integerValue];
         NSInteger diff = [date timeIntervalSinceDate:edate];
         
-        
-        if(diff<accuracy&&(proximity!=CLProximityUnknown)){
+        if(diff<timeDelta&&(proximity!=CLProximityUnknown)){
             return  YES;
         }
         return NO;
     }]];
     
-    if(lastEvents.count == 0) return 0;
+    //we are returning -1
+    if(lastEvents.count == 0) return kunknown;
     
-    NSInteger first= lastEvents.count <accuracy ? 0:lastEvents.count-accuracy;
-    NSInteger count =lastEvents.count > accuracy? accuracy:lastEvents.count;
-    NSArray * lastTen = [lastEvents subarrayWithRange: NSMakeRange(first
-                                                                   , count)  ];
+    NSInteger first= lastEvents.count <numberOfEvents ? 0:lastEvents.count-numberOfEvents;
+    NSInteger count =lastEvents.count > numberOfEvents? numberOfEvents:lastEvents.count;
+
+    NSArray * lastTen = [lastEvents subarrayWithRange: NSMakeRange(first,count)];
+    
     
     NSArray * beds = [lastTen filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(type==%@)",@(kbed)]];
+    
+    NSMutableArray  * tempBeds = [NSMutableArray new];
+    for(NSDictionary * bed in beds)
+    {
+        if([[bed objectForKey:@"proximity"] isEqual:@(CLProximityNear)]){
+            [tempBeds addObject: bed];
+        }
+    }
+    beds = tempBeds;
+    
     NSArray * sinks = [lastTen filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(type==%@)",@(ksink)]];
+    NSMutableArray  * tempSinks = [NSMutableArray new];
+    for(NSDictionary * sink in sinks)
+    {
+        if([[sink objectForKey:@"proximity"] isEqual:@(CLProximityNear)]||[[sink objectForKey:@"proximity"] isEqual:@(CLProximityImmediate)]){
+            [tempSinks addObject: sink];
+        }
+    }
+    sinks = tempSinks;
+    
     NSArray * briefings = [lastTen filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(type==%@)",@(kbriefing)]];
     NSArray * simlabs = [lastTen filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(type==%@)",@(kroom)]];
     
-    if(beds.count> count/2){
+    if(beds.count >0 && beds.count>= (count -1)/2){
         return kbed;
     }
     
-    if(sinks.count> count/2){
+    if(sinks.count>0 && sinks.count >= (count-1)/2){
         return ksink;
     }
     
-    if(briefings.count> count/2){
+    if(briefings.count > 0 && briefings.count > count/2){
         return kbriefing;
     }
     
-    if(simlabs.count> count/2){
+    if(simlabs.count>0 && simlabs.count > count/2){
         return kroom;
     }
     
     
-    return 0;
+    return kunknown;
 }
 
 

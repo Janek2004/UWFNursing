@@ -36,17 +36,17 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"patient_cell"];
     self.datasource = [[DataSource alloc]initWithItems:delegate.state.regionEvents  cellIdentifier:@"patient_cell" configureCellBlock:^(UITableViewCell* cell, NSDictionary * item, id indexPath) {
  
-          NSNumber * state =  [item objectForKey:@"state"];
+         // NSNumber * state =  [item objectForKey:@"state"];
           NSNumber * type = [item objectForKey:@"type"];
-          NSNumber * date= [item objectForKey:@"date"];
+       //   NSDate * date= [item objectForKey:@"date"];
             
-          NSString * s = [NSString stringWithFormat:@"State: %@ Type:(0 sink) %@ date: %@",state,type,date];
+          NSString * s = [NSString stringWithFormat:@"Type:(4 sink): %@ date: later",type ];
             cell.textLabel.text= s;
             cell.textLabel.font = [UIFont systemFontOfSize:9.0];
             
         
     }];
-    self.datasource.headers = @[@"Region Events"];
+    self.datasource.headers = @[@"Sequence"];
     self.tableView.dataSource = self.datasource;
     [self.tableView reloadData];
 //    [delegate.state addObserver:self forKeyPath:@"regionEvents" options:NSKeyValueObservingOptionNew context:nil];
@@ -55,7 +55,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if([keyPath isEqualToString:@"regionEvents"]){
+    if([keyPath isEqualToString:@"sequence"]){
         NSArray * patients = [change objectForKey:NSKeyValueChangeNewKey];
         self.datasource.items = patients;
         self.tableView.dataSource = self.datasource;

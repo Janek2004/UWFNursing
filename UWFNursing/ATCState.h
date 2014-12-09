@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, kWarningStatus) {
     @property (strong, nonatomic) NSArray * stations;
     @property (nonatomic,strong) NSMutableArray * regionEvents;
     @property kWarningStatus warningStatus;
+    @property (nonatomic,strong) NSMutableArray * sequence;
 
     -(NSInteger)locationCheckForProximityEvents:(NSArray *)proximityEvents andDate:(NSDate *)date;
     -(void)registerProximity:(ATCBeacon*)beacon andProximity:(CLProximity)proximity;
