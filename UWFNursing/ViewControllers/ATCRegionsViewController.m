@@ -34,7 +34,7 @@
     
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"patient_cell"];
-    self.datasource = [[DataSource alloc]initWithItems:delegate.state.regionEvents  cellIdentifier:@"patient_cell" configureCellBlock:^(UITableViewCell* cell, NSDictionary * item, id indexPath) {
+    self.datasource = [[DataSource alloc]initWithItems:delegate.state.sequence  cellIdentifier:@"patient_cell" configureCellBlock:^(UITableViewCell* cell, NSDictionary * item, id indexPath) {
  
          // NSNumber * state =  [item objectForKey:@"state"];
           NSNumber * type = [item objectForKey:@"type"];

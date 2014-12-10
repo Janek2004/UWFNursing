@@ -1,4 +1,4 @@
-//
+        //
 //  ATCState.m
 //  UWFNursing
 //
@@ -335,7 +335,7 @@
 
 /**Updates the sequence */
 -(void)updateSequence:(NSMutableArray *)sequence WithLocation:(NSInteger )location {
-    if(location == kroom) return;
+    if(location == kroom||location == kunknown) return;
     
     NSMutableArray * tempArray = [sequence mutableCopy];
     //get last object
@@ -409,26 +409,26 @@
     //check latest location before updating the sequence
     self.location = [self locationCheckForProximityEvents:self.proximityEvents andDate:[NSDate new]];
     
-    //update sequence
-    if(self.location !=kunknown||beacon.type != ksink){
+    if(self.location != ksink)
+    {
         [self updateSequence:self.sequence WithLocation:self.location];
     }
-
     if(beacon.type == ksink){
         //check duration
         NSInteger duration = [self checkDurationOfEvent:ksink inEvents:self.proximityEvents];
         NSLog(@"Duration %ld",(long)duration);
-        if(duration==25||duration==24){
+        if(duration==15||duration==14){
             if(self.warningStatus == kAllWarnings ||kPositiveWarnings){
                 [_utils playSystemSoundWithMessage:@"You can stop now."];
             }
         
         }
         
-        if(duration>24){
+        if(duration>15){
             [self updateSequence:self.sequence WithLocation:ksink];
             [self showPositive];
         }
+        return YES;
     }
     
     NSInteger  lastEvent =[self  getLastEventBefore: self.location];

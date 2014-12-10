@@ -168,6 +168,7 @@
     debriefingRoomStation.vcname = @"ATCStationViewController";
     debriefingRoomStation.displayStopDate =@([future timeIntervalSince1970]);
     debriefingRoomStation.displayStartDate =@([past timeIntervalSince1970]);
+    debriefingRoomStation.type = kbriefing;
     debriefingRoom.type = kbriefing;
     
     NSDictionary * appData = @{@"stations":@[sinkStation,simLabStation,debriefingRoomStation,bedStation, bedStation3]};
@@ -266,8 +267,10 @@
             [[strongSelf networkManager] sendRegionNotification:major minor:minor proximityID:beacon.identifier  regionState:state user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.user] withErrorCompletionHandler:^(NSError *error) {
             }];
             
-            ATCStation * station = [strongSelf.contentManager.stationsCompleteDictionary  objectForKey:key];
+            ATCStation * station = [strongSelf.contentManager.stationsCompleteDictionary objectForKey:key];
             [strongSelf.state registerRegionEvent:station andState:state];
+            
+            assert(station.type == beacon.type);
             
         };
     }

@@ -40,7 +40,8 @@
     self.message_label.text=nil;
     //[self authenticate:nil];
     [self.usernameLabel becomeFirstResponder];
-    
+    self.usernameLabel.text = @"Tester1";
+    self.passwordLabel.text = @"Tester1";
 }
 
 
