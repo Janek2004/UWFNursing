@@ -42,12 +42,6 @@
 
 #pragma mark refactoring needed!!!!
 -(NSDictionary *)parseData{
-    ATCPatient * p1 = [[ATCPatient alloc]init];
-    p1.name = @"Skyler";
-    p1.lastname=@"Jansen";
-    p1.dob =  @"3/11/xx";
-    p1.pid = @"MR PCS33300";
-    
     NSString * kontaktIo =@"f7826da6-4fa2-4e98-8024-bc5b71e0893e";
     NSString * estimote = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D";
     
@@ -76,7 +70,6 @@
     bed2.minor = @5559;
     
     
-    
     ATCBeacon * debriefingRoom =[ATCBeacon new];
     debriefingRoom.iOSidentifier = @"Debriefing room";
     debriefingRoom.identifier = estimote;
@@ -88,6 +81,13 @@
     bed.type = kbed;
     debriefingRoom.type =kbriefing;
     bed2.type = kbed;
+    
+    ATCPatient * p1 = [[ATCPatient alloc]init];
+    p1.name = @"Skyler";
+    p1.lastname=@"Jansen";
+    p1.dob =  @"3/11/xx";
+    p1.pid = @"MR PCS33300";
+    
     
     ATCPatient * p2 = [ATCPatient new];
     p2.name = @"Skylar";
@@ -119,7 +119,6 @@
     bedStation.title = [NSString stringWithFormat:@"%@ %@",bedStation.name, bedStation.lastname];
     bedStation.image = [UIImage imageNamed:@"bedside"];
     bedStation.vcname = @"ATCPatientViewController";
-    
     
     ATCPatient * bedStation3 = [ATCPatient new];
     bedStation3.name = @"Jennie";
