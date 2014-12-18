@@ -82,31 +82,31 @@
     debriefingRoom.type =kbriefing;
     bed2.type = kbed;
     
-    ATCPatient * p1 = [[ATCPatient alloc]init];
-    p1.name = @"Skyler";
-    p1.lastname=@"Jansen";
-    p1.dob =  @"3/11/xx";
-    p1.pid = @"MR PCS33300";
-    
-    
-    ATCPatient * p2 = [ATCPatient new];
-    p2.name = @"Skylar";
-    p2.lastname=@"Hansen";
-    p2.dob =  @"3/11/xx";
-    p2.pid = @"MR PCS31100";
-    p2.wristbandCode = @"036000291452";
-    p2.displayStartDate=@1415404800;
-    p2.displayStopDate= @1446940800;
-    p2.type = kbed;
-    p2.beaconKey = bed.hashedBeacon;
-    p2.icon = [UIImage imageNamed:@"patient"];
-    
-    p2.title = [NSString stringWithFormat:@"%@ %@",p2.name, p2.lastname];
-    p2.image = [UIImage imageNamed:@"bedside"];
-    p2.vcname = @"ATCPatientViewController";
+//    ATCPatient * p1 = [[ATCPatient alloc]init];
+//    p1.name = @"Vincent";
+//    p1.lastname=@"Brody";
+//    p1.dob =  @"3/11/xx";
+//    p1.pid = @"MR PCS33300";
+//    
+//    
+//    ATCPatient * p2 = [ATCPatient new];
+//    p2.name = @"Skylar";
+//    p2.lastname=@"Hansen";
+//    p2.dob =  @"3/11/xx";
+//    p2.pid = @"MR PCS31100";
+//    p2.wristbandCode = @"036000291452";
+//    p2.displayStartDate=@1415404800;
+//    p2.displayStopDate= @1446940800;
+//    p2.type = kbed;
+//    p2.beaconKey = bed.hashedBeacon;
+//    p2.icon = [UIImage imageNamed:@"patient"];
+//    
+//    p2.title = [NSString stringWithFormat:@"%@ %@",p2.name, p2.lastname];
+//    p2.image = [UIImage imageNamed:@"bedside"];
+//    p2.vcname = @"ATCPatientViewController";
     
     ATCPatient * bedStation = [ATCPatient new];
-    bedStation.name = @"Baby Boy";
+    bedStation.name = @"Vincent Boy";
     bedStation.lastname=@"Jones";
     bedStation.dob =  @"5 days ago";
     bedStation.pid = @"MR# MJ1";
@@ -134,6 +134,108 @@
     bedStation3.title = [NSString stringWithFormat:@"%@ %@",bedStation3.name, bedStation3.lastname];
     bedStation3.image =[UIImage imageNamed:@"bedside"];
     bedStation3.vcname = @"ATCPatientViewController";
+    
+    
+    
+    ATCPatient * vincent = [ATCPatient new];
+    vincent.name = @"Vincent";
+    vincent.lastname=@"Brody";
+    vincent.dob =  @"06/28/XX";
+    vincent.pid = @"PCS62800";
+    vincent.wristbandCode = @"2";
+    vincent.type = kbed;
+    vincent.beaconKey =bed.hashedBeacon;
+    vincent.icon = [UIImage imageNamed:@"patient"];
+    vincent.title = [NSString stringWithFormat:@"%@ %@",bedStation.name, bedStation.lastname];
+    vincent.image = [UIImage imageNamed:@"bedside"];
+    vincent.vcname = @"ATCPatientViewController";
+    vincent.allergies  = @"NKA";
+    
+    ATCPatient * stan = [ATCPatient new];
+    stan.name = @"Stan";
+    stan.lastname=@"Checkets";
+    stan.dob =  @"08/13/xx";
+    stan.pid = @"PCS81300";
+    stan.wristbandCode = @"3";
+    stan.type = kbed;
+    stan.beaconKey = bed2.hashedBeacon;
+    stan.icon = [UIImage imageNamed:@"patient"];
+    stan.title = [NSString stringWithFormat:@"%@ %@",bedStation3.name, bedStation3.lastname];
+    stan.image =[UIImage imageNamed:@"bedside"];
+    stan.vcname = @"ATCPatientViewController";
+    stan.allergies = @"Demerol";
+    
+    ATCPatient * gerard = [ATCPatient new];
+    gerard.name = @"Gerard";
+    gerard.lastname=@"Graham";
+    gerard.dob =  @"03/17/XX";
+    gerard.pid = @"GG1";
+    gerard.wristbandCode = @"4";
+    gerard.type = kbed;
+    gerard.beaconKey = bed2.hashedBeacon;
+    gerard.icon = [UIImage imageNamed:@"patient"];
+    gerard.title = [NSString stringWithFormat:@"%@ %@",bedStation3.name, bedStation3.lastname];
+    gerard.image =[UIImage imageNamed:@"bedside"];
+    gerard.vcname = @"ATCPatientViewController";
+    gerard.allergies = @"NKA";
+    
+    ATCPatient * kathleen = [ATCPatient new];
+    kathleen.name = @"Kathleen";
+    kathleen.lastname=@"Kay";
+    kathleen.dob =  @"01/01/XX";
+    kathleen.pid = @"KK1";
+    kathleen.wristbandCode = @"5";
+    kathleen.type = kbed;
+    kathleen.beaconKey = bed2.hashedBeacon;
+    kathleen.icon = [UIImage imageNamed:@"patient"];
+    kathleen.title = [NSString stringWithFormat:@"%@ %@",bedStation3.name, bedStation3.lastname];
+    kathleen.image =[UIImage imageNamed:@"bedside"];
+    kathleen.vcname = @"ATCPatientViewController";
+    kathleen.allergies = @"NKA";
+    
+    ATCPatient * jennifer = [ATCPatient new];
+    jennifer.name = @"Jennifer";
+    jennifer.lastname=@"Hoffman";
+    jennifer.dob =  @"01/31/XX";
+    jennifer.pid = @"PCS13100";
+    jennifer.wristbandCode = @"6";
+    jennifer.type = kbed;
+    jennifer.beaconKey = bed2.hashedBeacon;
+    jennifer.icon = [UIImage imageNamed:@"patient"];
+    jennifer.title = [NSString stringWithFormat:@"%@ %@",bedStation3.name, bedStation3.lastname];
+    jennifer.image =[UIImage imageNamed:@"bedside"];
+    jennifer.vcname = @"ATCPatientViewController";
+    jennifer.allergies = @"Hay Fever";
+
+    ATCPatient * thomas = [ATCPatient new];
+    thomas.name = @"Thomas Bahamas";
+    thomas.lastname=@"Islander";
+    thomas.dob =  @"03/02/XX";
+    thomas.pid = @"TBI1";
+    thomas.wristbandCode = @"7";
+    thomas.type = kbed;
+    thomas.beaconKey = bed2.hashedBeacon;
+    thomas.icon = [UIImage imageNamed:@"patient"];
+    thomas.title = [NSString stringWithFormat:@"%@ %@",bedStation3.name, bedStation3.lastname];
+    thomas.image =[UIImage imageNamed:@"bedside"];
+    thomas.vcname = @"ATCPatientViewController";
+    thomas.allergies = @"NKA";
+    
+    ATCPatient * venny = [ATCPatient new];
+    venny.name = @"Venny";
+    venny.lastname=@"Fib";
+    venny.dob =  @"03/17/XX";
+    venny.pid = @"ER101";
+    venny.wristbandCode = @"7";
+    venny.type = kbed;
+    venny.beaconKey = bed2.hashedBeacon;
+    venny.icon = [UIImage imageNamed:@"patient"];
+    venny.title = [NSString stringWithFormat:@"%@ %@",bedStation3.name, bedStation3.lastname];
+    venny.image =[UIImage imageNamed:@"bedside"];
+    venny.vcname = @"ATCPatientViewController";
+    venny.allergies = @"NKA";
+    
+    
     
     NSDate * past = [NSDate distantPast];
     NSDate * future = [NSDate distantFuture];
@@ -170,8 +272,12 @@
     debriefingRoomStation.type = kbriefing;
     debriefingRoom.type = kbriefing;
     
-    NSDictionary * appData = @{@"stations":@[sinkStation,simLabStation,debriefingRoomStation,bedStation, bedStation3]};
+    NSDictionary * appData = @{@"stations":@[sinkStation,simLabStation,debriefingRoomStation,stan]};
     _contentManager.data = appData;
+    
+    //check beacons here:
+    
+    
     NSArray * beacons = @[room, sink, bed, bed2, debriefingRoom];
     
     NSMutableDictionary * dictionary =[@{}mutableCopy];

@@ -15,6 +15,7 @@
  @property (nonatomic,strong)  UIImage * icon;
  @property (nonatomic, strong) NSString * wristbandCode;
  @property (nonatomic,strong)  NSNumber * roomId;
+ @property (nonatomic,strong)  NSString * allergies;
 
 
 @end
