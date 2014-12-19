@@ -17,7 +17,10 @@
 -(NSArray *)setNearbyBeacons:(NSArray*)beacons;
 -(NSArray *)removeBeacon:(NSString *)pid;
 -(NSArray *)addBeacon:(NSString *)pid;
-
+/**Get Patients */
+-(NSArray *)getPatients;
+-(NSDictionary *)getBeacons;
+-(NSDictionary *)parseData; // for unit testing
 -(id)initWithCompletion:(void (^)(NSArray *))stationsBlock;
 
 @end

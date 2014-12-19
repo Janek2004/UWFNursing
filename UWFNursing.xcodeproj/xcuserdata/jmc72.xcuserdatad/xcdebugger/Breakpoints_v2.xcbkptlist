@@ -223,7 +223,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "474"
             endingLineNumber = "474"
-            landmarkName = "-getLastEventBefore:"
+            landmarkName = "-logicFor:"
             landmarkType = "5">
             <Locations>
                <Location
@@ -269,7 +269,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "472"
             endingLineNumber = "472"
-            landmarkName = "-getLastEventBefore:"
+            landmarkName = "-logicFor:"
             landmarkType = "5">
             <Locations>
                <Location

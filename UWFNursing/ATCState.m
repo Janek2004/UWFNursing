@@ -24,7 +24,7 @@
 }
 @property(nonatomic,strong) UIBarButtonItem * logoutButton;
 @property(nonatomic,strong) ATCBeaconNetworkUtilities *networkUtilities;
-
+@property(nonatomic,strong) ATCAppDelegate * delegate;
 @property(nonatomic,strong) NSMutableArray * sinkProximityEvents;
 @property(nonatomic,strong) NSMutableArray * roomProximityEvents;
 @property(nonatomic,strong) NSMutableArray * patientsProximityEvents;
@@ -157,7 +157,14 @@
 }
 #pragma mark end of navigation controller
 
+/**Registers Beacons */
+-(void)registerBeacons:(NSArray *) beacons{
+    for(ATCBeacon * beacon in beacons){
+        [ _delegate.beaconManager registerRegionWithProximityId:beacon.identifier  andIdentifier:beacon.iOSidentifier    major:beacon.major.intValue   andMinor:beacon.minor.intValue];
+    }
+}
 
+/**Default Initializer*/
 -(id)init{
     if(self = [super init])
     {
@@ -176,8 +183,11 @@
         
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(nurseOverrideNotification:) name:@"NURSE_OVERRIDE" object:nil];
         
-        ATCAppDelegate * delegate =   [[UIApplication sharedApplication]delegate];
-        _nav = (UINavigationController *) delegate.window.rootViewController;
+       _delegate =   [[UIApplication sharedApplication]delegate];
+        NSArray * beacons =  [_delegate.contentManager getBeacons];
+        [self registerBeacons:beacons];
+        
+        _nav = (UINavigationController *) _delegate.window.rootViewController;
         _nav.delegate = self;
         
         

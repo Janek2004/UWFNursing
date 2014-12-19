@@ -55,6 +55,9 @@
 
 }
 
+/**
+ Logins user and returns information using block completion handler
+ */
 
 -(void)loginUserWithUsername:(NSString *)username andPassword:(NSString *)password withCompletionHandler:(void (^)(NSError *error, NSUInteger userId,NSInteger sessionId, NSInteger warningState, NSString * errorMessage))completionBlock;{
 
@@ -102,8 +105,7 @@
             }
             //else{
                 completionBlock(nil,0,0,0, @"Unknown problem occured. Please try again later");
-            
-            
+
         }
     }];
 }
@@ -131,12 +133,10 @@
     NSString * urlstring =[NSString stringWithFormat:@"%@&action=scan&barcode=%ld&nurse=%ld&session=%ld",BEACON_URL, (long)barcodeId, (long)userId, (long)session];
     
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
-    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if(connectionError){
             NSLog(@" Error %@ ",connectionError);
-            #warning that should return patient's data
-            
+           
             return;
         }}];
 
@@ -316,17 +316,12 @@
         if([object isKindOfClass:[NSDictionary class]]){
             NSDictionary *results = object;
             completionBlock(results, error);
-            
-            
-            //NSLog(@"%@",results);
+
         }else
         {
             NSLog(@" Not a dictionary ");
         }
-
-    
     }];
-
 }
 
 

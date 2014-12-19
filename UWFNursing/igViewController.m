@@ -8,6 +8,9 @@
 @import AVFoundation;
 
 #import "igViewController.h"
+#import "ATCAppDelegate.h"
+#import "ATCBeaconContentManager.h"
+#import "ATCPatient.h"
 
 @interface igViewController () <AVCaptureMetadataOutputObjectsDelegate>
 {
@@ -95,7 +98,7 @@
     [self.view addSubview:_mrLabel];
     
     _nkaLabel = [[UILabel alloc] init];
-    _nkaLabel.text = @"NKA";
+    _nkaLabel.text = @"";
     _nkaLabel.frame = CGRectMake(0, CGRectGetMaxY(_mrLabel.frame), self.view.bounds.size.width, 40);
     _nkaLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
     _nkaLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
@@ -134,6 +137,7 @@
     _dobLabel.text = @"";
     _nameLabel.text = @"";
     _mrLabel.text= @"";
+    _nkaLabel.text = @"";
     
     [self.view sendSubviewToBack:_dobLabel];
     [self.view sendSubviewToBack:_nameLabel];
@@ -158,63 +162,38 @@
 
 -(void)processBarCode:(NSString *)barcode{
     long long nr  = barcode.longLongValue;
-    
-    #warning probably other class should be responsible for processing the barcode, perhaps ATCState? Plus it should redirect user to appropriate Patients View Controller
-    
-    
-    if(nr == 36000291452){//id 1
-        _dobLabel.text = @"DOB: 3/11/xx";
-        _nameLabel.text = [@"Name: Skyler Hansen" uppercaseString] ;
-        
-        _mrLabel.text = @"MR# PCS31100";
-        
-    }
-    else if(nr==123456789012){//id 2
-        _dobLabel.text = @"DOB: 3/11/xx";
-        _nameLabel.text = [@"Name: Skyler Jansen"uppercaseString];
-        _mrLabel.text = @"MR# PCS33300";
-        
-    }
-    else if(nr==5012345678900){//id 3
-        _dobLabel.text = @"DOB: 1/1/xx";
-        _nameLabel.text = [@"Name: Jennie Jones"uppercaseString];
-        _mrLabel.text = @"MR# J123";
-        
-    }
-    else if(nr==9771234567003){//id 4
-        _dobLabel.text = @"DOB: 1/1/xx";
-        _nameLabel.text = [@"Name: Joy Jackson"uppercaseString];
-        _mrLabel.text = @"MR# JJ1";
-        
-    }
-    else if(nr==1234567890128){//id 5
-        _dobLabel.text = @"DOB: 5 days ago";
-        _nameLabel.text = [@"Name: Jones, BABY BOY"uppercaseString];
-        _mrLabel.text = @"MR# MJ1";
-    }
-    else if(nr==671860013624){// id 6
-        _dobLabel.text = @"DOB: 5 days ago";
-        
-        _nameLabel.text = [@"Name: JAMES, BABY BOY"uppercaseString];
-        _mrLabel.text = @"MR# KJ1";
-    }
-    else if(nr==1){
+    //special case nurse
+   if(nr==1){
         _nameLabel.text =@"Thank you for identification.";
-        #warning change it!
     }
-    else{
-        _nameLabel.text =@"Patient Not Recognized";
+
+    #warning probably other class should be responsible for processing the barcode, perhaps ATCState? Plus it should redirect user to appropriate Patients View Controller
+    ATCAppDelegate * del = [[UIApplication sharedApplication]delegate];
+    NSArray *patients = [del.contentManager getPatients];
+    ATCPatient * patient = nil;
+    for(ATCPatient * p in patients){
+        if([p.wristbandCode isEqualToString:barcode]){
+            patient = p;
+            break;
+        }
     }
+    
+    if(!patient)
+    {
+          _nameLabel.text =@"Patient Not Recognized";
+        return;
+    }
+    _dobLabel.text = [[NSString stringWithFormat:@"DOB: %@",patient.dob]uppercaseString];
+    _nameLabel.text = [[NSString stringWithFormat:@"Name: %@",patient.title]uppercaseString];
+    _mrLabel.text = [[NSString stringWithFormat:@": %@",patient.pid]uppercaseString];
+    _nkaLabel.text = [[NSString stringWithFormat:@": %@",patient.allergies]uppercaseString];
+    
 
     [self.view bringSubviewToFront:_dobLabel];
     [self.view bringSubviewToFront:_nameLabel];
     [self.view bringSubviewToFront:_nkaLabel];
     [self.view bringSubviewToFront:_mrLabel];
-    
-    
     [[NSNotificationCenter defaultCenter]postNotificationName:@"BARCODE_SCAN" object:nil userInfo:@{@"barcode":barcode}];
-    
-    
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
@@ -247,8 +226,6 @@
             
             break;
         }
-        //       else
-           // _barcodeLabel.text = @"(none)";
     }
     
     _highlightView.frame = highlightViewRect;

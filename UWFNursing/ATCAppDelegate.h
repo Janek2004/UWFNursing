@@ -22,6 +22,6 @@
 
 @property (nonatomic,assign) BOOL warning;
 -(void)setUp;
--(NSDictionary *)parseData; // for unit testing
+
 
 @end

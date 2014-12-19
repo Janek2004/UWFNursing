@@ -58,6 +58,7 @@
 		4F85E61719C785AB008B4D1C /* wash-hands-no-germs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F85E61619C785AB008B4D1C /* wash-hands-no-germs.jpg */; };
 		4F85E61A19C786C6008B4D1C /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E61919C786C6008B4D1C /* Utilities.m */; };
 		4F85E61D19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E61C19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m */; };
+		4F97014D1A44A03500A9CF9C /* UWFNursingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6528F01988123B00030100 /* UWFNursingTests.m */; };
 		4F98B65519DC3F8D002624AA /* caution.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F98B65319DC3F8D002624AA /* caution.png */; };
 		4F98B65619DC3F8D002624AA /* caution@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F98B65419DC3F8D002624AA /* caution@2x.png */; };
 		4F9CB51A19F1C0C3006DA3FC /* bedside.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9CB51619F1C0C3006DA3FC /* bedside.png */; };
@@ -455,8 +456,8 @@
 				4F3553B219EED63200F48092 /* JMCBeaconManager.m */,
 				4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */,
 				4F1AA61419DB3DBA00825E6A /* ATCBeaconContentManager.h */,
-				4F35538A19E6E1C400F48092 /* ATCState.h */,
 				4F10D00F1A08084E00512266 /* Protocols.h */,
+				4F35538A19E6E1C400F48092 /* ATCState.h */,
 				4F35538B19E6E1C400F48092 /* ATCState.m */,
 				823D3B3419F8399F0018947A /* ATCNavigationViewController.h */,
 				823D3B3519F8399F0018947A /* ATCNavigationViewController.m */,
@@ -756,6 +757,7 @@
 				823D3B3919F86F210018947A /* ATCRegionsViewController.m in Sources */,
 				4FD3DCD519DB110600E8A759 /* ATCBeaconContentManager.m in Sources */,
 				4FD3DCC219DB008700E8A759 /* ATCBeacon.m in Sources */,
+				4F97014D1A44A03500A9CF9C /* UWFNursingTests.m in Sources */,
 				4F6C864D1A040FDC0093E72C /* ATCPatientViewController.m in Sources */,
 				4F6C86491A03EE5B0093E72C /* ATCBedStationViewController.m in Sources */,
 				82C804341A050FD8004E7294 /* ATCStationViewController.m in Sources */,

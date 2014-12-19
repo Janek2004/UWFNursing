@@ -153,7 +153,6 @@
         NSNotification * notification =[[NSNotification alloc]initWithName:@"LOGIN" object:nil userInfo:@{@"user":@(userId), @"session":@(session), @"warning_state":@(warningState) }];
         [[NSNotificationCenter defaultCenter]postNotification:notification];
 
-        [[NSNotificationCenter defaultCenter]postNotification:notification];
       
         dispatch_async(dispatch_get_main_queue(), ^{
             if(!error && !errorMessage &&session != 0 &&userId!=0)

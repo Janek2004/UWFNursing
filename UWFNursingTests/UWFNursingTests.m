@@ -10,6 +10,7 @@
 #import "ATCAppDelegate.h"
 #import "ATCState.h"
 #import "ATCBeacon.h"
+#import "ATCBeaconContentManager.h"
 
 @interface UWFNursingTests : XCTestCase
 @property (nonatomic,strong) ATCState * state;
@@ -33,7 +34,7 @@
     
     ATCState *state = [ATCState new];
     ATCAppDelegate * delegate = [[ATCAppDelegate alloc]init];
-    NSDictionary * dictionary = [delegate parseData];
+    NSDictionary * dictionary = [delegate.contentManager parseData];
     
     //get beacons
     NSArray * beacons = [dictionary objectForKey:@"beacons"];
