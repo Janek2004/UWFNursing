@@ -425,7 +425,7 @@ return [self.data objectForKey:@"beacons"];
     }
     
     //all beacons
-    [dictionary setObject:beacons forKey:@"beacons"];
+    [dictionary setObject:beacons forKey:@"allBeacons"];
 
     NSDictionary * appData = @{@"stations":@[sinkStation,simLabStation,debriefingRoomStation,stan],@"beacons": dictionary, @"patients":allPatients};
     self.data = appData;
