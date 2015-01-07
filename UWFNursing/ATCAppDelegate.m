@@ -49,28 +49,28 @@
     _networkManager= [ATCBeaconNetworkUtilities new];
     _contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray * stations) {
         self.state.stations =stations;
-        NSLog(@"\n\n\n____CURRENT STATIONS ____ %@  \n", self.state.stations);
+        //NSLog(@"\n\n\n____CURRENT STATIONS ____ %@  \n", self.state.stations);
     }];
+	
      _state =[ATCState new];
    // [self runTests];
     
-    
-#warning I should update it from the cloud!
+
     NSMutableString * message =[NSMutableString new];
     __block  NSDate * date;
-   // [self.contentManager parseData];
-
+	
+	//Get Beacons
     NSDictionary * beacons = [self.contentManager getBeacons];
     __block NSInteger tempProximity = -1;
     
     if([_beaconManager isSupported:message]){
-        //that will be patient
-        
+		
         __weak __typeof__(self) weakSelf = self;
         _beaconManager.beaconFound =^void(NSString * proximityID, int major, int minor, CLProximity proximity){
             __typeof__(self) strongSelf = weakSelf;
-            if(strongSelf.state.session == 0) return;
-            NSDate * now = [NSDate date];
+            if(strongSelf.state.session == 0) return; //if the session is not initialized return
+
+			NSDate * now = [NSDate date];
             NSString *key =   [ATCBeacon hashedBeacon:proximityID major:major minor:minor];
             ATCBeacon * beacon = [beacons objectForKey:key];
             [strongSelf.state registerProximity:beacon andProximity:proximity];
@@ -93,13 +93,13 @@
             
             if([strongSelf sendProximityData:@(beacon.type) state:@(proximity) andDate:now pid:key]){
                 [[strongSelf networkManager] sendProximityDataForBeacon:major minor:minor proximityID:beacon.identifier  proximity:proximity user:[NSString stringWithFormat:@"%ld", (long)strongSelf.state.user] withErrorCompletionHandler:^(NSError *error) {
-                    
-                    //[[strongSelf beaconManager] saveLog:error.debugDescription];
                     tempProximity =proximity;
                 }];
                 date = now;
             }
         };
+		
+		/* Used for registration of region events */
         __weak __typeof__(self) weakSelf2 = self;
         _beaconManager.regionEvent =^void(NSString * proximityID, int major, int minor, NSUInteger state){
             __typeof__(self) strongSelf = weakSelf2;
@@ -121,12 +121,13 @@
             }];
             
             ATCStation * station = [strongSelf.contentManager.stationsCompleteDictionary objectForKey:key];
-		//	strongSelf.ge
 			
             [strongSelf.state registerRegionEvent:station andState:state];
+		
 			if(station!=nil) {
-				assert(station.type == beacon.type);
-	
+				#ifdef DEBUG
+					assert(station.type == beacon.type);
+				#endif
 			}
         };
     }

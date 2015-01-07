@@ -159,8 +159,11 @@
 
 /**Registers Beacons */
 -(void)registerBeacons:(NSArray *) beacons{
-    for(ATCBeacon * beacon in beacons){
-        [ _delegate.beaconManager registerRegionWithProximityId:beacon.identifier  andIdentifier:beacon.iOSidentifier    major:beacon.major.intValue   andMinor:beacon.minor.intValue];
+
+	for(ATCBeacon * beacon in beacons){
+		if([beacon isKindOfClass:[ATCBeacon class]]){
+			[ _delegate.beaconManager registerRegionWithProximityId:beacon.identifier  andIdentifier:beacon.iOSidentifier    major:beacon.major.intValue   andMinor:beacon.minor.intValue];
+		}
     }
 }
 
@@ -184,18 +187,14 @@
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(nurseOverrideNotification:) name:@"NURSE_OVERRIDE" object:nil];
         
        _delegate =   [[UIApplication sharedApplication]delegate];
-        NSArray * beacons =  [[_delegate.contentManager getBeacons]objectForKey:@"allBeacons"];
+        NSArray * beacons =  [[_delegate.contentManager getBeacons]allValues];
 		
         [self registerBeacons:beacons];
         
         _nav = (UINavigationController *) _delegate.window.rootViewController;
         _nav.delegate = self;
-        
-        
         _warningVC =  [_nav.topViewController.storyboard instantiateViewControllerWithIdentifier:@"ATCWarningViewController"];
-        
         _logoutButton=[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
-        
         _networkUtilities = [[ATCBeaconNetworkUtilities alloc]init];
         
     }

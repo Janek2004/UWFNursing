@@ -421,10 +421,10 @@
     }
     
     //all beacons
-    [dictionary setObject:beacons forKey:@"allBeacons"];
+   // [dictionary setObject:beacons forKey:@"allBeacons"];
 	NSMutableArray * stations = [@[] mutableCopy];
-	//registering all patients
-#pragma mark cheating
+
+	//visible all patients
 	for(ATCStation *st in currentPatients){
 		[stations addObject:st];
 	}
