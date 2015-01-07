@@ -184,7 +184,8 @@
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(nurseOverrideNotification:) name:@"NURSE_OVERRIDE" object:nil];
         
        _delegate =   [[UIApplication sharedApplication]delegate];
-        NSArray * beacons =  [_delegate.contentManager getBeacons];
+        NSArray * beacons =  [[_delegate.contentManager getBeacons]objectForKey:@"allBeacons"];
+		
         [self registerBeacons:beacons];
         
         _nav = (UINavigationController *) _delegate.window.rootViewController;

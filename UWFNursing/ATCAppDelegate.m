@@ -44,14 +44,14 @@
 -(void)setUp{
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     
-    _state =[ATCState new];
+	
     _beaconManager = [JMCBeaconManager new];
     _networkManager= [ATCBeaconNetworkUtilities new];
     _contentManager = [[ATCBeaconContentManager alloc]initWithCompletion:^(NSArray * stations) {
         self.state.stations =stations;
         NSLog(@"\n\n\n____CURRENT STATIONS ____ %@  \n", self.state.stations);
     }];
-    
+     _state =[ATCState new];
    // [self runTests];
     
     
@@ -121,10 +121,13 @@
             }];
             
             ATCStation * station = [strongSelf.contentManager.stationsCompleteDictionary objectForKey:key];
+		//	strongSelf.ge
+			
             [strongSelf.state registerRegionEvent:station andState:state];
-            
-            assert(station.type == beacon.type);
-            
+			if(station!=nil) {
+				assert(station.type == beacon.type);
+	
+			}
         };
     }
     else {

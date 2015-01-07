@@ -67,7 +67,7 @@
 }
 /**Get Beacons */
 -(NSDictionary *)getBeacons;{
-return [self.data objectForKey:@"beacons"];
+	return [self.data objectForKey:@"beacons"];
 }
 
 /**Get Patients */
@@ -201,14 +201,12 @@ return [self.data objectForKey:@"beacons"];
     jennie.displayStartDate =@1414779895;
     jennie.displayStopDate = @1415404800;
     jennie.type = kbed;
-    jennie.beaconKey = bed2.hashedBeacon;
+    jennie.beaconKey = bed.hashedBeacon;
     jennie.icon = [UIImage imageNamed:@"patient"];
     jennie.title = [NSString stringWithFormat:@"%@ %@",jennie.name, jennie.lastname];
     jennie.image =[UIImage imageNamed:@"bedside"];
     jennie.vcname = @"ATCPatientViewController";
-    
-    
-    
+	
     ATCPatient * vincent = [ATCPatient new];
     vincent.name = @"Vincent";
     vincent.lastname=@"Brody";
@@ -216,7 +214,7 @@ return [self.data objectForKey:@"beacons"];
     vincent.pid = @"PCS62800";
     vincent.wristbandCode = @"2";
     vincent.type = kbed;
-    vincent.beaconKey =bed.hashedBeacon;
+    vincent.beaconKey =bed2.hashedBeacon;
     vincent.icon = [UIImage imageNamed:@"patient"];
     vincent.title = [NSString stringWithFormat:@"%@ %@",vincent.name, vincent.lastname];
     vincent.image = [UIImage imageNamed:@"bedside"];
@@ -230,7 +228,7 @@ return [self.data objectForKey:@"beacons"];
     stan.pid = @"PCS81300";
     stan.wristbandCode = @"3";
     stan.type = kbed;
-    stan.beaconKey = bed2.hashedBeacon;
+    stan.beaconKey = bed.hashedBeacon;
     stan.icon = [UIImage imageNamed:@"patient"];
     stan.title = [NSString stringWithFormat:@"%@ %@",stan.name, stan.lastname];
     stan.image =[UIImage imageNamed:@"bedside"];
@@ -244,7 +242,7 @@ return [self.data objectForKey:@"beacons"];
     gerard.pid = @"GG1";
     gerard.wristbandCode = @"4";
     gerard.type = kbed;
-    gerard.beaconKey = bed2.hashedBeacon;
+    gerard.beaconKey = bed.hashedBeacon;
     gerard.icon = [UIImage imageNamed:@"patient"];
     gerard.title = [NSString stringWithFormat:@"%@ %@",gerard.name, gerard.lastname];
     gerard.image =[UIImage imageNamed:@"bedside"];
@@ -258,7 +256,7 @@ return [self.data objectForKey:@"beacons"];
     kathleen.pid = @"KK1";
     kathleen.wristbandCode = @"5";
     kathleen.type = kbed;
-    kathleen.beaconKey = bed2.hashedBeacon;
+    kathleen.beaconKey = bed.hashedBeacon;
     kathleen.icon = [UIImage imageNamed:@"patient"];
     kathleen.title = [NSString stringWithFormat:@"%@ %@",kathleen.name, kathleen.lastname];
     kathleen.image =[UIImage imageNamed:@"bedside"];
@@ -272,7 +270,7 @@ return [self.data objectForKey:@"beacons"];
     jennifer.pid = @"PCS13100";
     jennifer.wristbandCode = @"6";
     jennifer.type = kbed;
-    jennifer.beaconKey = bed2.hashedBeacon;
+    jennifer.beaconKey = bed.hashedBeacon;
     jennifer.icon = [UIImage imageNamed:@"patient"];
     jennifer.title = [NSString stringWithFormat:@"%@ %@",jennifer.name, jennifer.lastname];
     jennifer.image =[UIImage imageNamed:@"bedside"];
@@ -286,7 +284,7 @@ return [self.data objectForKey:@"beacons"];
     thomas.pid = @"TBI1";
     thomas.wristbandCode = @"7";
     thomas.type = kbed;
-    thomas.beaconKey = bed2.hashedBeacon;
+    thomas.beaconKey = bed.hashedBeacon;
     thomas.icon = [UIImage imageNamed:@"patient"];
     thomas.title = [NSString stringWithFormat:@"%@ %@",thomas.name, thomas.lastname];
     thomas.image =[UIImage imageNamed:@"bedside"];
@@ -300,7 +298,7 @@ return [self.data objectForKey:@"beacons"];
     venny.pid = @"ER101";
     venny.wristbandCode = @"8";
     venny.type = kbed;
-    venny.beaconKey = bed2.hashedBeacon;
+    venny.beaconKey = bed.hashedBeacon;
     venny.icon = [UIImage imageNamed:@"patient"];
     venny.title = [NSString stringWithFormat:@"%@ %@",venny.name, venny.lastname];
     venny.image =[UIImage imageNamed:@"bedside"];
@@ -310,8 +308,9 @@ return [self.data objectForKey:@"beacons"];
     NSArray * currentPatients = @[];
     NSDate * date = [NSDate new];
     float currentTime = [date timeIntervalSince1970];
-    
-    if(currentTime>1420696800&&currentTime<1420783199){
+	NSLog(@"%d",(int)currentTime);
+	
+    if(currentTime>1420580352&&currentTime<1420783199){
         currentPatients=@[vincent];
     }
     else if(currentTime > 1420783200 && currentTime<1420869600)
@@ -375,7 +374,7 @@ return [self.data objectForKey:@"beacons"];
     }
     
     
-    NSArray * allPatients = @[venny, thomas, jennifer, kathleen, gerard, stan,jennie, skylar ];
+    NSArray * allPatients = @[jennie,venny, thomas, jennifer, kathleen, gerard, stan, skylar,vincent ];
     NSDate * past = [NSDate distantPast];
     NSDate * future = [NSDate distantFuture];
     
@@ -415,10 +414,7 @@ return [self.data objectForKey:@"beacons"];
     
     
     NSMutableDictionary * dictionary =[@{}mutableCopy];
-    
-    
     for(ATCBeacon * beacon in beacons ){
-   
         NSString * key = [ATCBeacon hashedBeacon:beacon.identifier major:beacon.major.integerValue minor:beacon.minor.integerValue];
         //single beacons
         [dictionary setObject:beacon forKey:key];
@@ -426,8 +422,17 @@ return [self.data objectForKey:@"beacons"];
     
     //all beacons
     [dictionary setObject:beacons forKey:@"allBeacons"];
-
-    NSDictionary * appData = @{@"stations":@[sinkStation,simLabStation,debriefingRoomStation,stan],@"beacons": dictionary, @"patients":allPatients};
+	NSMutableArray * stations = [@[] mutableCopy];
+	//registering all patients
+#pragma mark cheating
+	for(ATCStation *st in currentPatients){
+		[stations addObject:st];
+	}
+	
+	
+	[stations addObjectsFromArray:@[sinkStation,simLabStation,debriefingRoomStation]];
+	
+    NSDictionary * appData = @{@"stations":stations,@"beacons": dictionary, @"patients":allPatients};
     self.data = appData;
     
     
