@@ -228,7 +228,7 @@
     stan.pid = @"PCS81300";
     stan.wristbandCode = @"3";
     stan.type = kbed;
-    stan.beaconKey = bed.hashedBeacon;
+    stan.beaconKey = bed2.hashedBeacon;
     stan.icon = [UIImage imageNamed:@"patient"];
     stan.title = [NSString stringWithFormat:@"%@ %@",stan.name, stan.lastname];
     stan.image =[UIImage imageNamed:@"bedside"];
@@ -242,7 +242,7 @@
     gerard.pid = @"GG1";
     gerard.wristbandCode = @"4";
     gerard.type = kbed;
-    gerard.beaconKey = bed.hashedBeacon;
+    gerard.beaconKey = bed2.hashedBeacon;
     gerard.icon = [UIImage imageNamed:@"patient"];
     gerard.title = [NSString stringWithFormat:@"%@ %@",gerard.name, gerard.lastname];
     gerard.image =[UIImage imageNamed:@"bedside"];
@@ -256,7 +256,7 @@
     kathleen.pid = @"KK1";
     kathleen.wristbandCode = @"5";
     kathleen.type = kbed;
-    kathleen.beaconKey = bed.hashedBeacon;
+    kathleen.beaconKey = bed2.hashedBeacon;
     kathleen.icon = [UIImage imageNamed:@"patient"];
     kathleen.title = [NSString stringWithFormat:@"%@ %@",kathleen.name, kathleen.lastname];
     kathleen.image =[UIImage imageNamed:@"bedside"];
@@ -339,7 +339,8 @@
     
     else if(currentTime > 1423202400 && currentTime<1423288800)
     {
-        currentPatients=@[stan];
+		 stan.beaconKey = bed.hashedBeacon;
+		currentPatients=@[stan];
     }
     
     else if(currentTime > 1423720800 && currentTime<1423807200)
