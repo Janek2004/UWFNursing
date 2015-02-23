@@ -86,7 +86,7 @@
     
     //if it doesn't exist we need to add it.
     if(![self.stations objectForKey:key]){
-        if(proximity!=CLProximityUnknown){
+        if(proximity!=CLProximityUnknown && station!=nil){
             // if(station.displayStartDate.integerValue<timestamp&&station.displayStopDate.integerValue>timestamp){
             [self.stations setObject:station  forKey:key];
             // }
@@ -337,10 +337,11 @@
         currentPatients=@[gerard];
     }
     
-    else if(currentTime > 1423202400 && currentTime<1423288800)
+    else if((currentTime > 1423202400 && currentTime<1423288800)//feb 6
+			||(currentTime > 1422597600000 && currentTime<1422684000))
     {
 		 stan.beaconKey = bed.hashedBeacon;
-		currentPatients=@[stan];
+		 currentPatients=@[stan];
     }
     
     else if(currentTime > 1423720800 && currentTime<1423807200)

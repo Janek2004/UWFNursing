@@ -716,7 +716,7 @@ jsmith username and 2014 as password.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" secureTextEntry="YES"/>
                             </textField>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="itg-MI-Ef3">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="itg-MI-Ef3">
                                 <rect key="frame" x="150" y="116" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
@@ -731,6 +731,8 @@ jsmith username and 2014 as password.</string>
                             <constraint firstAttribute="trailing" secondItem="YWR-BI-rWd" secondAttribute="trailing" constant="7" id="Qag-n9-2nJ"/>
                             <constraint firstItem="YWR-BI-rWd" firstAttribute="leading" secondItem="bZ9-dj-H5Z" secondAttribute="leading" constant="7" id="R2Q-wM-ZwU"/>
                             <constraint firstAttribute="centerX" secondItem="ewY-4V-xY9" secondAttribute="centerX" constant="-10" id="eCR-Rd-2Lq"/>
+                            <constraint firstItem="itg-MI-Ef3" firstAttribute="top" secondItem="bZ9-dj-H5Z" secondAttribute="top" constant="116" id="eck-N7-4Fl"/>
+                            <constraint firstAttribute="centerX" secondItem="itg-MI-Ef3" secondAttribute="centerX" id="fE3-8p-Qfc"/>
                             <constraint firstItem="ewY-4V-xY9" firstAttribute="top" secondItem="bZ9-dj-H5Z" secondAttribute="top" constant="187" id="loF-xN-dmE"/>
                             <constraint firstAttribute="centerX" secondItem="ANA-P2-sUF" secondAttribute="centerX" constant="-0.5" id="r7U-Kf-Nmd"/>
                             <constraint firstAttribute="centerX" secondItem="9qa-g8-27B" secondAttribute="centerX" id="skz-2c-uOq"/>
@@ -748,7 +750,7 @@ jsmith username and 2014 as password.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXx-Da-pHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1033" y="947"/>
+            <point key="canvasLocation" x="-944" y="865"/>
         </scene>
         <!--Regions View Controller-->
         <scene sceneID="zxc-zE-X9c">
