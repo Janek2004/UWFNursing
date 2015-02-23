@@ -9,15 +9,10 @@
 /* Begin PBXBuildFile section */
 		4F35538519E585E300F48092 /* Girls.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F35538419E585E300F48092 /* Girls.pdf */; };
 		4F35538819E599B700F48092 /* ATCNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35538719E599B700F48092 /* ATCNetworkTest.m */; };
-		4F35538919E599B700F48092 /* ATCNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35538719E599B700F48092 /* ATCNetworkTest.m */; };
 		4F35538C19E6E1C400F48092 /* ATCState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35538B19E6E1C400F48092 /* ATCState.m */; };
-		4F35538D19E6E1C400F48092 /* ATCState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35538B19E6E1C400F48092 /* ATCState.m */; };
 		4F35539119E6EED500F48092 /* ATCPrimaryNurseChoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35539019E6EED500F48092 /* ATCPrimaryNurseChoice.m */; };
-		4F35539219E6EED500F48092 /* ATCPrimaryNurseChoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35539019E6EED500F48092 /* ATCPrimaryNurseChoice.m */; };
 		4F35539519EC777B00F48092 /* ATCWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35539419EC777B00F48092 /* ATCWarningViewController.m */; };
-		4F35539619EC777B00F48092 /* ATCWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35539419EC777B00F48092 /* ATCWarningViewController.m */; };
 		4F3553AC19EEB37700F48092 /* ATCBeaconNetworkUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3553AB19EEB37700F48092 /* ATCBeaconNetworkUtilities.m */; };
-		4F3553AD19EEB37700F48092 /* ATCBeaconNetworkUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3553AB19EEB37700F48092 /* ATCBeaconNetworkUtilities.m */; };
 		4F3553B319EED63200F48092 /* JMCBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3553B219EED63200F48092 /* JMCBeaconManager.m */; };
 		4F5B295719951DC80055E462 /* ATCLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5B295619951DC80055E462 /* ATCLogViewController.m */; };
 		4F6528C61988123B00030100 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528C51988123B00030100 /* Foundation.framework */; };
@@ -29,11 +24,6 @@
 		4F6528D91988123B00030100 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6528D71988123B00030100 /* Main.storyboard */; };
 		4F6528DC1988123B00030100 /* ATCStationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6528DB1988123B00030100 /* ATCStationsViewController.m */; };
 		4F6528DE1988123B00030100 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6528DD1988123B00030100 /* Images.xcassets */; };
-		4F6528E51988123B00030100 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528E41988123B00030100 /* XCTest.framework */; };
-		4F6528E61988123B00030100 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528C51988123B00030100 /* Foundation.framework */; };
-		4F6528E71988123B00030100 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6528C91988123B00030100 /* UIKit.framework */; };
-		4F6528EF1988123B00030100 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F6528ED1988123B00030100 /* InfoPlist.strings */; };
-		4F6528F11988123B00030100 /* UWFNursingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6528F01988123B00030100 /* UWFNursingTests.m */; };
 		4F6529031988167F00030100 /* Juniorsimapp1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6528FB1988167F00030100 /* Juniorsimapp1.pdf */; };
 		4F6529041988167F00030100 /* Juniorsimapp2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6528FC1988167F00030100 /* Juniorsimapp2.pdf */; };
 		4F6529051988167F00030100 /* Juniorsimapp3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6528FD1988167F00030100 /* Juniorsimapp3.pdf */; };
@@ -47,9 +37,7 @@
 		4F65291C1988219300030100 /* ATCDetailsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65291B1988219300030100 /* ATCDetailsWebViewController.m */; };
 		4F65292019882C6500030100 /* igViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F65291F19882C6500030100 /* igViewController.m */; };
 		4F6C86491A03EE5B0093E72C /* ATCBedStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6C86481A03EE5B0093E72C /* ATCBedStationViewController.m */; };
-		4F6C864A1A03EE5B0093E72C /* ATCBedStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6C86481A03EE5B0093E72C /* ATCBedStationViewController.m */; };
 		4F6C864D1A040FDC0093E72C /* ATCPatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6C864C1A040FDC0093E72C /* ATCPatientViewController.m */; };
-		4F6C864E1A040FDC0093E72C /* ATCPatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6C864C1A040FDC0093E72C /* ATCPatientViewController.m */; };
 		4F73F64F19FFFAB500B25D7C /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73F64D19FFFAB500B25D7C /* map.png */; };
 		4F73F65019FFFAB500B25D7C /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73F64E19FFFAB500B25D7C /* map@2x.png */; };
 		4F73F65319FFFC4500B25D7C /* justify.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73F65119FFFC4500B25D7C /* justify.png */; };
@@ -65,35 +53,20 @@
 		4F9CB51C19F1C0C3006DA3FC /* simlab.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9CB51819F1C0C3006DA3FC /* simlab.png */; };
 		4F9CB51D19F1C0C3006DA3FC /* sink.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9CB51919F1C0C3006DA3FC /* sink.png */; };
 		4FD3DC8F19D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DC8E19D9D95B00E8A759 /* ATCAuthenticateViewController.m */; };
-		4FD3DC9019D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DC8E19D9D95B00E8A759 /* ATCAuthenticateViewController.m */; };
 		4FD3DC9219D9E06100E8A759 /* sampleLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9119D9E06100E8A759 /* sampleLogo.png */; };
-		4FD3DC9319D9E06100E8A759 /* sampleLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9119D9E06100E8A759 /* sampleLogo.png */; };
 		4FD3DC9519D9FACE00E8A759 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9419D9FACE00E8A759 /* documents.png */; };
-		4FD3DC9619D9FACE00E8A759 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9419D9FACE00E8A759 /* documents.png */; };
 		4FD3DC9C19D9FB3900E8A759 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9B19D9FB3900E8A759 /* help.png */; };
-		4FD3DC9D19D9FB3900E8A759 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9B19D9FB3900E8A759 /* help.png */; };
 		4FD3DC9F19D9FBC700E8A759 /* padlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9E19D9FBC700E8A759 /* padlock.png */; };
-		4FD3DCA019D9FBC700E8A759 /* padlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DC9E19D9FBC700E8A759 /* padlock.png */; };
 		4FD3DCA219D9FD5400E8A759 /* scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCA119D9FD5400E8A759 /* scan.png */; };
-		4FD3DCA319D9FD5400E8A759 /* scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCA119D9FD5400E8A759 /* scan.png */; };
 		4FD3DCA519D9FE1800E8A759 /* debugging.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCA419D9FE1800E8A759 /* debugging.png */; };
-		4FD3DCA619D9FE1800E8A759 /* debugging.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCA419D9FE1800E8A759 /* debugging.png */; };
 		4FD3DCA819D9FE6000E8A759 /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCA719D9FE6000E8A759 /* unlock.png */; };
-		4FD3DCA919D9FE6000E8A759 /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCA719D9FE6000E8A759 /* unlock.png */; };
 		4FD3DCAB19DA016800E8A759 /* debugging@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAA19DA016800E8A759 /* debugging@2x.png */; };
-		4FD3DCAC19DA016800E8A759 /* debugging@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAA19DA016800E8A759 /* debugging@2x.png */; };
 		4FD3DCB019DA01D500E8A759 /* documents@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAD19DA01D500E8A759 /* documents@2x.png */; };
-		4FD3DCB119DA01D500E8A759 /* documents@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAD19DA01D500E8A759 /* documents@2x.png */; };
 		4FD3DCB219DA01D500E8A759 /* help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAE19DA01D500E8A759 /* help@2x.png */; };
-		4FD3DCB319DA01D500E8A759 /* help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAE19DA01D500E8A759 /* help@2x.png */; };
 		4FD3DCB419DA01D500E8A759 /* padlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAF19DA01D500E8A759 /* padlock@2x.png */; };
-		4FD3DCB519DA01D500E8A759 /* padlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCAF19DA01D500E8A759 /* padlock@2x.png */; };
 		4FD3DCB719DA01DC00E8A759 /* scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCB619DA01DC00E8A759 /* scan@2x.png */; };
-		4FD3DCB819DA01DC00E8A759 /* scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCB619DA01DC00E8A759 /* scan@2x.png */; };
 		4FD3DCBB19DA028400E8A759 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCB919DA028400E8A759 /* clear.png */; };
-		4FD3DCBC19DA028400E8A759 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCB919DA028400E8A759 /* clear.png */; };
 		4FD3DCBD19DA028400E8A759 /* clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCBA19DA028400E8A759 /* clear@2x.png */; };
-		4FD3DCBE19DA028400E8A759 /* clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCBA19DA028400E8A759 /* clear@2x.png */; };
 		4FD3DCC219DB008700E8A759 /* ATCBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCC119DB008700E8A759 /* ATCBeacon.m */; };
 		4FD3DCC519DB00E500E8A759 /* ATCPatientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCC419DB00E500E8A759 /* ATCPatientCell.m */; };
 		4FD3DCC819DB01B600E8A759 /* ATCStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCC719DB01B600E8A759 /* ATCStation.m */; };
@@ -101,40 +74,22 @@
 		4FD3DCCC19DB043B00E8A759 /* female_patient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCCB19DB043B00E8A759 /* female_patient@2x.png */; };
 		4FD3DCD319DB0D6900E8A759 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD219DB0D6900E8A759 /* Localizable.strings */; };
 		4FD3DCD519DB110600E8A759 /* ATCBeaconContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */; };
-		4FD3DCD619DB110600E8A759 /* ATCBeaconContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */; };
 		4FD3DCD819DB2C5100E8A759 /* ATCPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD719DB2C5100E8A759 /* ATCPatient.m */; };
-		4FD3DCD919DB2C5100E8A759 /* ATCPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD719DB2C5100E8A759 /* ATCPatient.m */; };
 		823D3B3619F8399F0018947A /* ATCNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823D3B3519F8399F0018947A /* ATCNavigationViewController.m */; };
 		823D3B3919F86F210018947A /* ATCRegionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823D3B3819F86F210018947A /* ATCRegionsViewController.m */; };
+		8248346E1A9B7D5200A366EA /* Model.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 8248346B1A9B7D5200A366EA /* Model.xcdatamodel */; };
+		8248346F1A9B7D5200A366EA /* Proximity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8248346C1A9B7D5200A366EA /* Proximity.swift */; };
+		824834701A9B7D5200A366EA /* CoreDataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8248346D1A9B7D5200A366EA /* CoreDataWrapper.swift */; };
 		82A9629F19F0AFF3009CAB7A /* ATCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */; };
-		82A962A019F0AFF3009CAB7A /* ATCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */; };
 		82C804341A050FD8004E7294 /* ATCStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C804331A050FD8004E7294 /* ATCStationViewController.m */; };
-		82C804351A050FD8004E7294 /* ATCStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C804331A050FD8004E7294 /* ATCStationViewController.m */; };
 		82C804381A05105D004E7294 /* ATCHospitalRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C804371A05105D004E7294 /* ATCHospitalRoomViewController.m */; };
-		82C804391A05105D004E7294 /* ATCHospitalRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C804371A05105D004E7294 /* ATCHospitalRoomViewController.m */; };
 		82C8043C1A071FFA004E7294 /* bedside_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C8043A1A071FFA004E7294 /* bedside_icon.png */; };
-		82C8043D1A071FFA004E7294 /* bedside_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C8043A1A071FFA004E7294 /* bedside_icon.png */; };
 		82C8043E1A071FFA004E7294 /* bedside_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C8043B1A071FFA004E7294 /* bedside_icon@2x.png */; };
-		82C8043F1A071FFA004E7294 /* bedside_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C8043B1A071FFA004E7294 /* bedside_icon@2x.png */; };
 		82C804421A0720F3004E7294 /* sink_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C804401A0720F3004E7294 /* sink_icon.png */; };
-		82C804431A0720F3004E7294 /* sink_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C804401A0720F3004E7294 /* sink_icon.png */; };
 		82C804441A0720F3004E7294 /* sink_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C804411A0720F3004E7294 /* sink_icon@2x.png */; };
-		82C804451A0720F3004E7294 /* sink_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C804411A0720F3004E7294 /* sink_icon@2x.png */; };
 		82C804481A0724E5004E7294 /* patient.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C804461A0724E5004E7294 /* patient.png */; };
-		82C804491A0724E5004E7294 /* patient.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C804461A0724E5004E7294 /* patient.png */; };
 		82C8044A1A0724E5004E7294 /* patient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C804471A0724E5004E7294 /* patient@2x.png */; };
-		82C8044B1A0724E5004E7294 /* patient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C804471A0724E5004E7294 /* patient@2x.png */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4F6528E81988123B00030100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4F6528BA1988123B00030100 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F6528C11988123B00030100;
-			remoteInfo = UWFNursing;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4F10D00F1A08084E00512266 /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocols.h; sourceTree = "<group>"; };
@@ -168,7 +123,6 @@
 		4F6528DA1988123B00030100 /* ATCStationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATCStationsViewController.h; sourceTree = "<group>"; };
 		4F6528DB1988123B00030100 /* ATCStationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATCStationsViewController.m; sourceTree = "<group>"; };
 		4F6528DD1988123B00030100 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4F6528E31988123B00030100 /* UWFNursingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UWFNursingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6528E41988123B00030100 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4F6528EC1988123B00030100 /* UWFNursingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UWFNursingTests-Info.plist"; sourceTree = "<group>"; };
 		4F6528EE1988123B00030100 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -241,6 +195,10 @@
 		823D3B3519F8399F0018947A /* ATCNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCNavigationViewController.m; sourceTree = "<group>"; };
 		823D3B3719F86F210018947A /* ATCRegionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCRegionsViewController.h; path = ViewControllers/ATCRegionsViewController.h; sourceTree = "<group>"; };
 		823D3B3819F86F210018947A /* ATCRegionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCRegionsViewController.m; path = ViewControllers/ATCRegionsViewController.m; sourceTree = "<group>"; };
+		8248346A1A9B7D5200A366EA /* UWFNursing-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UWFNursing-Bridging-Header.h"; sourceTree = "<group>"; };
+		8248346B1A9B7D5200A366EA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		8248346C1A9B7D5200A366EA /* Proximity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proximity.swift; sourceTree = "<group>"; };
+		8248346D1A9B7D5200A366EA /* CoreDataWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWrapper.swift; sourceTree = "<group>"; };
 		82A9629D19F0AFF3009CAB7A /* ATCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCMapViewController.h; sourceTree = "<group>"; };
 		82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCMapViewController.m; sourceTree = "<group>"; };
 		82C804321A050FD8004E7294 /* ATCStationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCStationViewController.h; path = StationsVC/ATCStationViewController.h; sourceTree = "<group>"; };
@@ -263,16 +221,6 @@
 				4F6528C81988123B00030100 /* CoreGraphics.framework in Frameworks */,
 				4F6528CA1988123B00030100 /* UIKit.framework in Frameworks */,
 				4F6528C61988123B00030100 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4F6528E01988123B00030100 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4F6528E51988123B00030100 /* XCTest.framework in Frameworks */,
-				4F6528E71988123B00030100 /* UIKit.framework in Frameworks */,
-				4F6528E61988123B00030100 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +254,6 @@
 			isa = PBXGroup;
 			children = (
 				4F6528C21988123B00030100 /* UWFNursing.app */,
-				4F6528E31988123B00030100 /* UWFNursingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -448,6 +395,9 @@
 		4FB575EC198AB02700B4DE63 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8248346B1A9B7D5200A366EA /* Model.xcdatamodel */,
+				8248346C1A9B7D5200A366EA /* Proximity.swift */,
+				8248346D1A9B7D5200A366EA /* CoreDataWrapper.swift */,
 				4F85E61819C786C6008B4D1C /* Utilities.h */,
 				4F85E61919C786C6008B4D1C /* Utilities.m */,
 				4F3553AA19EEB37700F48092 /* ATCBeaconNetworkUtilities.h */,
@@ -463,6 +413,7 @@
 				823D3B3519F8399F0018947A /* ATCNavigationViewController.m */,
 				823D3B3719F86F210018947A /* ATCRegionsViewController.h */,
 				823D3B3819F86F210018947A /* ATCRegionsViewController.m */,
+				8248346A1A9B7D5200A366EA /* UWFNursing-Bridging-Header.h */,
 			);
 			name = Helpers;
 			path = UWFNursing;
@@ -585,24 +536,6 @@
 			productReference = 4F6528C21988123B00030100 /* UWFNursing.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4F6528E21988123B00030100 /* UWFNursingTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4F6528F71988123B00030100 /* Build configuration list for PBXNativeTarget "UWFNursingTests" */;
-			buildPhases = (
-				4F6528DF1988123B00030100 /* Sources */,
-				4F6528E01988123B00030100 /* Frameworks */,
-				4F6528E11988123B00030100 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4F6528E91988123B00030100 /* PBXTargetDependency */,
-			);
-			name = UWFNursingTests;
-			productName = UWFNursingTests;
-			productReference = 4F6528E31988123B00030100 /* UWFNursingTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -614,16 +547,12 @@
 				ORGANIZATIONNAME = "Janusz Chudzynski";
 				TargetAttributes = {
 					4F6528C11988123B00030100 = {
-						DevelopmentTeam = W23JT3HF49;
+						DevelopmentTeam = 8KV53E363M;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 						};
-					};
-					4F6528E21988123B00030100 = {
-						DevelopmentTeam = BZUY5AR8YB;
-						TestTargetID = 4F6528C11988123B00030100;
 					};
 				};
 			};
@@ -641,7 +570,6 @@
 			projectRoot = "";
 			targets = (
 				4F6528C11988123B00030100 /* UWFNursing */,
-				4F6528E21988123B00030100 /* UWFNursingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -701,34 +629,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F6528E11988123B00030100 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4FD3DC9D19D9FB3900E8A759 /* help.png in Resources */,
-				4FD3DC9319D9E06100E8A759 /* sampleLogo.png in Resources */,
-				4FD3DCB819DA01DC00E8A759 /* scan@2x.png in Resources */,
-				4FD3DCA919D9FE6000E8A759 /* unlock.png in Resources */,
-				4FD3DCA319D9FD5400E8A759 /* scan.png in Resources */,
-				4FD3DCAC19DA016800E8A759 /* debugging@2x.png in Resources */,
-				4FD3DCBE19DA028400E8A759 /* clear@2x.png in Resources */,
-				4FD3DCB519DA01D500E8A759 /* padlock@2x.png in Resources */,
-				4FD3DCA619D9FE1800E8A759 /* debugging.png in Resources */,
-				82C804431A0720F3004E7294 /* sink_icon.png in Resources */,
-				4F6528EF1988123B00030100 /* InfoPlist.strings in Resources */,
-				82C804491A0724E5004E7294 /* patient.png in Resources */,
-				4FD3DCBC19DA028400E8A759 /* clear.png in Resources */,
-				82C804451A0720F3004E7294 /* sink_icon@2x.png in Resources */,
-				82C8044B1A0724E5004E7294 /* patient@2x.png in Resources */,
-				82C8043D1A071FFA004E7294 /* bedside_icon.png in Resources */,
-				4FD3DCB119DA01D500E8A759 /* documents@2x.png in Resources */,
-				4FD3DC9619D9FACE00E8A759 /* documents.png in Resources */,
-				4FD3DCA019D9FBC700E8A759 /* padlock.png in Resources */,
-				4FD3DCB319DA01D500E8A759 /* help@2x.png in Resources */,
-				82C8043F1A071FFA004E7294 /* bedside_icon@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -742,6 +642,7 @@
 				82C804381A05105D004E7294 /* ATCHospitalRoomViewController.m in Sources */,
 				4FD3DCC819DB01B600E8A759 /* ATCStation.m in Sources */,
 				4F65290D1988171200030100 /* ATCDocumentsViewController.m in Sources */,
+				8248346E1A9B7D5200A366EA /* Model.xcdatamodel in Sources */,
 				4F6528D21988123B00030100 /* main.m in Sources */,
 				4F6528DC1988123B00030100 /* ATCStationsViewController.m in Sources */,
 				4F85E61D19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m in Sources */,
@@ -753,7 +654,9 @@
 				4FD3DCC519DB00E500E8A759 /* ATCPatientCell.m in Sources */,
 				82A9629F19F0AFF3009CAB7A /* ATCMapViewController.m in Sources */,
 				4F6529101988174500030100 /* DataSource.m in Sources */,
+				8248346F1A9B7D5200A366EA /* Proximity.swift in Sources */,
 				4F5B295719951DC80055E462 /* ATCLogViewController.m in Sources */,
+				824834701A9B7D5200A366EA /* CoreDataWrapper.swift in Sources */,
 				823D3B3919F86F210018947A /* ATCRegionsViewController.m in Sources */,
 				4FD3DCD519DB110600E8A759 /* ATCBeaconContentManager.m in Sources */,
 				4FD3DCC219DB008700E8A759 /* ATCBeacon.m in Sources */,
@@ -768,36 +671,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F6528DF1988123B00030100 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4F35538D19E6E1C400F48092 /* ATCState.m in Sources */,
-				4F3553AD19EEB37700F48092 /* ATCBeaconNetworkUtilities.m in Sources */,
-				4F6C864A1A03EE5B0093E72C /* ATCBedStationViewController.m in Sources */,
-				4F35539219E6EED500F48092 /* ATCPrimaryNurseChoice.m in Sources */,
-				82C804391A05105D004E7294 /* ATCHospitalRoomViewController.m in Sources */,
-				4F35539619EC777B00F48092 /* ATCWarningViewController.m in Sources */,
-				4F6C864E1A040FDC0093E72C /* ATCPatientViewController.m in Sources */,
-				4FD3DCD919DB2C5100E8A759 /* ATCPatient.m in Sources */,
-				4FD3DC9019D9D95B00E8A759 /* ATCAuthenticateViewController.m in Sources */,
-				4F35538919E599B700F48092 /* ATCNetworkTest.m in Sources */,
-				82C804351A050FD8004E7294 /* ATCStationViewController.m in Sources */,
-				4F6528F11988123B00030100 /* UWFNursingTests.m in Sources */,
-				82A962A019F0AFF3009CAB7A /* ATCMapViewController.m in Sources */,
-				4FD3DCD619DB110600E8A759 /* ATCBeaconContentManager.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4F6528E91988123B00030100 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4F6528C11988123B00030100 /* UWFNursing */;
-			targetProxy = 4F6528E81988123B00030100 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4F6528CE1988123B00030100 /* InfoPlist.strings */ = {
@@ -862,7 +736,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "eb88dc00-fb05-4c8c-9d7d-4a226c95f90b";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -895,7 +768,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "eb88dc00-fb05-4c8c-9d7d-4a226c95f90b";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -907,6 +779,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -917,9 +790,12 @@
 				);
 				INFOPLIST_FILE = "UWFNursing/UWFNursing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "UWFNursing/UWFNursing-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -931,6 +807,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -941,54 +818,13 @@
 				);
 				INFOPLIST_FILE = "UWFNursing/UWFNursing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "UWFNursing/UWFNursing-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		4F6528F81988123B00030100 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/UWFNursing.app/UWFNursing";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UWFNursing/UWFNursing-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "UWFNursingTests/UWFNursingTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		4F6528F91988123B00030100 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/UWFNursing.app/UWFNursing";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UWFNursing/UWFNursing-Prefix.pch";
-				INFOPLIST_FILE = "UWFNursingTests/UWFNursingTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -1009,15 +845,6 @@
 			buildConfigurations = (
 				4F6528F51988123B00030100 /* Debug */,
 				4F6528F61988123B00030100 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4F6528F71988123B00030100 /* Build configuration list for PBXNativeTarget "UWFNursingTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4F6528F81988123B00030100 /* Debug */,
-				4F6528F91988123B00030100 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

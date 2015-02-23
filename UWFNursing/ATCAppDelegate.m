@@ -72,6 +72,8 @@
 
 			NSDate * now = [NSDate date];
             NSString *key =   [ATCBeacon hashedBeacon:proximityID major:major minor:minor];
+			   [weakSelf.coreData updateProximityData:proximity beacon:key];
+			
             ATCBeacon * beacon = [beacons objectForKey:key];
             [strongSelf.state registerProximity:beacon andProximity:proximity];
             
@@ -165,6 +167,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	 _coreData = [[CoreDataWrapper alloc]init];
     _networkDictionary = [NSMutableDictionary new];
     [self setUp];
     

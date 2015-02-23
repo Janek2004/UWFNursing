@@ -5,7 +5,7 @@
 //  Created by Janusz Chudzynski on 7/29/14.
 //  Copyright (c) 2014 Janusz Chudzynski. All rights reserved.
 //
-
+#import <UWFNursing-Swift.h>
 #import <UIKit/UIKit.h>
 @class JMCBeaconManager;
 @class ATCBeaconNetworkUtilities;
@@ -17,7 +17,7 @@
 @property(nonatomic, strong) ATCBeaconNetworkUtilities * networkManager;
 @property(nonatomic, strong) ATCBeaconContentManager * contentManager;
 @property(nonatomic,strong)  ATCState * state;
-
+@property (nonatomic,strong) CoreDataWrapper * coreData;
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic,assign) BOOL warning;
