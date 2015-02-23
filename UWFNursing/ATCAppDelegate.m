@@ -43,7 +43,7 @@
 
 -(void)setUp{
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-    
+     [self.coreData updateProximityData:CLProximityFar beacon:@"key"];
 	
     _beaconManager = [JMCBeaconManager new];
     _networkManager= [ATCBeaconNetworkUtilities new];

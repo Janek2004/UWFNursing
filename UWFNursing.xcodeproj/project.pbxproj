@@ -77,10 +77,10 @@
 		4FD3DCD819DB2C5100E8A759 /* ATCPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD719DB2C5100E8A759 /* ATCPatient.m */; };
 		823D3B3619F8399F0018947A /* ATCNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823D3B3519F8399F0018947A /* ATCNavigationViewController.m */; };
 		823D3B3919F86F210018947A /* ATCRegionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823D3B3819F86F210018947A /* ATCRegionsViewController.m */; };
-		8248346E1A9B7D5200A366EA /* Model.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 8248346B1A9B7D5200A366EA /* Model.xcdatamodel */; };
-		8248346F1A9B7D5200A366EA /* Proximity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8248346C1A9B7D5200A366EA /* Proximity.swift */; };
 		824834701A9B7D5200A366EA /* CoreDataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8248346D1A9B7D5200A366EA /* CoreDataWrapper.swift */; };
 		82A9629F19F0AFF3009CAB7A /* ATCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */; };
+		82AAE7D01A9B890300D74189 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82AAE7CE1A9B890300D74189 /* Model.xcdatamodeld */; };
+		82AAE7D21A9B89BB00D74189 /* Proximity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AAE7D11A9B89BB00D74189 /* Proximity.swift */; };
 		82C804341A050FD8004E7294 /* ATCStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C804331A050FD8004E7294 /* ATCStationViewController.m */; };
 		82C804381A05105D004E7294 /* ATCHospitalRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C804371A05105D004E7294 /* ATCHospitalRoomViewController.m */; };
 		82C8043C1A071FFA004E7294 /* bedside_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C8043A1A071FFA004E7294 /* bedside_icon.png */; };
@@ -196,11 +196,11 @@
 		823D3B3719F86F210018947A /* ATCRegionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCRegionsViewController.h; path = ViewControllers/ATCRegionsViewController.h; sourceTree = "<group>"; };
 		823D3B3819F86F210018947A /* ATCRegionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCRegionsViewController.m; path = ViewControllers/ATCRegionsViewController.m; sourceTree = "<group>"; };
 		8248346A1A9B7D5200A366EA /* UWFNursing-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UWFNursing-Bridging-Header.h"; sourceTree = "<group>"; };
-		8248346B1A9B7D5200A366EA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		8248346C1A9B7D5200A366EA /* Proximity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proximity.swift; sourceTree = "<group>"; };
 		8248346D1A9B7D5200A366EA /* CoreDataWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWrapper.swift; sourceTree = "<group>"; };
 		82A9629D19F0AFF3009CAB7A /* ATCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCMapViewController.h; sourceTree = "<group>"; };
 		82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCMapViewController.m; sourceTree = "<group>"; };
+		82AAE7CF1A9B890300D74189 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		82AAE7D11A9B89BB00D74189 /* Proximity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proximity.swift; sourceTree = "<group>"; };
 		82C804321A050FD8004E7294 /* ATCStationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCStationViewController.h; path = StationsVC/ATCStationViewController.h; sourceTree = "<group>"; };
 		82C804331A050FD8004E7294 /* ATCStationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCStationViewController.m; path = StationsVC/ATCStationViewController.m; sourceTree = "<group>"; };
 		82C804361A05105D004E7294 /* ATCHospitalRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCHospitalRoomViewController.h; sourceTree = "<group>"; };
@@ -239,6 +239,8 @@
 		4F6528B91988123B00030100 = {
 			isa = PBXGroup;
 			children = (
+				82AAE7CE1A9B890300D74189 /* Model.xcdatamodeld */,
+				82AAE7D11A9B89BB00D74189 /* Proximity.swift */,
 				4FB575EC198AB02700B4DE63 /* Helpers */,
 				4FD3DC9719D9FAD400E8A759 /* Resources */,
 				4F6528CB1988123B00030100 /* UWFNursing */,
@@ -395,8 +397,6 @@
 		4FB575EC198AB02700B4DE63 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				8248346B1A9B7D5200A366EA /* Model.xcdatamodel */,
-				8248346C1A9B7D5200A366EA /* Proximity.swift */,
 				8248346D1A9B7D5200A366EA /* CoreDataWrapper.swift */,
 				4F85E61819C786C6008B4D1C /* Utilities.h */,
 				4F85E61919C786C6008B4D1C /* Utilities.m */,
@@ -642,7 +642,6 @@
 				82C804381A05105D004E7294 /* ATCHospitalRoomViewController.m in Sources */,
 				4FD3DCC819DB01B600E8A759 /* ATCStation.m in Sources */,
 				4F65290D1988171200030100 /* ATCDocumentsViewController.m in Sources */,
-				8248346E1A9B7D5200A366EA /* Model.xcdatamodel in Sources */,
 				4F6528D21988123B00030100 /* main.m in Sources */,
 				4F6528DC1988123B00030100 /* ATCStationsViewController.m in Sources */,
 				4F85E61D19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m in Sources */,
@@ -654,7 +653,6 @@
 				4FD3DCC519DB00E500E8A759 /* ATCPatientCell.m in Sources */,
 				82A9629F19F0AFF3009CAB7A /* ATCMapViewController.m in Sources */,
 				4F6529101988174500030100 /* DataSource.m in Sources */,
-				8248346F1A9B7D5200A366EA /* Proximity.swift in Sources */,
 				4F5B295719951DC80055E462 /* ATCLogViewController.m in Sources */,
 				824834701A9B7D5200A366EA /* CoreDataWrapper.swift in Sources */,
 				823D3B3919F86F210018947A /* ATCRegionsViewController.m in Sources */,
@@ -664,10 +662,12 @@
 				4F6C86491A03EE5B0093E72C /* ATCBedStationViewController.m in Sources */,
 				82C804341A050FD8004E7294 /* ATCStationViewController.m in Sources */,
 				4F35539519EC777B00F48092 /* ATCWarningViewController.m in Sources */,
+				82AAE7D01A9B890300D74189 /* Model.xcdatamodeld in Sources */,
 				4FD3DCD819DB2C5100E8A759 /* ATCPatient.m in Sources */,
 				4F35538C19E6E1C400F48092 /* ATCState.m in Sources */,
 				4F65292019882C6500030100 /* igViewController.m in Sources */,
 				823D3B3619F8399F0018947A /* ATCNavigationViewController.m in Sources */,
+				82AAE7D21A9B89BB00D74189 /* Proximity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,6 +850,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		82AAE7CE1A9B890300D74189 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				82AAE7CF1A9B890300D74189 /* Model.xcdatamodel */,
+			);
+			currentVersion = 82AAE7CF1A9B890300D74189 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4F6528BA1988123B00030100 /* Project object */;
 }
