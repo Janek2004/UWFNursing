@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		407360D61A9B94DB00700E6B /* NursingModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 407360D41A9B94DB00700E6B /* NursingModel.xcdatamodeld */; };
+		407360DA1A9B963200700E6B /* Proximity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407360D91A9B963200700E6B /* Proximity.swift */; };
 		4F35538519E585E300F48092 /* Girls.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F35538419E585E300F48092 /* Girls.pdf */; };
 		4F35538819E599B700F48092 /* ATCNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35538719E599B700F48092 /* ATCNetworkTest.m */; };
 		4F35538C19E6E1C400F48092 /* ATCState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35538B19E6E1C400F48092 /* ATCState.m */; };
@@ -79,8 +81,6 @@
 		823D3B3919F86F210018947A /* ATCRegionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823D3B3819F86F210018947A /* ATCRegionsViewController.m */; };
 		824834701A9B7D5200A366EA /* CoreDataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8248346D1A9B7D5200A366EA /* CoreDataWrapper.swift */; };
 		82A9629F19F0AFF3009CAB7A /* ATCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */; };
-		82AAE7D01A9B890300D74189 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82AAE7CE1A9B890300D74189 /* Model.xcdatamodeld */; };
-		82AAE7D21A9B89BB00D74189 /* Proximity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AAE7D11A9B89BB00D74189 /* Proximity.swift */; };
 		82C804341A050FD8004E7294 /* ATCStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C804331A050FD8004E7294 /* ATCStationViewController.m */; };
 		82C804381A05105D004E7294 /* ATCHospitalRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C804371A05105D004E7294 /* ATCHospitalRoomViewController.m */; };
 		82C8043C1A071FFA004E7294 /* bedside_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C8043A1A071FFA004E7294 /* bedside_icon.png */; };
@@ -92,6 +92,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		407360D51A9B94DB00700E6B /* NursingModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NursingModel.xcdatamodel; sourceTree = "<group>"; };
+		407360D91A9B963200700E6B /* Proximity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proximity.swift; sourceTree = "<group>"; };
 		4F10D00F1A08084E00512266 /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocols.h; sourceTree = "<group>"; };
 		4F1AA61419DB3DBA00825E6A /* ATCBeaconContentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCBeaconContentManager.h; sourceTree = "<group>"; };
 		4F35538419E585E300F48092 /* Girls.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Girls.pdf; sourceTree = "<group>"; };
@@ -199,8 +201,6 @@
 		8248346D1A9B7D5200A366EA /* CoreDataWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWrapper.swift; sourceTree = "<group>"; };
 		82A9629D19F0AFF3009CAB7A /* ATCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCMapViewController.h; sourceTree = "<group>"; };
 		82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCMapViewController.m; sourceTree = "<group>"; };
-		82AAE7CF1A9B890300D74189 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		82AAE7D11A9B89BB00D74189 /* Proximity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proximity.swift; sourceTree = "<group>"; };
 		82C804321A050FD8004E7294 /* ATCStationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCStationViewController.h; path = StationsVC/ATCStationViewController.h; sourceTree = "<group>"; };
 		82C804331A050FD8004E7294 /* ATCStationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCStationViewController.m; path = StationsVC/ATCStationViewController.m; sourceTree = "<group>"; };
 		82C804361A05105D004E7294 /* ATCHospitalRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCHospitalRoomViewController.h; sourceTree = "<group>"; };
@@ -239,8 +239,8 @@
 		4F6528B91988123B00030100 = {
 			isa = PBXGroup;
 			children = (
-				82AAE7CE1A9B890300D74189 /* Model.xcdatamodeld */,
-				82AAE7D11A9B89BB00D74189 /* Proximity.swift */,
+				407360D91A9B963200700E6B /* Proximity.swift */,
+				407360D41A9B94DB00700E6B /* NursingModel.xcdatamodeld */,
 				4FB575EC198AB02700B4DE63 /* Helpers */,
 				4FD3DC9719D9FAD400E8A759 /* Resources */,
 				4F6528CB1988123B00030100 /* UWFNursing */,
@@ -638,6 +638,7 @@
 			files = (
 				4F65291C1988219300030100 /* ATCDetailsWebViewController.m in Sources */,
 				4F3553AC19EEB37700F48092 /* ATCBeaconNetworkUtilities.m in Sources */,
+				407360D61A9B94DB00700E6B /* NursingModel.xcdatamodeld in Sources */,
 				4F35539119E6EED500F48092 /* ATCPrimaryNurseChoice.m in Sources */,
 				82C804381A05105D004E7294 /* ATCHospitalRoomViewController.m in Sources */,
 				4FD3DCC819DB01B600E8A759 /* ATCStation.m in Sources */,
@@ -662,12 +663,11 @@
 				4F6C86491A03EE5B0093E72C /* ATCBedStationViewController.m in Sources */,
 				82C804341A050FD8004E7294 /* ATCStationViewController.m in Sources */,
 				4F35539519EC777B00F48092 /* ATCWarningViewController.m in Sources */,
-				82AAE7D01A9B890300D74189 /* Model.xcdatamodeld in Sources */,
 				4FD3DCD819DB2C5100E8A759 /* ATCPatient.m in Sources */,
 				4F35538C19E6E1C400F48092 /* ATCState.m in Sources */,
 				4F65292019882C6500030100 /* igViewController.m in Sources */,
 				823D3B3619F8399F0018947A /* ATCNavigationViewController.m in Sources */,
-				82AAE7D21A9B89BB00D74189 /* Proximity.swift in Sources */,
+				407360DA1A9B963200700E6B /* Proximity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -852,13 +852,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		82AAE7CE1A9B890300D74189 /* Model.xcdatamodeld */ = {
+		407360D41A9B94DB00700E6B /* NursingModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				82AAE7CF1A9B890300D74189 /* Model.xcdatamodel */,
+				407360D51A9B94DB00700E6B /* NursingModel.xcdatamodel */,
 			);
-			currentVersion = 82AAE7CF1A9B890300D74189 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			currentVersion = 407360D51A9B94DB00700E6B /* NursingModel.xcdatamodel */;
+			path = NursingModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
