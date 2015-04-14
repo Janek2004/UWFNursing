@@ -577,7 +577,7 @@
 -(NSInteger)locationCheckForProximityEvents:(NSArray *)proximityEvents andDate:(NSDate *)date{
     
     NSInteger timeDelta = 5; // time in seconds to be evaluated
-    NSInteger numberOfEvents = 20;
+    NSInteger numberOfEvents = 40;
     
     NSArray * lastEvents = [proximityEvents filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary * evaluatedObject, NSDictionary *bindings) {
         NSDate * edate = [evaluatedObject objectForKey:@"date"];

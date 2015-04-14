@@ -14,6 +14,7 @@
 #import "ATCState.h"
 #import "ATCPatientViewController.h"
 #import "Protocols.h"
+#import "ATCStationTableViewCell.h"
 
 @import CoreLocation;
 
@@ -30,19 +31,66 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     ATCAppDelegate * delegate = [[UIApplication sharedApplication]delegate];
-    self.datasource = [[DataSource alloc]initWithItems:delegate.state.stations  cellIdentifier:@"station_cell" configureCellBlock:^(UITableViewCell* cell, ATCStation * item, id indexPath) {
-        
+    self.datasource = [[DataSource alloc]initWithItems:delegate.state.stations  cellIdentifier:@"station_cell" configureCellBlock:^(ATCStationTableViewCell * cell, ATCStation * item, id indexPath) {
+		[cell layoutSubviews];
+		
+//		cell = [[ATCStationTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"station_cell"];
+	
+		
         if([item isKindOfClass:[ATCStation class]]){
             cell.imageView.image = item.icon;
             cell.textLabel.text= [NSString stringWithFormat:@"%@",item.title];
-        }
+//
+//			cell.progressView.hidden = NO;
+			
+			
+			dispatch_async(dispatch_get_main_queue(), ^{
+				// do work here
+				double value = 0.0;
+				switch (item.proximity){
+					case CLProximityFar: {
+						value = 1/3.0;
+						[cell setProgress:value ];
+						break;
+					}
+					case CLProximityNear: {
+						value = 2/3.0;
+						[cell setProgress:value ];
+						break;
+					}
+						
+					case CLProximityImmediate: {
+						value = 3/3.0;
+						[cell setProgress:value ];
+						break;
+					}
+						
+					default:{
+						//cell.progressView.hidden = YES;
+						[cell setProgress:value ];
+						break;
+					}
+				
+				
+				}
+				
+			
+			
+			});
+			
+			       }
     }];
+	
     
     self.datasource.headers = @[@"Nearby Locations"];
     [self.tableView reloadData];
      self.tableView.delegate = self;
    
 
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+	return 75;
 }
 
 
@@ -54,7 +102,10 @@
         
         self.datasource.items = patients;
         self.tableView.dataSource = self.datasource;
-        [self.tableView reloadData];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self.tableView reloadData];
+		});
+
     }
 }
 
@@ -117,15 +168,6 @@
 
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-//    if([segue.identifier isEqualToString:@"patient_segue"]){
-//        NSIndexPath * indexPath = [self.tableView indexPathForSelectedRow];
-//        ATCPatient * patient=  [self.datasource.items objectAtIndex:indexPath.row];
-//        [segue.destinationViewController setPatient: patient];
-//        
-//    }
-    
-}
 
 
 - (void)didReceiveMemoryWarning

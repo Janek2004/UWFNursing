@@ -20,16 +20,31 @@
                             <userLayoutGuide location="162" affinity="minX"/>
                         </userGuides>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yse-CW-3YC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="65" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yse-CW-3YC">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="station_cell" rowHeight="48" id="knn-KD-7dK">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="station_cell" rowHeight="70" id="knn-KD-7dK" customClass="ATCStationTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="knn-KD-7dK" id="mry-qQ-9E3">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HqZ-hP-GT9">
+                                                    <rect key="frame" x="68" y="59" width="150" height="2"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="nFf-f8-m3c"/>
+                                                    </constraints>
+                                                </progressView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="HqZ-hP-GT9" secondAttribute="centerX" constant="0.5" id="BCv-on-G8l"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="HqZ-hP-GT9" secondAttribute="bottom" constant="0.5" id="wfw-OQ-GaX"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="progressView" destination="HqZ-hP-GT9" id="Fi9-om-b5T"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -82,8 +82,8 @@
     NSString *key =  [ATCBeacon hashedBeacon:beaconId major:major.integerValue minor:minor.integerValue];
     
     ATCStation * station =[self.stationsCompleteDictionary objectForKey:key];
-    //    NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
-    
+	station.proximity = proximity;
+	
     //if it doesn't exist we need to add it.
     if(![self.stations objectForKey:key]){
         if(proximity!=CLProximityUnknown && station!=nil){
@@ -148,7 +148,8 @@
     room.identifier =kontaktIo;
     room.major =@6914;
     room.minor = @5919;
-    
+
+#pragma mark warning bed
     ATCBeacon * bed =[ATCBeacon new];
     bed.iOSidentifier = @"bed";
     bed.identifier =kontaktIo;
@@ -160,6 +161,20 @@
     bed2.identifier =estimote;
     bed2.major =@30412;
     bed2.minor = @5559;
+	
+	ATCBeacon * bed3 =[ATCBeacon new];
+	bed3.iOSidentifier = @"faculty showcase bed";
+	bed3.identifier =kontaktIo;
+	bed3.major =@3781;
+	bed3.minor = @34250;
+	
+	
+	ATCBeacon * facultyShowcase =[ATCBeacon new];
+	facultyShowcase.iOSidentifier = @"faculty showcase room";
+	facultyShowcase.identifier =kontaktIo;
+	facultyShowcase.major =@45074;
+	facultyShowcase.minor = @36073;
+	
     
     
     ATCBeacon * debriefingRoom =[ATCBeacon new];
@@ -173,6 +188,8 @@
     bed.type = kbed;
     debriefingRoom.type =kbriefing;
     bed2.type = kbed;
+	facultyShowcase.type =kroom;
+	bed3.type = kbed;
     
     
     
@@ -201,8 +218,10 @@
     jennie.displayStartDate =@1414779895;
     jennie.displayStopDate = @1415404800;
     jennie.type = kbed;
-    jennie.beaconKey = bed.hashedBeacon;
-    jennie.icon = [UIImage imageNamed:@"patient"];
+  //  jennie.beaconKey = bed.hashedBeacon;
+	jennie.beaconKey = bed3.hashedBeacon;
+	
+	jennie.icon = [UIImage imageNamed:@"patient"];
     jennie.title = [NSString stringWithFormat:@"%@ %@",jennie.name, jennie.lastname];
     jennie.image =[UIImage imageNamed:@"bedside"];
     jennie.vcname = @"ATCPatientViewController";
@@ -400,7 +419,19 @@
     simLabStation.displayStartDate =@([past timeIntervalSince1970]);
     simLabStation.data =@{@"patients":currentPatients};
     simLabStation.type=kroom;
-    
+	
+	ATCStation * facultyShowcaseStation = [ATCStation new];
+	facultyShowcaseStation.beaconKey = facultyShowcase.hashedBeacon;
+	facultyShowcaseStation.icon = [UIImage imageNamed:@""];
+	facultyShowcaseStation.title = @"Faculty Showcase";
+	facultyShowcaseStation.image = [UIImage imageNamed:@"briefing_room"];
+	facultyShowcaseStation.vcname = @"ATCStationViewController";
+	facultyShowcaseStation.displayStopDate =@([future timeIntervalSince1970]);
+	facultyShowcaseStation.displayStartDate =@([past timeIntervalSince1970]);
+	facultyShowcaseStation.data =@{@"patients":currentPatients};
+	facultyShowcaseStation.type=kroom;
+	
+	
     ATCStation * debriefingRoomStation= [ATCStation new];
     debriefingRoomStation.beaconKey = debriefingRoom.hashedBeacon;
     debriefingRoomStation.icon = [UIImage imageNamed:@""];
@@ -412,7 +443,8 @@
     debriefingRoomStation.type = kbriefing;
     debriefingRoom.type = kbriefing;
     
-    NSArray * beacons = @[room, sink, bed, bed2, debriefingRoom];
+
+	NSArray * beacons = @[room, sink, bed, bed2,bed3, debriefingRoom, facultyShowcase];
     
     
     NSMutableDictionary * dictionary =[@{}mutableCopy];
@@ -432,7 +464,7 @@
 	}
 	
 	
-	[stations addObjectsFromArray:@[sinkStation,simLabStation,debriefingRoomStation]];
+	[stations addObjectsFromArray:@[sinkStation,simLabStation,debriefingRoomStation,facultyShowcaseStation]];
 	
     NSDictionary * appData = @{@"stations":stations,@"beacons": dictionary, @"patients":allPatients};
     self.data = appData;

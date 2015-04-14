@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		407360D61A9B94DB00700E6B /* NursingModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 407360D41A9B94DB00700E6B /* NursingModel.xcdatamodeld */; };
 		407360DA1A9B963200700E6B /* Proximity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407360D91A9B963200700E6B /* Proximity.swift */; };
+		40D277111ADC69D0007D5594 /* ATCStationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D277101ADC69D0007D5594 /* ATCStationTableViewCell.m */; };
 		4F35538519E585E300F48092 /* Girls.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F35538419E585E300F48092 /* Girls.pdf */; };
 		4F35538819E599B700F48092 /* ATCNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35538719E599B700F48092 /* ATCNetworkTest.m */; };
 		4F35538C19E6E1C400F48092 /* ATCState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F35538B19E6E1C400F48092 /* ATCState.m */; };
@@ -94,6 +95,8 @@
 /* Begin PBXFileReference section */
 		407360D51A9B94DB00700E6B /* NursingModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NursingModel.xcdatamodel; sourceTree = "<group>"; };
 		407360D91A9B963200700E6B /* Proximity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proximity.swift; sourceTree = "<group>"; };
+		40D2770F1ADC69D0007D5594 /* ATCStationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCStationTableViewCell.h; sourceTree = "<group>"; };
+		40D277101ADC69D0007D5594 /* ATCStationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCStationTableViewCell.m; sourceTree = "<group>"; };
 		4F10D00F1A08084E00512266 /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocols.h; sourceTree = "<group>"; };
 		4F1AA61419DB3DBA00825E6A /* ATCBeaconContentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCBeaconContentManager.h; sourceTree = "<group>"; };
 		4F35538419E585E300F48092 /* Girls.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Girls.pdf; sourceTree = "<group>"; };
@@ -279,6 +282,8 @@
 				4F35538619E599B700F48092 /* ATCNetworkTest.h */,
 				4F35538719E599B700F48092 /* ATCNetworkTest.m */,
 				4F6528D71988123B00030100 /* Main.storyboard */,
+				40D2770F1ADC69D0007D5594 /* ATCStationTableViewCell.h */,
+				40D277101ADC69D0007D5594 /* ATCStationTableViewCell.m */,
 				4F65291D198821FA00030100 /* ViewControllers */,
 				4F6529191988213300030100 /* Model */,
 				4F6528DD1988123B00030100 /* Images.xcassets */,
@@ -646,6 +651,7 @@
 				4F6528D21988123B00030100 /* main.m in Sources */,
 				4F6528DC1988123B00030100 /* ATCStationsViewController.m in Sources */,
 				4F85E61D19C78AF1008B4D1C /* ATCWashingHandsStationViewController.m in Sources */,
+				40D277111ADC69D0007D5594 /* ATCStationTableViewCell.m in Sources */,
 				4F3553B319EED63200F48092 /* JMCBeaconManager.m in Sources */,
 				4F6528D61988123B00030100 /* ATCAppDelegate.m in Sources */,
 				4F85E61A19C786C6008B4D1C /* Utilities.m in Sources */,

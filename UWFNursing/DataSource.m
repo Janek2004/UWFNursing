@@ -44,12 +44,15 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier forIndexPath:indexPath];
     if(cell==NULL){
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.cellIdentifier];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.cellIdentifier];
     }
     
     
     self.configureCellBlock(cell, item, indexPath);
-    return cell;
+	[cell layoutSubviews];
+	[cell setNeedsDisplay];
+
+	return cell;
 }
   
 
