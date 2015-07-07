@@ -323,7 +323,39 @@
     venny.image =[UIImage imageNamed:@"bedside"];
     venny.vcname = @"ATCPatientViewController";
     venny.allergies = @"NKA";
-    
+
+	
+	ATCPatient * l1 = [ATCPatient new];
+	l1.name = @"Lucina";
+	l1.lastname=@"Love";
+	l1.dob =  @"02/14/XX";
+	l1.pid = @"MR#LL1";
+	l1.wristbandCode = @"9";
+	l1.type = kbed;
+	l1.beaconKey = bed.hashedBeacon;
+	l1.icon = [UIImage imageNamed:@"patient"];
+	l1.title = [NSString stringWithFormat:@"%@ %@",venny.name, venny.lastname];
+	l1.image =[UIImage imageNamed:@"bedside"];
+	l1.vcname = @"ATCPatientViewController";
+	l1.allergies = @"NKA";
+	
+	ATCPatient * vernon = [ATCPatient new];
+	vernon.name = @"Vernon";
+	vernon.lastname=@"Watkins";
+	vernon.dob =  @"04/09/xx";
+	vernon.pid = @"MR# PCS40900";
+	vernon.wristbandCode = @"10";
+	vernon.type = kbed;
+	vernon.beaconKey = bed.hashedBeacon;
+	vernon.icon = [UIImage imageNamed:@"patient"];
+vernon.title = [NSString stringWithFormat:@"%@ %@",venny.name, venny.lastname];
+	vernon.image =[UIImage imageNamed:@"bedside"];
+	vernon.vcname = @"ATCPatientViewController";
+	vernon.allergies = @"PCN";
+	
+
+	
+	
     NSArray * currentPatients = @[];
     NSDate * date = [NSDate new];
     float currentTime = [date timeIntervalSince1970];
