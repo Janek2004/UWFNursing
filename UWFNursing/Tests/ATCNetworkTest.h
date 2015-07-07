@@ -11,6 +11,7 @@
 
 @interface ATCNetworkTest : NSObject
 
+-(void)testScanner;
 -(void)testProximityData:(ATCBeacon *)beacon;
 -(void)testRegionData:(ATCBeacon *)beacon;
 -(void)testLogin;

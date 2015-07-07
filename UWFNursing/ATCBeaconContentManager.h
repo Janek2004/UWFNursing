@@ -22,5 +22,7 @@
 -(NSDictionary *)getBeacons;
 -(NSDictionary *)parseData; // for unit testing
 -(id)initWithCompletion:(void (^)(NSArray *))stationsBlock;
+//gets the content related to the barcode
++(void)getBarcodeData:(NSString *) barcode handler:(void (^)(NSString *text, NSString *cerror))completionBlock;
 
 @end

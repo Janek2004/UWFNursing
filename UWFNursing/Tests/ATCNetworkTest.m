@@ -8,6 +8,7 @@
 
 #import "ATCNetworkTest.h"
 #import "ATCBeaconNetworkUtilities.h"
+#import "ATCBeaconContentManager.h"
 #import "ATCBeacon.h"
 
 @interface ATCNetworkTest()
@@ -26,6 +27,22 @@
     }
     return self;
 
+}
+
+-(void)testScanner{
+	NSArray * array = @[@"10",@"9",@"8",@"7",@"3",@"1",@"101",@"102",@"103",@"104",@"105",@"106",@"107"];
+	for(NSString * barcode in array){
+		[ATCBeaconContentManager getBarcodeData:barcode handler:^(NSString *text, NSString *cerror) {
+			if (cerror){
+				NSLog(@"\nError: %@ ",cerror);
+				NSLog(@"%@\n",barcode);
+			}
+			
+			NSLog(@"\n %@ ",text);
+			NSLog(@"%@\n",barcode);
+		}];
+	}
+	
 }
 
 

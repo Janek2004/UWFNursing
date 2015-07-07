@@ -22,10 +22,11 @@
 
     UIView *_highlightView;
     UILabel *_barcodeLabel;
-    UILabel *_dobLabel;
-    UILabel *_nameLabel;
-    UILabel *_mrLabel;
-    UILabel *_nkaLabel;
+	UILabel *_textLabel;
+   // UILabel *_dobLabel;
+   //  UILabel *_nameLabel;
+   // UILabel *_mrLabel;
+   // UILabel *_nkaLabel;
     
     UIButton *_startButton;
 }
@@ -72,40 +73,49 @@
 
     [_startButton addTarget:self action:@selector(sessionAction) forControlEvents:UIControlEventTouchUpInside];
     
-    _nameLabel = [[UILabel alloc] init];
-    _nameLabel.frame = CGRectMake(0, CGRectGetMaxY(_startButton.frame)+2, self.view.bounds.size.width, 40);
-    _nameLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
-    _nameLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
-    _nameLabel.textColor = [UIColor whiteColor];
-    _nameLabel.textAlignment = NSTextAlignmentLeft;
+	    _textLabel = [[UILabel alloc] init];
+	    _textLabel.frame = CGRectMake(0, CGRectGetMaxY(_startButton.frame)+2, self.view.bounds.size.width, 250);
+	    _textLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
+	    _textLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
+	    _textLabel.textColor = [UIColor whiteColor];
+	    _textLabel.textAlignment = NSTextAlignmentLeft;
+	_textLabel.numberOfLines = 20; 
+	
+	
+//    _nameLabel = [[UILabel alloc] init];
+//    _nameLabel.frame = CGRectMake(0, CGRectGetMaxY(_startButton.frame)+2, self.view.bounds.size.width, 40);
+//    _nameLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
+//    _nameLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
+//    _nameLabel.textColor = [UIColor whiteColor];
+//    _nameLabel.textAlignment = NSTextAlignmentLeft;
+//
+//    [self.view addSubview:_nameLabel];
+//    
+//    _dobLabel = [[UILabel alloc] init];
+//    _dobLabel.frame = CGRectMake(0, CGRectGetMaxY(_nameLabel.frame), self.view.bounds.size.width, 40);
+//    _dobLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
+//    _dobLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
+//    _dobLabel.textColor = [UIColor whiteColor];
+//    _dobLabel.textAlignment = NSTextAlignmentLeft;
 
-    [self.view addSubview:_nameLabel];
-    
-    _dobLabel = [[UILabel alloc] init];
-    _dobLabel.frame = CGRectMake(0, CGRectGetMaxY(_nameLabel.frame), self.view.bounds.size.width, 40);
-    _dobLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
-    _dobLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
-    _dobLabel.textColor = [UIColor whiteColor];
-    _dobLabel.textAlignment = NSTextAlignmentLeft;
-
-    [self.view addSubview:_dobLabel];
-    _mrLabel = [[UILabel alloc] init];
-    _mrLabel.frame = CGRectMake(0, CGRectGetMaxY(_dobLabel.frame), self.view.bounds.size.width, 40);
-    _mrLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
-    _mrLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
-    _mrLabel.textColor = [UIColor whiteColor];
-    _mrLabel.textAlignment = NSTextAlignmentLeft;
-    [self.view addSubview:_mrLabel];
-    
-    _nkaLabel = [[UILabel alloc] init];
-    _nkaLabel.text = @"";
-    _nkaLabel.frame = CGRectMake(0, CGRectGetMaxY(_mrLabel.frame), self.view.bounds.size.width, 40);
-    _nkaLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
-    _nkaLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
-    _nkaLabel.textColor = [UIColor whiteColor];
-    _nkaLabel.textAlignment = NSTextAlignmentLeft;
-    [self.view addSubview:_nkaLabel];
-    
+//    [self.view addSubview:_dobLabel];
+//    _mrLabel = [[UILabel alloc] init];
+//    _mrLabel.frame = CGRectMake(0, CGRectGetMaxY(_dobLabel.frame), self.view.bounds.size.width, 40);
+//    _mrLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
+//    _mrLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
+//    _mrLabel.textColor = [UIColor whiteColor];
+//    _mrLabel.textAlignment = NSTextAlignmentLeft;
+//    [self.view addSubview:_mrLabel];
+//    
+//    _nkaLabel = [[UILabel alloc] init];
+//    _nkaLabel.text = @"";
+//    _nkaLabel.frame = CGRectMake(0, CGRectGetMaxY(_mrLabel.frame), self.view.bounds.size.width, 40);
+//    _nkaLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
+//    _nkaLabel.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
+//    _nkaLabel.textColor = [UIColor whiteColor];
+//    _nkaLabel.textAlignment = NSTextAlignmentLeft;
+//    [self.view addSubview:_nkaLabel];
+	
     _session = [[AVCaptureSession alloc] init];
     _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     NSError *error = nil;
@@ -134,16 +144,16 @@
 
 -(void)sessionAction{
     
-    _dobLabel.text = @"";
-    _nameLabel.text = @"";
-    _mrLabel.text= @"";
-    _nkaLabel.text = @"";
-    
-    [self.view sendSubviewToBack:_dobLabel];
-    [self.view sendSubviewToBack:_nameLabel];
-    [self.view sendSubviewToBack:_mrLabel];
-    [self.view sendSubviewToBack:_nkaLabel];
-    
+//    _dobLabel.text = @"";
+//    _nameLabel.text = @"";
+//    _mrLabel.text= @"";
+//    _nkaLabel.text = @"";
+//    
+//    [self.view sendSubviewToBack:_dobLabel];
+//    [self.view sendSubviewToBack:_nameLabel];
+//    [self.view sendSubviewToBack:_mrLabel];
+//    [self.view sendSubviewToBack:_nkaLabel];
+	
     if(_session.isRunning){
         [_session stopRunning ];
         [_startButton setTitle:@"Start Scanning" forState:UIControlStateNormal];
@@ -161,38 +171,54 @@
 }
 
 -(void)processBarCode:(NSString *)barcode{
-    long long nr  = barcode.longLongValue;
+//    long long nr  = barcode.longLongValue;
     //special case nurse
-   if(nr==1){
-        _nameLabel.text =@"Thank you for identification.";
-    }
+//   if(nr==1){
+//        _nameLabel.text =@"Thank you for identification.";
+//    }
 
-    #warning probably other class should be responsible for processing the barcode, perhaps ATCState? Plus it should redirect user to appropriate Patients View Controller
-    ATCAppDelegate * del = [[UIApplication sharedApplication]delegate];
-    NSArray *patients = [del.contentManager getPatients];
-    ATCPatient * patient = nil;
-    for(ATCPatient * p in patients){
-        if([p.wristbandCode isEqualToString:barcode]){
-            patient = p;
-            break;
-        }
-    }
-    
-    if(!patient)
-    {
-          _nameLabel.text =@"Patient Not Recognized";
-        return;
-    }
-    _dobLabel.text = [[NSString stringWithFormat:@"DOB: %@",patient.dob]uppercaseString];
-    _nameLabel.text = [[NSString stringWithFormat:@"Name: %@",patient.title]uppercaseString];
-    _mrLabel.text = [[NSString stringWithFormat:@": %@",patient.pid]uppercaseString];
-    _nkaLabel.text = [[NSString stringWithFormat:@": %@",patient.allergies]uppercaseString];
-    
 
-    [self.view bringSubviewToFront:_dobLabel];
-    [self.view bringSubviewToFront:_nameLabel];
-    [self.view bringSubviewToFront:_nkaLabel];
-    [self.view bringSubviewToFront:_mrLabel];
+//    ATCAppDelegate * del = [[UIApplication sharedApplication]delegate];
+//  NSArray *patients = [del.contentManager getPatients];
+//  ATCPatient * patient = nil;
+		[ATCBeaconContentManager getBarcodeData:barcode handler:^(NSString *text, NSString *cerror) {
+			if(cerror){
+				_textLabel.text = cerror;
+
+			}else{
+				_textLabel.text = text;
+			}
+			
+		}];
+	
+	[self.view bringSubviewToFront:_textLabel];
+	
+	
+//	for(ATCPatient * p in patients){
+//        if([p.wristbandCode isEqualToString:barcode]){
+//            patient = p;
+//            break;
+//        }
+//    }
+//    
+//    if(!patient)
+//    {
+//          _nameLabel.text =@"Patient Not Recognized";
+//        return;
+//    }
+//    _dobLabel.text = [[NSString stringWithFormat:@"DOB: %@",patient.dob]uppercaseString];
+//    _nameLabel.text = [[NSString stringWithFormat:@"Name: %@",patient.title]uppercaseString];
+//    _mrLabel.text = [[NSString stringWithFormat:@": %@",patient.pid]uppercaseString];
+//    _nkaLabel.text = [[NSString stringWithFormat:@": %@",patient.allergies]uppercaseString];
+	
+
+//    [self.view bringSubviewToFront:_dobLabel];
+//    [self.view bringSubviewToFront:_nameLabel];
+//    [self.view bringSubviewToFront:_nkaLabel];
+//    [self.view bringSubviewToFront:_mrLabel];
+
+	
+	
     [[NSNotificationCenter defaultCenter]postNotificationName:@"BARCODE_SCAN" object:nil userInfo:@{@"barcode":barcode}];
 }
 

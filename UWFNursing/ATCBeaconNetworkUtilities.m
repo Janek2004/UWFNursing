@@ -9,8 +9,61 @@
 
 #import "ATCBeaconNetworkUtilities.h"
 #define BEACON_URL @"http://atcwebapp.argo.uwf.edu/trainingstations/wp_trainingstations/?missions_json=1"
+/*Information about patients and medicine */
+#define PATIENTS_DATA_URL @"http://atcwebapp.argo.uwf.edu/JSON/data.json"
 
 @implementation ATCBeaconNetworkUtilities
+
+
+/**
+ *  Gettting information from the barcode
+ *  @param major           major identifier
+ *  @param minor           minor identifier
+ *  @param proximityID     proximity identifier
+ *  @param proximity       proximity to beacon
+ *  @param completionBlock completion block handler
+ */
++(void)getBarcodeDataWithCompletionHandler:(void (^)(NSDictionary *data, NSString *error))completionBlock;
+{
+	NSString * urlstring =PATIENTS_DATA_URL;
+	NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+		if(connectionError){
+			NSLog(@" Error %@ ",connectionError);
+			completionBlock(nil, connectionError.localizedFailureReason);
+			
+			return;
+		}
+		else{
+			
+			NSError *error;
+			id object = [NSJSONSerialization
+						 JSONObjectWithData:data
+						 options:0
+						 error:&error];
+			
+			if(!error){
+				if([object isKindOfClass:[NSDictionary class]]){
+					if(!object[@"barcodes"]){
+						completionBlock(nil, @"We couldn't complete your request. Please try again later.");
+					}
+					//succcessful execution
+					else{
+					completionBlock(object, nil);
+					}
+				}
+				else{//Not a dictionary
+					completionBlock(nil, @"We couldn't complete your request. Please try again later.");
+				}
+			} //some kind of paring error
+			else{
+				completionBlock(nil, @"We couldn't complete your request. Please try again later.");
+			}
+		}
+	}
+	 ];
+
+}
 
 /** Updates status of primary nurse */
 -(void)changeStatus:(NSInteger )sessionId primaryNurse:(BOOL)primary withCompletionHandler:(void (^)(NSError *error, NSString * message))completionBlock;{

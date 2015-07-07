@@ -10,6 +10,7 @@
 #import "ATCBeacon.h"
 #import "ATCPatient.h"
 #import "ATCBeaconContentManager.h"
+#import "ATCBeaconNetworkUtilities.h"
 
 
 #define REFRESH_RATE 15
@@ -65,6 +66,35 @@
     return self.stations.allValues;
     
 }
+
++(void)getBarcodeData:(NSString *) barcode handler:(void (^)(NSString *text, NSString *cerror))completionBlock;{
+	
+	[ATCBeaconNetworkUtilities getBarcodeDataWithCompletionHandler:^(NSDictionary *data, NSString *error) {
+		if (error){
+			completionBlock(nil,error);
+			return;
+		}
+		
+		NSArray * barcodes = data[@"barcodes"];
+		BOOL found = false;
+		for (NSDictionary* _barcode in barcodes){
+		
+			if( [_barcode[@"id"] isEqualToString:barcode]){
+				completionBlock(_barcode[@"text"],nil);
+				found = true;
+				return ;
+			}
+		}
+		if (!found){
+			NSString * result = @"Barcode not recognized.";
+			completionBlock(result,nil);
+		}
+		
+	}];
+}
+
+
+
 /**Get Beacons */
 -(NSDictionary *)getBeacons;{
 	return [self.data objectForKey:@"beacons"];

@@ -78,5 +78,11 @@ Logs in to database
  */
 -(void)getDataForBeaconMajor:(int)major minor:(int)minor proximityId:(NSString *)proximityID proximity:(CLProximity) proximity WithCompletionHandler:(void (^)(NSDictionary *data, NSError *error))completionBlock;
 
+/**
+ *Getting information related to the barcode
+ 
+ */
++(void)getBarcodeDataWithCompletionHandler:(void (^)(NSDictionary *data, NSString *error))completionBlock;
+
 
 @end
