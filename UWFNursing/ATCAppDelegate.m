@@ -40,7 +40,7 @@
 //    sink.minor = @14779;
 //    
 //    [_tester testProximityData:sink];
-	[_tester testScanner];
+	//[_tester testScanner];
 	
 }
 

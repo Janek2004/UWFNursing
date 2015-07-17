@@ -78,7 +78,6 @@
 		4FD3DCD319DB0D6900E8A759 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD219DB0D6900E8A759 /* Localizable.strings */; };
 		4FD3DCD519DB110600E8A759 /* ATCBeaconContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */; };
 		4FD3DCD819DB2C5100E8A759 /* ATCPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3DCD719DB2C5100E8A759 /* ATCPatient.m */; };
-		823D3B3619F8399F0018947A /* ATCNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823D3B3519F8399F0018947A /* ATCNavigationViewController.m */; };
 		823D3B3919F86F210018947A /* ATCRegionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823D3B3819F86F210018947A /* ATCRegionsViewController.m */; };
 		824834701A9B7D5200A366EA /* CoreDataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8248346D1A9B7D5200A366EA /* CoreDataWrapper.swift */; };
 		82A9629F19F0AFF3009CAB7A /* ATCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A9629E19F0AFF3009CAB7A /* ATCMapViewController.m */; };
@@ -94,7 +93,7 @@
 
 /* Begin PBXFileReference section */
 		407360D51A9B94DB00700E6B /* NursingModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NursingModel.xcdatamodel; sourceTree = "<group>"; };
-		407360D91A9B963200700E6B /* Proximity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proximity.swift; sourceTree = "<group>"; };
+		407360D91A9B963200700E6B /* Proximity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Proximity.swift; path = ../Proximity.swift; sourceTree = "<group>"; };
 		40D2770F1ADC69D0007D5594 /* ATCStationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCStationTableViewCell.h; sourceTree = "<group>"; };
 		40D277101ADC69D0007D5594 /* ATCStationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCStationTableViewCell.m; sourceTree = "<group>"; };
 		4F10D00F1A08084E00512266 /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocols.h; sourceTree = "<group>"; };
@@ -196,8 +195,6 @@
 		4FD3DCD419DB110600E8A759 /* ATCBeaconContentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCBeaconContentManager.m; path = Logic/ATCBeaconContentManager.m; sourceTree = "<group>"; };
 		4FD3DCD719DB2C5100E8A759 /* ATCPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCPatient.m; path = Logic/ATCPatient.m; sourceTree = "<group>"; };
 		4FD3DCDB19DB3A8400E8A759 /* ATCPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCPatient.h; path = Logic/ATCPatient.h; sourceTree = "<group>"; };
-		823D3B3419F8399F0018947A /* ATCNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCNavigationViewController.h; sourceTree = "<group>"; };
-		823D3B3519F8399F0018947A /* ATCNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCNavigationViewController.m; sourceTree = "<group>"; };
 		823D3B3719F86F210018947A /* ATCRegionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATCRegionsViewController.h; path = ViewControllers/ATCRegionsViewController.h; sourceTree = "<group>"; };
 		823D3B3819F86F210018947A /* ATCRegionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATCRegionsViewController.m; path = ViewControllers/ATCRegionsViewController.m; sourceTree = "<group>"; };
 		8248346A1A9B7D5200A366EA /* UWFNursing-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UWFNursing-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -242,8 +239,8 @@
 		4F6528B91988123B00030100 = {
 			isa = PBXGroup;
 			children = (
-				407360D91A9B963200700E6B /* Proximity.swift */,
-				407360D41A9B94DB00700E6B /* NursingModel.xcdatamodeld */,
+				4F65291D198821FA00030100 /* ViewControllers */,
+				4F6529191988213300030100 /* Model */,
 				4FB575EC198AB02700B4DE63 /* Helpers */,
 				4FD3DC9719D9FAD400E8A759 /* Resources */,
 				4F6528CB1988123B00030100 /* UWFNursing */,
@@ -282,10 +279,6 @@
 				4F35538619E599B700F48092 /* ATCNetworkTest.h */,
 				4F35538719E599B700F48092 /* ATCNetworkTest.m */,
 				4F6528D71988123B00030100 /* Main.storyboard */,
-				40D2770F1ADC69D0007D5594 /* ATCStationTableViewCell.h */,
-				40D277101ADC69D0007D5594 /* ATCStationTableViewCell.m */,
-				4F65291D198821FA00030100 /* ViewControllers */,
-				4F6529191988213300030100 /* Model */,
 				4F6528DD1988123B00030100 /* Images.xcassets */,
 				4F85E61619C785AB008B4D1C /* wash-hands-no-germs.jpg */,
 				4F6528CC1988123B00030100 /* Supporting Files */,
@@ -343,6 +336,8 @@
 		4F6529191988213300030100 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				407360D41A9B94DB00700E6B /* NursingModel.xcdatamodeld */,
+				407360D91A9B963200700E6B /* Proximity.swift */,
 				4FD3DCC619DB01B600E8A759 /* ATCStation.h */,
 				4FD3DCC719DB01B600E8A759 /* ATCStation.m */,
 				4FD3DCC319DB00E400E8A759 /* ATCPatientCell.h */,
@@ -355,11 +350,16 @@
 				4FD3DCDB19DB3A8400E8A759 /* ATCPatient.h */,
 			);
 			name = Model;
+			path = UWFNursing;
 			sourceTree = "<group>";
 		};
 		4F65291D198821FA00030100 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				40D2770F1ADC69D0007D5594 /* ATCStationTableViewCell.h */,
+				40D277101ADC69D0007D5594 /* ATCStationTableViewCell.m */,
+				823D3B3719F86F210018947A /* ATCRegionsViewController.h */,
+				823D3B3819F86F210018947A /* ATCRegionsViewController.m */,
 				4F6C86461A03EDF50093E72C /* StationsVC */,
 				4F35538E19E6EEAD00F48092 /* Primary Nurse Choice View Controller */,
 				4FD3DCCD19DB074900E8A759 /* Debug Log */,
@@ -375,6 +375,7 @@
 				4F6C864F1A040FE30093E72C /* Patient View Controller */,
 			);
 			name = ViewControllers;
+			path = UWFNursing;
 			sourceTree = "<group>";
 		};
 		4F6C86461A03EDF50093E72C /* StationsVC */ = {
@@ -414,10 +415,6 @@
 				4F10D00F1A08084E00512266 /* Protocols.h */,
 				4F35538A19E6E1C400F48092 /* ATCState.h */,
 				4F35538B19E6E1C400F48092 /* ATCState.m */,
-				823D3B3419F8399F0018947A /* ATCNavigationViewController.h */,
-				823D3B3519F8399F0018947A /* ATCNavigationViewController.m */,
-				823D3B3719F86F210018947A /* ATCRegionsViewController.h */,
-				823D3B3819F86F210018947A /* ATCRegionsViewController.m */,
 				8248346A1A9B7D5200A366EA /* UWFNursing-Bridging-Header.h */,
 			);
 			name = Helpers;
@@ -672,7 +669,6 @@
 				4FD3DCD819DB2C5100E8A759 /* ATCPatient.m in Sources */,
 				4F35538C19E6E1C400F48092 /* ATCState.m in Sources */,
 				4F65292019882C6500030100 /* igViewController.m in Sources */,
-				823D3B3619F8399F0018947A /* ATCNavigationViewController.m in Sources */,
 				407360DA1A9B963200700E6B /* Proximity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -864,7 +860,8 @@
 				407360D51A9B94DB00700E6B /* NursingModel.xcdatamodel */,
 			);
 			currentVersion = 407360D51A9B94DB00700E6B /* NursingModel.xcdatamodel */;
-			path = NursingModel.xcdatamodeld;
+			name = NursingModel.xcdatamodeld;
+			path = ../NursingModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
